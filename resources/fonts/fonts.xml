@@ -1,0 +1,4 @@
+<resources>
+	<font id="id_font_seven" filename="seven.fnt" filter="0123456789" />
+	<font id="id_font_digital" filename="digital.fnt" />
+</resources>

@@ -1,0 +1,87 @@
+<strings>
+	<string id="AppName">Aviatorlike</string>
+	<string id="AppVersionTitle">Version</string>
+
+    <string id="BackgroundColorTitle">Background Color</string>
+    <string id="DigitalBackgroundColorTitle">Digital Background Color</string>
+    <string id="ForegroundColorTitle">Digital foreground Color</string>
+    <string id="QuarterNumbersColorTitle">Quarter numbers/ticks Color</string>
+    <string id="MinutesColorTitle">Minutes ticks Color</string>  
+    <string id="HandsFormTitle">Kind of Hands</string>
+    <string id="HandsColorTitle">Color of Hands</string>
+    <string id="LDInfoTitle">Info lower Display</string>
+    
+
+    <string id="ColorBlack">Black</string>
+    <string id="ColorDarkGray">Dark Gray</string>
+    <string id="ColorLightGray">Light Gray</string>
+    <string id="ColorWhite">White</string>    
+    <string id="ColorRed">Red</string>
+    <string id="ColorDarkRed">Dark Red</string>
+    <string id="ColorOrange">Orange</string>
+    <string id="ColorYellow">Yellow</string>
+    <string id="ColorGreen">Green</string>    
+    <string id="ColorDarkGreen">Dark Green</string>
+    <string id="ColorBlue">Blue</string>
+    <string id="ColorDarkBlue">Dark Blue</string>    
+    <string id="ColorPurple">Purple</string>
+    <string id="ColorPink">Pink</string>
+    
+    <string id="LDSteps">Steps</string>
+	<string id="LDDigitalClock">2. Clock</string>
+	<string id="LDAltitude">Altimeter</string>
+	
+
+	<string id="HandsDriver">Driver</string>
+	<string id="HandsPilot">Pilot</string>
+    
+  	<string id="DualTimeTZ">Time zone for dual time</string>
+  	<string id="DualTimeDST">Dual time daylight savings time</string>
+  	
+  	<string id="DSTValm100">-1:00</string>
+  	<string id="DSTVal000">0:00</string>
+  	<string id="DSTVal030">0:30</string>
+  	<string id="DSTVal100">1:00</string>
+  	<string id="DSTValCurrent">Current</string>
+  	
+	<string id="TZValm1200">-12:00</string>
+	<string id="TZValm1100">-11:00</string>
+	<string id="TZValm1000">-10:00</string>
+	<string id="TZValm900">-9:00</string>
+	<string id="TZValm930">-9:30</string>
+	<string id="TZValm800">-8:00</string>
+	<string id="TZValm700">-7:00</string>
+	<string id="TZValm600">-6:00</string>
+	<string id="TZValm500">-5:00</string>
+	<string id="TZValm400">-4:00</string>
+	<string id="TZValm330">-3:30</string>
+	<string id="TZValm300">-3:00</string>
+	<string id="TZValm200">-2:00</string>
+	<string id="TZValm100">-1:00</string>
+	<string id="TZVal000">0:00 London, Lisbon</string>
+	<string id="TZVal100">1:00 Berlin, Paris, Rome</string>
+	<string id="TZVal200">2:00 Athens, Bucharest, Cairo</string>
+	<string id="TZVal300">3:00 Istanbul, Moscow, Nairobi</string>
+	<string id="TZVal330">3:30</string>
+	<string id="TZVal400">4:00</string>
+	<string id="TZVal430">4:30</string>
+	<string id="TZVal500">5:00</string>
+	<string id="TZVal530">5:30</string>
+	<string id="TZVal545">5:45</string>
+	<string id="TZVal600">6:00</string>
+	<string id="TZVal630">6:30</string>
+	<string id="TZVal700">7:00</string>
+	<string id="TZVal800">8:00</string>
+	<string id="TZVal830">8:30</string>
+	<string id="TZVal845">8:45</string>
+	<string id="TZVal900">9:00</string>
+	<string id="TZVal930">9:30</string>
+	<string id="TZVal1000">10:00</string>
+	<string id="TZVal1030">10:30</string>
+	<string id="TZVal1100">11:00</string>
+	<string id="TZVal1200">12:00</string>
+	<string id="TZVal1245">12:45</string>
+	<string id="TZVal1300">13:00</string>
+	<string id="TZVal1400">14:00</string>
+
+</strings>
