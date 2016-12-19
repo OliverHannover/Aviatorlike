@@ -15,7 +15,7 @@
         </iq:permissions>
 
         <iq:languages>
-            <iq:language>deu</iq:language>
+            <iq:language>eng</iq:language>
         </iq:languages>
 
     </iq:application>
