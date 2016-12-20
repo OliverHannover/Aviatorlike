@@ -421,6 +421,49 @@ class AviatorlikeView extends Ui.WatchFace{
   
   
   }//End of drawDigitalTime(dc)-------
+
+
+	function drawAltitude(dc) {
+	
+		var width = dc.getWidth();
+        var height  = dc.getHeight();
+	
+		
+			var actInfo;
+			var altitudeStr;
+			var highaltide = false;			
+			var unknownaltitude = true;
+			var actaltitude = 0;
+			
+			actInfo = Act.getActivityInfo();
+			if (actInfo != null) {
+				actaltitude = actInfo.altitude;
+				if (actaltitude != null) {
+					unknownaltitude = false;
+					if (actaltitude > 4000) {
+						highaltide = true;
+					}
+				} 				
+			}
+			var metric = Sys.getDeviceSettings().elevationUnits == Sys.UNIT_METRIC;
+							
+			if (unknownaltitude) {
+				altitudeStr = Lang.format(" Alt unknown");
+			} else {
+				altitudeStr = Lang.format(" Alt $1$", [actaltitude.toLong()]);
+			}
+			if (metric) {
+				altitudeStr = altitudeStr + " m ";
+			} else {
+				altitudeStr = altitudeStr + " ft ";
+			}
+			
+       		dc.drawText(width / 2, (height / 10 * 6.9), font2, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
+        }
+	
+	
+	
+	
   
 
 // Handle the update event-----------------------------------------------------------------------
@@ -476,67 +519,32 @@ class AviatorlikeView extends Ui.WatchFace{
 	   if (LDInfo == 1) {
 		 drawDigitalTime(dc);
 		 dc.drawText(width / 2, (height / 10 * 6.9  ), font2, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
-		}	   
-      
+		}	         
         
      //Draw Steps --------------------------------------
-      if (LDInfo == 2) {
-        var actInfo;	
-        var actsteps = 0;		
-		actInfo = ActMonitor.getInfo();   
-       // var actinfo = Act.getActivityInfo();
-        actsteps = actInfo.steps;
-       
+      	if (LDInfo == 2) {
+        var actInfo = ActMonitor.getInfo();	
+        var actsteps = actInfo.steps;
         var stepsStr = Lang.format(" $1$ stp. ", [actsteps]);	
-        //dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-		//dc.drawText(width / 2, (height / 4 *2.7), font2, stepsStr, Gfx.TEXT_JUSTIFY_CENTER);
-		dc.drawText(width / 2, (height / 10 * 6.9), font2, stepsStr, Gfx.TEXT_JUSTIFY_CENTER);
+        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+		dc.drawText(width / 2, (height / 10 * 6.9), font2, stepsStr, Gfx.TEXT_JUSTIFY_CENTER);	
+		}
 		
-		//kleine Kreisanzeige
-		//dc.drawText(width / 5 * 4, height / 2 -20 , Gfx.FONT_SYSTEM_XTINY , "Test123", Gfx.TEXT_JUSTIFY_CENTER);
-		//dc.drawText(width / 5 * 4, height / 2 -5 , Gfx.FONT_XTINY , "Test123", Gfx.TEXT_JUSTIFY_CENTER);	
-	}
-		
-
     	// Draw Altitude------------------------------
-		if (LDInfo == 3) {		
-			var actInfo;
-			var altitudeStr;
-			var highaltide = false;			
-			var unknownaltitude = true;
-			var actaltitude = 0;
+		if (LDInfo == 3) {
+			drawAltitude(dc);
+		 }	
 			
-			actInfo = Act.getActivityInfo();
-			if (actInfo != null) {
-				actaltitude = actInfo.altitude;
-				if (actaltitude != null) {
-					unknownaltitude = false;
-					if (actaltitude > 4000) {
-						highaltide = true;
-					}
-				} 				
-			}
-			var metric = Sys.getDeviceSettings().elevationUnits == Sys.UNIT_METRIC;
-							
-			if (unknownaltitude) {
-				altitudeStr = Lang.format(" Alt unknown");
-			} else {
-				altitudeStr = Lang.format(" Alt $1$", [actaltitude.toLong()]);
-			}
-			if (metric) {
-				altitudeStr = altitudeStr + " m ";
-			} else {
-				altitudeStr = altitudeStr + " ft ";
-			}
+		// Draw Calories------------------------------
+		if (LDInfo == 4) {	
+		dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+		var actInfo = ActMonitor.getInfo(); 
+        var actcals = actInfo.calories;		       
+        var calStr = Lang.format(" $1$ kCal ", [actcals]);	
+		dc.drawText(width / 2, (height / 10 * 6.9), font2, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
+		}	
 			
-       		dc.drawText(width / 2, (height / 10 * 6.9), font2, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
-        }
-
-
-
-
-
-
+		
 		
 		
 		// Draw battery -------------------------------------------------------------------------

@@ -126,6 +126,8 @@
             <listEntry value="2">@Strings.LDSteps</listEntry>        
             <listEntry value="1">@Strings.LDDigitalClock</listEntry>
             <listEntry value="3">@Strings.LDAltitude</listEntry>
+            <listEntry value="4">@Strings.LDCalories</listEntry>
+            
 
         </settingConfig>
     </setting>
