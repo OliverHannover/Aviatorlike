@@ -1,5 +1,5 @@
 <properties>
-	<property id="appVersion" type="string">0.2.0</property>
+	<property id="appVersion" type="string">0.2.1</property>
     <property id="BackgroundColor" type="number">0x000000</property>
     <property id="ForegroundColor" type="number">0x000000</property>
     <property id="QuarterNumbersColor" type="number">0xFFFFFF</property>
