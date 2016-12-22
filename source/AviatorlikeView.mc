@@ -15,7 +15,7 @@ class AviatorlikeView extends Ui.WatchFace{
 
 
     var font1;
-    var font2;
+    var fontDigital;
     var isAwake;
     var screenShape;
     var dndIcon;
@@ -30,6 +30,7 @@ class AviatorlikeView extends Ui.WatchFace{
 
 	//Variablen für die digitale Uhr
 		var timeStr;
+		var altitudeStr;
 		var Use24hFormat;
 		var dualtime = false;
 		var dualtimeTZ = 0;
@@ -43,21 +44,14 @@ class AviatorlikeView extends Ui.WatchFace{
    
     
     function onLayout(dc) {
-        font1 = Ui.loadResource(Rez.Fonts.id_font_seven);
-        font2 = Ui.loadResource(Rez.Fonts.id_font_digital);
-        //setLayout(Rez.Layouts.WatchFace(dc));
-        
-        if (Sys.getDeviceSettings() has :doNotDisturb) {
-            dndIcon = Ui.loadResource(Rez.Drawables.DoNotDisturbIcon);
-        } else {
-            dndIcon = null;
-        }
-           
+    	font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
+    	//font1 = Ui.loadResource(Rez.Fonts.id_font_digital);
+        //font1 = Gfx.FONT_SYSTEM_NUMBER_SMALL;
+        fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);          
         
     }
 
    
-    
 
     // Draw the hash mark symbols on the watch-------------------------------------------------------
     // @param dc Device context
@@ -71,11 +65,11 @@ class AviatorlikeView extends Ui.WatchFace{
             var sX, sY;
             var eX, eY;
             var outerRad = width / 2;
-            var innerRad; //Länge der Tickmarks
+            var innerRad = outerRad - 5; //Länge der Tickmarks
             
-            dc.setPenWidth(3);        
-            innerRad = outerRad - 5;
+            dc.setPenWidth(3);         
             dc.setColor(App.getApp().getProperty("MinutesColor"), Gfx.COLOR_TRANSPARENT);
+            //all minutes
             for (var i = Math.PI / 6; i <= 13 * Math.PI / 6; i += (Math.PI / 30)) {
             
             //dc.drawText(center_x, center_y+20, Gfx.FONT_MEDIUM, i, Gfx.TEXT_JUSTIFY_CENTER);
@@ -92,10 +86,11 @@ class AviatorlikeView extends Ui.WatchFace{
             innerRad = outerRad - 20;
             dc.setPenWidth(4);
             dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
+            //all 5 minutes
             for (var i = Math.PI / 6; i <= 11 * Math.PI / 6; i += (Math.PI / 3)) {
             
             //dc.drawText(center_x, center_y+20, Gfx.FONT_MEDIUM, i, Gfx.TEXT_JUSTIFY_CENTER);
-                // Partially unrolled loop to draw two tickmarks in 15 minute block
+               // Partially unrolled loop to draw two tickmarks in 15 minute block
                 sY = outerRad + innerRad * Math.sin(i);
                 sX = outerRad + innerRad * Math.cos(i);
                 
@@ -214,7 +209,7 @@ class AviatorlikeView extends Ui.WatchFace{
 								[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
 								[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)]   ];
 								
-								
+				dc.setPenWidth(1);				
 		        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
 				dc.fillPolygon(hand);
 				dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
@@ -242,8 +237,9 @@ class AviatorlikeView extends Ui.WatchFace{
 				dc.fillPolygon(hand1);
 				
 				//Draw Center Point
-				dc.setColor(Gfx.COLOR_BLACK,Gfx.COLOR_BLACK);
-		        dc.drawCircle(width / 2, height / 2, 2);
+				dc.setPenWidth(1);   
+        		dc.setColor(Gfx.COLOR_BLACK,Gfx.COLOR_BLACK);
+        		dc.drawCircle(width / 2, height / 2, 2);
 		        
 			}// End of if (HandsForm == 1)		
 
@@ -430,7 +426,7 @@ class AviatorlikeView extends Ui.WatchFace{
 	
 		
 			var actInfo;
-			var altitudeStr;
+			//var altitudeStr;
 			var highaltide = false;			
 			var unknownaltitude = true;
 			var actaltitude = 0;
@@ -458,16 +454,103 @@ class AviatorlikeView extends Ui.WatchFace{
 				altitudeStr = altitudeStr + " ft ";
 			}
 			
-       		dc.drawText(width / 2, (height / 10 * 6.9), font2, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
+       		//dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
         }
 	
 	
+	function drawBattery(dc) {
+	// Draw battery -------------------------------------------------------------------------
+		var width = dc.getWidth();
+        var height  = dc.getHeight();
+		
+		var Battery = Toybox.System.getSystemStats().battery;       
+        var BatteryStr = Lang.format(" $1$ % ", [Battery.toLong()]);
+        var outerRad = width / 2;
+        var innerRad = outerRad - 15; //Länge des Bat-Zeigers        
+        var alpha, alpha2, alpha3, hand;
+        
+        //dc.drawText(width / 2, (height / 4 * 2.9), fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_CENTER);
+       
+        alpha = -2*Math.PI/100*(Battery)+Math.PI; 
+        alpha2 = -2*Math.PI/100*(Battery+1.3)+Math.PI;
+        alpha3 = -2*Math.PI/100*(Battery-1.3)+Math.PI;
 	
+		hand =        	[[outerRad + outerRad*Math.sin(alpha3), outerRad + outerRad*Math.cos(alpha3)],
+						[outerRad + innerRad*Math.sin(alpha), outerRad + innerRad*Math.cos(alpha)],
+						[outerRad  + outerRad*Math.sin(alpha2), outerRad + outerRad*Math.cos(alpha2)]   ];						
+						
+
+        if (Battery >= 25) {
+        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
+        }
+        if (Battery < 25) {
+        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
+        }
+		if (Battery >= 50) {
+        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
+        }
+		dc.fillPolygon(hand);
+		
+		dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+        var n;
+		for (n=0; n<2; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+		
+	}
 	
+ 	function drawStepGoal(dc) {
+ 		var width = dc.getWidth();
+        var height  = dc.getHeight();
+ 		var outerRad = width / 2;
+        var innerRad = outerRad - 15; //Länge des Bat-Zeigers        
+        var alpha, alpha2, alpha3, hand;
+        
+        var actsteps = 0;
+        var stepGoal = 0;		
+		
+		stepGoal = ActMonitor.getInfo().stepGoal;
+		actsteps = ActMonitor.getInfo().steps;
+		var stepPercent = 100 * actsteps / stepGoal;
+        
+        //dc.drawText(width / 2, (height / 4 * 3), fontDigital, stepGoal, Gfx.TEXT_JUSTIFY_CENTER);
+        //dc.drawText(width / 2, (height / 5), fontDigital, stepPercent, Gfx.TEXT_JUSTIFY_CENTER);
+       
+       if (stepPercent >= 100) {
+       		stepPercent = 100;
+       	}     
+       
+        alpha = -2*Math.PI/100*(stepPercent)+Math.PI; 
+        alpha2 = -2*Math.PI/100*(stepPercent+1.3)+Math.PI;
+        alpha3 = -2*Math.PI/100*(stepPercent-1.3)+Math.PI;
+	
+		hand =        	[[outerRad + innerRad*Math.sin(alpha3), outerRad + innerRad*Math.cos(alpha3)],
+						[outerRad + outerRad*Math.sin(alpha), outerRad + outerRad*Math.cos(alpha)],
+						[outerRad + innerRad*Math.sin(alpha2), outerRad + innerRad*Math.cos(alpha2)]   ];						
+		
+		dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);			
+		dc.fillPolygon(hand);
+		
+		dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+        var n;
+		for (n=0; n<2; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+ 	}
+ 
+ 
   
 
 // Handle the update event-----------------------------------------------------------------------
     function onUpdate(dc) {
+    
+    var LDInfo = (App.getApp().getProperty("LDInfo"));
+   	var LUpperInfo = (App.getApp().getProperty("LUpperInfo"));
+        
         var width = dc.getWidth();
         var height  = dc.getHeight();
         var screenWidth = dc.getWidth();
@@ -475,7 +558,7 @@ class AviatorlikeView extends Ui.WatchFace{
         center_x = dc.getWidth() / 2;
         center_y = dc.getHeight() / 2;
         
-        var LDInfo = (App.getApp().getProperty("LDInfo"));
+        
         
         var timeFormat = "$1$:$2$";       
        	var now = Time.now();
@@ -494,7 +577,7 @@ class AviatorlikeView extends Ui.WatchFace{
    
         dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);
          
-        dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 2 , 130 , 35, 5);
+        dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 2.4 , 130 , 35, 5);
         dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 6.5 , 130 , 35, 5);
         
         
@@ -503,87 +586,144 @@ class AviatorlikeView extends Ui.WatchFace{
         
              
      // Draw the date -----------------------------------------------------------------------------
-   		var info = Calendar.info(now, Time.FORMAT_LONG);
+   		//var info = Calendar.info(now, Time.FORMAT_LONG);
         //var dateStr = Lang.format("$1$ $2$ $3 $4$", [info.day_of_week, info.day, ".", info.month ]);
-        var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
-		dc.drawText(width / 2, (height / 10 * 2.4 ), font2, dateStr, Gfx.TEXT_JUSTIFY_CENTER);    
+        //var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
+		//dc.drawText(width / 2, (height / 10 * 2.7 ), fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER);    
      
 
 
-
-
-
- //Anzeige unteres Display--------------------------  
- 	
+ //Anzeige oberess Display--------------------------  
  	//Draw DigitalTime---------------------------------
-	   if (LDInfo == 1) {
-		 drawDigitalTime(dc);
-		 dc.drawText(width / 2, (height / 10 * 6.9  ), font2, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
-		}	         
-        
-     //Draw Steps --------------------------------------
-      	if (LDInfo == 2) {
-        var actInfo = ActMonitor.getInfo();	
-        var actsteps = actInfo.steps;
-        var stepsStr = Lang.format(" $1$ stp. ", [actsteps]);	
+	   if (LUpperInfo == 1) {
+		 var info = Calendar.info(now, Time.FORMAT_LONG);
+        //var dateStr = Lang.format("$1$ $2$ $3 $4$", [info.day_of_week, info.day, ".", info.month ]);
+        var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
+		dc.drawText(width / 2, (height / 10 * 2.7 ), fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
+		}	
+
+ 	    //Draw Steps --------------------------------------
+      	if (LUpperInfo == 2) {
+        var actsteps = 0;
+        var stepGoal = 0;		
+		stepGoal = ActMonitor.getInfo().stepGoal;
+		actsteps = ActMonitor.getInfo().steps;
+        var stepsStr = Lang.format("$1$", [actsteps]);        	
         dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-		dc.drawText(width / 2, (height / 10 * 6.9), font2, stepsStr, Gfx.TEXT_JUSTIFY_CENTER);	
+		dc.drawText(width / 2, (height / 10 * 2.7 ), fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+		dc.drawText(width / 2 + 50, (height / 10 * 2.4), Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
+		dc.drawText(width / 2 + 50, (height / 10 * 3), Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+		
 		}
 		
+ 	//Draw DigitalTime---------------------------------
+	   if (LUpperInfo == 3) {
+		 drawDigitalTime(dc);
+		 dc.drawText(width / 2, (height / 10 * 2.7  ), fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
+		}	         
+        
+		
     	// Draw Altitude------------------------------
-		if (LDInfo == 3) {
+		if (LUpperInfo == 4) {
 			drawAltitude(dc);
+			dc.drawText(width / 2, (height / 10 * 2.7), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
 		 }	
 			
 		// Draw Calories------------------------------
-		if (LDInfo == 4) {	
+		if (LUpperInfo == 5) {	
 		dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
 		var actInfo = ActMonitor.getInfo(); 
         var actcals = actInfo.calories;		       
         var calStr = Lang.format(" $1$ kCal ", [actcals]);	
-		dc.drawText(width / 2, (height / 10 * 6.9), font2, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
+		dc.drawText(width / 2, (height / 10 * 2.7), fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
+		}
+
+
+ //Anzeige unteres Display--------------------------  
+	   if (LDInfo == 1) {
+		 var info = Calendar.info(now, Time.FORMAT_LONG);
+        //var dateStr = Lang.format("$1$ $2$ $3 $4$", [info.day_of_week, info.day, ".", info.month ]);
+        var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
+		dc.drawText(width / 2, (height / 10 * 6.9 ), fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
+		}	
+
+ 	    //Draw Steps --------------------------------------
+      	if (LDInfo == 2) {
+        var actsteps = 0;
+        var stepGoal = 0;		
+		stepGoal = ActMonitor.getInfo().stepGoal;
+		actsteps = ActMonitor.getInfo().steps;
+        var stepsStr = Lang.format("$1$", [actsteps]);        	
+        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+		dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+		dc.drawText(width / 2 + 50, (height / 10 * 7.1), Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+		dc.drawText(width / 2 + 50, (height / 10 * 6.5), Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
+		}
+		
+ 	//Draw DigitalTime---------------------------------
+	   if (LDInfo == 3) {
+		 drawDigitalTime(dc);
+		 dc.drawText(width / 2, (height / 10 * 6.9  ), fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
+		}	         
+        
+		
+    	// Draw Altitude------------------------------
+		if (LDInfo == 4) {
+			drawAltitude(dc);
+			dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
+		 }	
+			
+		// Draw Calories------------------------------
+		if (LDInfo == 5) {	
+		dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+		var actInfo = ActMonitor.getInfo(); 
+        var actcals = actInfo.calories;		       
+        var calStr = Lang.format(" $1$ kCal ", [actcals]);	
+		dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
 		}	
 			
 		
+		drawBattery(dc);
 		
+		drawStepGoal(dc);
 		
-		// Draw battery -------------------------------------------------------------------------
-		var Battery = Toybox.System.getSystemStats().battery;       
-        var BatteryStr = Lang.format(" $1$ % ", [Battery.toLong()]);
-        var outerRad = width / 2;
-        var innerRad = outerRad - 12; //Länge des Bat-Zeigers        
-        var alpha, alpha2, alpha3, hand;
-        
-        //dc.drawText(width / 2, (height / 4 * 2.9), font2, BatteryStr, Gfx.TEXT_JUSTIFY_CENTER);
-       
-
-        alpha = -2*Math.PI/100*(Battery)+Math.PI; 
-        alpha2 = -2*Math.PI/100*(Battery+1.2)+Math.PI;
-        alpha3 = -2*Math.PI/100*(Battery-1.2)+Math.PI;
-	
-		hand =        	[[outerRad + outerRad*Math.sin(alpha3), outerRad + outerRad*Math.cos(alpha3)],
-						[outerRad + innerRad*Math.sin(alpha), outerRad + innerRad*Math.cos(alpha)],
-						[outerRad  + outerRad*Math.sin(alpha2), outerRad + outerRad*Math.cos(alpha2)]   ];						
-						
-
-        if (Battery >= 25) {
-        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
-        }
-        if (Battery < 25) {
-        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
-        }
-		if (Battery >= 50) {
-        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
-        }
-		dc.fillPolygon(hand);
  
 
       // Draw the numbers --------------------------------------------------------------------------------------
-        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-        dc.drawText((width / 2), 2, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
-        dc.drawText(width - 10, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
-        dc.drawText(width / 2, height - 41, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-        dc.drawText(10, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+       var NbrFont = (App.getApp().getProperty("Numbers")); 
+       dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);    
+    
+	    if ( NbrFont == 1) { //fat
+	    		font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
+	    		dc.drawText((width / 2), 6, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
+	    		dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+        		dc.drawText(width / 2, height - 54, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
+        		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	    	}
+	    if ( NbrFont == 2) { //race
+	    		font1 = Ui.loadResource(Rez.Fonts.id_font_race);
+	    		dc.drawText((width / 2), 9, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
+	    		dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+        		dc.drawText(width / 2, height - 50, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
+        		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	    	}
+	    if ( NbrFont == 3) { //classic
+	    		font1 = Ui.loadResource(Rez.Fonts.id_font_classic);
+	    		dc.drawText((width / 2), 15, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
+	    		dc.drawText(width - 16, (height / 2) - 18, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+        		dc.drawText(width / 2, height - 48, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
+        		dc.drawText(16, (height / 2) - 18, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	    	}
+	   if ( NbrFont == 4) {  //roman
+	    		font1 = Ui.loadResource(Rez.Fonts.id_font_roman);
+	    		dc.drawText((width / 2), 9, font1, "}", Gfx.TEXT_JUSTIFY_CENTER);
+	    		dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+        		dc.drawText(width / 2, height - 50, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
+        		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	   }
+
+	   	
+      
   
   
   

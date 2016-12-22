@@ -2,14 +2,14 @@
 fileVersion=1
 
 # font settings
-fontName=DJB Get Digital
+fontName=Roman Font 7
 fontFile=
 charSet=0
-fontSize=30
+fontSize=44
 aa=1
 scaleH=100
 useSmoothing=1
-isBold=0
+isBold=1
 isItalic=0
 useUnicode=1
 disableBoxChars=1
@@ -17,7 +17,7 @@ outputInvalidCharGlyph=0
 dontIncludeKerningPairs=0
 useHinting=0
 renderFromOutline=0
-useClearType=0
+useClearType=1
 
 # character alignment
 paddingDown=0
@@ -37,10 +37,10 @@ fontDescFormat=0
 fourChnlPacked=0
 textureFormat=png
 textureCompression=0
-alphaChnl=0
-redChnl=4
-greenChnl=4
-blueChnl=4
+alphaChnl=2
+redChnl=2
+greenChnl=2
+blueChnl=2
 invA=0
 invR=0
 invG=0
@@ -50,7 +50,6 @@ invB=0
 outlineThickness=0
 
 # selected chars
-chars=32-33,40-93,97-126,8706,8710,8719,8721-8722,8725,8729-8730,8734,8747,8776,8804-8805,61441-61442
-
+chars=32,48-57,124-125
 
 # imported icon images

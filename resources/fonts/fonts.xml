@@ -1,4 +1,7 @@
 <resources>
-	<font id="id_font_seven" filename="seven.fnt" filter="0123456789" />
+	<font id="id_font_fat" filename="fat.fnt" filter="0123456789" />
+	<font id="id_font_race" filename="race.fnt" filter="0123456789" />
+	<font id="id_font_classic" filename="classic.fnt" filter="0123456789" />
+	<font id="id_font_roman" filename="roman.fnt" />
 	<font id="id_font_digital" filename="digital.fnt" />
 </resources>

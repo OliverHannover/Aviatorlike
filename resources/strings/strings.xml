@@ -5,10 +5,12 @@
     <string id="BackgroundColorTitle">Background Color</string>
     <string id="DigitalBackgroundColorTitle">Digital Background Color</string>
     <string id="ForegroundColorTitle">Digital foreground Color</string>
+    <string id="NumbersTitle">Number Font</string>
     <string id="QuarterNumbersColorTitle">Quarter numbers/ticks Color</string>
     <string id="MinutesColorTitle">Minutes ticks Color</string>  
     <string id="HandsFormTitle">Kind of Hands</string>
     <string id="HandsColorTitle">Color of Hands</string>
+    <string id="LUpperInfoTitle">Info upper Display</string>
     <string id="LDInfoTitle">Info lower Display</string>
     
 
@@ -26,13 +28,25 @@
     <string id="ColorDarkBlue">Dark Blue</string>    
     <string id="ColorPurple">Purple</string>
     <string id="ColorPink">Pink</string>
+   
+    <string id="NbrRace">Race</string>
+    <string id="NbrFat">Fat</string>
+    <string id="NbrClassic">Classic</string>
+    <string id="NbrRoman">Roman</string>
+   
+   <string id="LUpperDate">Date</string>
+   <string id="LUpperSteps">Steps</string>
+	<string id="LUpperDigitalClock">2. Clock</string>
+	<string id="LUpperAltitude">Altimeter</string>
+	<string id="LUpperCalories">Calories</string>
     
+    <string id="LDDate">Date</string>
     <string id="LDSteps">Steps</string>
 	<string id="LDDigitalClock">2. Clock</string>
 	<string id="LDAltitude">Altimeter</string>
 	<string id="LDCalories">Calories</string>
 
-	<string id="HandsDriver">Driver</string>
+	<string id="HandsRace">Race</string>
 	<string id="HandsPilot">Pilot</string>
     
   	<string id="DualTimeTZ">Time zone for dual time</string>

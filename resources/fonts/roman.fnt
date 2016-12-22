@@ -1,0 +1,17 @@
+info face="Roman Font 7" size=44 bold=1 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=43 base=37 scaleW=256 scaleH=256 pages=1 packed=0 alphaChnl=2 redChnl=2 greenChnl=2 blueChnl=2
+page id=0 file="roman_0.png"
+chars count=13
+char id=32   x=247   y=0     width=3     height=1     xoffset=-1    yoffset=42    xadvance=17    page=0  chnl=15
+char id=48   x=23    y=33    width=21    height=32    xoffset=-1    yoffset=5     xadvance=21    page=0  chnl=15
+char id=49   x=62    y=33    width=10    height=32    xoffset=-1    yoffset=5     xadvance=10    page=0  chnl=15
+char id=50   x=45    y=33    width=16    height=32    xoffset=-1    yoffset=5     xadvance=16    page=0  chnl=15
+char id=51   x=224   y=0     width=22    height=32    xoffset=-1    yoffset=5     xadvance=22    page=0  chnl=15
+char id=52   x=110   y=0     width=28    height=32    xoffset=-1    yoffset=5     xadvance=28    page=0  chnl=15
+char id=53   x=0     y=33    width=22    height=32    xoffset=-1    yoffset=5     xadvance=22    page=0  chnl=15
+char id=54   x=139   y=0     width=28    height=32    xoffset=-1    yoffset=5     xadvance=28    page=0  chnl=15
+char id=55   x=41    y=0     width=34    height=32    xoffset=-1    yoffset=5     xadvance=34    page=0  chnl=15
+char id=56   x=0     y=0     width=40    height=32    xoffset=-1    yoffset=5     xadvance=40    page=0  chnl=15
+char id=57   x=168   y=0     width=27    height=32    xoffset=-1    yoffset=5     xadvance=27    page=0  chnl=15
+char id=124  x=196   y=0     width=27    height=32    xoffset=-1    yoffset=5     xadvance=27    page=0  chnl=15
+char id=125  x=76    y=0     width=33    height=32    xoffset=-1    yoffset=5     xadvance=33    page=0  chnl=15
