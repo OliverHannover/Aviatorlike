@@ -64,11 +64,12 @@
     
     
     <setting propertyKey="@Properties.Numbers" title="@Strings.NumbersTitle">
-        <settingConfig type="list">        
+        <settingConfig type="list"> 
+            <listEntry value="0">@Strings.NbrNo</listEntry>  
             <listEntry value="1">@Strings.NbrFat</listEntry>
             <listEntry value="2">@Strings.NbrRace</listEntry>
             <listEntry value="3">@Strings.NbrClassic</listEntry>
-            <listEntry value="4">@Strings.NbrRoman</listEntry>
+            <listEntry value="4">@Strings.NbrRoman</listEntry>           
         </settingConfig>
     </setting>
     
@@ -91,6 +92,10 @@
             <listEntry value="0xFF00FF">@Strings.ColorPink</listEntry>
         </settingConfig>
     </setting>
+    
+    
+    
+    
     
         <setting propertyKey="@Properties.MinutesColor" title="@Strings.MinutesColorTitle">
         <settingConfig type="list">
@@ -116,6 +121,7 @@
         <settingConfig type="list">
             <listEntry value="1">@Strings.HandsRace</listEntry>        
             <listEntry value="2">@Strings.HandsPilot</listEntry>
+        	<listEntry value="3">@Strings.HandsClassic</listEntry>
         </settingConfig>
     </setting> 
     
@@ -131,7 +137,13 @@
             <listEntry value="0xFF5500">@Strings.ColorOrange</listEntry>
         </settingConfig>
     </setting>
-   
+ 
+     <setting propertyKey="@Properties.DigiFont" title="@Strings.DigiFontTitle">
+        <settingConfig type="list"> 
+            <listEntry value="1">@Strings.DFDigital</listEntry>  
+            <listEntry value="2">@Strings.DFClassic</listEntry>          
+        </settingConfig>
+    </setting>  
    
     <setting propertyKey="@Properties.LUpperInfo" title="@Strings.LUpperInfoTitle">
         <settingConfig type="list">

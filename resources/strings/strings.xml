@@ -10,6 +10,7 @@
     <string id="MinutesColorTitle">Minutes ticks Color</string>  
     <string id="HandsFormTitle">Kind of Hands</string>
     <string id="HandsColorTitle">Color of Hands</string>
+    <string id="DigiFontTitle">Font of displays</string>
     <string id="LUpperInfoTitle">Info upper Display</string>
     <string id="LDInfoTitle">Info lower Display</string>
     
@@ -33,9 +34,13 @@
     <string id="NbrFat">Fat</string>
     <string id="NbrClassic">Classic</string>
     <string id="NbrRoman">Roman</string>
+    <string id="NbrNo">No numbers</string>
    
-   <string id="LUpperDate">Date</string>
-   <string id="LUpperSteps">Steps</string>
+    <string id="DFDigital">Digital</string>
+    <string id="DFClassic">Classic</string>   
+   
+    <string id="LUpperDate">Date</string>
+    <string id="LUpperSteps">Steps</string>
 	<string id="LUpperDigitalClock">2. Clock</string>
 	<string id="LUpperAltitude">Altimeter</string>
 	<string id="LUpperCalories">Calories</string>
@@ -48,6 +53,7 @@
 
 	<string id="HandsRace">Race</string>
 	<string id="HandsPilot">Pilot</string>
+ 	<string id="HandsClassic">Classic</string>
     
   	<string id="DualTimeTZ">Time zone for dual time</string>
   	<string id="DualTimeDST">Dual time daylight savings time</string>

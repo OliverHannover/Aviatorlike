@@ -4,4 +4,5 @@
 	<font id="id_font_classic" filename="classic.fnt" filter="0123456789" />
 	<font id="id_font_roman" filename="roman.fnt" />
 	<font id="id_font_digital" filename="digital.fnt" />
+	<font id="id_font_classicklein" filename="classicklein.fnt" />
 </resources>

@@ -47,7 +47,8 @@ class AviatorlikeView extends Ui.WatchFace{
     	font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
     	//font1 = Ui.loadResource(Rez.Fonts.id_font_digital);
         //font1 = Gfx.FONT_SYSTEM_NUMBER_SMALL;
-        fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);          
+        fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);
+        //fontDigital = Ui.loadResource(Rez.Fonts.id_font_classicklein);          
         
     }
 
@@ -83,8 +84,10 @@ class AviatorlikeView extends Ui.WatchFace{
                 dc.drawLine(sX, sY, eX, eY);               
                }
         
+        
+        	outerRad = width / 2;
             innerRad = outerRad - 20;
-            dc.setPenWidth(4);
+            dc.setPenWidth(3);
             dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
             //all 5 minutes
             for (var i = Math.PI / 6; i <= 11 * Math.PI / 6; i += (Math.PI / 3)) {
@@ -262,13 +265,6 @@ class AviatorlikeView extends Ui.WatchFace{
 											
         dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
 		dc.fillPolygon(hand);
-		
-		
-	//	hand1 =         [[center_x+r2*Math.sin(alpha-0.35),center_y-r2*Math.cos(alpha-0.35)],
-	//					[center_x+r3*Math.sin(alpha-0.15),center_y-r3*Math.cos(alpha-0.15)],
-	//					[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
-	//					[center_x+r3*Math.sin(alpha+0.15),center_y-r3*Math.cos(alpha+0.15)],
-	//					[center_x+r2*Math.sin(alpha+0.35),center_y-r2*Math.cos(alpha+0.35)]   ];
 	
 						
 		hand1 =         [[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
@@ -337,6 +333,104 @@ class AviatorlikeView extends Ui.WatchFace{
         dc.setColor(Gfx.COLOR_BLACK,Gfx.COLOR_BLACK);
         dc.drawCircle(width / 2, height / 2, 3);
 		}
+		
+	//Classic-Hands----------------------------------
+		if (HandsForm == 3) {
+		// houres
+		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
+		r0 = 20;
+		r1 = 40; //Entfernung zum rechten winkel
+		r2 = 55;
+		
+		hand =        	[
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
+						[center_x+r1*Math.sin(alpha+0.2),center_y-r1*Math.cos(alpha+0.2)],						
+						[center_x+r2*Math.sin(alpha+0.03),center_y-r2*Math.cos(alpha+0.03)],
+						[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
+						[center_x+r2*Math.sin(alpha-0.03),center_y-r2*Math.cos(alpha-0.03)],						
+						[center_x+r1*Math.sin(alpha-0.2),center_y-r1*Math.cos(alpha-0.2)],
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];
+											
+        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(3);
+		for (n=0; n<6; n++) {
+		dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		
+		r0 = 0;
+		r1 = 20;
+		r2 = 45;
+		
+		dc.drawLine(center_x+22*Math.sin(alpha-0.3),center_y-22*Math.cos(alpha-0.3),center_x+22*Math.sin(alpha+0.3),center_y-22*Math.cos(alpha+0.3));
+				
+		hand =        	[
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
+						[center_x+r1*Math.sin(alpha+0.2),center_y-r1*Math.cos(alpha+0.2)],
+						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
+						[center_x+r1*Math.sin(alpha-0.2),center_y-r1*Math.cos(alpha-0.2)],						
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];	
+						
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		dc.fillPolygon(hand);	
+		
+		
+		// minutes
+		alpha = Math.PI/30.0*clockTime.min;
+		r0 = 35;
+		r1 = 55; //Entfernung zum rechten winkel
+		r2 = 70;
+		
+		hand =        	[
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
+						[center_x+r1*Math.sin(alpha+0.13),center_y-r1*Math.cos(alpha+0.13)],						
+						[center_x+r2*Math.sin(alpha+0.04),center_y-r2*Math.cos(alpha+0.04)],
+						[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],
+						[center_x+r2*Math.sin(alpha-0.04),center_y-r2*Math.cos(alpha-0.04)],						
+						[center_x+r1*Math.sin(alpha-0.13),center_y-r1*Math.cos(alpha-0.13)],
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];
+											
+        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(3);
+		for (n=0; n<6; n++) {
+		dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		
+		r0 = 0;
+		r1 = 25;
+		r2 = 65;
+		
+		dc.drawLine(center_x+35*Math.sin(alpha-0.2),center_y-35*Math.cos(alpha-0.2),center_x+35*Math.sin(alpha+0.2),center_y-35*Math.cos(alpha+0.2));
+				
+		hand =        	[
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
+						[center_x+r1*Math.sin(alpha+0.18),center_y-r1*Math.cos(alpha+0.18)],
+						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
+						[center_x+r1*Math.sin(alpha-0.18),center_y-r1*Math.cos(alpha-0.18)],						
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];	
+						
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		dc.fillPolygon(hand);			
+	
+		// Draw the CenterPoint
+        dc.setPenWidth(1);
+        dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+        dc.fillCircle(width / 2, height / 2, 7);
+        
+       	dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_BLACK);
+        dc.drawCircle(width / 2, height / 2, 7);
+	
+		
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
          
   }//End of drawHands(dc)
          
@@ -518,8 +612,10 @@ class AviatorlikeView extends Ui.WatchFace{
         //dc.drawText(width / 2, (height / 4 * 3), fontDigital, stepGoal, Gfx.TEXT_JUSTIFY_CENTER);
         //dc.drawText(width / 2, (height / 5), fontDigital, stepPercent, Gfx.TEXT_JUSTIFY_CENTER);
        
+       dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
        if (stepPercent >= 100) {
        		stepPercent = 100;
+       		dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
        	}     
        
         alpha = -2*Math.PI/100*(stepPercent)+Math.PI; 
@@ -530,7 +626,7 @@ class AviatorlikeView extends Ui.WatchFace{
 						[outerRad + outerRad*Math.sin(alpha), outerRad + outerRad*Math.cos(alpha)],
 						[outerRad + innerRad*Math.sin(alpha2), outerRad + innerRad*Math.cos(alpha2)]   ];						
 		
-		dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);			
+					
 		dc.fillPolygon(hand);
 		
 		dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
@@ -582,18 +678,25 @@ class AviatorlikeView extends Ui.WatchFace{
         
         
  //Farbe für die Textanzeigen---------------------------------------------------------------------
-        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-        
-             
-     // Draw the date -----------------------------------------------------------------------------
-   		//var info = Calendar.info(now, Time.FORMAT_LONG);
-        //var dateStr = Lang.format("$1$ $2$ $3 $4$", [info.day_of_week, info.day, ".", info.month ]);
-        //var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
-		//dc.drawText(width / 2, (height / 10 * 2.7 ), fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER);    
+       
+   
      
 
 
  //Anzeige oberess Display--------------------------  
+         dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+         var digiFont = (App.getApp().getProperty("DigiFont")); 
+          
+    
+	    if ( digiFont == 1) { //digital
+	    	fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);
+        	//fontDigital = Ui.loadResource(Rez.Fonts.id_font_classicklein);      
+	    	}
+	    if ( digiFont == 2) { //digital
+    		//fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);
+        	fontDigital = Ui.loadResource(Rez.Fonts.id_font_classicklein);      
+	    	}
+	    	
  	//Draw DigitalTime---------------------------------
 	   if (LUpperInfo == 1) {
 		 var info = Calendar.info(now, Time.FORMAT_LONG);
@@ -644,7 +747,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		 var info = Calendar.info(now, Time.FORMAT_LONG);
         //var dateStr = Lang.format("$1$ $2$ $3 $4$", [info.day_of_week, info.day, ".", info.month ]);
         var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
-		dc.drawText(width / 2, (height / 10 * 6.9 ), fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
+		dc.drawText(width / 2, (height / 10 * 6.8 ), fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
 		}	
 
  	    //Draw Steps --------------------------------------
@@ -655,7 +758,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		actsteps = ActMonitor.getInfo().steps;
         var stepsStr = Lang.format("$1$", [actsteps]);        	
         dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-		dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+		dc.drawText(width / 2, (height / 10 * 6.8), fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
 		dc.drawText(width / 2 + 50, (height / 10 * 7.1), Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
 		dc.drawText(width / 2 + 50, (height / 10 * 6.5), Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
 		}
@@ -663,14 +766,14 @@ class AviatorlikeView extends Ui.WatchFace{
  	//Draw DigitalTime---------------------------------
 	   if (LDInfo == 3) {
 		 drawDigitalTime(dc);
-		 dc.drawText(width / 2, (height / 10 * 6.9  ), fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
+		 dc.drawText(width / 2, (height / 10 * 6.8  ), fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
 		}	         
         
 		
     	// Draw Altitude------------------------------
 		if (LDInfo == 4) {
 			drawAltitude(dc);
-			dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
+			dc.drawText(width / 2, (height / 10 * 6.8), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
 		 }	
 			
 		// Draw Calories------------------------------
@@ -679,7 +782,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		var actInfo = ActMonitor.getInfo(); 
         var actcals = actInfo.calories;		       
         var calStr = Lang.format(" $1$ kCal ", [actcals]);	
-		dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
+		dc.drawText(width / 2, (height / 10 * 6.8), fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
 		}	
 			
 		
@@ -695,9 +798,9 @@ class AviatorlikeView extends Ui.WatchFace{
     
 	    if ( NbrFont == 1) { //fat
 	    		font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
-	    		dc.drawText((width / 2), 6, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
+	    		dc.drawText((width / 2), 8, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
 	    		dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
-        		dc.drawText(width / 2, height - 54, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
+        		dc.drawText(width / 2, height - 52, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
         		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 	    	}
 	    if ( NbrFont == 2) { //race
@@ -722,7 +825,10 @@ class AviatorlikeView extends Ui.WatchFace{
         		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 	   }
 
+	
 	   	
+    
+    
       
   
   
