@@ -826,8 +826,29 @@ class AviatorlikeView extends Ui.WatchFace{
 	   }
 
 	
-	   	
-    
+	  //messages 	
+     	var messages = Sys.getDeviceSettings().notificationCount;     	
+     	if (messages > 0) {
+     		dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_BLACK);
+        	dc.fillCircle(width / 3 -15, height / 2 -10, 5);
+     	}
+     	dc.setPenWidth(2);
+        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+        dc.drawCircle(width / 3 -15, height / 2 -10, 5);
+        dc.drawText(width / 3 + 7, height / 2 -19, Gfx.FONT_XTINY, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
+        //dc.drawText(width / 3 + 7, height / 2, Gfx.FONT_XTINY, messages, Gfx.TEXT_JUSTIFY_CENTER); 
+      
+	  //Alarm is set 	
+     	var alarm = Sys.getDeviceSettings().alarmCount;     	
+     	if (alarm > 0) {
+     		dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_BLACK);
+        	dc.fillCircle(width / 3 -15, height / 2 + 10, 5);
+     	}
+     	dc.setPenWidth(2);
+        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+        dc.drawCircle(width / 3 -15, height / 2 +10, 5);
+        dc.drawText(width / 3 + 7, height / 2 +2, Gfx.FONT_XTINY, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
+        //dc.drawText(width / 3 + 7, height / 2, Gfx.FONT_XTINY, messages, Gfx.TEXT_JUSTIFY_CENTER);        
     
       
   
