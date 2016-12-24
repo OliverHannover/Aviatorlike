@@ -829,7 +829,7 @@ class AviatorlikeView extends Ui.WatchFace{
 	  //messages 	
      	var messages = Sys.getDeviceSettings().notificationCount;     	
      	if (messages > 0) {
-     		dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_BLACK);
+     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
         	dc.fillCircle(width / 2 + 30, height / 2 -5, 5);
      	}
      	dc.setPenWidth(2);
@@ -841,7 +841,7 @@ class AviatorlikeView extends Ui.WatchFace{
 	  //Alarm is set 	
      	var alarm = Sys.getDeviceSettings().alarmCount;     	
      	if (alarm > 0) {
-     		dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_BLACK);
+     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
         	dc.fillCircle(width / 2 - 30, height / 2 -5, 5);
      	}
      	dc.setPenWidth(2);
