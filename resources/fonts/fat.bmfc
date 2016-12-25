@@ -2,10 +2,10 @@
 fileVersion=1
 
 # font settings
-fontName=Gunship
+fontName=Coulson
 fontFile=
 charSet=0
-fontSize=42
+fontSize=48
 aa=1
 scaleH=100
 useSmoothing=1
