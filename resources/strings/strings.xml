@@ -10,7 +10,7 @@
     <string id="MinutesColorTitle">Minutes ticks Color</string>  
     <string id="HandsFormTitle">Kind of Hands</string>
     <string id="HandsColorTitle">Color of Hands</string>
-    <string id="SecHandsColorTitle">Color of Hands</string>
+    <string id="SecHandsColorTitle">Color of second Hand</string>
     <string id="DigiFontTitle">Font of displays</string>
     <string id="LUpperInfoTitle">Info upper Display</string>
     <string id="LDInfoTitle">Info lower Display</string>
