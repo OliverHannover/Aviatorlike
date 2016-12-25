@@ -108,11 +108,54 @@ class AviatorlikeView extends Ui.WatchFace{
                 sX = outerRad + innerRad * Math.cos(i);
                 eX = outerRad + outerRad * Math.cos(i);
                 dc.drawLine(sX, sY, eX, eY);  
-     		}           
+     		} 
+    }
+    
+    function drawQuarterHashmarks(dc){          
+      //12, 3, 6, 9
+      var NbrFont = (App.getApp().getProperty("Numbers"));
       
-      		//12, 3, 6, 9
-            dc.setPenWidth(8);        
-            innerRad = outerRad - 5;
+       if ( NbrFont == 0) { //no number
+	  		var width = dc.getWidth();
+        	var height = dc.getHeight();
+			var n;      
+        	var r1, r2, marks, thicknes;
+        	
+        	var outerRad = 0;
+        	var lenth = 30;
+        	var thick = 5;
+        	thicknes = thick * 0.02;
+           
+           // for (var alpha = Math.PI / 6; alpha <= 13 * Math.PI / 6; alpha += (Math.PI / 30)) { //jede Minute
+           	for (var alpha = Math.PI / 2; alpha <= 13 * Math.PI / 2; alpha += (Math.PI / 2)) { //jede 15. Minute
+     
+			r1 = (width/2 + 3) - outerRad; //outside
+			r2 = r1 -lenth; //inside
+			//thicknes = 0.01;
+			
+							
+			marks =     [[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
+						[center_x+r2*Math.sin(alpha-thicknes),center_y-r2*Math.cos(alpha-thicknes)],
+						[center_x+r2*Math.sin(alpha+thicknes),center_y-r2*Math.cos(alpha+thicknes)],
+						[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)]   ];
+			
+			dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);		
+			dc.fillPolygon(marks);
+			
+			dc.setPenWidth(1);
+			dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT); 
+			dc.drawLine(center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha), center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha));
+			    		
+			}
+		}	
+		else {	
+			var width = dc.getWidth();
+        	var height = dc.getHeight();
+        	var sX, sY;
+            var eX, eY;
+		   	dc.setPenWidth(8);
+		   	var outerRad = width / 2;
+            var innerRad = outerRad - 5;        
             dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
             for (var i = Math.PI / 2; i <= 13 * Math.PI / 2; i += (Math.PI / 2)) {
             
@@ -126,22 +169,12 @@ class AviatorlikeView extends Ui.WatchFace{
                 
                 dc.drawLine(sX, sY, eX, eY);
                 
-               }          
-	//		} else {
-    //        var coords = [0, width / 4, (3 * width) / 4, width];
-    //        for (var i = 0; i < coords.size(); i += 1) {
-    //            var dx = ((width / 2.0) - coords[i]) / (height / 2.0);
-    //            var upperX = coords[i] + (dx * 10);
-    //            // Draw the upper hash marks
-    //            dc.fillPolygon([[coords[i] - 1, 2], [upperX - 1, 12], [upperX + 1, 12], [coords[i] + 1, 2]]);
-    //            // Draw the lower hash marks
-    //            dc.fillPolygon([[coords[i] - 1, height-2], [upperX - 1, height - 12], [upperX + 1, height - 12], [coords[i] + 1, height - 2]]);
-    //        }
-    //    }
+             }
+         }
     } 
 
   // Draw hands ------------------------------------------------------------------
-       function drawHands(dc) {        
+  function drawHands(dc) {        
           // the length of the minute hand
    		var minute_radius;
     	// the length of the hour hand
@@ -334,8 +367,108 @@ class AviatorlikeView extends Ui.WatchFace{
         dc.drawCircle(width / 2, height / 2, 3);
 		}
 		
+		//Diver-Hands----------------------------------------	
+		if (HandsForm == 3) { 	
+			// houres
+			alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
+			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
+			
+			//dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(2);
+				
+			//draw the target			
+			r1 = width/2 - 70; //inside
+			var thicknes = 0.25;
+	 									
+				hand =     [[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
+							[center_x+(hour_radius)*Math.sin(alpha),center_y-(hour_radius)*Math.cos(alpha)],
+							[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)]   ];
+																	
+			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(2);	
+			dc.fillPolygon(hand);
+			
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(4);
+			var n;		
+			for (n=0; n<2; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+			
+			//Sys.println("%%.2f='" + alpha.format("%.2f") + "'");
+			
+			//rectangle 
+			r2 = 5;
+				
+				hand =        	[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
+								[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
+								[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)],
+								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
+								
+		dc.setPenWidth(4);
+		for (n=0; n<3; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 		
+			        
+		// minutes--------------
+			alpha = Math.PI/30.0*clockTime.min;
+			alpha2 = Math.PI/30.0*(clockTime.min-15);
+			
+			//dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(2);
+				
+			//draw the target			
+			r1 = width/2 - 50; //inside
+			thicknes = 0.16;
+	 									
+				hand =     [[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
+							[center_x+(minute_radius)*Math.sin(alpha),center_y-(minute_radius)*Math.cos(alpha)],
+							[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)]   ];
+																	
+			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(2);	
+			dc.fillPolygon(hand);
+			
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(4);		
+			for (n=0; n<2; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+			
+			//Sys.println("%%.2f='" + alpha.format("%.2f") + "'");
+			
+			//rectangle 
+			r2 = 5;
+
+				hand =        	[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
+								[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
+								[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)],
+								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
+								
+		dc.setPenWidth(4);
+		for (n=0; n<3; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+		
+		
+		//Centerpoint
+		dc.setPenWidth(2);
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		dc.fillCircle(center_x,center_y,7);
+		
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		dc.drawCircle(center_x,center_y,7);
+		
+	}// End of if (HandsForm == 4)		
+		
 	//Classic-Hands----------------------------------
-		if (HandsForm == 3) {
+		if (HandsForm == 4) {
 		// houres
 		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 		r0 = 20;
@@ -380,6 +513,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		r1 = 55; //Entfernung zum rechten winkel
 		r2 = 70;
 		
+		//obere raute
 		hand =        	[
 						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
 						[center_x+r1*Math.sin(alpha+0.13),center_y-r1*Math.cos(alpha+0.13)],						
@@ -400,7 +534,9 @@ class AviatorlikeView extends Ui.WatchFace{
 		r2 = 65;
 		
 		dc.drawLine(center_x+35*Math.sin(alpha-0.2),center_y-35*Math.cos(alpha-0.2),center_x+35*Math.sin(alpha+0.2),center_y-35*Math.cos(alpha+0.2));
-				
+		
+		
+		//untere Raute		
 		hand =        	[
 						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
 						[center_x+r1*Math.sin(alpha+0.18),center_y-r1*Math.cos(alpha+0.18)],
@@ -421,18 +557,97 @@ class AviatorlikeView extends Ui.WatchFace{
 	
 		
 		
+		}		
+         
+  }//End of drawHands(dc)
+
+	function drawSecondHands(dc) {        
+          // the length of the minute hand
+        
+        var color1 = (App.getApp().getProperty("SecHandsColor"));
+		var color2 = 0x555555;  
+          
+          //!Schwarz + DK-Grau
+		if (color1 == 0x000000) {
+			color2 = 0x555555;
+			}
+		//!weiß + LT-Grau
+		if (color1 == 0xFFFFFF) {
+			color2 = 0xAAAAAA;
+			}
+		//!Rot + DK-Rot
+		if (color1 == 0xFF0000) {
+			color2 = 0xAA0000;
+			}
+		//!Grün + DK-Grün
+		if (color1 == 0x00FF00) {
+			color2 = 0x00AA00;
+			}			
+		//!Blau + DK-Blau
+		if (color1 == 0x00AAFF) {
+			color2 = 0x0000FF;
+			}		
+		//!Orange + Gelb
+		if (color1 == 0xFF5500) {
+			color2 = 0xFFAA00;
+			}	
+   		var seconds_radius;
+ 	  	var width = dc.getWidth();
+        var height  = dc.getHeight();
+        
+        //seconds_radius = 7/8.0 * center_x;
+		seconds_radius = width / 2 ;
+		
+		var n;
+	
+		clockTime = Sys.getClockTime();
+        var seconds = clockTime.sec;        
+        
+        var r1, r2, r0, hand;
+		var alpha = Math.PI/30.0*clockTime.sec;
+		
+		dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);		
+		dc.setPenWidth(2);
+
+		r0 = -30;
+		r1 = 40;
+		r2 = seconds_radius;
+		
+		//untere Raute		
+		hand =        	[
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
+						[center_x+r1*Math.sin(alpha+0.08),center_y-r1*Math.cos(alpha+0.08)],
+						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
+						[center_x+r1*Math.sin(alpha-0.08),center_y-r1*Math.cos(alpha-0.08)],						
+						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];	
+						
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+		dc.fillPolygon(hand);		
+
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+		for (n=0; n<4; n++) {
+		dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 		}
 		
 		
+		//little circle
+		dc.setPenWidth(2);
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+		dc.fillCircle(center_x+(seconds_radius-30)*Math.sin(alpha),center_y-(seconds_radius-30)*Math.cos(alpha),6);		
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		dc.drawCircle(center_x+(seconds_radius-30)*Math.sin(alpha),center_y-(seconds_radius-30)*Math.cos(alpha),6);
+	
+		//Centerpoint
+		dc.setPenWidth(2);
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+		dc.fillCircle(center_x,center_y,7);
 		
-		
-		
-		
-		
-		
-		
-         
-  }//End of drawHands(dc)
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		dc.drawCircle(center_x,center_y,7);
+}
+
+
          
   
   function drawDigitalTime(dc) {
@@ -667,7 +882,9 @@ class AviatorlikeView extends Ui.WatchFace{
         
         
    // Draw the hash marks ---------------------------------------------------------------------------
-        drawHashMarks(dc);        
+        drawHashMarks(dc);  
+        
+        drawQuarterHashmarks(dc);      
   
   //Draw Digital Elements ------------------------------------------------------------------
    
@@ -823,8 +1040,10 @@ class AviatorlikeView extends Ui.WatchFace{
 	    		dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
         		dc.drawText(width / 2, height - 50, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
         		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
-	   }
-
+	   		}
+	   		
+	   		
+	   	
 	
 	  //messages 	
      	var messages = Sys.getDeviceSettings().notificationCount;     	
@@ -857,8 +1076,14 @@ class AviatorlikeView extends Ui.WatchFace{
   
   // Draw hands ------------------------------------------------------------------         
       drawHands(dc); 
+      
+       if (isAwake) {
+     	drawSecondHands(dc);
+      }
           
-    }
+}
+    
+
     
 
     function onEnterSleep() {
