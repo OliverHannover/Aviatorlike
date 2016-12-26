@@ -29,13 +29,15 @@ class AviatorlikeView extends Ui.WatchFace{
     var center_y;     
 
 	//Variablen für die digitale Uhr
-		var timeStr;
-		var altitudeStr;
+		var timeStr;		
 		var Use24hFormat;
 		var dualtime = false;
 		var dualtimeTZ = 0;
 		var dualtimeDST = 0;
-		 
+		
+		var altitudeStr; 
+		var distStr;
+		var distUnit;
 
     function initialize() {
         WatchFace.initialize();
@@ -810,6 +812,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		
 	}
 	
+	//StepGoal progress-------------------------------
  	function drawStepGoal(dc) {
  		var width = dc.getWidth();
         var height  = dc.getHeight();
@@ -853,7 +856,51 @@ class AviatorlikeView extends Ui.WatchFace{
 		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
  	}
  
- 
+	function drawDistance(dc) {
+	// Draw Distance------------------------------  
+			
+			distStr = 0;
+			//var highaltide = false;			
+			var unknownDistance = true;
+			var actDistance = 0;
+			var actInfo;
+			var metric = Sys.getDeviceSettings().distanceUnits == Sys.UNIT_METRIC;
+			distUnit = "Dist km";
+			
+			actInfo = ActMonitor.getInfo();
+			if (actInfo != null) {
+			
+				if (metric) {				
+				distUnit = "km";
+				actDistance = actInfo.distance * 0.00001;
+				} else {
+				distUnit = "mi";
+				actDistance = actInfo.distance * 0.00001 * 0.621371;
+				}
+				
+				//actDistance = actDistance.format("%2d");
+				if (actDistance != null) {
+					unknownDistance = false;
+				} 				
+			}
+					
+			if (unknownDistance) {
+				distStr = Lang.format("Dst ?");
+			} else {
+				distStr = Lang.format("$1$", [actDistance.format("%.2f")] );
+				//distStr = distStr * 0.621371;			
+			//	if (actDistance > 10) {
+			//	distStr = Lang.format("$1$", [actDistance.format("%.2f")] );
+			//	}
+			//	if (actDistance >= 10) {
+			//	distStr = Lang.format("$1$", [actDistance.format("%.1f")] );
+			//	}
+			//	if (actDistance >= 100) {
+			//	distStr = Lang.format("$1$", [actDistance.format("%.0f")] );
+			//	}
+			}	
+	
+	} 
   
 
 // Handle the update event-----------------------------------------------------------------------
@@ -888,17 +935,10 @@ class AviatorlikeView extends Ui.WatchFace{
   
   //Draw Digital Elements ------------------------------------------------------------------
    
-        dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);
-         
+        dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);         
         dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 2.4 , 130 , 35, 5);
         dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 6.5 , 130 , 35, 5);
         
-        
- //Farbe für die Textanzeigen---------------------------------------------------------------------
-       
-   
-     
-
 
  //Anzeige oberess Display--------------------------  
          dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
@@ -957,6 +997,14 @@ class AviatorlikeView extends Ui.WatchFace{
         var calStr = Lang.format(" $1$ kCal ", [actcals]);	
 		dc.drawText(width / 2, (height / 10 * 2.7), fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
 		}
+		
+		//Draw distance
+		if (LUpperInfo == 6) {
+			drawDistance(dc);
+			dc.drawText(width / 2 + 20 , (height / 10 * 2.7), fontDigital, distStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+	       	//draw unit-String
+			dc.drawText(width / 2 + 50, (height / 10 * 2.9), Gfx.FONT_XTINY, distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+		}
 
 
  //Anzeige unteres Display--------------------------  
@@ -995,19 +1043,28 @@ class AviatorlikeView extends Ui.WatchFace{
 			
 		// Draw Calories------------------------------
 		if (LDInfo == 5) {	
-		dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-		var actInfo = ActMonitor.getInfo(); 
-        var actcals = actInfo.calories;		       
-        var calStr = Lang.format(" $1$ kCal ", [actcals]);	
-		dc.drawText(width / 2, (height / 10 * 6.8), fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
+			dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+			var actInfo = ActMonitor.getInfo(); 
+	        var actcals = actInfo.calories;		       
+	        var calStr = Lang.format(" $1$ kCal ", [actcals]);	
+			dc.drawText(width / 2, (height / 10 * 6.8), fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
 		}	
+		
+		//Draw distance
+		if (LDInfo == 6) {
+			drawDistance(dc);
+			dc.drawText(width / 2 + 20 , (height / 10 * 6.8), fontDigital, distStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+	       	//draw unit-String
+			dc.drawText(width / 2 + 50, (height / 10 * 7), Gfx.FONT_XTINY, distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+		}
+		
+		
+		
 			
 		
 		drawBattery(dc);
 		
 		drawStepGoal(dc);
-		
- 
 
       // Draw the numbers --------------------------------------------------------------------------------------
        var NbrFont = (App.getApp().getProperty("Numbers")); 
@@ -1044,7 +1101,7 @@ class AviatorlikeView extends Ui.WatchFace{
 	   		
 	   		
 	   	
-	
+//Indicators-------------------------------------------------------------	
 	  //messages 	
      	var messages = Sys.getDeviceSettings().notificationCount;     	
      	if (messages > 0) {

@@ -164,6 +164,7 @@
             <listEntry value="3">@Strings.LUpperDigitalClock</listEntry>
             <listEntry value="4">@Strings.LUpperAltitude</listEntry>
             <listEntry value="5">@Strings.LUpperCalories</listEntry>
+            <listEntry value="6">@Strings.LUpperDistance</listEntry>
         </settingConfig>
     </setting>
    
@@ -175,6 +176,7 @@
             <listEntry value="3">@Strings.LDDigitalClock</listEntry>
             <listEntry value="4">@Strings.LDAltitude</listEntry>
             <listEntry value="5">@Strings.LDCalories</listEntry>
+            <listEntry value="6">@Strings.LDDistance</listEntry>
         </settingConfig>
     </setting>
 

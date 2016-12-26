@@ -45,12 +45,14 @@
 	<string id="LUpperDigitalClock">2. Time</string>
 	<string id="LUpperAltitude">Elevation</string>
 	<string id="LUpperCalories">Calories</string>
+	<string id="LUpperDistance">Distance</string>
     
     <string id="LDDate">Date</string>
     <string id="LDSteps">Steps</string>
 	<string id="LDDigitalClock">2. Clock</string>
 	<string id="LDAltitude">Elevation</string>
 	<string id="LDCalories">Calories</string>
+	<string id="LDDistance">Distance</string>
 
 	<string id="HandsRace">Race</string>
 	<string id="HandsPilot">Pilot</string>
