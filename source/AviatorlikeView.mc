@@ -467,7 +467,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
 		dc.drawCircle(center_x,center_y,7);
 		
-	}// End of if (HandsForm == 4)		
+	}// End of if (HandsForm Diver)		
 		
 	//Classic-Hands----------------------------------
 		if (HandsForm == 4) {
@@ -555,11 +555,74 @@ class AviatorlikeView extends Ui.WatchFace{
         dc.fillCircle(width / 2, height / 2, 7);
         
        	dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_BLACK);
-        dc.drawCircle(width / 2, height / 2, 7);
-	
+        dc.drawCircle(width / 2, height / 2, 7);		
+		
+		}	
+		
+	//Simple-Hands----------------------------------------	
+		if (HandsForm == 5) { 	
+			// houres
+			alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
+			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
+	 													
+			//rectangle 
+			r2 = 5; //Breite im Zentrum
+			var thicknes = 0.07; //Breite oben
+
+			hand =        	[[center_x-20*Math.sin(alpha-0.25),center_y+20*Math.cos(alpha-0.25)],
+							[center_x-20*Math.sin(alpha+0.25),center_y+20*Math.cos(alpha+0.25)],
+							[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
+							[center_x+hour_radius*Math.sin(alpha-thicknes),center_y-hour_radius*Math.cos(alpha-thicknes)],
+							[center_x+hour_radius*Math.sin(alpha+thicknes),center_y-hour_radius*Math.cos(alpha+thicknes)],
+							[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
+							
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);	
+			dc.fillPolygon(hand);						
+			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(2);
+			for (n=0; n<5; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);		
+			        
+		// minutes--------------
+			alpha = Math.PI/30.0*clockTime.min;
+			alpha2 = Math.PI/30.0*(clockTime.min-15);
+			//Sys.println("%%.2f='" + alpha.format("%.2f") + "'");
+		
+			//rectangle 
+			r2 = 3; //Breite im Zentrum
+			thicknes = 0.029; //Breite oben
+
+			hand =        	[[center_x-20*Math.sin(alpha-0.15),center_y+20*Math.cos(alpha-0.15)],
+							[center_x-20*Math.sin(alpha+0.15),center_y+20*Math.cos(alpha+0.15)],
+							[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
+							[center_x+minute_radius*Math.sin(alpha-thicknes),center_y-minute_radius*Math.cos(alpha-thicknes)],
+							[center_x+minute_radius*Math.sin(alpha+thicknes),center_y-minute_radius*Math.cos(alpha+thicknes)],
+							[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
+							
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);	
+			dc.fillPolygon(hand);						
+			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(2);
+			for (n=0; n<5; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 		
 		
-		}		
+		//Centerpoint
+		dc.setPenWidth(2);
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		dc.fillCircle(center_x,center_y,7);
+		
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+		dc.drawCircle(center_x,center_y,7);
+		
+	}// End of if (HandsForm == 4)	
+		
+		
+			
          
   }//End of drawHands(dc)
 
@@ -953,44 +1016,73 @@ class AviatorlikeView extends Ui.WatchFace{
     		//fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);
         	fontDigital = Ui.loadResource(Rez.Fonts.id_font_classicklein);      
 	    	}
+	    if ( digiFont == 3) { //simple
+    		//fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);
+        	fontDigital = Gfx.FONT_SYSTEM_SMALL ; 
+        	    
+	    	}
 	    	
  	//Draw DigitalTime---------------------------------
 	   if (LUpperInfo == 1) {
-		 var info = Calendar.info(now, Time.FORMAT_LONG);
-        //var dateStr = Lang.format("$1$ $2$ $3 $4$", [info.day_of_week, info.day, ".", info.month ]);
-        var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
-		dc.drawText(width / 2, (height / 10 * 2.7 ), fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
+			var info = Calendar.info(now, Time.FORMAT_LONG);
+	        //var dateStr = Lang.format("$1$ $2$ $3 $4$", [info.day_of_week, info.day, ".", info.month ]);
+	        var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
+			dc.drawText(width / 2, (height / 10 * 2.7 ), fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
 		}	
 
  	    //Draw Steps --------------------------------------
       	if (LUpperInfo == 2) {
-        var actsteps = 0;
-        var stepGoal = 0;		
-		stepGoal = ActMonitor.getInfo().stepGoal;
-		actsteps = ActMonitor.getInfo().steps;
-        var stepsStr = Lang.format("$1$", [actsteps]);        	
-        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-		dc.drawText(width / 2, (height / 10 * 2.7 ), fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-		dc.drawText(width / 2 + 50, (height / 10 * 2.4), Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
-		dc.drawText(width / 2 + 50, (height / 10 * 3), Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+	        var actsteps = 0;
+	        var stepGoal = 0;		
+			stepGoal = ActMonitor.getInfo().stepGoal;
+			actsteps = ActMonitor.getInfo().steps;
+	        var stepsStr = Lang.format("$1$", [actsteps]);        	
+	        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+			dc.drawText(width / 2, (height / 10 * 2.7 ), fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+			dc.drawText(width / 2 + 50, (height / 10 * 2.4), Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
+			dc.drawText(width / 2 + 50, (height / 10 * 3), Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
 		
 		}
 		
+		//Draw Steps to go --------------------------------------
+      	if (LUpperInfo == 3) {
+        var actsteps = 0;
+        var stepGoal = 0;
+        var stepstogo = 0;		
+		stepGoal = ActMonitor.getInfo().stepGoal;
+		actsteps = ActMonitor.getInfo().steps;
+		dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+		
+	        if (actsteps <= stepGoal) {
+		        stepstogo = stepGoal - actsteps;
+		        stepstogo = Lang.format("$1$", [stepstogo]);       
+				dc.drawText(width / 2, (height / 10 * 2.7), fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
+				dc.drawText(width / 2 + 50, (height / 10 * 2.4), Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(width / 2 + 50, (height / 10 * 3), Gfx.FONT_XTINY, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
+			}
+			 if (actsteps > stepGoal) {
+		        stepstogo = actsteps - stepGoal;
+		        stepstogo = Lang.format("$1$", [stepstogo]);       
+				dc.drawText(width / 2, (height / 10 * 2.7), fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
+				dc.drawText(width / 2 + 50, (height / 10 * 2.4), Gfx.FONT_XTINY, "since", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(width / 2 + 50, (height / 10 * 3), Gfx.FONT_XTINY, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
+			}
+		}
  	//Draw DigitalTime---------------------------------
-	   if (LUpperInfo == 3) {
+	   if (LUpperInfo == 4) {
 		 drawDigitalTime(dc);
 		 dc.drawText(width / 2, (height / 10 * 2.7  ), fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
 		}	         
         
 		
     	// Draw Altitude------------------------------
-		if (LUpperInfo == 4) {
+		if (LUpperInfo == 5) {
 			drawAltitude(dc);
 			dc.drawText(width / 2, (height / 10 * 2.7), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
 		 }	
 			
 		// Draw Calories------------------------------
-		if (LUpperInfo == 5) {	
+		if (LUpperInfo == 6) {	
 		dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
 		var actInfo = ActMonitor.getInfo(); 
         var actcals = actInfo.calories;		       
@@ -999,7 +1091,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		}
 		
 		//Draw distance
-		if (LUpperInfo == 6) {
+		if (LUpperInfo == 7) {
 			drawDistance(dc);
 			dc.drawText(width / 2 + 20 , (height / 10 * 2.7), fontDigital, distStr, Gfx.TEXT_JUSTIFY_RIGHT);	
 	       	//draw unit-String
@@ -1028,21 +1120,45 @@ class AviatorlikeView extends Ui.WatchFace{
 		dc.drawText(width / 2 + 50, (height / 10 * 6.5), Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
 		}
 		
+		//Draw Steps to go --------------------------------------
+      	if (LDInfo == 3) {
+        var actsteps = 0;
+        var stepGoal = 0;
+        var stepstogo = 0;		
+		stepGoal = ActMonitor.getInfo().stepGoal;
+		actsteps = ActMonitor.getInfo().steps;
+		dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+		
+	        if (actsteps <= stepGoal) {
+		        stepstogo = stepGoal - actsteps;
+		        stepstogo = Lang.format("$1$", [stepstogo]);       
+				dc.drawText(width / 2, (height / 10 * 6.8), fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
+				dc.drawText(width / 2 + 50, (height / 10 * 6.5), Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(width / 2 + 50, (height / 10 * 7.1), Gfx.FONT_XTINY, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
+			}
+			 if (actsteps > stepGoal) {
+		        stepstogo = actsteps - stepGoal;
+		        stepstogo = Lang.format("$1$", [stepstogo]);       
+				dc.drawText(width / 2, (height / 10 * 6.8), fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
+				dc.drawText(width / 2 + 50, (height / 10 * 6.5), Gfx.FONT_XTINY, "since", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(width / 2 + 50, (height / 10 * 7.1), Gfx.FONT_XTINY, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
+			}
+		
  	//Draw DigitalTime---------------------------------
-	   if (LDInfo == 3) {
+	   if (LDInfo == 4) {
 		 drawDigitalTime(dc);
 		 dc.drawText(width / 2, (height / 10 * 6.8  ), fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
 		}	         
         
 		
     	// Draw Altitude------------------------------
-		if (LDInfo == 4) {
+		if (LDInfo == 5) {
 			drawAltitude(dc);
 			dc.drawText(width / 2, (height / 10 * 6.8), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
 		 }	
 			
 		// Draw Calories------------------------------
-		if (LDInfo == 5) {	
+		if (LDInfo == 6) {	
 			dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
 			var actInfo = ActMonitor.getInfo(); 
 	        var actcals = actInfo.calories;		       
@@ -1051,12 +1167,16 @@ class AviatorlikeView extends Ui.WatchFace{
 		}	
 		
 		//Draw distance
-		if (LDInfo == 6) {
+		if (LDInfo == 7) {
 			drawDistance(dc);
 			dc.drawText(width / 2 + 20 , (height / 10 * 6.8), fontDigital, distStr, Gfx.TEXT_JUSTIFY_RIGHT);	
 	       	//draw unit-String
 			dc.drawText(width / 2 + 50, (height / 10 * 7), Gfx.FONT_XTINY, distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 		}
+		
+		
+		}
+		
 		
 		
 		
@@ -1097,6 +1217,12 @@ class AviatorlikeView extends Ui.WatchFace{
 	    		dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
         		dc.drawText(width / 2, height - 50, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
         		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	   		}
+	   	if ( NbrFont == 5) {  //simple
+	    		dc.drawText((width / 2), 10, Gfx.FONT_SYSTEM_LARGE   , "12", Gfx.TEXT_JUSTIFY_CENTER);
+	    		dc.drawText(width - 16, (height / 2) - 22, Gfx.FONT_SYSTEM_LARGE  , "3", Gfx.TEXT_JUSTIFY_RIGHT);
+        		dc.drawText(width / 2, height - 45, Gfx.FONT_SYSTEM_LARGE   , "6", Gfx.TEXT_JUSTIFY_CENTER);
+        		dc.drawText(16, (height / 2) - 22, Gfx.FONT_SYSTEM_LARGE   , "9", Gfx.TEXT_JUSTIFY_LEFT);
 	   		}
 	   		
 	   		

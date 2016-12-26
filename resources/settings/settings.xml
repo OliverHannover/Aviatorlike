@@ -69,7 +69,8 @@
             <listEntry value="1">@Strings.NbrFat</listEntry>
             <listEntry value="2">@Strings.NbrRace</listEntry>
             <listEntry value="3">@Strings.NbrClassic</listEntry>
-            <listEntry value="4">@Strings.NbrRoman</listEntry>           
+            <listEntry value="4">@Strings.NbrRoman</listEntry>  
+            <listEntry value="5">@Strings.NbrSimple</listEntry>          
         </settingConfig>
     </setting>
     
@@ -123,6 +124,7 @@
             <listEntry value="2">@Strings.HandsPilot</listEntry>
             <listEntry value="3">@Strings.HandsDiver</listEntry>
         	<listEntry value="4">@Strings.HandsClassic</listEntry>
+        	<listEntry value="5">@Strings.HandsSimple</listEntry>
         </settingConfig>
     </setting> 
     
@@ -153,18 +155,20 @@
      <setting propertyKey="@Properties.DigiFont" title="@Strings.DigiFontTitle">
         <settingConfig type="list"> 
             <listEntry value="1">@Strings.DFDigital</listEntry>  
-            <listEntry value="2">@Strings.DFClassic</listEntry>          
+            <listEntry value="2">@Strings.DFClassic</listEntry>
+            <listEntry value="3">@Strings.DFSimple</listEntry>          
         </settingConfig>
     </setting>  
    
     <setting propertyKey="@Properties.LUpperInfo" title="@Strings.LUpperInfoTitle">
         <settingConfig type="list">
          	<listEntry value="1">@Strings.LUpperDate</listEntry>
-            <listEntry value="2">@Strings.LUpperSteps</listEntry>        
-            <listEntry value="3">@Strings.LUpperDigitalClock</listEntry>
-            <listEntry value="4">@Strings.LUpperAltitude</listEntry>
-            <listEntry value="5">@Strings.LUpperCalories</listEntry>
-            <listEntry value="6">@Strings.LUpperDistance</listEntry>
+            <listEntry value="2">@Strings.LUpperSteps</listEntry>
+            <listEntry value="3">@Strings.LUpperStepstogo</listEntry>       
+            <listEntry value="4">@Strings.LUpperDigitalClock</listEntry>
+            <listEntry value="5">@Strings.LUpperAltitude</listEntry>
+            <listEntry value="6">@Strings.LUpperCalories</listEntry>
+            <listEntry value="7">@Strings.LUpperDistance</listEntry>
         </settingConfig>
     </setting>
    
@@ -172,11 +176,12 @@
     <setting propertyKey="@Properties.LDInfo" title="@Strings.LDInfoTitle">
         <settingConfig type="list">
         	<listEntry value="1">@Strings.LDDate</listEntry>
-            <listEntry value="2">@Strings.LDSteps</listEntry>        
-            <listEntry value="3">@Strings.LDDigitalClock</listEntry>
-            <listEntry value="4">@Strings.LDAltitude</listEntry>
-            <listEntry value="5">@Strings.LDCalories</listEntry>
-            <listEntry value="6">@Strings.LDDistance</listEntry>
+            <listEntry value="2">@Strings.LDSteps</listEntry> 
+            <listEntry value="3">@Strings.LDStepstogo</listEntry>       
+            <listEntry value="4">@Strings.LDDigitalClock</listEntry>
+            <listEntry value="5">@Strings.LDAltitude</listEntry>
+            <listEntry value="6">@Strings.LDCalories</listEntry>
+            <listEntry value="7">@Strings.LDDistance</listEntry>
         </settingConfig>
     </setting>
 
