@@ -122,7 +122,7 @@ class AviatorlikeView extends Ui.WatchFace{
         	var r1, r2, marks, thicknes;
         	
         	var outerRad = 0;
-        	var lenth = 30;
+        	var lenth = 20;
         	var thick = 5;
         	thicknes = thick * 0.02;
            
@@ -609,8 +609,8 @@ class AviatorlikeView extends Ui.WatchFace{
 		dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);		
 		dc.setPenWidth(2);
 
-		r0 = -30;
-		r1 = 40;
+		r0 = -35;
+		r1 = 35;
 		r2 = seconds_radius;
 		
 		//untere Raute		
@@ -640,11 +640,11 @@ class AviatorlikeView extends Ui.WatchFace{
 	
 		//Centerpoint
 		dc.setPenWidth(2);
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-		dc.fillCircle(center_x,center_y,7);
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		dc.fillCircle(center_x,center_y,4);
 		
 		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.drawCircle(center_x,center_y,7);
+		dc.drawCircle(center_x,center_y,4);
 }
 
 

@@ -2,18 +2,18 @@
 	<string id="AppName">Aviatorlike</string>
 	<string id="AppVersionTitle">Version</string>
 
-    <string id="BackgroundColorTitle">Background Color</string>
-    <string id="DigitalBackgroundColorTitle">Digital Background Color</string>
-    <string id="ForegroundColorTitle">Digital foreground Color</string>
-    <string id="NumbersTitle">Number Font</string>
-    <string id="QuarterNumbersColorTitle">Quarter numbers/ticks Color</string>
-    <string id="MinutesColorTitle">Minutes ticks Color</string>  
-    <string id="HandsFormTitle">Kind of Hands</string>
-    <string id="HandsColorTitle">Color of Hands</string>
-    <string id="SecHandsColorTitle">Color of second Hand</string>
+    <string id="BackgroundColorTitle">Background color</string>
+    <string id="DigitalBackgroundColorTitle">Display background color</string>
+    <string id="ForegroundColorTitle">Display foreground Color</string>
+    <string id="NumbersTitle">Number font</string>
+    <string id="QuarterNumbersColorTitle">Color of numbers and 5 minutes marks</string>
+    <string id="MinutesColorTitle">Color of minutes</string>  
+    <string id="HandsFormTitle">Kind of hands</string>
+    <string id="HandsColorTitle">Color of hands</string>
+    <string id="SecHandsColorTitle">Color of second hand</string>
     <string id="DigiFontTitle">Font of displays</string>
-    <string id="LUpperInfoTitle">Info upper Display</string>
-    <string id="LDInfoTitle">Info lower Display</string>
+    <string id="LUpperInfoTitle">Info upper display</string>
+    <string id="LDInfoTitle">Info lower display</string>
     
 
     <string id="ColorBlack">Black</string>
@@ -42,14 +42,14 @@
    
     <string id="LUpperDate">Date</string>
     <string id="LUpperSteps">Steps</string>
-	<string id="LUpperDigitalClock">2. Clock</string>
-	<string id="LUpperAltitude">Altimeter</string>
+	<string id="LUpperDigitalClock">2. Time</string>
+	<string id="LUpperAltitude">Elevation</string>
 	<string id="LUpperCalories">Calories</string>
     
     <string id="LDDate">Date</string>
     <string id="LDSteps">Steps</string>
 	<string id="LDDigitalClock">2. Clock</string>
-	<string id="LDAltitude">Altimeter</string>
+	<string id="LDAltitude">Elevation</string>
 	<string id="LDCalories">Calories</string>
 
 	<string id="HandsRace">Race</string>
@@ -73,7 +73,7 @@
 	<string id="TZValm900">-9:00 Anchorage</string>
 	<string id="TZValm800">-8:00 Los Angeles, Vancouver, Tijuana</string>
 	<string id="TZValm700">-7:00 Phoenix, Calgary, Ciudad Juárezr</string>
-	<string id="TZValm600">-6:00 Chicago, Guatemala City, Mexico City, San José, San Salvador, Winnipeg</string>
+	<string id="TZValm600">-6:00 Chicago, Guatemala City, Mexico City, San José, San Salvador</string>
 	<string id="TZValm500">-5:00 New York, Lima, Toronto, Bogotá, Havana, Kingston</string>
 	<string id="TZValm400">-4:00 Santiago, La Paz, Manaus, Halifax</string>
 	<string id="TZValm330">-3:30 Canada (Newfoundland Time Zone)</string>
@@ -93,7 +93,7 @@
 	<string id="TZVal600">6:00 Almaty, Dhaka, Omsk</string>
 	<string id="TZVal630">6:30 Yangon</string>
 	<string id="TZVal700">7:00 Jakarta, Bangkok, Novosibirsk, Hanoi</string>
-	<string id="TZVal800">8:00 Beijing, Taipei, Singapore, Kuala Lumpur, Perth, Manila, Denpasar, Irkutsk</string>
+	<string id="TZVal800">8:00 Beijing, Taipei, Singapore, Kuala Lumpur, Perth, Manila, Denpasar</string>
 	<string id="TZVal830">8:30 North Korea</string>
 	<string id="TZVal845">8:45 Western Australia</string>
 	<string id="TZVal900">9:00 Seoul, Tokyo, Ambon, Yakutsk</string>
