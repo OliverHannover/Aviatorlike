@@ -35,34 +35,31 @@ class AviatorlikeView extends Ui.WatchFace{
 		var dualtimeTZ = 0;
 		var dualtimeDST = 0;
 		
+	//variables for secondary displays	
 		var altitudeStr; 
 		var distStr;
 		var distUnit;
 
     function initialize() {
         WatchFace.initialize();
-        screenShape = Sys.getDeviceSettings().screenShape;
+       // screenShape = Sys.getDeviceSettings().screenShape;
     }
    
     
     function onLayout(dc) {
     	font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
-    	//font1 = Ui.loadResource(Rez.Fonts.id_font_digital);
         //font1 = Gfx.FONT_SYSTEM_NUMBER_SMALL;
-        fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);
-        //fontDigital = Ui.loadResource(Rez.Fonts.id_font_classicklein);          
+        fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);        
         
     }
 
    
 
     // Draw the hash mark symbols on the watch-------------------------------------------------------
-    // @param dc Device context
     function drawHashMarks(dc) {
         var width = dc.getWidth();
         var height = dc.getHeight();
 
-        // Draw hashmarks differently depending on screen geometry
         //if (Sys.SCREEN_SHAPE_ROUND == screenShape) {
 
             var sX, sY;
@@ -72,11 +69,10 @@ class AviatorlikeView extends Ui.WatchFace{
             
             dc.setPenWidth(3);         
             dc.setColor(App.getApp().getProperty("MinutesColor"), Gfx.COLOR_TRANSPARENT);
+
             //all minutes
-            for (var i = Math.PI / 6; i <= 13 * Math.PI / 6; i += (Math.PI / 30)) {
-            
-            //dc.drawText(center_x, center_y+20, Gfx.FONT_MEDIUM, i, Gfx.TEXT_JUSTIFY_CENTER);
-                // Partially unrolled loop to draw two tickmarks in 15 minute block
+            for (var i = Math.PI / 6; i <= 13 * Math.PI / 6; i += (Math.PI / 30)) {            
+            //dc.drawText(center_x, center_y+20, Gfx.FONT_MEDIUM, i, Gfx.TEXT_JUSTIFY_CENTER);          
                 sY = outerRad + innerRad * Math.sin(i);
                 sX = outerRad + innerRad * Math.cos(i);
                 
@@ -91,9 +87,9 @@ class AviatorlikeView extends Ui.WatchFace{
             innerRad = outerRad - 20;
             dc.setPenWidth(3);
             dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
+
             //all 5 minutes
-            for (var i = Math.PI / 6; i <= 11 * Math.PI / 6; i += (Math.PI / 3)) {
-            
+            for (var i = Math.PI / 6; i <= 11 * Math.PI / 6; i += (Math.PI / 3)) {          
             //dc.drawText(center_x, center_y+20, Gfx.FONT_MEDIUM, i, Gfx.TEXT_JUSTIFY_CENTER);
                // Partially unrolled loop to draw two tickmarks in 15 minute block
                 sY = outerRad + innerRad * Math.sin(i);
