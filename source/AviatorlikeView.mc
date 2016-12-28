@@ -9,6 +9,7 @@ using Toybox.WatchUi as Ui;
 using Toybox.Activity as Act;
 using Toybox.ActivityMonitor as ActMonitor;
 
+//develop
 class AviatorlikeView extends Ui.WatchFace{
 
 
@@ -45,6 +46,8 @@ class AviatorlikeView extends Ui.WatchFace{
    
     
     function onLayout(dc) {
+    	setLayout(Rez.Layouts.RoundFace(dc));
+    
     	font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
         //font1 = Gfx.FONT_SYSTEM_NUMBER_SMALL;
         fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);        
@@ -1260,8 +1263,7 @@ class AviatorlikeView extends Ui.WatchFace{
           
 }
     
-
-    
+   
 
     function onEnterSleep() {
         isAwake = false;
