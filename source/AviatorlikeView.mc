@@ -9,8 +9,6 @@ using Toybox.WatchUi as Ui;
 using Toybox.Activity as Act;
 using Toybox.ActivityMonitor as ActMonitor;
 
-// This implements an analog watch face
-// Original design by Austen Harbour
 class AviatorlikeView extends Ui.WatchFace{
 
 
