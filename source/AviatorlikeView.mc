@@ -811,10 +811,10 @@ class AviatorlikeView extends Ui.WatchFace{
         center_x = dc.getWidth() / 2;
         center_y = dc.getHeight() / 2;
 		
-		var Battery = Toybox.System.getSystemStats().battery;  
+		var Battery = Toybox.System.getSystemStats().battery; 
 		     
         var BatteryStr = Lang.format(" $1$ % ", [Battery.format("%.2f")] );
-        //dc.drawText(width / 2, (height / 4 * 2.9), fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_CENTER);
+        dc.drawText(width / 2, (height / 4 * 2.9), fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_CENTER);
               
         var alpha, hand; 
         alpha = 0; 
@@ -836,17 +836,17 @@ class AviatorlikeView extends Ui.WatchFace{
 			hand =     [[center_x+r1*Math.sin(alpha+0.1),center_y-r1*Math.cos(alpha+0.1)],
 						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
 						[center_x+r1*Math.sin(alpha-0.1),center_y-r1*Math.cos(alpha-0.1)]   ];
-
+	        
+	        
 	        if (Battery < 25) {
-	        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
+	       	dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
+	        }
+	        if (Battery >= 25) {
+	        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
 	        }
 			if (Battery >= 50) {
 	        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
-	        } else {
-	        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
 	        }
-	        
-	        
 			dc.fillPolygon(hand);
 			
 			dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
@@ -902,6 +902,8 @@ class AviatorlikeView extends Ui.WatchFace{
 		}
 		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
  	}
+
+
  
 	function drawDistance(dc) {
 	// Draw Distance------------------------------  
