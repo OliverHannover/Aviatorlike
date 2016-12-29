@@ -43,7 +43,8 @@ class AviatorlikeView extends Ui.WatchFace{
         WatchFace.initialize();
         screenShape = Sys.getDeviceSettings().screenShape; 
          
-        Sys.println("Screenshape = " + screenShape);     
+        Sys.println("Screenshape = " + screenShape);
+             
         
     }
    
@@ -804,60 +805,7 @@ class AviatorlikeView extends Ui.WatchFace{
         }
 	
 	
-	function drawBattery(dc) {
-	// Draw battery -------------------------------------------------------------------------
-		var width = dc.getWidth();
-        var height = dc.getHeight();
-        center_x = dc.getWidth() / 2;
-        center_y = dc.getHeight() / 2;
-		
-		var Battery = Toybox.System.getSystemStats().battery; 
-		     
-        var BatteryStr = Lang.format(" $1$ % ", [Battery.format("%.2f")] );
-        dc.drawText(width / 2, (height / 4 * 2.9), fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_CENTER);
-              
-        var alpha, hand; 
-        alpha = 0; 
-        
-        if (screenShape == 1) {    
-        alpha = 2*Math.PI/100*(Battery); 
-		}		
-		if (screenShape == 3) {    
-        alpha = Math.PI/100*(Battery)+Math.PI;
-		}
-						     
-        	var r1, r2;      	
-        	var outerRad = 0;
-        	var lenth = 15;
-     
-			r1 = width/2 - outerRad; //outside
-			r2 = r1 -lenth; ////Länge des Bat-Zeigers
-										
-			hand =     [[center_x+r1*Math.sin(alpha+0.1),center_y-r1*Math.cos(alpha+0.1)],
-						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha-0.1),center_y-r1*Math.cos(alpha-0.1)]   ];
-	        
-	        
-	        if (Battery < 25) {
-	       	dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
-	        }
-	        if (Battery >= 25) {
-	        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
-	        }
-			if (Battery >= 50) {
-	        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
-	        }
-			dc.fillPolygon(hand);
-			
-			dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
-	        dc.setPenWidth(1);
-	        var n;
-			for (n=0; n<2; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-		
-	}
+
 	
 	//StepGoal progress-------------------------------
  	function drawStepGoal(dc) {
