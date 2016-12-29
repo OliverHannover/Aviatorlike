@@ -41,13 +41,12 @@ class AviatorlikeView extends Ui.WatchFace{
 
     function initialize() {
         WatchFace.initialize();
-       // screenShape = Sys.getDeviceSettings().screenShape;
+        screenShape = Sys.getDeviceSettings().screenShape;       
+        
     }
    
     
-    function onLayout(dc) {
-    	setLayout(Rez.Layouts.RoundFace(dc));
-    
+    function onLayout(dc) {    
     	font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
         //font1 = Gfx.FONT_SYSTEM_NUMBER_SMALL;
         fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);        
@@ -181,11 +180,11 @@ class AviatorlikeView extends Ui.WatchFace{
     	
     	var width = dc.getWidth();
         var height  = dc.getHeight();
+        center_x = dc.getWidth() / 2;
+        center_y = dc.getHeight() / 2;
         
-        // i've arbitrarily decided that i want
         // the minute hand to be 7/8 the length of the radius
         minute_radius = 7/8.0 * center_x;
-        // i've also arbitrarily decided that i want
         // the hour hand to be 2/3 the length of the minute hand
         hour_radius = 3/4.0 * minute_radius;
   				
@@ -966,15 +965,18 @@ class AviatorlikeView extends Ui.WatchFace{
 // Handle the update event-----------------------------------------------------------------------
     function onUpdate(dc) {
     
+    Sys.println("Screenshape = " + screenShape);
+    
+    
     var LDInfo = (App.getApp().getProperty("LDInfo"));
    	var LUpperInfo = (App.getApp().getProperty("LUpperInfo"));
         
         var width = dc.getWidth();
         var height  = dc.getHeight();
-        var screenWidth = dc.getWidth();
+       // var screenWidth = dc.getWidth();
         
-        center_x = dc.getWidth() / 2;
-        center_y = dc.getHeight() / 2;
+        //center_x = dc.getWidth() / 2;
+        //center_y = dc.getHeight() / 2;
         
         
         
@@ -995,10 +997,11 @@ class AviatorlikeView extends Ui.WatchFace{
   
   //Draw Digital Elements ------------------------------------------------------------------
    
-        dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);         
+        dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT); 
+                
         dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 2.4 , 130 , 35, 5);
         dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 6.5 , 130 , 35, 5);
-        
+      
 
  //Anzeige oberess Display--------------------------  
          dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
@@ -1255,7 +1258,7 @@ class AviatorlikeView extends Ui.WatchFace{
   
   
   // Draw hands ------------------------------------------------------------------         
-      drawHands(dc); 
+     	//drawHands(dc); 
       
        if (isAwake) {
      	drawSecondHands(dc);
