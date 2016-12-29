@@ -805,16 +805,68 @@ class AviatorlikeView extends Ui.WatchFace{
         }
 	
 	
+function drawBattery(dc) {
+	// Draw battery -------------------------------------------------------------------------
+		var width = dc.getWidth();
+        var height = dc.getHeight();
+        center_x = dc.getWidth() / 2;
+        center_y = dc.getHeight() / 2;
+		
+		var Battery = Toybox.System.getSystemStats().battery;       
+        var BatteryStr = Lang.format(" $1$ % ", [Battery.toLong()]);
+      	//dc.drawText(width / 2, (height / 4 * 2.9), fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_CENTER);
+        var alpha, hand;
+      
+        alpha = 0; 
+        
+        if (screenShape == 1) {  //round 
+        alpha = 2*Math.PI/100*(Battery); 
+		}		
+		if (screenShape == 2) {  //semi round
+        alpha = (Math.PI-1)/100*(Battery)+Math.PI+0.5;
+		}
+						
+			var r1, r2;      	
+        	var outerRad = 0;
+        	var lenth = 15;
+     
+			r1 = width/2 - outerRad; //outside
+			r2 = r1 -lenth; ////Länge des Bat-Zeigers
+										
+			hand =     [[center_x+r1*Math.sin(alpha+0.1),center_y-r1*Math.cos(alpha+0.1)],
+						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
+						[center_x+r1*Math.sin(alpha-0.1),center_y-r1*Math.cos(alpha-0.1)]   ];				
+						
+											
+						
 
+        if (Battery >= 25) {
+        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
+        }
+        if (Battery < 25) {
+        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
+        }
+		if (Battery >= 50) {
+        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
+        }
+		dc.fillPolygon(hand);
+		
+		dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+        var n;
+		for (n=0; n<2; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+		
+	}
 	
 	//StepGoal progress-------------------------------
  	function drawStepGoal(dc) {
  		var width = dc.getWidth();
         var height  = dc.getHeight();
- 		var outerRad = width / 2;
-        var innerRad = outerRad - 15; //Länge des Step-Zeigers        
-        var alpha, alpha2, alpha3, hand;
-        
+ 		//var outerRad = width / 2;
+        //var innerRad = outerRad - 15; //Länge des Step-Zeigers               
         var actsteps = 0;
         var stepGoal = 0;		
 		
@@ -830,14 +882,29 @@ class AviatorlikeView extends Ui.WatchFace{
        		stepPercent = 100;
        		dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
        	}     
-       
-        alpha = -2*Math.PI/100*(stepPercent)+Math.PI; 
-        alpha2 = -2*Math.PI/100*(stepPercent+1.3)+Math.PI;
-        alpha3 = -2*Math.PI/100*(stepPercent-1.3)+Math.PI;
+              
+        var alpha, hand;
+        alpha = 0; 
+        
+        if (screenShape == 1) {  //1=round 
+        alpha = 2*Math.PI/100*(stepPercent);
+		}		
+		if (screenShape == 2) {  //2=semi round
+        //alpha = (Math.PI-1)/100*(Battery)+Math.PI+0.5;
+        alpha = (Math.PI-0.5)-(Math.PI-1)/100*(stepPercent);
+		}
+         
 	
-		hand =        	[[outerRad + innerRad*Math.sin(alpha3), outerRad + innerRad*Math.cos(alpha3)],
-						[outerRad + outerRad*Math.sin(alpha), outerRad + outerRad*Math.cos(alpha)],
-						[outerRad + innerRad*Math.sin(alpha2), outerRad + innerRad*Math.cos(alpha2)]   ];						
+			var r1, r2;      	
+        	var outerRad = 0;
+        	var lenth = 15;
+     
+			r1 = width/2 - outerRad; //outside
+			r2 = r1 -lenth; ////Länge des Bat-Zeigers
+										
+			hand =     [[center_x+r2*Math.sin(alpha+0.1),center_y-r2*Math.cos(alpha+0.1)],
+						[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
+						[center_x+r2*Math.sin(alpha-0.1),center_y-r2*Math.cos(alpha-0.1)]   ];					
 		
 					
 		dc.fillPolygon(hand);
