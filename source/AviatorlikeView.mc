@@ -813,7 +813,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		
 		var Battery = Toybox.System.getSystemStats().battery;  
 		     
-        //var BatteryStr = Lang.format(" $1$ % ", [Battery.toLong()]);
+        var BatteryStr = Lang.format(" $1$ % ", [Battery.format("%.2f")] );
         //dc.drawText(width / 2, (height / 4 * 2.9), fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_CENTER);
               
         var alpha, hand; 
@@ -832,21 +832,21 @@ class AviatorlikeView extends Ui.WatchFace{
      
 			r1 = width/2 - outerRad; //outside
 			r2 = r1 -lenth; ////Länge des Bat-Zeigers
-			//thicknes = 0.01;
 										
 			hand =     [[center_x+r1*Math.sin(alpha+0.1),center_y-r1*Math.cos(alpha+0.1)],
 						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
 						[center_x+r1*Math.sin(alpha-0.1),center_y-r1*Math.cos(alpha-0.1)]   ];
-		
-			if (Battery >= 25) {
-	        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
-	        }
+
 	        if (Battery < 25) {
 	        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
 	        }
 			if (Battery >= 50) {
 	        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
+	        } else {
+	        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
 	        }
+	        
+	        
 			dc.fillPolygon(hand);
 			
 			dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
@@ -855,7 +855,7 @@ class AviatorlikeView extends Ui.WatchFace{
 			for (n=0; n<2; n++) {
 				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 			}
-			//dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 		
 	}
 	
@@ -864,7 +864,7 @@ class AviatorlikeView extends Ui.WatchFace{
  		var width = dc.getWidth();
         var height  = dc.getHeight();
  		var outerRad = width / 2;
-        var innerRad = outerRad - 15; //Länge des Bat-Zeigers        
+        var innerRad = outerRad - 15; //Länge des Step-Zeigers        
         var alpha, alpha2, alpha3, hand;
         
         var actsteps = 0;
