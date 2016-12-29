@@ -41,7 +41,9 @@ class AviatorlikeView extends Ui.WatchFace{
 
     function initialize() {
         WatchFace.initialize();
-        screenShape = Sys.getDeviceSettings().screenShape;       
+        screenShape = Sys.getDeviceSettings().screenShape; 
+         
+        Sys.println("Screenshape = " + screenShape);     
         
     }
    
@@ -57,68 +59,55 @@ class AviatorlikeView extends Ui.WatchFace{
 
     // Draw the hash mark symbols on the watch-------------------------------------------------------
     function drawHashMarks(dc) {
+    
         var width = dc.getWidth();
         var height = dc.getHeight();
+        center_x = dc.getWidth() / 2;
+        center_y = dc.getHeight() / 2;
 
-        //if (Sys.SCREEN_SHAPE_ROUND == screenShape) {
+       //if (Sys.SCREEN_SHAPE_ROUND == screenShape) {
 
-            var sX, sY;
-            var eX, eY;
-            var outerRad = width / 2;
-            var innerRad = outerRad - 5; //Länge der Tickmarks
-            
-            dc.setPenWidth(3);         
+            var n;      
+        	var alpha, r1, r2;
+
+        	//alle 5 minutes
+            dc.setPenWidth(3);
             dc.setColor(App.getApp().getProperty("MinutesColor"), Gfx.COLOR_TRANSPARENT);
+           	r1 = width/2 -5; //inside
+			r2 = width/2 ; //outside
+           	for (var alpha = Math.PI / 6; alpha <= 13 * Math.PI / 6; alpha += (Math.PI / 30)) { //jede Minute 			
+				dc.drawLine(center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha), center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)); 
 
-            //all minutes
-            for (var i = Math.PI / 6; i <= 13 * Math.PI / 6; i += (Math.PI / 30)) {            
-            //dc.drawText(center_x, center_y+20, Gfx.FONT_MEDIUM, i, Gfx.TEXT_JUSTIFY_CENTER);          
-                sY = outerRad + innerRad * Math.sin(i);
-                sX = outerRad + innerRad * Math.cos(i);
-                
-                eY = outerRad + outerRad * Math.sin(i);               
-                eX = outerRad + outerRad * Math.cos(i);
-                
-                dc.drawLine(sX, sY, eX, eY);               
-               }
+     		}
         
-        
-        	outerRad = width / 2;
-            innerRad = outerRad - 20;
+        	//alle 5 minutes
             dc.setPenWidth(3);
             dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
-
-            //all 5 minutes
-            for (var i = Math.PI / 6; i <= 11 * Math.PI / 6; i += (Math.PI / 3)) {          
-            //dc.drawText(center_x, center_y+20, Gfx.FONT_MEDIUM, i, Gfx.TEXT_JUSTIFY_CENTER);
-               // Partially unrolled loop to draw two tickmarks in 15 minute block
-                sY = outerRad + innerRad * Math.sin(i);
-                sX = outerRad + innerRad * Math.cos(i);
-                
-                eY = outerRad + outerRad * Math.sin(i);               
-                eX = outerRad + outerRad * Math.cos(i);
-                
-                dc.drawLine(sX, sY, eX, eY);
-                
-                i += Math.PI / 6;
-                sY = outerRad + innerRad * Math.sin(i);
-                eY = outerRad + outerRad * Math.sin(i);
-                sX = outerRad + innerRad * Math.cos(i);
-                eX = outerRad + outerRad * Math.cos(i);
-                dc.drawLine(sX, sY, eX, eY);  
-     		} 
+           	r1 = width/2 -20; //inside
+			r2 = width/2 ; //outside
+           	//for (var alpha = Math.PI / 6; alpha <= 13 * Math.PI / 6; alpha += (Math.PI / 30)) { //jede Minute
+         	for (var alpha = Math.PI / 6; alpha <= 11 * Math.PI / 6; alpha += (Math.PI / 3)) { //jede 5. Minute  			
+				dc.drawLine(center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha), center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)); 
+				alpha += Math.PI / 6;  
+				dc.drawLine(center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha), center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha));    	
+     		}      
+ 
     }
+ 
+ 
     
     function drawQuarterHashmarks(dc){          
       //12, 3, 6, 9
       var NbrFont = (App.getApp().getProperty("Numbers"));
+      var width = dc.getWidth();
+      var height = dc.getHeight();
+       center_x = dc.getWidth() / 2;
+       center_y = dc.getHeight() / 2;
       
        if ( NbrFont == 0) { //no number
-	  		var width = dc.getWidth();
-        	var height = dc.getHeight();
+	  		
 			var n;      
-        	var r1, r2, marks, thicknes;
-        	
+        	var r1, r2, marks, thicknes;      	
         	var outerRad = 0;
         	var lenth = 20;
         	var thick = 5;
@@ -147,26 +136,12 @@ class AviatorlikeView extends Ui.WatchFace{
 			}
 		}	
 		else {	
-			var width = dc.getWidth();
-        	var height = dc.getHeight();
-        	var sX, sY;
-            var eX, eY;
-		   	dc.setPenWidth(8);
-		   	var outerRad = width / 2;
-            var innerRad = outerRad - 5;        
+	        var r1 = width/2 -5; //inside
+			var r2 = width/2 ; //outside
+		   	dc.setPenWidth(8);       
             dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
-            for (var i = Math.PI / 2; i <= 13 * Math.PI / 2; i += (Math.PI / 2)) {
-            
-            //dc.drawText(center_x, center_y+20, Gfx.FONT_MEDIUM, i, Gfx.TEXT_JUSTIFY_CENTER);
-                // Partially unrolled loop to draw two tickmarks in 15 minute block
-                sY = outerRad + innerRad * Math.sin(i);
-                sX = outerRad + innerRad * Math.cos(i);
-                
-                eY = outerRad + outerRad * Math.sin(i);               
-                eX = outerRad + outerRad * Math.cos(i);
-                
-                dc.drawLine(sX, sY, eX, eY);
-                
+            for (var alpha = Math.PI / 2; alpha <= 13 * Math.PI / 2; alpha += (Math.PI / 2)) {
+				dc.drawLine(center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha), center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha));                
              }
          }
     } 
@@ -655,6 +630,8 @@ class AviatorlikeView extends Ui.WatchFace{
    		var seconds_radius;
  	  	var width = dc.getWidth();
         var height  = dc.getHeight();
+        center_x = dc.getWidth() / 2;
+        center_y = dc.getHeight() / 2;
         
         //seconds_radius = 7/8.0 * center_x;
 		seconds_radius = width / 2 ;
@@ -793,7 +770,6 @@ class AviatorlikeView extends Ui.WatchFace{
 	
 		var width = dc.getWidth();
         var height  = dc.getHeight();
-	
 		
 			var actInfo;
 			//var altitudeStr;
@@ -831,43 +807,55 @@ class AviatorlikeView extends Ui.WatchFace{
 	function drawBattery(dc) {
 	// Draw battery -------------------------------------------------------------------------
 		var width = dc.getWidth();
-        var height  = dc.getHeight();
+        var height = dc.getHeight();
+        center_x = dc.getWidth() / 2;
+        center_y = dc.getHeight() / 2;
 		
-		var Battery = Toybox.System.getSystemStats().battery;       
-        var BatteryStr = Lang.format(" $1$ % ", [Battery.toLong()]);
-        var outerRad = width / 2;
-        var innerRad = outerRad - 15; //Länge des Bat-Zeigers        
-        var alpha, alpha2, alpha3, hand;
-        
+		var Battery = Toybox.System.getSystemStats().battery;  
+		     
+        //var BatteryStr = Lang.format(" $1$ % ", [Battery.toLong()]);
         //dc.drawText(width / 2, (height / 4 * 2.9), fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_CENTER);
-       
-        alpha = -2*Math.PI/100*(Battery)+Math.PI; 
-        alpha2 = -2*Math.PI/100*(Battery+1.3)+Math.PI;
-        alpha3 = -2*Math.PI/100*(Battery-1.3)+Math.PI;
-	
-		hand =        	[[outerRad + outerRad*Math.sin(alpha3), outerRad + outerRad*Math.cos(alpha3)],
-						[outerRad + innerRad*Math.sin(alpha), outerRad + innerRad*Math.cos(alpha)],
-						[outerRad  + outerRad*Math.sin(alpha2), outerRad + outerRad*Math.cos(alpha2)]   ];						
-						
-
-        if (Battery >= 25) {
-        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
-        }
-        if (Battery < 25) {
-        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
-        }
-		if (Battery >= 50) {
-        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
-        }
-		dc.fillPolygon(hand);
-		
-		dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(1);
-        var n;
-		for (n=0; n<2; n++) {
-			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+              
+        var alpha, hand; 
+        alpha = 0; 
+        
+        if (screenShape == 1) {    
+        alpha = 2*Math.PI/100*(Battery); 
+		}		
+		if (screenShape == 3) {    
+        alpha = Math.PI/100*(Battery)+Math.PI;
 		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+						     
+        	var r1, r2;      	
+        	var outerRad = 0;
+        	var lenth = 15;
+     
+			r1 = width/2 - outerRad; //outside
+			r2 = r1 -lenth; ////Länge des Bat-Zeigers
+			//thicknes = 0.01;
+										
+			hand =     [[center_x+r1*Math.sin(alpha+0.1),center_y-r1*Math.cos(alpha+0.1)],
+						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
+						[center_x+r1*Math.sin(alpha-0.1),center_y-r1*Math.cos(alpha-0.1)]   ];
+		
+			if (Battery >= 25) {
+	        dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
+	        }
+	        if (Battery < 25) {
+	        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
+	        }
+			if (Battery >= 50) {
+	        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
+	        }
+			dc.fillPolygon(hand);
+			
+			dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
+	        dc.setPenWidth(1);
+	        var n;
+			for (n=0; n<2; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+			//dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 		
 	}
 	
@@ -965,19 +953,17 @@ class AviatorlikeView extends Ui.WatchFace{
 // Handle the update event-----------------------------------------------------------------------
     function onUpdate(dc) {
     
-    Sys.println("Screenshape = " + screenShape);
+    
     
     
     var LDInfo = (App.getApp().getProperty("LDInfo"));
    	var LUpperInfo = (App.getApp().getProperty("LUpperInfo"));
         
         var width = dc.getWidth();
-        var height  = dc.getHeight();
-       // var screenWidth = dc.getWidth();
-        
-        //center_x = dc.getWidth() / 2;
-        //center_y = dc.getHeight() / 2;
-        
+        var height  = dc.getHeight();   
+        //Sys.println("width = " + width);
+		//Sys.println("height = " + height);
+             
         
         
         var timeFormat = "$1$:$2$";       
@@ -992,7 +978,6 @@ class AviatorlikeView extends Ui.WatchFace{
         
    // Draw the hash marks ---------------------------------------------------------------------------
         drawHashMarks(dc);  
-        
         drawQuarterHashmarks(dc);      
   
   //Draw Digital Elements ------------------------------------------------------------------
