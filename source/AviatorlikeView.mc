@@ -1334,7 +1334,7 @@ function drawBattery(dc) {
   
   
   // Draw hands ------------------------------------------------------------------         
-     	//drawHands(dc); 
+     	drawHands(dc); 
       
        if (isAwake) {
      	drawSecondHands(dc);
