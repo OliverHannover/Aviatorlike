@@ -7,8 +7,10 @@ Avatorlike is a high configurable analog watch with additional informations like
 - elevation
 - calories
 - distance
-- battery progress 
+- battery progress
+
 (Triangle pointed inside. On round watch turn counterclockwise, on semi round watch it goes In the left arch from top to bottom. Top is 100% )
+
 indicator for alarm and messages
 Five different fonts for numbers (Fat, Race, Classic, Roman numbers, Simple) and no numbers 
 Five different hands ( Race, Pilot, Diver, Classic and Simple)
