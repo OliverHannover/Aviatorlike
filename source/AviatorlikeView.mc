@@ -35,7 +35,8 @@ class AviatorlikeView extends Ui.WatchFace{
 		var dualtimeDST = 0;
 		
 	//variables for secondary displays	
-		var altitudeStr; 
+		var altitudeStr;
+		var altUnit; 
 		var distStr;
 		var distUnit;
 
@@ -799,37 +800,34 @@ class AviatorlikeView extends Ui.WatchFace{
 
 
 	function drawAltitude(dc) {
-	
-		var width = dc.getWidth();
-        var height  = dc.getHeight();
-		
-			var actInfo;
-			//var altitudeStr;
-			var highaltide = false;			
+			
 			var unknownaltitude = true;
 			var actaltitude = 0;
-			
+			var actInfo;
+			var metric = Sys.getDeviceSettings().elevationUnits == Sys.UNIT_METRIC;
+			altUnit = "Alt m";
+						
 			actInfo = Act.getActivityInfo();
 			if (actInfo != null) {
+			
+				if (metric) {				
+				altUnit = "m";
 				actaltitude = actInfo.altitude;
+				} else {
+				altUnit = "ft";
+				actaltitude = actInfo.altitude  * 3.28084;
+				}
+			
+			
 				if (actaltitude != null) {
 					unknownaltitude = false;
-					if (actaltitude > 4000) {
-						highaltide = true;
-					}
 				} 				
-			}
-			var metric = Sys.getDeviceSettings().elevationUnits == Sys.UNIT_METRIC;
+			}			
 							
 			if (unknownaltitude) {
-				altitudeStr = Lang.format(" Alt unknown");
+				altitudeStr = Lang.format("unknown");
 			} else {
-				altitudeStr = Lang.format(" Alt $1$", [actaltitude.toLong()]);
-			}
-			if (metric) {
-				altitudeStr = altitudeStr + " m ";
-			} else {
-				altitudeStr = altitudeStr + " ft ";
+				altitudeStr = Lang.format("$1$", [actaltitude.toLong()]);
 			}
 			
        		//dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
@@ -1146,6 +1144,8 @@ function drawBattery(dc) {
 		if (LUpperInfo == 5) {
 			drawAltitude(dc);
 			dc.drawText(width / 2, UDnorText, fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
+			dc.drawText(width / 2 + 50, UDobereZeile, Gfx.FONT_XTINY, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
+			dc.drawText(width / 2 + 50, UDuntereZeile, Gfx.FONT_XTINY, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 		 }	
 			
 		// Draw Calories------------------------------
@@ -1223,6 +1223,8 @@ function drawBattery(dc) {
 		if (LDInfo == 5) {
 			drawAltitude(dc);
 			dc.drawText(width / 2, LDnorText, fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
+			dc.drawText(width / 2 + 50, LDobereZeile, Gfx.FONT_XTINY, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
+			dc.drawText(width / 2 + 50, LDuntereZeile, Gfx.FONT_XTINY, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 		 }	
 			
 		// Draw Calories------------------------------
