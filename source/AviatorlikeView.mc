@@ -172,10 +172,11 @@ class AviatorlikeView extends Ui.WatchFace{
 		var n;
 		
 		clockTime = Sys.getClockTime();
-        var hours = clockTime.hour;        
-        var minute = clockTime.min;
+		//Sys.println("clockTime hour = " + clockTime.hour);
+		//Sys.println("clockTime min = " + clockTime.min);
+       
         
-        var alpha, alpha2, alpha3,r0, r1, r2, r3, hand, hand1;
+        var alpha, alpha2, r0, r1, r2, r3, hand, hand1;
 
 		
 		//!Schwarz + DK-Grau
@@ -209,6 +210,7 @@ class AviatorlikeView extends Ui.WatchFace{
 				// hours
 				alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 				alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
+				
 				r1 = -20;
 				r2 = 12;
 				
@@ -224,6 +226,7 @@ class AviatorlikeView extends Ui.WatchFace{
 				dc.setPenWidth(1);				
 		        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
 				dc.fillPolygon(hand);
+				
 				dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
 				dc.fillPolygon(hand1);
 		            
@@ -232,6 +235,10 @@ class AviatorlikeView extends Ui.WatchFace{
 				 // minutes
 				alpha = Math.PI/30.0*clockTime.min;
 				alpha2 = Math.PI/30.0*(clockTime.min-15);
+				
+
+				
+				
 				r1 = -25;
 				r2 = 12;
 				hand =        	[[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
@@ -462,6 +469,12 @@ class AviatorlikeView extends Ui.WatchFace{
 		if (HandsForm == 4) {
 		// houres
 		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
+		
+		//!nur zum Test----------------
+		//alpha = Math.PI/6*(1.0*20);
+		//alpha2 = Math.PI/6*(1.0*20-3);
+		//!-----------------------------
+		
 		r0 = 20;
 		r1 = 40; //Entfernung zum rechten winkel
 		r2 = 55;
@@ -508,6 +521,12 @@ class AviatorlikeView extends Ui.WatchFace{
 		
 		// minutes
 		alpha = Math.PI/30.0*clockTime.min;
+		
+				//!nur zum Test MINUTEN--------
+				//alpha = Math.PI/30.0*05;
+				//alpha2 = Math.PI/30.0*(05-15);
+				//!-----------------------------
+		
 		r0 = 35;
 		r1 = 55; //Entfernung zum rechten winkel
 		r2 = 70;
