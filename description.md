@@ -1,15 +1,15 @@
-# Description
 Avatorlike is a high configurable analog watch with additional informations like
 - date
-- sec. time(zone)
-- steps, stepgoal, progress per day (Triangle pointed outwards, turn clockwise)
+- dual time(zone)
+- steps, stepgoal, progress to goal per day 
+(Triangle pointed outwards. On round watch turn clockwise, on semi round watch it goes In the right arch from bottom to top. Top is 100% )
 - steps to go / since goal
 - elevation
 - calories
 - distance
-- battery progress (Triangle pointed inside, turn counterclockwise)
+- battery progress 
+(Triangle pointed inside. On round watch turn counterclockwise, on semi round watch it goes In the left arch from top to bottom. Top is 100% )
 indicator for alarm and messages
 Five different fonts for numbers (Fat, Race, Classic, Roman numbers, Simple) and no numbers 
 Five different hands ( Race, Pilot, Diver, Classic and Simple)
 each color can be changed
-(open source)
