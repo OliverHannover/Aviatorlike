@@ -254,7 +254,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		        
 			}// End of if (HandsForm == 1)		
 
-	//Pilot-Hands----------------------------------
+	//Pilot-Hands----------------------------------------------------------
 	if (HandsForm == 2) {
 	// hours
 		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
@@ -273,25 +273,32 @@ class AviatorlikeView extends Ui.WatchFace{
 											
         dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
 		dc.fillPolygon(hand);
+		
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+		for (n=0; n<4; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 	
 						
-		hand1 =         [[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
+		hand =         [//[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
+						//[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
 						[center_x+r2*Math.sin(alpha-0.35),center_y-r2*Math.cos(alpha-0.35)],
 						[center_x+r3*Math.sin(alpha-0.2),center_y-r3*Math.cos(alpha-0.2)],
 						[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
 						[center_x+r3*Math.sin(alpha+0.2),center_y-r3*Math.cos(alpha+0.2)],
-						[center_x+r2*Math.sin(alpha+0.35),center_y-r2*Math.cos(alpha+0.35)],
-						[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]			   ];
+						[center_x+r2*Math.sin(alpha+0.35),center_y-r2*Math.cos(alpha+0.35)]  ];
+						//[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
+						//[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]			 
 		
 		
         dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
         dc.setPenWidth(4);
-		for (n=0; n<8; n++) {
-			dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
+		for (n=0; n<4; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 		}
-		//dc.drawLine(hand1[n][0], hand1[n][1], hand1[0][0], hand1[0][1]);
+		//dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
             
 
 
@@ -312,25 +319,33 @@ class AviatorlikeView extends Ui.WatchFace{
         dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
 		dc.fillPolygon(hand);
 		
-		hand1 =         [[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+		for (n=0; n<4; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+
+		
+		hand =         [//[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
+						//[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
 						[center_x+r2*Math.sin(alpha-0.35),center_y-r2*Math.cos(alpha-0.35)],
 						[center_x+r3*Math.sin(alpha-0.15),center_y-r3*Math.cos(alpha-0.15)],
 						[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],
 						[center_x+r3*Math.sin(alpha+0.15),center_y-r3*Math.cos(alpha+0.15)],
-						[center_x+r2*Math.sin(alpha+0.35),center_y-r2*Math.cos(alpha+0.35)],
-						[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]			   ];					
+						[center_x+r2*Math.sin(alpha+0.35),center_y-r2*Math.cos(alpha+0.35)]  ];
+						//[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)]
+						//[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]			   					
 						
-        dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.fillPolygon(hand);
+        //dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		//dc.fillPolygon(hand);
 		
         dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
         dc.setPenWidth(4);
-		for (n=0; n<8; n++) {
-			dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
+		for (n=0; n<4; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 		}
-		dc.drawLine(hand1[n][0], hand1[n][1], hand1[0][0], hand1[0][1]);
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 		
 		
 		// Draw the CenterPoint
@@ -465,7 +480,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 		}
 		
-		r0 = 0;
+		r0 = -30;
 		r1 = 20;
 		r2 = 45;
 		
@@ -473,13 +488,21 @@ class AviatorlikeView extends Ui.WatchFace{
 				
 		hand =        	[
 						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
-						[center_x+r1*Math.sin(alpha+0.2),center_y-r1*Math.cos(alpha+0.2)],
+						[center_x+r1*Math.sin(alpha+0.15),center_y-r1*Math.cos(alpha+0.15)],
 						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha-0.2),center_y-r1*Math.cos(alpha-0.2)],						
+						[center_x+r1*Math.sin(alpha-0.15),center_y-r1*Math.cos(alpha-0.15)],						
 						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];	
 						
 		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
 		dc.fillPolygon(hand);	
+		
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+		for (n=0; n<4; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+		
 		
 		
 		// minutes
@@ -488,7 +511,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		r1 = 55; //Entfernung zum rechten winkel
 		r2 = 70;
 		
-		//obere raute
+		//outer raute
 		hand =        	[
 						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
 						[center_x+r1*Math.sin(alpha+0.13),center_y-r1*Math.cos(alpha+0.13)],						
@@ -504,30 +527,37 @@ class AviatorlikeView extends Ui.WatchFace{
 		dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 		}
 		
-		r0 = 0;
+		r0 = -30;
 		r1 = 25;
-		r2 = 65;
+		r2 = 60;
 		
 		dc.drawLine(center_x+35*Math.sin(alpha-0.2),center_y-35*Math.cos(alpha-0.2),center_x+35*Math.sin(alpha+0.2),center_y-35*Math.cos(alpha+0.2));
 		
 		
-		//untere Raute		
+		//inner Raute		
 		hand =        	[
 						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
-						[center_x+r1*Math.sin(alpha+0.18),center_y-r1*Math.cos(alpha+0.18)],
+						[center_x+r1*Math.sin(alpha+0.12),center_y-r1*Math.cos(alpha+0.12)],
 						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha-0.18),center_y-r1*Math.cos(alpha-0.18)],						
+						[center_x+r1*Math.sin(alpha-0.12),center_y-r1*Math.cos(alpha-0.12)],						
 						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];	
 						
 		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.fillPolygon(hand);			
+		dc.fillPolygon(hand);
+			
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+		for (n=0; n<4; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);		
 	
 		// Draw the CenterPoint
         dc.setPenWidth(1);
         dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
         dc.fillCircle(width / 2, height / 2, 7);
         
-       	dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_BLACK);
+       	dc.setColor(color1, Gfx.COLOR_BLACK);
         dc.drawCircle(width / 2, height / 2, 7);		
 		
 		}	
@@ -539,11 +569,11 @@ class AviatorlikeView extends Ui.WatchFace{
 			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 	 													
 			//rectangle 
-			r2 = 5; //Breite im Zentrum
-			var thicknes = 0.07; //Breite oben
+			r2 = 3; //Breite im Zentrum
+			var thicknes = 0.04; //Breite oben
 
-			hand =        	[[center_x-20*Math.sin(alpha-0.25),center_y+20*Math.cos(alpha-0.25)],
-							[center_x-20*Math.sin(alpha+0.25),center_y+20*Math.cos(alpha+0.25)],
+			hand =        	[[center_x-20*Math.sin(alpha-0.2),center_y+20*Math.cos(alpha-0.2)],
+							[center_x-20*Math.sin(alpha+0.2),center_y+20*Math.cos(alpha+0.2)],
 							[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
 							[center_x+hour_radius*Math.sin(alpha-thicknes),center_y-hour_radius*Math.cos(alpha-thicknes)],
 							[center_x+hour_radius*Math.sin(alpha+thicknes),center_y-hour_radius*Math.cos(alpha+thicknes)],
