@@ -9,8 +9,11 @@
     <property id="HandsForm" type="number">1</property>
     <property id="HandsColor" type="number">0xFF0000</property>
     <property id="SecHandsColor" type="number">0x00AAFF</property>
+    
     <property id="DigiFont" type="number">1</property>
+    <property id="UpperDispEnable" type="boolean">true</property>
     <property id="LUpperInfo" type="number">1</property>
+     <property id="LowerDispEnable" type="boolean">true</property>
     <property id="LDInfo" type="number">2</property>
     
     <property id="DualTimeTZ" type="number">0</property>

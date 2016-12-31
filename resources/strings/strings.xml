@@ -12,7 +12,9 @@
     <string id="HandsColorTitle">Color of hands</string>
     <string id="SecHandsColorTitle">Color of second hand</string>
     <string id="DigiFontTitle">Font of displays</string>
+    <string id="UpperDispEnableTitle">Enable upper display</string>
     <string id="LUpperInfoTitle">Info upper display</string>
+    <string id="LowerDispEnableTitle">Enable lower display</string>
     <string id="LDInfoTitle">Info lower display</string>
     
 
@@ -40,7 +42,7 @@
    
     <string id="DFDigital">Digital</string>
     <string id="DFClassic">Classic</string> 
-    <string id="DFSimple">Simple</string>  
+    <string id="DFSimple">Simple</string> 
    
     <string id="LUpperDate">Date</string>
     <string id="LUpperSteps">Steps</string>
@@ -49,6 +51,7 @@
 	<string id="LUpperAltitude">Elevation</string>
 	<string id="LUpperCalories">Calories</string>
 	<string id="LUpperDistance">Distance</string>
+	<string id="LUpperBattery">Battery</string>
     
     <string id="LDDate">Date</string>
     <string id="LDSteps">Steps</string>
@@ -57,6 +60,7 @@
 	<string id="LDAltitude">Elevation</string>
 	<string id="LDCalories">Calories</string>
 	<string id="LDDistance">Distance</string>
+	<string id="LDBattery">Battery</string>
 
 	<string id="HandsRace">Race</string>
 	<string id="HandsPilot">Pilot</string>
