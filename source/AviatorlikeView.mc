@@ -1031,18 +1031,17 @@ function drawBattery(dc) {
  		info = Calendar.info(now, Time.FORMAT_SHORT);
         dateStr = Lang.format("$1$.$2$.$3$", [info.day, info.month, info.year]);  
  		}
- 		 if (dateFormat == 4) {
+ 		if (dateFormat == 4) {
  		info = Calendar.info(now, Time.FORMAT_SHORT);
          dateStr = Lang.format("$1$-$2$-$3$", [info.year, info.month, info.day]);  
  		}
- 		 if (dateFormat == 5) {
+ 		if (dateFormat == 5) {
  		info = Calendar.info(now, Time.FORMAT_SHORT);
         dateStr = Lang.format("$1$/$2$/$3$", [info.day, info.month, info.year]);  
  		}
- 		 if (dateFormat == 6) {
+ 		if (dateFormat == 6) {
  		info = Calendar.info(now, Time.FORMAT_SHORT);
-        dateStr = Lang.format("$1$/$2$/$3$", [info.month, info.day, info.year]);
-        //Sys.println("dateFormat = " + dateFormat);  
+        dateStr = Lang.format("$1$/$2$/$3$", [info.month, info.day, info.year]); 
  		}
  
   	}
