@@ -1,5 +1,5 @@
 <properties>
-	<property id="appVersion" type="string">0.4.1</property>
+	<property id="appVersion" type="string">0.4.2</property>
     <property id="BackgroundColor" type="number">0x000000</property>
     <property id="ForegroundColor" type="number">0x000000</property>
     <property id="Numbers" type="number">1</property>
@@ -11,6 +11,7 @@
     <property id="SecHandsColor" type="number">0x00AAFF</property>
     
     <property id="DigiFont" type="number">1</property>
+    <property id="DateFormat" type="number">1</property>
     <property id="UpperDispEnable" type="boolean">true</property>
     <property id="LUpperInfo" type="number">1</property>
      <property id="LowerDispEnable" type="boolean">true</property>

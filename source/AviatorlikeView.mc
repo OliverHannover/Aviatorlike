@@ -43,6 +43,8 @@ class AviatorlikeView extends Ui.WatchFace{
 		var distUnit;
 		//Battery
 		var BatteryStr;
+		//date
+		var dateStr;
 		
 		
 
@@ -1007,20 +1009,43 @@ function drawBattery(dc) {
 				distStr = Lang.format("Dst ?");
 			} else {
 				distStr = Lang.format("$1$", [actDistance.format("%.2f")] );
-				//distStr = distStr * 0.621371;			
-			//	if (actDistance > 10) {
-			//	distStr = Lang.format("$1$", [actDistance.format("%.2f")] );
-			//	}
-			//	if (actDistance >= 10) {
-			//	distStr = Lang.format("$1$", [actDistance.format("%.1f")] );
-			//	}
-			//	if (actDistance >= 100) {
-			//	distStr = Lang.format("$1$", [actDistance.format("%.0f")] );
-			//	}
 			}	
 	
 	} 
-  
+ 
+ 	//DateString -----------------------------------------------------------------------
+	function buildDateString(dc) {
+	
+		var dateFormat = (App.getApp().getProperty("DateFormat"));			
+		var now = Time.now();
+		var info = Calendar.info(now, Time.FORMAT_LONG);
+		//Sys.println("dateFormat = " + dateFormat);     
+		
+		if (dateFormat == 1) {
+        dateStr = Lang.format("$1$ $2$ $3$", [info.day_of_week, info.day, info.month ]);
+        }        
+        if (dateFormat == 2) {
+        dateStr = Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);  
+ 		}
+ 		if (dateFormat == 3) {
+ 		info = Calendar.info(now, Time.FORMAT_SHORT);
+        dateStr = Lang.format("$1$.$2$.$3$", [info.day, info.month, info.year]);  
+ 		}
+ 		 if (dateFormat == 4) {
+ 		info = Calendar.info(now, Time.FORMAT_SHORT);
+         dateStr = Lang.format("$1$-$2$-$3$", [info.year, info.month, info.day]);  
+ 		}
+ 		 if (dateFormat == 5) {
+ 		info = Calendar.info(now, Time.FORMAT_SHORT);
+        dateStr = Lang.format("$1$/$2$/$3$", [info.day, info.month, info.year]);  
+ 		}
+ 		 if (dateFormat == 6) {
+ 		info = Calendar.info(now, Time.FORMAT_SHORT);
+        dateStr = Lang.format("$1$/$2$/$3$", [info.month, info.day, info.year]);
+        //Sys.println("dateFormat = " + dateFormat);  
+ 		}
+ 
+  	}
 
 // Handle the update event-----------------------------------------------------------------------
     function onUpdate(dc) {
@@ -1034,12 +1059,8 @@ function drawBattery(dc) {
         var width = dc.getWidth();
         var height  = dc.getHeight();   
         //Sys.println("width = " + width);
-		//Sys.println("height = " + height);
-             
-        
-        
-        var timeFormat = "$1$:$2$";       
-       	var now = Time.now();
+		//Sys.println("height = " + height);     
+       
         
   // Clear the screen--------------------------------------------
         //dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT));
@@ -1121,9 +1142,7 @@ function drawBattery(dc) {
 	    	
 	 		//Draw date---------------------------------
 		   	if (LUpperInfo == 1) {
-				var info = Calendar.info(now, Time.FORMAT_LONG);
-		        //var dateStr = Lang.format("$1$ $2$ $3 $4$", [info.day_of_week, info.day, ".", info.month ]);
-		        var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
+		   		buildDateString(dc);      
 				dc.drawText(width / 2, UDnorText, fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
 			}	
 	
@@ -1223,9 +1242,7 @@ function drawBattery(dc) {
          
 	
 		   if (LDInfo == 1) {
-			 var info = Calendar.info(now, Time.FORMAT_LONG);
-	        //var dateStr = Lang.format("$1$ $2$ $3 $4$", [info.day_of_week, info.day, ".", info.month ]);
-	        var dateStr =  Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);        
+			buildDateString(dc);        
 			dc.drawText(width / 2, LDnorText, fontDigital, dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
 			}	
 	

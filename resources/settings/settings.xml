@@ -160,6 +160,17 @@
         </settingConfig>
     </setting>
     
+        <setting propertyKey="@Properties.DateFormat" title="@Strings.DateFormatTitle">
+        <settingConfig type="list">
+         	<listEntry value="1">@Strings.DF1</listEntry>
+            <listEntry value="2">@Strings.DF2</listEntry>
+            <listEntry value="3">@Strings.DF3</listEntry>       
+            <listEntry value="4">@Strings.DF4</listEntry>
+            <listEntry value="5">@Strings.DF5</listEntry>
+            <listEntry value="6">@Strings.DF6</listEntry>
+        </settingConfig>
+    </setting>
+    
      <setting propertyKey="@Properties.UpperDispEnable" title="@Strings.UpperDispEnableTitle">
         <settingConfig type="boolean" />
     </setting> 

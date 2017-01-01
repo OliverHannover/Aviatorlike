@@ -11,7 +11,9 @@
     <string id="HandsFormTitle">Kind of hands</string>
     <string id="HandsColorTitle">Color of hands</string>
     <string id="SecHandsColorTitle">Color of second hand</string>
+    
     <string id="DigiFontTitle">Font of displays</string>
+    <string id="DateFormatTitle">Date format</string>
     <string id="UpperDispEnableTitle">Enable upper display</string>
     <string id="LUpperInfoTitle">Info upper display</string>
     <string id="LowerDispEnableTitle">Enable lower display</string>
@@ -43,6 +45,14 @@
     <string id="DFDigital">Digital</string>
     <string id="DFClassic">Classic</string> 
     <string id="DFSimple">Simple</string> 
+    
+    <string id="DF1">Weekday DD Month</string>
+    <string id="DF2">Weekday Month DD</string>
+    <string id="DF3">DD.MM.YYYY</string>
+    <string id="DF4">YYYY-MM-DD</string>
+    <string id="DF5">DD/MM/YYYY</string>
+    <string id="DF6">MM/DD/YYYY</string>
+    
    
     <string id="LUpperDate">Date</string>
     <string id="LUpperSteps">Steps</string>
