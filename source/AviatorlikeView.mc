@@ -721,7 +721,7 @@ function drawBattery(dc) {
 			}
 			
 			//Draw Day an d week of year
-			if (LUpperInfo == 9) {
+			if (LDInfo == 9) {
 				date.builddayWeekStr();				
 				dc.drawText(width / 2  , LDnorText, fontDigital, date.dayWeekStr, Gfx.TEXT_JUSTIFY_RIGHT);	
 		    	dc.drawText(width / 2 + 50, LDobereZeile, Gfx.FONT_XTINY, "day /", Gfx.TEXT_JUSTIFY_RIGHT);

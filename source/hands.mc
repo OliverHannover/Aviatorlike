@@ -42,7 +42,7 @@ module hands{
         var alpha, alpha2, r0, r1, r2, r3, hand, hand1;	
 			
 			
-         //Driver-Hands-----------------	
+         //Race-Hands-----------------	
 		if (HandsForm == 1) { 	
 				// hours
 				alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
@@ -59,16 +59,12 @@ module hands{
 				hand1 =        	[[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
 								[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
 								[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)]   ];
-								
-				dc.setPenWidth(1);				
+												
 		        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-				dc.fillPolygon(hand);
-				
+				dc.fillPolygon(hand);				
 				dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
 				dc.fillPolygon(hand1);
-		            
-		
-		
+		            		
 				 // minutes
 				alpha = Math.PI/30.0*clockTime.min;
 				alpha2 = Math.PI/30.0*(clockTime.min-15);
