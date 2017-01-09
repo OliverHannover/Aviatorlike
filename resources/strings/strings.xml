@@ -9,7 +9,8 @@
     <string id="QuarterNumbersColorTitle">Color of numbers and 5 minutes marks</string>
     <string id="MinutesColorTitle">Color of minutes</string>  
     <string id="HandsFormTitle">Kind of hands</string>
-    <string id="HandsColorTitle">Color of hands</string>
+    <string id="HandsColor1Title">First color of hands</string>
+    <string id="HandsColor2Title">Second color of hands</string>
     <string id="SecHandsColorTitle">Color of second hand</string>
     
     <string id="DigiFontTitle">Font of displays</string>
@@ -62,6 +63,8 @@
 	<string id="LUpperCalories">Calories</string>
 	<string id="LUpperDistance">Distance</string>
 	<string id="LUpperBattery">Battery</string>
+	<string id="LUpperDayWeek">Day and week of year</string>
+	
     
     <string id="LDDate">Date</string>
     <string id="LDSteps">Steps</string>
@@ -71,6 +74,7 @@
 	<string id="LDCalories">Calories</string>
 	<string id="LDDistance">Distance</string>
 	<string id="LDBattery">Battery</string>
+	<string id="LDDayWeek">Day and week of year</string>
 
 	<string id="HandsRace">Race</string>
 	<string id="HandsPilot">Pilot</string>

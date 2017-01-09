@@ -1,5 +1,5 @@
 <properties>
-	<property id="appVersion" type="string">0.4.3</property>
+	<property id="appVersion" type="string">0.4.5</property>
     <property id="BackgroundColor" type="number">0x000000</property>
     <property id="ForegroundColor" type="number">0x000000</property>
     <property id="Numbers" type="number">1</property>
@@ -7,7 +7,8 @@
     <property id="MinutesColor" type="number">0xFFFFFF</property>
     <property id="DigitalBackgroundColor" type="number">0xAAAAAA</property>
     <property id="HandsForm" type="number">1</property>
-    <property id="HandsColor" type="number">0xFF0000</property>
+    <property id="HandsColor1" type="number">0xFF0000</property>
+    <property id="HandsColor2" type="number">0xAA0000</property>
     <property id="SecHandsColor" type="number">0x00AAFF</property>
     
     <property id="DigiFont" type="number">1</property>
