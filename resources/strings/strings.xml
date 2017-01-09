@@ -19,6 +19,10 @@
     <string id="LUpperInfoTitle">Info upper display</string>
     <string id="LowerDispEnableTitle">Enable lower display</string>
     <string id="LDInfoTitle">Info lower display</string>
+    <string id="SecHandEnableTitle">Enable second hand</string>
+    
+    <string id="BatProgressEnableTitle">Enable battery progress marker</string>
+    <string id="StepProgressEnableTitle">Enable step progress marker</string>
     
 
     <string id="ColorBlack">Black</string>

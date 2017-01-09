@@ -282,8 +282,7 @@ function drawBattery(dc) {
         center_y = dc.getHeight() / 2;
 		
 		var Battery = Toybox.System.getSystemStats().battery;       
-        
-        BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
+        //BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
       	//dc.drawText(width / 2, (height / 4 * 2.9), fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_CENTER);
         
         var alpha, hand;
@@ -604,7 +603,8 @@ function drawBattery(dc) {
 			
 			//Draw battery
 			if (LUpperInfo == 8) {
-				drawDistance(dc);
+				var Battery = Toybox.System.getSystemStats().battery;       
+        	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
 				dc.drawText(width / 2 + 20 , UDnorText, fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_RIGHT);	
 		       	dc.drawText(width / 2 + 50, UDuntereZeile, Gfx.FONT_XTINY, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
@@ -715,7 +715,8 @@ function drawBattery(dc) {
 			
 			//Draw battery
 			if (LDInfo == 8) {
-				drawDistance(dc);
+				var Battery = Toybox.System.getSystemStats().battery;       
+        	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
 				dc.drawText(width / 2 + 20 , LDnorText, fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_RIGHT);	
 		       	dc.drawText(width / 2 + 50, LDuntereZeile, Gfx.FONT_XTINY, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
@@ -732,10 +733,16 @@ function drawBattery(dc) {
 	
 	
 			
-		
-		drawBattery(dc);
-		
-		drawStepGoal(dc);
+		//!progress battery------------
+		var BatProgressEnable = (App.getApp().getProperty("BatProgressEnable"));
+       	if (BatProgressEnable) {
+			drawBattery(dc);
+		}
+		//!progress steps--------------
+		var StepProgressEnable = (App.getApp().getProperty("StepProgressEnable"));
+       	if (StepProgressEnable) {
+			drawStepGoal(dc);
+		}
 
       // Draw the numbers --------------------------------------------------------------------------------------
        var NbrFont = (App.getApp().getProperty("Numbers")); 
@@ -848,7 +855,10 @@ function drawBattery(dc) {
      	hands.drawHands(dc); 
       
        if (isAwake) {
-     	hands.drawSecondHands(dc);
+       var SecHandEnable = (App.getApp().getProperty("SecHandEnable"));
+       if (SecHandEnable) {
+     		hands.drawSecondHands(dc);
+     	}
       }
           
 }

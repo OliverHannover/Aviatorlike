@@ -3,6 +3,14 @@
 <setting propertyKey="@Properties.appVersion" title="@Strings.AppVersionTitle">
 		<settingConfig type="alphaNumeric" readonly="true" />
 	</setting>
+	
+	<setting propertyKey="@Properties.BatProgressEnable" title="@Strings.BatProgressEnableTitle">
+        <settingConfig type="boolean" />
+    </setting>
+    
+    <setting propertyKey="@Properties.StepProgressEnable" title="@Strings.StepProgressEnableTitle">
+        <settingConfig type="boolean" />
+    </setting>
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">
@@ -166,6 +174,10 @@
             <listEntry value="0xAA00FF">@Strings.ColorPurple</listEntry>
             <listEntry value="0xFF00FF">@Strings.ColorPink</listEntry>
         </settingConfig>
+    </setting>
+    
+    <setting propertyKey="@Properties.SecHandEnable" title="@Strings.SecHandEnableTitle">
+        <settingConfig type="boolean" />
     </setting>
     
     <setting propertyKey="@Properties.SecHandsColor" title="@Strings.SecHandsColorTitle">

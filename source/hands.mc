@@ -97,7 +97,7 @@ module hands{
 
 	//Pilot-Hands----------------------------------------------------------
 	if (HandsForm == 2) {
-	// hours
+	//! hours---------
 		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 		alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 		r0 = -30;
@@ -125,11 +125,11 @@ module hands{
 						
 		hand =         [//[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
 						//[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
-						[center_x+r2*Math.sin(alpha-0.35),center_y-r2*Math.cos(alpha-0.35)],
+						[center_x+r2*Math.sin(alpha-0.32),center_y-r2*Math.cos(alpha-0.32)],
 						[center_x+r3*Math.sin(alpha-0.2),center_y-r3*Math.cos(alpha-0.2)],
 						[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
 						[center_x+r3*Math.sin(alpha+0.2),center_y-r3*Math.cos(alpha+0.2)],
-						[center_x+r2*Math.sin(alpha+0.35),center_y-r2*Math.cos(alpha+0.35)]  ];
+						[center_x+r2*Math.sin(alpha+0.32),center_y-r2*Math.cos(alpha+0.32)]  ];
 						//[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
 						//[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]			 
 		
@@ -139,11 +139,11 @@ module hands{
 		for (n=0; n<4; n++) {
 			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 		}
-		//dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
             
 
 
-		 // minutes
+		 //! minutes --------------------------
 		alpha = Math.PI/30.0*clockTime.min;
 		alpha2 = Math.PI/30.0*(clockTime.min-15);
 		r0 = -30;
