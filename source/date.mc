@@ -10,14 +10,14 @@ module date{
 		//date
 		var dateStr;
 		var dayWeekStr;
-		var now = Time.now();
-		var info = Calendar.info(now, Time.FORMAT_LONG);
-		var infoShort = Calendar.info(now, Time.FORMAT_SHORT);
+		
+		
 		//Sys.println("dateFormat = " + dateFormat); 
 
  	//DateString -----------------------------------------------------------------------
 	function buildDateString(dc) {
-	
+		var now = Time.now();
+		var info = Calendar.info(now, Time.FORMAT_LONG);	
 		var dateFormat = (App.getApp().getProperty("DateFormat"));			
     
 		
@@ -108,8 +108,9 @@ module date{
 		}
 	}
 
-	function builddayWeekStr() {
-	
+	function builddayWeekStr() {	
+		var now = Time.now();
+		var infoShort = Calendar.info(now, Time.FORMAT_SHORT);
 		var dayNow = julian_day(infoShort.year, infoShort.month, infoShort.day);
 		var firstDay = julian_day(infoShort.year, 1, 1);
 		var aktDay = dayNow - firstDay + 1;	//day of year (julianisch)
