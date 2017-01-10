@@ -434,7 +434,7 @@ function drawBattery(dc) {
     
     
     var LDInfo = (App.getApp().getProperty("LDInfo"));
-   	var LUpperInfo = (App.getApp().getProperty("LUpperInfo"));
+   	var UDInfo = (App.getApp().getProperty("UDInfo"));
         
         var width = dc.getWidth();
         var height  = dc.getHeight();   
@@ -525,13 +525,13 @@ function drawBattery(dc) {
          dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);	    	
 	    	
 	 		//Draw date---------------------------------
-		   	if (LUpperInfo == 1) {
+		   	if (UDInfo == 1) {
 		   		date.buildDateString(dc);      
 				dc.drawText(width / 2, UDnorText, fontDigital, date.dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
 			}	
 	
 	 	    //Draw Steps --------------------------------------
-	      	if (LUpperInfo == 2) {
+	      	if (UDInfo == 2) {
 		        var actsteps = 0;
 		        var stepGoal = 0;		
 				stepGoal = ActMonitor.getInfo().stepGoal;
@@ -545,7 +545,7 @@ function drawBattery(dc) {
 			}
 			
 			//Draw Steps to go --------------------------------------
-	      	if (LUpperInfo == 3) {
+	      	if (UDInfo == 3) {
 	        var actsteps = 0;
 	        var stepGoal = 0;
 	        var stepstogo = 0;		
@@ -569,14 +569,14 @@ function drawBattery(dc) {
 				}
 			}
 	 		//Draw DigitalTime---------------------------------
-		   	if (LUpperInfo == 4) {
+		   	if (UDInfo == 4) {
 			 drawDigitalTime(dc);
 			 dc.drawText(width / 2, UDnorText, fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
 			}	         
 	        
 			
 	    	// Draw Altitude------------------------------
-			if (LUpperInfo == 5) {
+			if (UDInfo == 5) {
 				drawAltitude(dc);
 				dc.drawText(width / 2, UDnorText, fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
 				dc.drawText(width / 2 + 50, UDobereZeile, Gfx.FONT_XTINY, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
@@ -584,7 +584,7 @@ function drawBattery(dc) {
 			 }	
 				
 			// Draw Calories------------------------------
-			if (LUpperInfo == 6) {	
+			if (UDInfo == 6) {	
 			dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
 			var actInfo = ActMonitor.getInfo(); 
 	        var actcals = actInfo.calories;		       
@@ -593,7 +593,7 @@ function drawBattery(dc) {
 			}
 			
 			//Draw distance
-			if (LUpperInfo == 7) {
+			if (UDInfo == 7) {
 				drawDistance(dc);
 				dc.drawText(width / 2 + 20 , UDnorText, fontDigital, distStr, Gfx.TEXT_JUSTIFY_RIGHT);	
 		       	//draw unit-String
@@ -602,7 +602,7 @@ function drawBattery(dc) {
 			
 			
 			//Draw battery
-			if (LUpperInfo == 8) {
+			if (UDInfo == 8) {
 				var Battery = Toybox.System.getSystemStats().battery;       
         	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
 				dc.drawText(width / 2 + 20 , UDnorText, fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_RIGHT);	
@@ -610,7 +610,7 @@ function drawBattery(dc) {
 			}
 			
 			//Draw Day an d week of year
-			if (LUpperInfo == 9) {
+			if (UDInfo == 9) {
 				date.builddayWeekStr();				
 				dc.drawText(width / 2  , UDnorText, fontDigital, date.dayWeekStr, Gfx.TEXT_JUSTIFY_RIGHT);	
 		    	dc.drawText(width / 2 + 50, UDobereZeile, Gfx.FONT_XTINY, "day /", Gfx.TEXT_JUSTIFY_RIGHT);

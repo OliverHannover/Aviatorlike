@@ -20,7 +20,7 @@
     <property id="DigiFont" type="number">1</property>
     <property id="DateFormat" type="number">1</property>
     <property id="UpperDispEnable" type="boolean">true</property>
-    <property id="LUpperInfo" type="number">1</property>
+    <property id="UDInfo" type="number">1</property>
      <property id="LowerDispEnable" type="boolean">true</property>
     <property id="LDInfo" type="number">2</property>
     

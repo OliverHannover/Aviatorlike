@@ -214,17 +214,17 @@
         <settingConfig type="boolean" />
     </setting> 
    
-    <setting propertyKey="@Properties.LUpperInfo" title="@Strings.LUpperInfoTitle">
+    <setting propertyKey="@Properties.UDInfo" title="@Strings.UDInfoTitle">
         <settingConfig type="list">
-         	<listEntry value="1">@Strings.LUpperDate</listEntry>
-            <listEntry value="2">@Strings.LUpperSteps</listEntry>
-            <listEntry value="3">@Strings.LUpperStepstogo</listEntry>       
-            <listEntry value="4">@Strings.LUpperDigitalClock</listEntry>
-            <listEntry value="5">@Strings.LUpperAltitude</listEntry>
-            <listEntry value="6">@Strings.LUpperCalories</listEntry>
-            <listEntry value="7">@Strings.LUpperDistance</listEntry>
-            <listEntry value="8">@Strings.LUpperBattery</listEntry>
-            <listEntry value="9">@Strings.LUpperDayWeek</listEntry>
+         	<listEntry value="1">@Strings.UDDate</listEntry>
+            <listEntry value="2">@Strings.UDSteps</listEntry>
+            <listEntry value="3">@Strings.UDStepstogo</listEntry>       
+            <listEntry value="4">@Strings.UDDigitalClock</listEntry>
+            <listEntry value="5">@Strings.UDAltitude</listEntry>
+            <listEntry value="6">@Strings.UDCalories</listEntry>
+            <listEntry value="7">@Strings.UDDistance</listEntry>
+            <listEntry value="8">@Strings.UDBattery</listEntry>
+            <listEntry value="9">@Strings.UDDayWeek</listEntry>
         </settingConfig>
     </setting>
    

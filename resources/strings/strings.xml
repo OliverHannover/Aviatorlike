@@ -16,7 +16,7 @@
     <string id="DigiFontTitle">Font of displays</string>
     <string id="DateFormatTitle">Date format</string>
     <string id="UpperDispEnableTitle">Enable upper display</string>
-    <string id="LUpperInfoTitle">Info upper display</string>
+    <string id="UDInfoTitle">Info upper display</string>
     <string id="LowerDispEnableTitle">Enable lower display</string>
     <string id="LDInfoTitle">Info lower display</string>
     <string id="SecHandEnableTitle">Enable second hand</string>
@@ -59,15 +59,15 @@
     <string id="DF6">MM/DD/YYYY</string>
     
    
-    <string id="LUpperDate">Date</string>
-    <string id="LUpperSteps">Steps</string>
-    <string id="LUpperStepstogo">Steps to go</string>
-	<string id="LUpperDigitalClock">Dual time</string>
-	<string id="LUpperAltitude">Elevation</string>
-	<string id="LUpperCalories">Calories</string>
-	<string id="LUpperDistance">Distance</string>
-	<string id="LUpperBattery">Battery</string>
-	<string id="LUpperDayWeek">Day and week of year</string>
+    <string id="UDDate">Date</string>
+    <string id="UDSteps">Steps</string>
+    <string id="UDStepstogo">Steps to go</string>
+	<string id="UDDigitalClock">Dual time</string>
+	<string id="UDAltitude">Elevation</string>
+	<string id="UDCalories">Calories</string>
+	<string id="UDDistance">Distance</string>
+	<string id="UDBattery">Battery</string>
+	<string id="UDDayWeek">Day and week of year</string>
 	
     
     <string id="LDDate">Date</string>
