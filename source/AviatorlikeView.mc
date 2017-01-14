@@ -38,13 +38,10 @@ class AviatorlikeView extends Ui.WatchFace{
 		//altitude
 		var altitudeStr;
 		var altUnit; 
-		//distance
-		var distStr;
-		var distUnit;
+
 		//Battery
 		var BatteryStr;
-		//date
-		//var dateStr;
+
 		
 		
 
@@ -346,11 +343,27 @@ function drawBattery(dc) {
         //dc.drawText(width / 2, (height / 4 * 3), fontDigital, stepGoal, Gfx.TEXT_JUSTIFY_CENTER);
         //dc.drawText(width / 2, (height / 5), fontDigital, stepPercent, Gfx.TEXT_JUSTIFY_CENTER);
        
-       dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
-       if (stepPercent >= 100) {
+       	if (stepPercent >= 100) {
        		stepPercent = 100;
+       	} 
+       	
+       	if (stepPercent > 95) {
+       		dc.setColor(Gfx.COLOR_PURPLE, Gfx.COLOR_TRANSPARENT);
+       	}
+       	if (stepPercent <= 95) {
+       		dc.setColor(Gfx.COLOR_BLUE, Gfx.COLOR_TRANSPARENT);
+       	}
+       	if (stepPercent < 70 ) {
        		dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
-       	}     
+       	}
+       	if (stepPercent < 29) {
+       		dc.setColor(Gfx.COLOR_ORANGE , Gfx.COLOR_TRANSPARENT);
+       	}
+       	if (stepPercent < 5) {
+       		dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
+       	}
+       	
+       	    
               
         var alpha, hand;
         alpha = 0; 
@@ -375,64 +388,30 @@ function drawBattery(dc) {
 						[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
 						[center_x+r2*Math.sin(alpha-0.1),center_y-r2*Math.cos(alpha-0.1)]   ];					
 		
+       if (stepPercent < 100) {       
 					
-		dc.fillPolygon(hand);
-		
-		dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(1);
-        var n;
-		for (n=0; n<2; n++) {
-			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			dc.fillPolygon(hand);			
+			dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
+	        dc.setPenWidth(1);
+	        var n;
+			for (n=0; n<2; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+		
  	}
 
 
  
-	function drawDistance(dc) {
-	// Draw Distance------------------------------  
-			
-			distStr = 0;
-			//var highaltide = false;			
-			var unknownDistance = true;
-			var actDistance = 0;
-			var actInfo;
-			var metric = Sys.getDeviceSettings().distanceUnits == Sys.UNIT_METRIC;
-			distUnit = "Dist km";
-			
-			actInfo = ActMonitor.getInfo();
-			if (actInfo != null) {
-			
-				if (metric) {				
-				distUnit = "km";
-				actDistance = actInfo.distance * 0.00001;
-				} else {
-				distUnit = "mi";
-				actDistance = actInfo.distance * 0.00001 * 0.621371;
-				}
-				
-				//actDistance = actDistance.format("%2d");
-				if (actDistance != null) {
-					unknownDistance = false;
-				} 				
-			}
-					
-			if (unknownDistance) {
-				distStr = Lang.format("Dst ?");
-			} else {
-				distStr = Lang.format("$1$", [actDistance.format("%.2f")] );
-			}	
-	
-	} 
+
  
 
 
 // Handle the update event-----------------------------------------------------------------------
     function onUpdate(dc) {
     
-    
-    
-    
+   
     var LDInfo = (App.getApp().getProperty("LDInfo"));
    	var UDInfo = (App.getApp().getProperty("UDInfo"));
         
@@ -476,31 +455,51 @@ function drawBattery(dc) {
 	    }
 	    	
 	    //Texthöhen	
-	    var UDnorText = 0;	
+	    var UDTextwidth = 0;
+	    var UDTextHeight = 0;
+	    	
 	    var UDobereZeile = 0;
 	    var UDuntereZeile = 0;
+	    var UDExtraTextWidth = 0;
+	    //-------
+	    var LDTextwidth = 0;
+	    var LDTextHeight = 0;	
 	    
-	    var LDnorText = 0;	
 	    var LDobereZeile = 0;
 	    var LDuntereZeile = 0;
+	    var LDExtraTextWidth = 0;
 	    
-	    if (screenShape == 1) {  // round  	
-	    	UDnorText = height / 10 * 2.7;
+	    if (screenShape == 1) {  // round
+	    	//Upper display
+	   		UDTextwidth = width / 2;
+	    	UDTextHeight = height / 10 * 2.5;
+	    	//upper displax extra text
 	    	UDobereZeile = height / 10 * 2.4;
 	    	UDuntereZeile = height / 10 * 3;
-	    	
-	    	LDnorText = height / 10 * 6.8;
+	    	UDExtraTextWidth = width / 2 + 60;
+	    	//lower display 
+	    	LDTextwidth = width / 2;
+	    	LDTextHeight = height / 10 * 6.6;
+	    	//lower display extra text
 	    	LDobereZeile = height / 10 * 6.5;
 	    	LDuntereZeile = height / 10 * 7.1;
+	    	LDExtraTextWidth = width / 2 + 60;
 	    }
-	   	if (screenShape == 2) {  // semi round  	
-	    	UDnorText = height / 10 * 2.3;
+	    
+	   	if (screenShape == 2) {  // semi round  
+	   		UDTextwidth = width / 2; //
+	    	UDTextHeight = height / 10 * 2.2;
+	    
 	    	UDobereZeile = height / 10 * 1.95;
 	    	UDuntereZeile = height / 10 * 2.75;
-	    	
-	    	LDnorText = height / 10 * 6.4;
+	    	UDExtraTextWidth = width / 2 + 60; //
+	    	//------
+	    	LDTextwidth = width / 2;
+	    	LDTextHeight = height / 10 * 6.2;
+	    
 	    	LDobereZeile = height / 10 * 6.0;
 	    	LDuntereZeile = height / 10 * 6.8;
+	    	LDExtraTextWidth = width / 2 + 60;//
 	    	
 	    }
 	    
@@ -517,17 +516,17 @@ function drawBattery(dc) {
 		//background for upper display
 		dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);          
          if (screenShape == 1) {  // round       
-        	dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 2.4 , 130 , 35, 5);
+        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 2.4 , 140 , 35, 5);
       	 }
       	 if (screenShape == 2) {  // semi round       
-        	dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 2 , 130 , 35, 5);
+        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 2 , 140 , 35, 5);
       	 }
          dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);	    	
 	    	
 	 		//Draw date---------------------------------
 		   	if (UDInfo == 1) {
 		   		date.buildDateString(dc);      
-				dc.drawText(width / 2, UDnorText, fontDigital, date.dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
+				dc.drawText(UDTextwidth, UDTextHeight, fontDigital, date.dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
 			}	
 	
 	 	    //Draw Steps --------------------------------------
@@ -538,9 +537,9 @@ function drawBattery(dc) {
 				actsteps = ActMonitor.getInfo().steps;
 		        var stepsStr = Lang.format("$1$", [actsteps]);        	
 		        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-				dc.drawText(width / 2, UDnorText, fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-				dc.drawText(width / 2 + 50, UDobereZeile, Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
-				dc.drawText(width / 2 + 50, UDuntereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDTextwidth + 15, UDTextHeight, fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+				dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
 			
 			}
 			
@@ -556,31 +555,31 @@ function drawBattery(dc) {
 		        if (actsteps <= stepGoal) {
 			        stepstogo = stepGoal - actsteps;
 			        stepstogo = Lang.format("$1$", [stepstogo]);       
-					dc.drawText(width / 2, UDnorText, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
-					dc.drawText(width / 2 + 50, UDobereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
-					dc.drawText(width / 2 + 50, UDuntereZeile, Gfx.FONT_XTINY, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(UDTextwidth + 15, UDTextHeight, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
+					dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
 				}
 				 if (actsteps > stepGoal) {
 			        stepstogo = actsteps - stepGoal;
 			        stepstogo = Lang.format("$1$", [stepstogo]);       
-					dc.drawText(width / 2, UDnorText, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
-					dc.drawText(width / 2 + 50, UDobereZeile, Gfx.FONT_XTINY, "since", Gfx.TEXT_JUSTIFY_RIGHT);
-					dc.drawText(width / 2 + 50, UDuntereZeile, Gfx.FONT_XTINY, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(UDTextwidth + 15, UDTextHeight, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
+					dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "since", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
 				}
 			}
 	 		//Draw DigitalTime---------------------------------
 		   	if (UDInfo == 4) {
 			 drawDigitalTime(dc);
-			 dc.drawText(width / 2, UDnorText, fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
+			 dc.drawText(UDTextwidth, UDTextHeight, fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
 			}	         
 	        
 			
 	    	// Draw Altitude------------------------------
 			if (UDInfo == 5) {
 				drawAltitude(dc);
-				dc.drawText(width / 2, UDnorText, fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
-				dc.drawText(width / 2 + 50, UDobereZeile, Gfx.FONT_XTINY, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
-				dc.drawText(width / 2 + 50, UDuntereZeile, Gfx.FONT_XTINY, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDTextwidth, UDTextHeight, fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
+				dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 			 }	
 				
 			// Draw Calories------------------------------
@@ -589,15 +588,16 @@ function drawBattery(dc) {
 			var actInfo = ActMonitor.getInfo(); 
 	        var actcals = actInfo.calories;		       
 	        var calStr = Lang.format(" $1$ kCal ", [actcals]);	
-			dc.drawText(width / 2, UDnorText, fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
+			dc.drawText(UDTextwidth, UDTextHeight, fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
 			}
 			
 			//Draw distance
 			if (UDInfo == 7) {
-				drawDistance(dc);
-				dc.drawText(width / 2 + 20 , UDnorText, fontDigital, distStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+				distance.drawDistance(dc);
+				dc.drawText(UDTextwidth + 20 , UDTextHeight, fontDigital, distance.distStr, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "Dist", Gfx.TEXT_JUSTIFY_RIGHT);	
 		       	//draw unit-String
-				dc.drawText(width / 2 + 50, UDuntereZeile, Gfx.FONT_XTINY, distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, distance.distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			
@@ -605,16 +605,16 @@ function drawBattery(dc) {
 			if (UDInfo == 8) {
 				var Battery = Toybox.System.getSystemStats().battery;       
         	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
-				dc.drawText(width / 2 + 20 , UDnorText, fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-		       	dc.drawText(width / 2 + 50, UDuntereZeile, Gfx.FONT_XTINY, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDTextwidth + 20 , UDTextHeight, fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+		       	dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			//Draw Day an d week of year
 			if (UDInfo == 9) {
 				date.builddayWeekStr();				
-				dc.drawText(width / 2  , UDnorText, fontDigital, date.dayWeekStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-		    	dc.drawText(width / 2 + 50, UDobereZeile, Gfx.FONT_XTINY, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
-		    	dc.drawText(width / 2 + 50, UDuntereZeile, Gfx.FONT_XTINY, "week", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDTextwidth + 15  , UDTextHeight, fontDigital, date.dayWeekStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+		    	dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
+		    	dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "week", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			
@@ -630,17 +630,17 @@ function drawBattery(dc) {
 		//background for lower display
 		 dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);          
          if (screenShape == 1) {  // round       
-        	dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 6.5 , 130 , 35, 5);
+        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 6.5 , 140 , 35, 5);
       	 }
       	 if (screenShape == 2) {  // semi round       
-        	dc.fillRoundedRectangle(width / 2 -65 , height / 10 * 6.1 , 130 , 35, 5);
+        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 6.1 , 140 , 35, 5);
       	 }
          dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
          
 	
 		   if (LDInfo == 1) {
 			date.buildDateString(dc);        
-			dc.drawText(width / 2, LDnorText, fontDigital, date.dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
+			dc.drawText(LDTextwidth, LDTextHeight, fontDigital, date.dateStr, Gfx.TEXT_JUSTIFY_CENTER); 
 			}	
 	
 	 	    //Draw Steps --------------------------------------
@@ -651,9 +651,9 @@ function drawBattery(dc) {
 			actsteps = ActMonitor.getInfo().steps;
 	        var stepsStr = Lang.format("$1$", [actsteps]);        	
 	        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-			dc.drawText(width / 2, LDnorText, fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-			dc.drawText(width / 2 + 50, LDobereZeile, Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
-			dc.drawText(width / 2 + 50, LDuntereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+			dc.drawText(LDTextwidth + 15, LDTextHeight, fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+			dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
+			dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			//Draw Steps to go --------------------------------------
@@ -668,32 +668,32 @@ function drawBattery(dc) {
 		        if (actsteps <= stepGoal) {
 			        stepstogo = stepGoal - actsteps;
 			        stepstogo = Lang.format("$1$", [stepstogo]);       
-					dc.drawText(width / 2, LDnorText, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
-					dc.drawText(width / 2 + 50, LDobereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
-					dc.drawText(width / 2 + 50, LDuntereZeile, Gfx.FONT_XTINY, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(LDTextwidth + 15, LDTextHeight, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
+					dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
 				}
 				 if (actsteps > stepGoal) {
 			        stepstogo = actsteps - stepGoal;
 			        stepstogo = Lang.format("$1$", [stepstogo]);       
-					dc.drawText(width / 2, LDnorText, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
-					dc.drawText(width / 2 + 50, LDobereZeile, Gfx.FONT_XTINY, "since", Gfx.TEXT_JUSTIFY_RIGHT);
-					dc.drawText(width / 2 + 50, LDuntereZeile, Gfx.FONT_XTINY, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(LDTextwidth + 15, LDTextHeight, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
+					dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "since", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
 				}
 			}
 			
 	 		//Draw DigitalTime---------------------------------
 		   	if (LDInfo == 4) {
 			 	drawDigitalTime(dc);
-			 	dc.drawText(width / 2, LDnorText, fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
+			 	dc.drawText(LDTextwidth, LDTextHeight, fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
 			}	         
 	        
 			
 	    	// Draw Altitude------------------------------
 			if (LDInfo == 5) {
 				drawAltitude(dc);
-				dc.drawText(width / 2, LDnorText, fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
-				dc.drawText(width / 2 + 50, LDobereZeile, Gfx.FONT_XTINY, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
-				dc.drawText(width / 2 + 50, LDuntereZeile, Gfx.FONT_XTINY, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(LDTextwidth, LDTextHeight, fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
+				dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 			 }	
 				
 			// Draw Calories------------------------------
@@ -702,31 +702,32 @@ function drawBattery(dc) {
 				var actInfo = ActMonitor.getInfo(); 
 		        var actcals = actInfo.calories;		       
 		        var calStr = Lang.format(" $1$ kCal ", [actcals]);	
-				dc.drawText(width / 2, LDnorText, fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
+				dc.drawText(LDTextwidth, LDTextHeight, fontDigital, calStr, Gfx.TEXT_JUSTIFY_CENTER);	
 			}	
 			
 			//Draw distance
 			if (LDInfo == 7) {
-				drawDistance(dc);
-				dc.drawText(width / 2 + 20 , LDnorText, fontDigital, distStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+				distance.drawDistance(dc);
+				dc.drawText(LDTextwidth + 20 , LDTextHeight, fontDigital, distance.distStr, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "Dist", Gfx.TEXT_JUSTIFY_RIGHT);	
 		       	//draw unit-String
-				dc.drawText(width / 2 + 50, LDuntereZeile, Gfx.FONT_XTINY, distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, distance.distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			//Draw battery
 			if (LDInfo == 8) {
 				var Battery = Toybox.System.getSystemStats().battery;       
         	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
-				dc.drawText(width / 2 + 20 , LDnorText, fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-		       	dc.drawText(width / 2 + 50, LDuntereZeile, Gfx.FONT_XTINY, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(LDTextwidth + 20, LDTextHeight, fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+		       	dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			//Draw Day an d week of year
 			if (LDInfo == 9) {
 				date.builddayWeekStr();				
-				dc.drawText(width / 2  , LDnorText, fontDigital, date.dayWeekStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-		    	dc.drawText(width / 2 + 50, LDobereZeile, Gfx.FONT_XTINY, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
-		    	dc.drawText(width / 2 + 50, LDuntereZeile, Gfx.FONT_XTINY, "week", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(LDTextwidth + 15, LDTextHeight, fontDigital, date.dayWeekStr, Gfx.TEXT_JUSTIFY_RIGHT);	
+		    	dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
+		    	dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "week", Gfx.TEXT_JUSTIFY_RIGHT);
 		    }
 		}
 		

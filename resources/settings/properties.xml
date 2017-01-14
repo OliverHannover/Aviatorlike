@@ -1,5 +1,5 @@
 <properties>
-	<property id="appVersion" type="string">0.4.8</property>
+	<property id="appVersion" type="string">0.4.9</property>
 	
 	<property id="BatProgressEnable" type="boolean">true</property>
 	<property id="StepProgressEnable" type="boolean">true</property>
@@ -13,6 +13,9 @@
     <property id="HandsForm" type="number">1</property>
     <property id="HandsColor1" type="number">0xFF0000</property>
     <property id="HandsColor2" type="number">0xAA0000</property>
+    
+    <property id="HandOutlinesEnable" type="boolean">false</property>
+    <property id="HandsOutlineColor" type="number">0x000000</property>
     
     <property id="SecHandEnable" type="boolean">true</property>
     <property id="SecHandsColor" type="number">0x00AAFF</property>

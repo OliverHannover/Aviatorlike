@@ -11,6 +11,7 @@
     <string id="HandsFormTitle">Kind of hands</string>
     <string id="HandsColor1Title">First color of hands</string>
     <string id="HandsColor2Title">Second color of hands</string>
+    <string id="HandsOutlineColorTitle">Hands outline color</string>  
     <string id="SecHandsColorTitle">Color of second hand</string>
     
     <string id="DigiFontTitle">Font of displays</string>
@@ -23,6 +24,7 @@
     
     <string id="BatProgressEnableTitle">Enable battery progress marker</string>
     <string id="StepProgressEnableTitle">Enable step progress marker</string>
+    <string id="HandOutlinesEnableTitle">Enable outline around some hands</string>
     
 
     <string id="ColorBlack">Black</string>
