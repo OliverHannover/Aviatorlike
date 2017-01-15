@@ -2,14 +2,14 @@
 fileVersion=1
 
 # font settings
-fontName=Modern No. 20
+fontName=Roboto Medium
 fontFile=
 charSet=0
-fontSize=24
+fontSize=17
 aa=1
 scaleH=100
 useSmoothing=1
-isBold=1
+isBold=0
 isItalic=0
 useUnicode=1
 disableBoxChars=1
@@ -50,6 +50,6 @@ invB=0
 outlineThickness=0
 
 # selected chars
-chars=32-33,37,40-93,97-126,160,171,187-246,248-255
+chars=32-33,40-93,97-126,160,171,187-246,248-255
 
 # imported icon images

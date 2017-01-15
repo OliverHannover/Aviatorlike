@@ -5,4 +5,5 @@
 	<font id="id_font_roman" filename="roman.fnt" />
 	<font id="id_font_digital" filename="digital.fnt" />
 	<font id="id_font_classicklein" filename="classicklein.fnt" />
+	<font id="id_font_label" filename="label.fnt" />
 </resources>

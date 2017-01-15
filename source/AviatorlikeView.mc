@@ -15,9 +15,10 @@ class AviatorlikeView extends Ui.WatchFace{
 
     var font1;
     var fontDigital;
+    var fontLabel;
+    
     var isAwake;
     var screenShape;
-    //var dndIcon;
     
     var clockTime;
     
@@ -58,7 +59,8 @@ class AviatorlikeView extends Ui.WatchFace{
     function onLayout(dc) {    
     	font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
         //font1 = Gfx.FONT_SYSTEM_NUMBER_SMALL;
-        fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);        
+        fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);
+        fontLabel = Ui.loadResource(Rez.Fonts.id_font_label);        
         
     }
 
@@ -538,8 +540,8 @@ function drawBattery(dc) {
 		        var stepsStr = Lang.format("$1$", [actsteps]);        	
 		        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
 				dc.drawText(UDTextwidth + 15, UDTextHeight, fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-				dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
-				dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDExtraTextWidth, UDobereZeile, fontLabel, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDExtraTextWidth, UDuntereZeile, fontLabel, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
 			
 			}
 			
@@ -556,15 +558,15 @@ function drawBattery(dc) {
 			        stepstogo = stepGoal - actsteps;
 			        stepstogo = Lang.format("$1$", [stepstogo]);       
 					dc.drawText(UDTextwidth + 15, UDTextHeight, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
-					dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
-					dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(UDExtraTextWidth, UDobereZeile, fontLabel, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(UDExtraTextWidth, UDuntereZeile, fontLabel, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
 				}
 				 if (actsteps > stepGoal) {
 			        stepstogo = actsteps - stepGoal;
 			        stepstogo = Lang.format("$1$", [stepstogo]);       
 					dc.drawText(UDTextwidth + 15, UDTextHeight, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
-					dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "since", Gfx.TEXT_JUSTIFY_RIGHT);
-					dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(UDExtraTextWidth, UDobereZeile, fontLabel, "since", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(UDExtraTextWidth, UDuntereZeile, fontLabel, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
 				}
 			}
 	 		//Draw DigitalTime---------------------------------
@@ -578,8 +580,8 @@ function drawBattery(dc) {
 			if (UDInfo == 5) {
 				drawAltitude(dc);
 				dc.drawText(UDTextwidth, UDTextHeight, fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
-				dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
-				dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDExtraTextWidth, UDobereZeile, fontLabel, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDExtraTextWidth, UDuntereZeile, fontLabel, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 			 }	
 				
 			// Draw Calories------------------------------
@@ -595,9 +597,9 @@ function drawBattery(dc) {
 			if (UDInfo == 7) {
 				distance.drawDistance(dc);
 				dc.drawText(UDTextwidth + 20 , UDTextHeight, fontDigital, distance.distStr, Gfx.TEXT_JUSTIFY_RIGHT);
-				dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "Dist", Gfx.TEXT_JUSTIFY_RIGHT);	
+				dc.drawText(UDExtraTextWidth, UDobereZeile, fontLabel, "Dist", Gfx.TEXT_JUSTIFY_RIGHT);	
 		       	//draw unit-String
-				dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, distance.distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(UDExtraTextWidth, UDuntereZeile, fontLabel, distance.distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			
@@ -606,15 +608,15 @@ function drawBattery(dc) {
 				var Battery = Toybox.System.getSystemStats().battery;       
         	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
 				dc.drawText(UDTextwidth + 20 , UDTextHeight, fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-		       	dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
+		       	dc.drawText(UDExtraTextWidth, UDuntereZeile, fontLabel, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			//Draw Day an d week of year
 			if (UDInfo == 9) {
 				date.builddayWeekStr();				
 				dc.drawText(UDTextwidth + 15  , UDTextHeight, fontDigital, date.dayWeekStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-		    	dc.drawText(UDExtraTextWidth, UDobereZeile, Gfx.FONT_XTINY, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
-		    	dc.drawText(UDExtraTextWidth, UDuntereZeile, Gfx.FONT_XTINY, "week", Gfx.TEXT_JUSTIFY_RIGHT);
+		    	dc.drawText(UDExtraTextWidth, UDobereZeile, fontLabel, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
+		    	dc.drawText(UDExtraTextWidth, UDuntereZeile, fontLabel, "week", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			
@@ -652,8 +654,8 @@ function drawBattery(dc) {
 	        var stepsStr = Lang.format("$1$", [actsteps]);        	
 	        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
 			dc.drawText(LDTextwidth + 15, LDTextHeight, fontDigital, stepsStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-			dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
-			dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+			dc.drawText(LDExtraTextWidth, LDobereZeile, fontLabel, stepGoal, Gfx.TEXT_JUSTIFY_RIGHT);
+			dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			//Draw Steps to go --------------------------------------
@@ -669,15 +671,15 @@ function drawBattery(dc) {
 			        stepstogo = stepGoal - actsteps;
 			        stepstogo = Lang.format("$1$", [stepstogo]);       
 					dc.drawText(LDTextwidth + 15, LDTextHeight, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
-					dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
-					dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(LDExtraTextWidth, LDobereZeile, fontLabel, "steps", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, "to go", Gfx.TEXT_JUSTIFY_RIGHT);
 				}
 				 if (actsteps > stepGoal) {
 			        stepstogo = actsteps - stepGoal;
 			        stepstogo = Lang.format("$1$", [stepstogo]);       
 					dc.drawText(LDTextwidth + 15, LDTextHeight, fontDigital, stepstogo, Gfx.TEXT_JUSTIFY_RIGHT);	
-					dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "since", Gfx.TEXT_JUSTIFY_RIGHT);
-					dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(LDExtraTextWidth, LDobereZeile, fontLabel, "since", Gfx.TEXT_JUSTIFY_RIGHT);
+					dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, "goal", Gfx.TEXT_JUSTIFY_RIGHT);
 				}
 			}
 			
@@ -692,8 +694,8 @@ function drawBattery(dc) {
 			if (LDInfo == 5) {
 				drawAltitude(dc);
 				dc.drawText(LDTextwidth, LDTextHeight, fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
-				dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
-				dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(LDExtraTextWidth, LDobereZeile, fontLabel, "Alt", Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, altUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 			 }	
 				
 			// Draw Calories------------------------------
@@ -709,9 +711,9 @@ function drawBattery(dc) {
 			if (LDInfo == 7) {
 				distance.drawDistance(dc);
 				dc.drawText(LDTextwidth + 20 , LDTextHeight, fontDigital, distance.distStr, Gfx.TEXT_JUSTIFY_RIGHT);
-				dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "Dist", Gfx.TEXT_JUSTIFY_RIGHT);	
+				dc.drawText(LDExtraTextWidth, LDobereZeile, fontLabel, "Dist", Gfx.TEXT_JUSTIFY_RIGHT);	
 		       	//draw unit-String
-				dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, distance.distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
+				dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, distance.distUnit, Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			//Draw battery
@@ -719,15 +721,15 @@ function drawBattery(dc) {
 				var Battery = Toybox.System.getSystemStats().battery;       
         	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
 				dc.drawText(LDTextwidth + 20, LDTextHeight, fontDigital, BatteryStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-		       	dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
+		       	dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, "Bat", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
 			//Draw Day an d week of year
 			if (LDInfo == 9) {
 				date.builddayWeekStr();				
 				dc.drawText(LDTextwidth + 15, LDTextHeight, fontDigital, date.dayWeekStr, Gfx.TEXT_JUSTIFY_RIGHT);	
-		    	dc.drawText(LDExtraTextWidth, LDobereZeile, Gfx.FONT_XTINY, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
-		    	dc.drawText(LDExtraTextWidth, LDuntereZeile, Gfx.FONT_XTINY, "week", Gfx.TEXT_JUSTIFY_RIGHT);
+		    	dc.drawText(LDExtraTextWidth, LDobereZeile, fontLabel, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
+		    	dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, "week", Gfx.TEXT_JUSTIFY_RIGHT);
 		    }
 		}
 		
@@ -835,8 +837,8 @@ function drawBattery(dc) {
      	dc.setPenWidth(2);
         dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
         dc.drawCircle(width / 2 + 30, height / 2 -7, 5);
-        dc.drawText(width / 2 + 30, height / 2 -2, Gfx.FONT_XTINY, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
-        //dc.drawText(width / 3 + 7, height / 2, Gfx.FONT_XTINY, messages, Gfx.TEXT_JUSTIFY_CENTER); 
+        dc.drawText(width / 2 + 30, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
+        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER); 
       
 	  //Alarm is set 	
      	var alarm = Sys.getDeviceSettings().alarmCount;     	
@@ -847,8 +849,8 @@ function drawBattery(dc) {
      	dc.setPenWidth(2);
         dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
         dc.drawCircle(width / 2 - 30, height / 2 -7, 5);
-        dc.drawText(width / 2 - 30, height / 2 -2, Gfx.FONT_XTINY, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
-        //dc.drawText(width / 3 + 7, height / 2, Gfx.FONT_XTINY, messages, Gfx.TEXT_JUSTIFY_CENTER);        
+        dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
+        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);        
     
 
   

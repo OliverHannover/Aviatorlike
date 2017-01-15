@@ -2,6 +2,8 @@
     <iq:application entry="AviatorlikeApp" id="CCDC19A246E54A2589B40F655A3515F2" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="1.3.1" name="@Strings.AppName" type="watchface">
 
         <iq:products>
+            <iq:product id="fenix5"/>
+            <iq:product id="fenix5x"/>
             <iq:product id="fr630"/>
             <iq:product id="fr235"/>
             <iq:product id="fr735xt"/>

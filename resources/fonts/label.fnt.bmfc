@@ -2,10 +2,10 @@
 fileVersion=1
 
 # font settings
-fontName=DJB Get Digital
+fontName=Roboto Medium
 fontFile=
 charSet=0
-fontSize=34
+fontSize=17
 aa=1
 scaleH=100
 useSmoothing=1
@@ -50,6 +50,6 @@ invB=0
 outlineThickness=0
 
 # selected chars
-chars=32,37,40-41,45-95,97-125,160-161,188-255
+chars=32-33,40-93,97-126,160,171,187-246,248-255
 
 # imported icon images

@@ -22,9 +22,11 @@ module date{
     
 		
 		if (dateFormat == 1) {
+		info = Calendar.info(now, Time.FORMAT_MEDIUM);
         dateStr = Lang.format("$1$ $2$ $3$", [info.day_of_week, info.day, info.month ]);
         }        
         if (dateFormat == 2) {
+        info = Calendar.info(now, Time.FORMAT_MEDIUM);
         dateStr = Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);  
  		}
  		if (dateFormat == 3) {

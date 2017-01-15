@@ -2,14 +2,14 @@
 fileVersion=1
 
 # font settings
-fontName=Modern No. 20
+fontName=DJB Get Digital
 fontFile=
 charSet=0
-fontSize=26
+fontSize=35
 aa=1
 scaleH=100
 useSmoothing=1
-isBold=1
+isBold=0
 isItalic=0
 useUnicode=1
 disableBoxChars=1
@@ -50,6 +50,6 @@ invB=0
 outlineThickness=0
 
 # selected chars
-chars=32-33,40-93,97-126,160,171,187-246,248-255
+chars=32,37,40-41,45-95,97-125,160-161,188-255
 
 # imported icon images
