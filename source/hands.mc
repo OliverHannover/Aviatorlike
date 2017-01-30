@@ -277,37 +277,20 @@ module hands{
 		
 			r1 = width/2 - 70; //inside
 			var thicknes = 0.25;
-
+			r2 = 5;
 			
 			//rectangle on bottom 
-			r2 = 5;
-				
-				hand =        	[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
+				hand1 =        	[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
 								[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
 								[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)],
 								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
-								
-		if (outlineEnable) {
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(6);
-			for (n=0; n<3; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-		}						
 		
-		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);						
-		dc.setPenWidth(4);
-		for (n=0; n<3; n++) {
-			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-		
-		
-		//triangle at tip	 									
+			//triangle at tip	 									
 			hand =    		[[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
 							[center_x+(hour_radius)*Math.sin(alpha),center_y-(hour_radius)*Math.cos(alpha)],
-							[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)]   ];
-			
+							[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)]   ];	
+		
+		
 			//outline around at tip
 			if (outlineEnable) {
 				dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
@@ -316,6 +299,27 @@ module hands{
 					dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 				}
 			}
+		
+		//rectangle on bottom 						
+		if (outlineEnable) {
+			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(6);
+			for (n=0; n<3; n++) {
+				dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
+			}
+		}						
+		
+		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);						
+		dc.setPenWidth(4);
+		for (n=0; n<3; n++) {
+			dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
+		}
+		dc.drawLine(hand1[n][0], hand1[n][1], hand1[0][0], hand1[0][1]);
+		
+		
+
+			
+
 				
 			//tip polygon
 			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
@@ -344,35 +348,21 @@ module hands{
 			dc.setPenWidth(2);
 		
 			r1 = width/2 - 50; //inside
-			thicknes = 0.16;		
-			//rectangle 
+			thicknes = 0.16;					
 			r2 = 5;
-
-				hand =        	[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
+			
+			//rectangle bottom
+			hand1 =        		[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
 								[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
 								[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)],
 								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
 								
-			if (outlineEnable) {
-				dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-				dc.setPenWidth(6);
-				for (n=0; n<3; n++) {
-					dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-				}
-			}
-			
-			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);						
-			dc.setPenWidth(4);
-			for (n=0; n<3; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-		
+								
 			//triangle at top of minutes
-			hand =    		 [[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
-							[center_x+(minute_radius)*Math.sin(alpha),center_y-(minute_radius)*Math.cos(alpha)],
-							[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)]   ];
-																	
+			hand =    			[[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
+								[center_x+(minute_radius)*Math.sin(alpha),center_y-(minute_radius)*Math.cos(alpha)],
+								[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)]   ];	
+								
 			//outline around at tip
 			if (outlineEnable) {
 				dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
@@ -380,7 +370,29 @@ module hands{
 				for (n=0; n<2; n++) {
 					dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 				}
+			}					
+								
+											
+			
+			//outline around bottom rectangle					
+			if (outlineEnable) {
+				dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+				dc.setPenWidth(6);
+				for (n=0; n<3; n++) {
+					dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
+				}
 			}
+			//bottom rectangle
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);						
+			dc.setPenWidth(4);
+			for (n=0; n<3; n++) {
+				dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
+			}
+			dc.drawLine(hand1[n][0], hand1[n][1], hand1[0][0], hand1[0][1]);
+		
+			
+																	
+
 				
 			//tip polygon
 			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
@@ -388,6 +400,7 @@ module hands{
 
 			//outline for tip
 			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+			//dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
 			dc.setPenWidth(4);		
 			for (n=0; n<2; n++) {
 				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
@@ -403,10 +416,10 @@ module hands{
 		//Centerpoint
 		dc.setPenWidth(1);
 		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.fillCircle(center_x,center_y,9);
+		dc.fillCircle(center_x,center_y,10);
 		
 		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-		dc.drawCircle(center_x,center_y,8);
+		dc.drawCircle(center_x,center_y,9);
 		
 	}// End of if (HandsForm Diver)		
 		

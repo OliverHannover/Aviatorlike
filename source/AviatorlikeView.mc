@@ -325,9 +325,9 @@ function drawBattery(dc) {
 		for (n=0; n<2; n++) {
 			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-		
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);		
 	}
+	
 	
 	//StepGoal progress-------------------------------
  	function drawStepGoal(dc) {
@@ -850,8 +850,11 @@ function drawBattery(dc) {
         dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
         dc.drawCircle(width / 2 - 30, height / 2 -7, 5);
         dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
-        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);        
-    
+        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER); 
+        
+
+	       
+ 
 
   
   // Draw hands ------------------------------------------------------------------         
