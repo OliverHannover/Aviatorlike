@@ -29,6 +29,7 @@ class AviatorlikeView extends Ui.WatchFace{
     var center_y;     
 
 	//Variablen für die digitale Uhr
+		var ampmStr = "am";
 		var timeStr;		
 		var Use24hFormat;
 		var dualtime = false;
@@ -42,6 +43,13 @@ class AviatorlikeView extends Ui.WatchFace{
 
 		//Battery
 		var BatteryStr;
+	
+	//sunset sunrise	
+	hidden var sunset_sunrise;
+	hidden var sunrise;
+	hidden var sunset;
+	hidden var lastLoc;
+	var sunsetStr;
 
 		
 		
@@ -204,7 +212,7 @@ class AviatorlikeView extends Ui.WatchFace{
 			dtmin = dtinfo.min;
 			
 			var use24hclock;
-			var ampmStr = "am ";
+			//var ampmStr = "am ";
 			
 			use24hclock = Sys.getDeviceSettings().is24Hour;
 			if (!use24hclock) {
@@ -229,9 +237,7 @@ class AviatorlikeView extends Ui.WatchFace{
 			} else {
 				timeStr = timeStr + Lang.format("$1$ ", [dtmin]);
 			}
-			if (!use24hclock) {
-				timeStr = timeStr + ampmStr; 
-			}   	
+  	
  	    		 
   
   
@@ -405,8 +411,68 @@ function drawBattery(dc) {
  	}
 
 
- 
+     function getMoment(now,what) {
+		return SunCalc.calculate(now, lastLoc[0], lastLoc[1], what);
+	}
 
+	function momentToString(moment) {
+
+		if (moment == null) {
+			return "--:--";
+		}
+
+   		var tinfo = Time.Gregorian.info(new Time.Moment(moment.value() + 30), Time.FORMAT_SHORT);
+		var text;
+		if (Sys.getDeviceSettings().is24Hour) {
+			text = tinfo.hour.format("%02d") + ":" + tinfo.min.format("%02d");
+		} else {
+			var hour = tinfo.hour % 12;
+			if (hour == 0) {
+				hour = 12;
+			}
+			text = hour.format("%02d") + ":" + tinfo.min.format("%02d");
+			
+		//	if (tinfo.hour < 12 || tinfo.hour == 24) {
+		//		text = text + " AM";
+		//	} else {
+		//		text = text + " PM";
+		//	}
+		}
+
+		return text;
+	}
+ 
+ 
+ 
+	function builSunsetStr(dc) {
+
+			var moment = Time.now();
+	        var info_date = Calendar.info(moment, Time.FORMAT_LONG);
+	        var actInfo = Act.getActivityInfo();       
+	        
+	        //sunset or sunrise       
+	        if(actInfo.currentLocation!=null){
+	    		lastLoc = actInfo.currentLocation.toRadians();
+	    		var sunrise_moment = getMoment(moment,SUNRISE);
+	    		var sunset_moment = getMoment(moment,SUNSET);
+				sunrise = momentToString(sunrise_moment);
+				sunset = momentToString(sunset_moment);
+				
+				if(moment.greaterThan(sunset_moment) || moment.lessThan(sunrise_moment)){
+    				sunsetStr =  sunrise + "/" + sunset;
+    			}else{
+    				sunsetStr =  sunset + "/" + sunrise;
+    			}				
+	    	}else{
+	    		sunrise = Ui.loadResource(Rez.Strings.none);
+	    		sunset = Ui.loadResource(Rez.Strings.none);
+	    	}
+	    	
+	    	//sunsetStr =  sunrise + "/" + sunset;
+	    	//dc.drawText(width/2, height / 10 * 6, Gfx.FONT_SMALL, sunrise + " / " + sunset, Gfx.TEXT_JUSTIFY_CENTER);	
+	
+	}	
+	
  
 
 
@@ -439,15 +505,21 @@ function drawBattery(dc) {
 //Draw Digital Elements ------------------------------------------------------------------ 
 
          var digiFont = (App.getApp().getProperty("DigiFont")); 
-          
+         //Sys.println("digiFont="+ digiFont);
+         fontDigital = null;
+         
     	//font for display
-	    if ( digiFont == 1) { //digital
-	    	fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);     
+	    if ( digiFont == 1) { //!digital
+	    	fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital); 
+	    	//fontDigital = Gfx.FONT_SYSTEM_MEDIUM ;
+	    	//Sys.println("set digital");    
 	    	}
-	    if ( digiFont == 2) { //digital
-        	fontDigital = Ui.loadResource(Rez.Fonts.id_font_classicklein);      
+	    if ( digiFont == 2) { //!classik
+        	fontDigital = Ui.loadResource(Rez.Fonts.id_font_classicklein); 
+        	//fontDigital = Gfx.FONT_SYSTEM_MEDIUM ;
+        	//Sys.println("set classic");     
 	    	}
-	    if ( digiFont == 3) { //simple
+	    if ( digiFont == 3) { //!simple
 	    	if (screenShape == 1) {  // round 
         		fontDigital = Gfx.FONT_SYSTEM_SMALL ; 
         	}
@@ -492,15 +564,15 @@ function drawBattery(dc) {
 	   		UDTextwidth = width / 2; //
 	    	UDTextHeight = height / 10 * 2.2;
 	    
-	    	UDobereZeile = height / 10 * 1.95;
-	    	UDuntereZeile = height / 10 * 2.75;
+	    	UDobereZeile = height / 10 * 2;
+	    	UDuntereZeile = height / 10 * 2.8;
 	    	UDExtraTextWidth = width / 2 + 60; //
 	    	//------
 	    	LDTextwidth = width / 2;
 	    	LDTextHeight = height / 10 * 6.2;
 	    
-	    	LDobereZeile = height / 10 * 6.0;
-	    	LDuntereZeile = height / 10 * 6.8;
+	    	LDobereZeile = height / 10 * 6.1;
+	    	LDuntereZeile = height / 10 * 6.9;
 	    	LDExtraTextWidth = width / 2 + 60;//
 	    	
 	    }
@@ -518,10 +590,10 @@ function drawBattery(dc) {
 		//background for upper display
 		dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);          
          if (screenShape == 1) {  // round       
-        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 2.4 , 140 , 35, 5);
+        	dc.fillRoundedRectangle(width / 2 -72 , height / 10 * 2.4 , 144 , 35, 5);
       	 }
       	 if (screenShape == 2) {  // semi round       
-        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 2 , 140 , 35, 5);
+        	dc.fillRoundedRectangle(width / 2 -72 , height / 10 * 2 , 144 , 35, 5);
       	 }
          dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);	    	
 	    	
@@ -573,6 +645,9 @@ function drawBattery(dc) {
 		   	if (UDInfo == 4) {
 			 drawDigitalTime(dc);
 			 dc.drawText(UDTextwidth, UDTextHeight, fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
+			 if (!Sys.getDeviceSettings().is24Hour) {
+				dc.drawText(UDExtraTextWidth, UDuntereZeile, fontLabel, ampmStr, Gfx.TEXT_JUSTIFY_RIGHT); 
+			} 
 			}	         
 	        
 			
@@ -619,6 +694,14 @@ function drawBattery(dc) {
 		    	dc.drawText(UDExtraTextWidth, UDuntereZeile, fontLabel, "week", Gfx.TEXT_JUSTIFY_RIGHT);
 			}
 			
+			//Draw Day an d week of year
+			if (UDInfo == 10) {
+				builSunsetStr(dc);		
+				//sunsetStr = "test";		
+				dc.drawText(UDTextwidth, UDTextHeight, fontDigital, sunsetStr, Gfx.TEXT_JUSTIFY_CENTER);	
+		    	//dc.drawText(LDExtraTextWidth, LDobereZeile, fontLabel, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
+		    	//dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, "week", Gfx.TEXT_JUSTIFY_RIGHT);
+		    }
 			
 			
 			
@@ -687,6 +770,9 @@ function drawBattery(dc) {
 		   	if (LDInfo == 4) {
 			 	drawDigitalTime(dc);
 			 	dc.drawText(LDTextwidth, LDTextHeight, fontDigital, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
+			 	if (!Sys.getDeviceSettings().is24Hour) {
+				dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, ampmStr, Gfx.TEXT_JUSTIFY_RIGHT); 
+				} 
 			}	         
 	        
 			
@@ -731,9 +817,18 @@ function drawBattery(dc) {
 		    	dc.drawText(LDExtraTextWidth, LDobereZeile, fontLabel, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
 		    	dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, "week", Gfx.TEXT_JUSTIFY_RIGHT);
 		    }
+		    //Draw Day an d week of year
+			if (LDInfo == 10) {
+				builSunsetStr(dc);		
+				//sunsetStr = "test";		
+				dc.drawText(LDTextwidth, LDTextHeight, fontDigital, sunsetStr, Gfx.TEXT_JUSTIFY_CENTER);	
+		    	//dc.drawText(LDExtraTextWidth, LDobereZeile, fontLabel, "day /", Gfx.TEXT_JUSTIFY_RIGHT);
+		    	//dc.drawText(LDExtraTextWidth, LDuntereZeile, fontLabel, "week", Gfx.TEXT_JUSTIFY_RIGHT);
+		    }		    
+		    
 		}
 		
-	
+		
 	
 			
 		//!progress battery------------
@@ -749,7 +844,8 @@ function drawBattery(dc) {
 
       // Draw the numbers --------------------------------------------------------------------------------------
        var NbrFont = (App.getApp().getProperty("Numbers")); 
-       dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);  
+       dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+       font1 = null;  
        
        if (screenShape == 1) {  // round     
 		    if ( NbrFont == 1) { //fat

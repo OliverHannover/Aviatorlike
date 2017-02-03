@@ -1,6 +1,8 @@
 <strings>
 	<string id="AppName">Aviatorlike</string>
 	<string id="AppVersionTitle">Version</string>
+	
+	<string id="none">None</string>
 
     <string id="BackgroundColorTitle">Background color</string>
     <string id="DigitalBackgroundColorTitle">Display background color</string>
@@ -70,6 +72,7 @@
 	<string id="UDDistance">Distance</string>
 	<string id="UDBattery">Battery</string>
 	<string id="UDDayWeek">Day and week of year</string>
+	<string id="UDSunsetRise">next/over next sun event</string>
 	
     
     <string id="LDDate">Date</string>
@@ -81,6 +84,7 @@
 	<string id="LDDistance">Distance</string>
 	<string id="LDBattery">Battery</string>
 	<string id="LDDayWeek">Day and week of year</string>
+	<string id="LDSunsetRise">next/over next sun event</string>
 
 	<string id="HandsRace">Race</string>
 	<string id="HandsPilot">Pilot</string>

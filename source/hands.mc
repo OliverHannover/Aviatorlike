@@ -688,11 +688,11 @@ module hands{
 	
 		//Centerpoint
 		dc.setPenWidth(2);
-		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
 		dc.fillCircle(center_x,center_y,4);
 		
 		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.drawCircle(center_x,center_y,4);
+		dc.drawCircle(center_x,center_y,5);
 }
 
 

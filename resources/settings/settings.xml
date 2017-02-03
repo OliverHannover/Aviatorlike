@@ -248,6 +248,7 @@
             <listEntry value="7">@Strings.UDDistance</listEntry>
             <listEntry value="8">@Strings.UDBattery</listEntry>
             <listEntry value="9">@Strings.UDDayWeek</listEntry>
+            <listEntry value="10">@Strings.UDSunsetRise</listEntry>
         </settingConfig>
     </setting>
    
@@ -266,6 +267,7 @@
             <listEntry value="7">@Strings.LDDistance</listEntry>
             <listEntry value="8">@Strings.LDBattery</listEntry>
             <listEntry value="9">@Strings.LDDayWeek</listEntry>
+            <listEntry value="10">@Strings.LDSunsetRise</listEntry>
         </settingConfig>
     </setting>
 

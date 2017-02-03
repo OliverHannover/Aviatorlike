@@ -1,5 +1,5 @@
 <properties>
-	<property id="appVersion" type="string">0.5.0</property>
+	<property id="appVersion" type="string">0.5.1</property>
 	
 	<property id="BatProgressEnable" type="boolean">true</property>
 	<property id="StepProgressEnable" type="boolean">true</property>
