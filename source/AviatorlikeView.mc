@@ -46,10 +46,10 @@ class AviatorlikeView extends Ui.WatchFace{
 	
 	//sunset sunrise	
 	hidden var sunset_sunrise;
-	hidden var sunrise;
-	hidden var sunset;
+	//hidden var sunrise;
+	//hidden var sunset;
 	hidden var lastLoc;
-	var sunsetStr;
+	hidden var sunsetStr;
 
 		
 		
@@ -455,8 +455,8 @@ function drawBattery(dc) {
 	    		lastLoc = actInfo.currentLocation.toRadians();
 	    		var sunrise_moment = getMoment(moment,SUNRISE);
 	    		var sunset_moment = getMoment(moment,SUNSET);
-				sunrise = momentToString(sunrise_moment);
-				sunset = momentToString(sunset_moment);
+				var sunrise = momentToString(sunrise_moment);
+				var sunset = momentToString(sunset_moment);
 				
 				if(moment.greaterThan(sunset_moment) || moment.lessThan(sunrise_moment)){
     				sunsetStr =  sunrise + "/" + sunset;
@@ -464,8 +464,7 @@ function drawBattery(dc) {
     				sunsetStr =  sunset + "/" + sunrise;
     			}				
 	    	}else{
-	    		sunrise = Ui.loadResource(Rez.Strings.none);
-	    		sunset = Ui.loadResource(Rez.Strings.none);
+	    		sunsetStr = Ui.loadResource(Rez.Strings.none);
 	    	}
 	    	
 	    	//sunsetStr =  sunrise + "/" + sunset;
@@ -473,6 +472,54 @@ function drawBattery(dc) {
 	
 	}	
 	
+ function drawSunMarkers(dc) {
+	// Draw Sunset / sunrise markers -------------------------------------------------------------------------
+		var width = dc.getWidth();
+        var height = dc.getHeight();
+        center_x = dc.getWidth() / 2;
+        center_y = dc.getHeight() / 2;
+        
+        var alphaSunrise = 0;
+        var alphaSunset = 0;
+        var hand; 
+        
+		var moment = Time.now();
+	    var info_date = Calendar.info(moment, Time.FORMAT_LONG);
+     	var actInfo = Act.getActivityInfo();       
+	        
+      
+		if(actInfo.currentLocation!=null){
+    		lastLoc = actInfo.currentLocation.toRadians();
+    		var sunrise_moment = getMoment(moment,SUNRISE);
+    		var sunset_moment = getMoment(moment,SUNSET);
+			
+			var sunriseTinfo = Time.Gregorian.info(new Time.Moment(sunrise_moment.value() + 30), Time.FORMAT_SHORT);
+			var sunsetTinfo = Time.Gregorian.info(new Time.Moment(sunset_moment.value() + 30), Time.FORMAT_SHORT);
+   	       
+    		alphaSunrise = Math.PI/6*(1.0*sunriseTinfo.hour+sunriseTinfo.min/60.0);
+    		alphaSunset = Math.PI/6*(1.0*sunsetTinfo.hour+sunsetTinfo.min/60.0);
+      
+        	var r1, r2;      	
+        	var outerRad = 0;
+        	var lenth = 10;
+     
+			r1 = width/2 - outerRad; //outside
+			r2 = r1 -lenth; ////Länge des Bat-Zeigers
+     
+			dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(3);		
+			dc.drawLine(center_x+r1*Math.sin(alphaSunrise),center_y-r1*Math.cos(alphaSunrise), center_x+r2*Math.sin(alphaSunrise),center_y-r2*Math.cos(alphaSunrise));		
+			dc.fillCircle(center_x+(r1-15)*Math.sin(alphaSunrise),center_y-(r1-15)*Math.cos(alphaSunrise),6);
+			dc.drawLine(center_x+r1*Math.sin(alphaSunset),center_y-r1*Math.cos(alphaSunset), center_x+(r2-10)*Math.sin(alphaSunset),center_y-(r2-10)*Math.cos(alphaSunset));		
+			dc.fillCircle(center_x+(r1-5)*Math.sin(alphaSunset),center_y-(r1-5)*Math.cos(alphaSunset),6);
+			
+			dc.setColor(Gfx.COLOR_YELLOW, Gfx.COLOR_TRANSPARENT);	
+			dc.fillCircle(center_x+(r1-15)*Math.sin(alphaSunrise),center_y-(r1-15)*Math.cos(alphaSunrise),4);	
+			dc.fillCircle(center_x+(r1-5)*Math.sin(alphaSunset),center_y-(r1-5)*Math.cos(alphaSunset),4);       
+		}	
+					
+		
+	}
  
 
 
@@ -841,6 +888,14 @@ function drawBattery(dc) {
        	if (StepProgressEnable) {
 			drawStepGoal(dc);
 		}
+		//! Markers for sunrire and sunset
+		var SunmarkersEnable = (App.getApp().getProperty("SunMarkersEnable"));		
+       	if (SunmarkersEnable && screenShape == 1) {
+       		//Sys.println("sunmarkers "+ SunmarkersEnable);
+			drawSunMarkers(dc);
+		}
+		
+		
 
       // Draw the numbers --------------------------------------------------------------------------------------
        var NbrFont = (App.getApp().getProperty("Numbers")); 
@@ -949,10 +1004,6 @@ function drawBattery(dc) {
         //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER); 
         
 
-	       
- 
-
-  
   // Draw hands ------------------------------------------------------------------         
      	hands.drawHands(dc); 
       

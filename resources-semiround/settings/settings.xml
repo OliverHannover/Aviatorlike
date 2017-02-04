@@ -11,10 +11,7 @@
     <setting propertyKey="@Properties.StepProgressEnable" title="@Strings.StepProgressEnableTitle">
         <settingConfig type="boolean" />
     </setting>
-    
-    <setting propertyKey="@Properties.SunMarkersEnable" title="@Strings.SunMarkersEnableTitle">
-        <settingConfig type="boolean" />
-    </setting>
+   
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">

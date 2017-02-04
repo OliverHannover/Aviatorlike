@@ -3,7 +3,6 @@
 	
 	<property id="BatProgressEnable" type="boolean">true</property>
 	<property id="StepProgressEnable" type="boolean">true</property>
-	<property id="SunMarkersEnable" type="boolean">true</property>
 	
     <property id="BackgroundColor" type="number">0xFFFFFF</property>
     
