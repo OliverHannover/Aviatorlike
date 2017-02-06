@@ -853,11 +853,11 @@ function drawBattery(dc) {
 			drawStepGoal(dc);
 		}
 		//! Markers for sunrire and sunset
-		var SunmarkersEnable = (App.getApp().getProperty("SunMarkersEnable"));		
-       	if (SunmarkersEnable && screenShape == 1) {
+	//	var SunmarkersEnable = (App.getApp().getProperty("SunMarkersEnable"));		
+    //   	if (SunmarkersEnable && screenShape == 1) {
        		//Sys.println("sunmarkers "+ SunmarkersEnable);
-			drawSunMarkers(dc);
-		}
+	//		drawSunMarkers(dc);
+	//	}
 		
 		
 
