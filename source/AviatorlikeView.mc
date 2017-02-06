@@ -60,9 +60,9 @@ class AviatorlikeView extends Ui.WatchFace{
     function initialize() {
         WatchFace.initialize();
         screenShape = Sys.getDeviceSettings().screenShape;
-        
-        // upperDisplay = new Rez.Drawables.upperDisplay();
-       //  lowerDisplay = new Rez.Drawables.lowerDisplay();
+         
+       	upperDisplay = new Rez.Drawables.upperDisplay();
+        lowerDisplay = new Rez.Drawables.lowerDisplay();
                   
         Sys.println("Screenshape = " + screenShape);
              
@@ -640,14 +640,14 @@ function drawBattery(dc) {
 		
 		//background for upper display
 		dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);
-		//upperDisplay.draw(dc);
+		upperDisplay.draw(dc);
 		
-		if (screenShape == 1) {  // round       
-        	dc.fillRoundedRectangle(width / 2 -72 , height / 10 * 2.4 , 144 , 35, 5);
-      	}
-      	if (screenShape == 2) {  // semi round       
-        	dc.fillRoundedRectangle(width / 2 -72 , height / 10 * 2 , 144 , 35, 5);
-		}
+//		if (screenShape == 1) {  // round       
+//        	dc.fillRoundedRectangle(width / 2 -72 , height / 10 * 2.4 , 144 , 35, 5);
+//      	}
+//      	if (screenShape == 2) {  // semi round       
+//        	dc.fillRoundedRectangle(width / 2 -72 , height / 10 * 2 , 144 , 35, 5);
+//		}
 		
 		
 		
@@ -771,14 +771,14 @@ function drawBattery(dc) {
 		
 		//background for lower display
 		 dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT); 
-		 //lowerDisplay.draw(dc);
+		 lowerDisplay.draw(dc);
 		 
-		 if (screenShape == 1) {  // round       
-        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 6.5 , 140 , 35, 5);
-      	 }
-      	 if (screenShape == 2) {  // semi round       
-        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 6.1 , 140 , 35, 5);
-      	 }
+//		 if (screenShape == 1) {  // round       
+//        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 6.5 , 140 , 35, 5);
+//      	 }
+//      	 if (screenShape == 2) {  // semi round       
+//        	dc.fillRoundedRectangle(width / 2 -70 , height / 10 * 6.1 , 140 , 35, 5);
+//      	 }
          
          dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
          
