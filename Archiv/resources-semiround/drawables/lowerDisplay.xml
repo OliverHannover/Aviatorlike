@@ -1,0 +1,3 @@
+<drawable-list id="lowerDisplay">
+    <shape type="rectangle" x="37" y="109" corner_radius="5" width="144" height="35"/>
+ </drawable-list>
