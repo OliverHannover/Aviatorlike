@@ -5,7 +5,7 @@ fileVersion=1
 fontName=PlainGermanica
 fontFile=
 charSet=0
-fontSize=44
+fontSize=34
 aa=1
 scaleH=100
 useSmoothing=1
@@ -50,6 +50,6 @@ invB=0
 outlineThickness=0
 
 # selected chars
-chars=32,48-57
+chars=32,49-51,54,57
 
 # imported icon images

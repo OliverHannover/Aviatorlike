@@ -621,559 +621,506 @@
 <entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="450" pc="268461265" symbol="builSunsetStr"/>
 <entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="452" pc="268461287" symbol="builSunsetStr"/>
 <entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="455" pc="268461309" symbol="builSunsetStr"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="466" pc="268461353" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="474" pc="268461357" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="475" pc="268461410" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="479" pc="268461422" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="480" pc="268461436" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="488" pc="268461450" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="490" pc="268461481" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="493" pc="268461490" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="494" pc="268461501" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="498" pc="268461547" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="499" pc="268461558" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="503" pc="268461604" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="504" pc="268461615" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="505" pc="268461632" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="507" pc="268461655" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="508" pc="268461672" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="516" pc="268461698" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="517" pc="268461729" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="520" pc="268461760" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="521" pc="268461765" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="522" pc="268461807" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="525" pc="268461838" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="526" pc="268461891" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="528" pc="268461911" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="529" pc="268461964" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="530" pc="268461988" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="531" pc="268462008" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="533" pc="268462049" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="534" pc="268462073" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="535" pc="268462093" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="542" pc="268462134" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="543" pc="268462145" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="544" pc="268462165" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="545" pc="268462191" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="549" pc="268462208" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="550" pc="268462219" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="551" pc="268462276" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="552" pc="268462333" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="554" pc="268462347" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="555" pc="268462361" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="556" pc="268462375" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="562" pc="268462392" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="563" pc="268462403" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="564" pc="268462410" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="565" pc="268462417" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="566" pc="268462424" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="567" pc="268462447" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="569" pc="268462470" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="570" pc="268462478" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="572" pc="268462494" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="573" pc="268462502" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="575" pc="268462518" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="576" pc="268462556" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="577" pc="268462570" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="582" pc="268462587" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="583" pc="268462598" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="584" pc="268462612" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="585" pc="268462632" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="587" pc="268462646" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="588" pc="268462671" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="589" pc="268462691" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="594" pc="268462711" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="595" pc="268462722" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="596" pc="268462736" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="597" pc="268462756" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="598" pc="268462770" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="599" pc="268462790" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="605" pc="268462807" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="606" pc="268462818" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="607" pc="268462835" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="608" pc="268462845" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="609" pc="268462883" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="610" pc="268462897" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="614" pc="268462914" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="615" pc="268462925" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="616" pc="268462945" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="617" pc="268462971" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="618" pc="268462985" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="619" pc="268463011" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="625" pc="268463028" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="626" pc="268463039" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="627" pc="268463070" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="628" pc="268463128" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="629" pc="268463148" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="635" pc="268463165" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="636" pc="268463176" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="637" pc="268463194" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="638" pc="268463220" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="643" pc="268463237" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="644" pc="268463248" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="645" pc="268463262" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="646" pc="268463282" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="656" pc="268463302" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="657" pc="268463307" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="658" pc="268463349" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="661" pc="268463380" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="662" pc="268463433" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="664" pc="268463453" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="665" pc="268463506" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="666" pc="268463530" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="667" pc="268463550" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="669" pc="268463591" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="670" pc="268463615" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="671" pc="268463635" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="678" pc="268463676" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="679" pc="268463687" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="680" pc="268463707" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="681" pc="268463733" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="685" pc="268463750" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="686" pc="268463761" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="687" pc="268463818" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="688" pc="268463875" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="690" pc="268463889" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="691" pc="268463903" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="692" pc="268463917" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="698" pc="268463934" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="699" pc="268463945" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="700" pc="268463952" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="701" pc="268463959" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="702" pc="268463966" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="703" pc="268463989" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="705" pc="268464012" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="706" pc="268464020" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="708" pc="268464036" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="709" pc="268464044" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="711" pc="268464060" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="712" pc="268464098" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="713" pc="268464112" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="717" pc="268464129" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="718" pc="268464140" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="719" pc="268464154" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="720" pc="268464174" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="722" pc="268464188" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="723" pc="268464213" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="724" pc="268464233" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="729" pc="268464253" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="730" pc="268464264" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="731" pc="268464278" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="732" pc="268464298" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="733" pc="268464312" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="734" pc="268464332" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="740" pc="268464349" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="741" pc="268464360" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="742" pc="268464377" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="743" pc="268464387" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="744" pc="268464425" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="745" pc="268464439" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="749" pc="268464456" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="750" pc="268464467" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="751" pc="268464487" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="752" pc="268464513" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="753" pc="268464527" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="754" pc="268464553" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="760" pc="268464570" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="761" pc="268464581" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="762" pc="268464612" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="763" pc="268464670" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="764" pc="268464690" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="770" pc="268464707" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="771" pc="268464718" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="772" pc="268464736" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="773" pc="268464762" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="777" pc="268464779" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="778" pc="268464790" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="779" pc="268464804" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="780" pc="268464824" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="788" pc="268464844" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="789" pc="268464875" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="790" pc="268464880" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="793" pc="268464897" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="794" pc="268464928" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="795" pc="268464933" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="798" pc="268464950" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="799" pc="268464981" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="801" pc="268465006" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="807" pc="268465029" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="808" pc="268465060" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="809" pc="268465113" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="811" pc="268465122" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="812" pc="268465139" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="813" pc="268465150" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="814" pc="268465193" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="815" pc="268465249" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="816" pc="268465320" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="817" pc="268465385" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="819" pc="268465450" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="820" pc="268465461" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="821" pc="268465504" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="822" pc="268465560" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="823" pc="268465631" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="824" pc="268465696" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="826" pc="268465761" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="827" pc="268465772" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="828" pc="268465815" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="829" pc="268465871" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="830" pc="268465942" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="831" pc="268466007" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="833" pc="268466072" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="834" pc="268466083" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="835" pc="268466126" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="836" pc="268466182" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="837" pc="268466253" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="838" pc="268466318" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="840" pc="268466383" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="841" pc="268466394" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="842" pc="268466454" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="843" pc="268466529" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="844" pc="268466598" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="849" pc="268466670" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="850" pc="268466687" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="851" pc="268466698" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="852" pc="268466741" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="853" pc="268466797" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="854" pc="268466868" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="855" pc="268466933" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="857" pc="268466998" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="858" pc="268467009" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="859" pc="268467052" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="860" pc="268467108" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="861" pc="268467179" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="862" pc="268467244" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="864" pc="268467309" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="865" pc="268467320" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="866" pc="268467363" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="867" pc="268467419" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="868" pc="268467490" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="869" pc="268467555" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="871" pc="268467620" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="872" pc="268467631" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="873" pc="268467674" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="874" pc="268467730" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="875" pc="268467801" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="876" pc="268467866" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="878" pc="268467931" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="879" pc="268467942" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="880" pc="268468002" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="881" pc="268468077" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="882" pc="268468146" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="889" pc="268468218" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="890" pc="268468241" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="891" pc="268468252" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="892" pc="268468305" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="894" pc="268468365" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="895" pc="268468382" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="896" pc="268468435" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="897" pc="268468492" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="901" pc="268468569" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="902" pc="268468592" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="903" pc="268468603" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="904" pc="268468656" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="906" pc="268468716" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="907" pc="268468733" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="908" pc="268468786" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="909" pc="268468843" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="914" pc="268468920" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="916" pc="268468940" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="917" pc="268468951" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="918" pc="268468982" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="919" pc="268468987" symbol="onUpdate"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="927" pc="268469014" symbol="onEnterSleep"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="928" pc="268469018" symbol="onEnterSleep"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="929" pc="268469028" symbol="onEnterSleep"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="932" pc="268469045" symbol="onExitSleep"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="933" pc="268469049" symbol="onExitSleep"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="6" pc="268469060" symbol="initialize"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="7" pc="268469064" symbol="initialize"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="11" pc="268469083" symbol="onStart"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="15" pc="268469088" symbol="onStop"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="19" pc="268469093" symbol="getInitialView"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="20" pc="268469097" symbol="getInitialView"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="25" pc="268469135" symbol="onSettingsChanged"/>
-<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="26" pc="268469139" symbol="onSettingsChanged"/>
-<entry filename="Rez" lineNum="147" pc="268469156" symbol="initialize"/>
-<entry filename="Rez" lineNum="148" pc="268469160" symbol="initialize"/>
-<entry filename="Rez" lineNum="151" pc="268469185" symbol="draw"/>
-<entry filename="Rez" lineNum="152" pc="268469189" symbol="draw"/>
-<entry filename="Rez" lineNum="153" pc="268469196" symbol="draw"/>
-<entry filename="Rez" lineNum="154" pc="268469203" symbol="draw"/>
-<entry filename="Rez" lineNum="155" pc="268469216" symbol="draw"/>
-<entry filename="Rez" lineNum="156" pc="268469229" symbol="draw"/>
-<entry filename="Rez" lineNum="159" pc="268469252" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="161" pc="268469256" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="172" pc="268469324" symbol="initialize"/>
-<entry filename="Rez" lineNum="173" pc="268469328" symbol="initialize"/>
-<entry filename="Rez" lineNum="176" pc="268469353" symbol="draw"/>
-<entry filename="Rez" lineNum="177" pc="268469357" symbol="draw"/>
-<entry filename="Rez" lineNum="178" pc="268469364" symbol="draw"/>
-<entry filename="Rez" lineNum="179" pc="268469371" symbol="draw"/>
-<entry filename="Rez" lineNum="180" pc="268469384" symbol="draw"/>
-<entry filename="Rez" lineNum="181" pc="268469397" symbol="draw"/>
-<entry filename="Rez" lineNum="184" pc="268469420" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="186" pc="268469424" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="199" pc="268469492" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="201" pc="268469496" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="202" pc="268469624" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="203" pc="268469649" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="204" pc="268469701" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="205" pc="268469814" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="206" pc="268469942" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="207" pc="268469967" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="208" pc="268470019" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="211" pc="268470132" symbol="WatchFace"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="465" pc="268461353" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="467" pc="268461357" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="468" pc="268461364" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="469" pc="268461367" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="474" pc="268461370" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="475" pc="268461381" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="476" pc="268461412" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="477" pc="268461436" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="480" pc="268461463" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="481" pc="268461474" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="482" pc="268461505" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="483" pc="268461529" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="488" pc="268461556" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="489" pc="268461609" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="490" pc="268461629" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="492" pc="268461670" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="493" pc="268461690" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="499" pc="268461731" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="500" pc="268461742" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="501" pc="268461762" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="502" pc="268461788" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="506" pc="268461805" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="507" pc="268461816" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="508" pc="268461873" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="509" pc="268461930" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="511" pc="268461944" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="512" pc="268461958" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="513" pc="268461972" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="519" pc="268461989" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="520" pc="268462000" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="521" pc="268462007" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="522" pc="268462014" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="523" pc="268462021" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="524" pc="268462044" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="526" pc="268462067" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="527" pc="268462075" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="529" pc="268462091" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="530" pc="268462099" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="532" pc="268462115" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="533" pc="268462153" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="534" pc="268462167" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="539" pc="268462184" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="540" pc="268462195" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="541" pc="268462209" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="542" pc="268462229" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="544" pc="268462243" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="545" pc="268462268" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="546" pc="268462288" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="551" pc="268462308" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="552" pc="268462319" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="553" pc="268462333" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="554" pc="268462353" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="555" pc="268462367" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="556" pc="268462387" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="562" pc="268462404" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="563" pc="268462415" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="564" pc="268462432" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="565" pc="268462442" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="566" pc="268462480" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="567" pc="268462494" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="571" pc="268462511" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="572" pc="268462522" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="573" pc="268462542" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="574" pc="268462568" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="575" pc="268462582" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="576" pc="268462608" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="582" pc="268462625" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="583" pc="268462636" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="584" pc="268462667" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="585" pc="268462725" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="586" pc="268462745" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="592" pc="268462762" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="593" pc="268462773" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="594" pc="268462791" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="595" pc="268462817" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="600" pc="268462834" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="601" pc="268462845" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="602" pc="268462859" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="603" pc="268462879" symbol="fillDisplay"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="613" pc="268462897" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="621" pc="268462901" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="622" pc="268462954" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="626" pc="268462966" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="627" pc="268462980" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="635" pc="268462994" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="637" pc="268463025" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="640" pc="268463034" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="641" pc="268463045" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="645" pc="268463091" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="646" pc="268463102" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="650" pc="268463148" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="651" pc="268463159" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="652" pc="268463176" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="654" pc="268463199" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="655" pc="268463216" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="660" pc="268463242" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="661" pc="268463273" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="664" pc="268463304" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="665" pc="268463309" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="666" pc="268463351" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="669" pc="268463382" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="670" pc="268463435" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="672" pc="268463455" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="678" pc="268463477" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="679" pc="268463482" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="680" pc="268463524" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="683" pc="268463555" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="684" pc="268463608" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="686" pc="268463628" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="692" pc="268463650" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="693" pc="268463681" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="694" pc="268463686" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="697" pc="268463703" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="698" pc="268463734" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="699" pc="268463739" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="702" pc="268463756" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="703" pc="268463787" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="705" pc="268463812" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="711" pc="268463835" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="712" pc="268463866" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="713" pc="268463919" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="715" pc="268463928" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="716" pc="268463945" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="717" pc="268463956" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="718" pc="268463999" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="719" pc="268464055" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="720" pc="268464126" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="721" pc="268464191" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="723" pc="268464256" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="724" pc="268464267" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="725" pc="268464310" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="726" pc="268464366" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="727" pc="268464437" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="728" pc="268464502" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="730" pc="268464567" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="731" pc="268464578" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="732" pc="268464621" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="733" pc="268464677" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="734" pc="268464748" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="735" pc="268464813" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="737" pc="268464878" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="738" pc="268464889" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="739" pc="268464932" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="740" pc="268464988" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="741" pc="268465059" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="742" pc="268465124" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="744" pc="268465189" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="745" pc="268465200" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="746" pc="268465260" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="747" pc="268465335" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="748" pc="268465404" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="753" pc="268465476" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="754" pc="268465493" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="755" pc="268465504" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="756" pc="268465547" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="757" pc="268465603" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="758" pc="268465674" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="759" pc="268465739" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="761" pc="268465804" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="762" pc="268465815" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="763" pc="268465858" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="764" pc="268465914" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="765" pc="268465985" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="766" pc="268466050" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="768" pc="268466115" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="769" pc="268466126" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="770" pc="268466169" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="771" pc="268466225" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="772" pc="268466296" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="773" pc="268466361" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="775" pc="268466426" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="776" pc="268466437" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="777" pc="268466480" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="778" pc="268466536" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="779" pc="268466607" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="780" pc="268466672" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="782" pc="268466737" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="783" pc="268466748" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="784" pc="268466808" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="785" pc="268466883" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="786" pc="268466952" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="793" pc="268467024" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="794" pc="268467047" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="795" pc="268467058" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="796" pc="268467111" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="798" pc="268467171" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="799" pc="268467188" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="800" pc="268467241" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="801" pc="268467298" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="805" pc="268467375" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="806" pc="268467398" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="807" pc="268467409" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="808" pc="268467462" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="810" pc="268467522" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="811" pc="268467539" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="812" pc="268467592" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="813" pc="268467649" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="818" pc="268467726" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="820" pc="268467746" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="821" pc="268467757" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="822" pc="268467788" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="823" pc="268467793" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="827" pc="268467819" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="828" pc="268467864" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="829" pc="268467909" symbol="onUpdate"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="835" pc="268467955" symbol="onEnterSleep"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="836" pc="268467959" symbol="onEnterSleep"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="837" pc="268467969" symbol="onEnterSleep"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="840" pc="268467986" symbol="onExitSleep"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeView.mc" lineNum="841" pc="268467990" symbol="onExitSleep"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="6" pc="268468001" symbol="initialize"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="7" pc="268468005" symbol="initialize"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="11" pc="268468024" symbol="onStart"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="15" pc="268468029" symbol="onStop"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="19" pc="268468034" symbol="getInitialView"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="20" pc="268468038" symbol="getInitialView"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="25" pc="268468076" symbol="onSettingsChanged"/>
+<entry filename="C:\\Users\\baer\\Documents\\GitHub\\Aviatorlike\\source\\AviatorlikeApp.mc" lineNum="26" pc="268468080" symbol="onSettingsChanged"/>
+<entry filename="Rez" lineNum="147" pc="268468097" symbol="initialize"/>
+<entry filename="Rez" lineNum="148" pc="268468101" symbol="initialize"/>
+<entry filename="Rez" lineNum="151" pc="268468126" symbol="draw"/>
+<entry filename="Rez" lineNum="152" pc="268468130" symbol="draw"/>
+<entry filename="Rez" lineNum="153" pc="268468137" symbol="draw"/>
+<entry filename="Rez" lineNum="154" pc="268468144" symbol="draw"/>
+<entry filename="Rez" lineNum="155" pc="268468157" symbol="draw"/>
+<entry filename="Rez" lineNum="156" pc="268468170" symbol="draw"/>
+<entry filename="Rez" lineNum="159" pc="268468193" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="161" pc="268468197" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="172" pc="268468265" symbol="initialize"/>
+<entry filename="Rez" lineNum="173" pc="268468269" symbol="initialize"/>
+<entry filename="Rez" lineNum="176" pc="268468294" symbol="draw"/>
+<entry filename="Rez" lineNum="177" pc="268468298" symbol="draw"/>
+<entry filename="Rez" lineNum="178" pc="268468305" symbol="draw"/>
+<entry filename="Rez" lineNum="179" pc="268468312" symbol="draw"/>
+<entry filename="Rez" lineNum="180" pc="268468325" symbol="draw"/>
+<entry filename="Rez" lineNum="181" pc="268468338" symbol="draw"/>
+<entry filename="Rez" lineNum="184" pc="268468361" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="186" pc="268468365" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="199" pc="268468433" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="201" pc="268468437" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="202" pc="268468565" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="203" pc="268468590" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="204" pc="268468642" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="205" pc="268468755" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="206" pc="268468883" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="207" pc="268468908" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="208" pc="268468960" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="211" pc="268469073" symbol="WatchFace"/>
 </pcToLineNum>
 <symbolTable>
 <entry field="true" id="45" symbol="dualtimeDST"/>
-<entry field="true" id="177" symbol="LDDate"/>
+<entry field="true" id="178" symbol="LDDate"/>
 <entry id="8389719" method="true" symbol="round"/>
 <entry field="true" id="29" symbol="NUM_RESULTS"/>
 <entry field="true" id="15" symbol="NAUTICAL_DAWN"/>
-<entry field="true" id="90" symbol="none"/>
-<entry field="true" id="152" symbol="UDSteps"/>
-<entry field="true" id="87" symbol="HandsClassic"/>
+<entry field="true" id="91" symbol="none"/>
+<entry field="true" id="153" symbol="UDSteps"/>
+<entry field="true" id="88" symbol="HandsClassic"/>
 <entry id="8389124" method="true" symbol="onUpdate"/>
 <entry id="8389349" symbol="justification"/>
-<entry field="true" id="147" symbol="TZVal000"/>
+<entry field="true" id="148" symbol="TZVal000"/>
 <entry field="true" id="48" symbol="BatteryStr"/>
 <entry id="58" method="true" symbol="drawBattery"/>
-<entry id="68" method="true" symbol="iso_week_number"/>
-<entry field="true" id="109" symbol="BatProgressEnableTitle"/>
-<entry id="208" symbol="DAYS"/>
-<entry field="true" id="100" symbol="TZVal330"/>
-<entry field="true" id="227" symbol="distUnit"/>
+<entry id="69" method="true" symbol="iso_week_number"/>
+<entry field="true" id="110" symbol="BatProgressEnableTitle"/>
+<entry id="209" symbol="DAYS"/>
+<entry field="true" id="101" symbol="TZVal330"/>
+<entry field="true" id="228" symbol="distUnit"/>
 <entry field="true" id="17" symbol="BLUE_HOUR_AM"/>
 <entry field="true" id="16" symbol="DAWN"/>
-<entry field="true" id="113" symbol="ColorBlue"/>
-<entry field="true" id="121" symbol="HandsPilot"/>
-<entry field="true" id="111" symbol="TZValm100"/>
-<entry field="true" id="165" symbol="DFSimple"/>
+<entry field="true" id="114" symbol="ColorBlue"/>
+<entry field="true" id="122" symbol="HandsPilot"/>
+<entry field="true" id="112" symbol="TZValm100"/>
+<entry field="true" id="166" symbol="DFSimple"/>
 <entry id="59" method="true" symbol="drawStepGoal"/>
-<entry field="true" id="93" symbol="DigiFontTitle"/>
-<entry field="true" id="173" symbol="TZVal300"/>
-<entry field="true" id="114" symbol="DualTimeTZ"/>
-<entry field="true" id="140" symbol="UDBattery"/>
-<entry field="true" id="75" symbol="id_font_race"/>
+<entry field="true" id="94" symbol="DigiFontTitle"/>
+<entry field="true" id="174" symbol="TZVal300"/>
+<entry field="true" id="115" symbol="DualTimeTZ"/>
+<entry field="true" id="141" symbol="UDBattery"/>
+<entry field="true" id="76" symbol="id_font_race"/>
 <entry id="32" object="true" symbol="AviatorlikeApp"/>
-<entry field="true" id="186" symbol="LDDigitalClock"/>
+<entry field="true" id="187" symbol="LDDigitalClock"/>
 <entry field="true" id="18" symbol="SUNRISE"/>
 <entry field="true" id="8388611" symbol="Toybox"/>
 <entry id="8388645" symbol="Time"/>
 <entry field="true" id="37" symbol="clockTime"/>
-<entry field="true" id="74" symbol="id_font_fat"/>
-<entry field="true" id="110" symbol="UDDistance"/>
-<entry field="true" id="180" symbol="HandsFormTitle"/>
-<entry field="true" id="133" symbol="TZVal630"/>
-<entry field="true" id="188" symbol="TZVal1100"/>
+<entry field="true" id="75" symbol="id_font_fat"/>
+<entry field="true" id="111" symbol="UDDistance"/>
+<entry field="true" id="181" symbol="HandsFormTitle"/>
+<entry field="true" id="134" symbol="TZVal630"/>
+<entry field="true" id="189" symbol="TZVal1100"/>
 <entry id="8388893" symbol="PI"/>
-<entry id="229" method="true" symbol="drawHands"/>
-<entry field="true" id="162" symbol="ColorOrange"/>
-<entry field="true" id="197" symbol="LDBattery"/>
-<entry field="true" id="95" symbol="HandsSimple"/>
-<entry field="true" id="115" symbol="TZValm400"/>
+<entry id="230" method="true" symbol="drawHands"/>
+<entry field="true" id="163" symbol="ColorOrange"/>
+<entry field="true" id="198" symbol="LDBattery"/>
+<entry field="true" id="96" symbol="HandsSimple"/>
+<entry field="true" id="116" symbol="TZValm400"/>
 <entry id="8388770" module="true" symbol="Strings"/>
-<entry field="true" id="185" symbol="ColorGreen"/>
+<entry field="true" id="186" symbol="ColorGreen"/>
 <entry field="true" id="22" symbol="GOLDEN_HOUR_PM"/>
 <entry id="35" symbol="fontLabel"/>
-<entry field="true" id="85" symbol="TZVal600"/>
-<entry field="true" id="78" symbol="id_font_digital"/>
+<entry field="true" id="86" symbol="TZVal600"/>
+<entry field="true" id="79" symbol="id_font_digital"/>
 <entry id="55" method="true" symbol="drawQuarterHashmarks"/>
-<entry field="true" id="178" symbol="ColorYellow"/>
-<entry id="207" symbol="PI2"/>
-<entry field="true" id="77" symbol="id_font_roman"/>
+<entry field="true" id="179" symbol="ColorYellow"/>
+<entry id="208" symbol="PI2"/>
+<entry field="true" id="78" symbol="id_font_roman"/>
 <entry id="34" symbol="fontDigital"/>
-<entry field="true" id="153" symbol="ColorWhite"/>
-<entry field="true" id="159" symbol="TZVal930"/>
+<entry field="true" id="154" symbol="ColorWhite"/>
+<entry field="true" id="160" symbol="TZVal930"/>
 <entry id="8389280" method="true" symbol="getInitialView"/>
-<entry field="true" id="175" symbol="NumbersTitle"/>
-<entry field="true" id="96" symbol="TZVal1400"/>
-<entry field="true" id="107" symbol="UDDate"/>
+<entry field="true" id="176" symbol="NumbersTitle"/>
+<entry field="true" id="97" symbol="TZVal1400"/>
+<entry field="true" id="108" symbol="UDDate"/>
 <entry id="8389068" method="true" symbol="draw"/>
 <entry id="8389377" method="true" symbol="onExitSleep"/>
-<entry id="211" symbol="J0"/>
-<entry field="true" id="167" symbol="SecHandsColorTitle"/>
+<entry id="212" symbol="J0"/>
+<entry field="true" id="168" symbol="SecHandsColorTitle"/>
 <entry id="8388640" symbol="Lang"/>
-<entry field="true" id="146" symbol="TZValm700"/>
-<entry field="true" id="118" symbol="TZVal900"/>
-<entry field="true" id="101" symbol="UDDayWeek"/>
-<entry field="true" id="163" symbol="LDStepstogo"/>
-<entry field="true" id="131" symbol="TZValm1100"/>
-<entry id="212" symbol="TIMES"/>
-<entry field="true" id="135" symbol="ColorBlack"/>
-<entry id="224" method="true" symbol="fromJulian"/>
+<entry field="true" id="147" symbol="TZValm700"/>
+<entry field="true" id="119" symbol="TZVal900"/>
+<entry field="true" id="102" symbol="UDDayWeek"/>
+<entry field="true" id="164" symbol="LDStepstogo"/>
+<entry field="true" id="132" symbol="TZValm1100"/>
+<entry id="213" symbol="TIMES"/>
+<entry field="true" id="136" symbol="ColorBlack"/>
+<entry id="225" method="true" symbol="fromJulian"/>
 <entry id="8388769" module="true" symbol="Rez"/>
-<entry field="true" id="123" symbol="ColorDarkGreen"/>
-<entry field="true" id="137" symbol="DateFormatTitle"/>
+<entry field="true" id="124" symbol="ColorDarkGreen"/>
+<entry field="true" id="138" symbol="DateFormatTitle"/>
 <entry id="31" object="true" symbol="AviatorlikeView"/>
-<entry id="73" method="true" symbol="drawComplex"/>
+<entry id="74" method="true" symbol="drawComplex"/>
 <entry field="true" id="43" symbol="dualtime"/>
-<entry field="true" id="166" symbol="LDDayWeek"/>
-<entry field="true" id="221" symbol="sin2L"/>
+<entry field="true" id="167" symbol="LDDayWeek"/>
+<entry field="true" id="222" symbol="sin2L"/>
 <entry field="true" id="41" symbol="timeStr"/>
-<entry field="true" id="184" symbol="ColorPink"/>
+<entry field="true" id="185" symbol="ColorPink"/>
 <entry id="30" module="true" symbol="SunCalc"/>
-<entry field="true" id="92" symbol="ColorRed"/>
-<entry field="true" id="181" symbol="DigitalBackgroundColorTitle"/>
+<entry field="true" id="93" symbol="ColorRed"/>
+<entry field="true" id="182" symbol="DigitalBackgroundColorTitle"/>
 <entry field="true" id="20" symbol="GOLDEN_HOUR_AM"/>
-<entry id="66" method="true" symbol="julian_day"/>
-<entry field="true" id="103" symbol="ForegroundColorTitle"/>
+<entry id="67" method="true" symbol="julian_day"/>
+<entry field="true" id="104" symbol="ForegroundColorTitle"/>
 <entry id="12" module="true" symbol="hands"/>
-<entry field="true" id="117" symbol="StepProgressEnableTitle"/>
+<entry field="true" id="118" symbol="StepProgressEnableTitle"/>
 <entry field="true" id="44" symbol="dualtimeTZ"/>
 <entry id="61" method="true" symbol="momentToString"/>
 <entry field="true" id="14" symbol="NIGHT_END"/>
 <entry id="13" module="true" symbol="date"/>
 <entry id="8388702" method="true" symbol="initialize"/>
-<entry field="true" id="125" symbol="HandsColor2Title"/>
-<entry field="true" id="179" symbol="AppName"/>
-<entry field="true" id="176" symbol="DFDigital"/>
-<entry field="true" id="124" symbol="UDStepstogo"/>
-<entry field="true" id="136" symbol="DFClassic"/>
+<entry field="true" id="126" symbol="HandsColor2Title"/>
+<entry field="true" id="180" symbol="AppName"/>
+<entry field="true" id="177" symbol="DFDigital"/>
+<entry field="true" id="125" symbol="UDStepstogo"/>
+<entry field="true" id="137" symbol="DFClassic"/>
 <entry id="8389375" method="true" symbol="WatchFace"/>
-<entry id="67" method="true" symbol="is_leap_year"/>
+<entry id="68" method="true" symbol="is_leap_year"/>
 <entry id="60" method="true" symbol="getMoment"/>
-<entry field="true" id="84" symbol="NbrNo"/>
-<entry field="true" id="218" symbol="sinM"/>
-<entry field="true" id="130" symbol="LDCalories"/>
-<entry field="true" id="106" symbol="DSTVal100"/>
-<entry field="true" id="129" symbol="SunMarkersEnableTitle"/>
-<entry field="true" id="169" symbol="NbrRace"/>
-<entry field="true" id="89" symbol="TZVal200"/>
-<entry field="true" id="138" symbol="TZVal1030"/>
+<entry field="true" id="85" symbol="NbrNo"/>
+<entry field="true" id="219" symbol="sinM"/>
+<entry field="true" id="131" symbol="LDCalories"/>
+<entry field="true" id="107" symbol="DSTVal100"/>
+<entry field="true" id="130" symbol="SunMarkersEnableTitle"/>
+<entry field="true" id="170" symbol="NbrRace"/>
+<entry field="true" id="90" symbol="TZVal200"/>
+<entry field="true" id="139" symbol="TZVal1030"/>
 <entry field="true" id="28" symbol="NIGHT"/>
-<entry field="true" id="174" symbol="TZVal545"/>
-<entry field="true" id="187" symbol="TZValm330"/>
-<entry field="true" id="161" symbol="TZVal530"/>
-<entry field="true" id="98" symbol="TZVal1000"/>
+<entry field="true" id="175" symbol="TZVal545"/>
+<entry field="true" id="188" symbol="TZValm330"/>
+<entry field="true" id="162" symbol="TZVal530"/>
+<entry field="true" id="99" symbol="TZVal1000"/>
 <entry id="8388641" symbol="Math"/>
-<entry id="225" method="true" symbol="calculate"/>
-<entry field="true" id="72" symbol="LauncherIcon"/>
-<entry field="true" id="143" symbol="TZValm300"/>
-<entry field="true" id="120" symbol="TZVal500"/>
+<entry id="226" method="true" symbol="calculate"/>
+<entry field="true" id="73" symbol="LauncherIcon"/>
+<entry field="true" id="144" symbol="TZValm300"/>
+<entry field="true" id="121" symbol="TZVal500"/>
 <entry id="8389683" method="true" symbol="onSettingsChanged"/>
-<entry field="true" id="223" symbol="Jnoon"/>
+<entry field="true" id="224" symbol="Jnoon"/>
 <entry field="true" id="42" symbol="Use24hFormat"/>
-<entry field="true" id="91" symbol="LDInfoTitle"/>
-<entry field="true" id="76" symbol="id_font_classic"/>
-<entry field="true" id="83" symbol="TZVal845"/>
-<entry field="true" id="148" symbol="LDDistance"/>
+<entry field="true" id="92" symbol="LDInfoTitle"/>
+<entry field="true" id="77" symbol="id_font_classic"/>
+<entry field="true" id="84" symbol="TZVal845"/>
+<entry field="true" id="149" symbol="LDDistance"/>
 <entry id="8389281" method="true" symbol="onStop"/>
-<entry field="true" id="191" symbol="TZVal830"/>
-<entry field="true" id="127" symbol="TZVal1300"/>
+<entry field="true" id="192" symbol="TZVal830"/>
+<entry field="true" id="128" symbol="TZVal1300"/>
 <entry id="8389065" symbol="locY"/>
 <entry id="8389064" symbol="locX"/>
-<entry field="true" id="172" symbol="TZValm600"/>
+<entry field="true" id="173" symbol="TZValm600"/>
 <entry id="8388771" module="true" symbol="Drawables"/>
-<entry field="true" id="226" symbol="distStr"/>
-<entry field="true" id="141" symbol="TZVal800"/>
+<entry field="true" id="227" symbol="distStr"/>
+<entry field="true" id="142" symbol="TZVal800"/>
 <entry id="8389122" method="true" symbol="onLayout"/>
-<entry field="true" id="86" symbol="MinutesColorTitle"/>
-<entry field="true" id="104" symbol="UpperDispEnableTitle"/>
+<entry field="true" id="87" symbol="MinutesColorTitle"/>
+<entry field="true" id="105" symbol="UpperDispEnableTitle"/>
 <entry id="49" symbol="sunset_sunrise"/>
 <entry id="56" method="true" symbol="drawDigitalTime"/>
-<entry field="true" id="97" symbol="TZValm1000"/>
-<entry field="true" id="156" symbol="QuarterNumbersColorTitle"/>
-<entry field="true" id="158" symbol="TZValm930"/>
-<entry field="true" id="150" symbol="HandsOutlineColorTitle"/>
-<entry field="true" id="189" symbol="ColorDarkGray"/>
+<entry field="true" id="98" symbol="TZValm1000"/>
+<entry field="true" id="157" symbol="QuarterNumbersColorTitle"/>
+<entry field="true" id="159" symbol="TZValm930"/>
+<entry field="true" id="151" symbol="HandsOutlineColorTitle"/>
+<entry field="true" id="190" symbol="ColorDarkGray"/>
 <entry id="8389279" method="true" symbol="onStart"/>
-<entry field="true" id="102" symbol="HandsRace"/>
+<entry field="true" id="103" symbol="HandsRace"/>
 <entry field="true" id="8389670" symbol="screenShape"/>
 <entry field="true" id="53" object="true" symbol="lowerDisplay"/>
-<entry field="true" id="99" symbol="AppVersionTitle"/>
-<entry field="true" id="202" symbol="DSTValCurrent"/>
-<entry field="true" id="88" symbol="TZValm900"/>
-<entry field="true" id="134" symbol="NbrClassic"/>
+<entry field="true" id="100" symbol="AppVersionTitle"/>
+<entry field="true" id="203" symbol="DSTValCurrent"/>
+<entry field="true" id="89" symbol="TZValm900"/>
+<entry field="true" id="135" symbol="NbrClassic"/>
 <entry field="true" id="24" symbol="SUNSET"/>
-<entry field="true" id="145" symbol="UDDigitalClock"/>
-<entry field="true" id="183" symbol="UDInfoTitle"/>
+<entry field="true" id="146" symbol="UDDigitalClock"/>
+<entry field="true" id="184" symbol="UDInfoTitle"/>
 <entry id="8389376" method="true" symbol="onEnterSleep"/>
-<entry field="true" id="81" symbol="LDAltitude"/>
-<entry id="228" method="true" symbol="drawDistance"/>
+<entry field="true" id="82" symbol="LDAltitude"/>
+<entry id="229" method="true" symbol="drawDistance"/>
 <entry id="8389348" symbol="font"/>
-<entry field="true" id="132" symbol="ColorLightGray"/>
-<entry field="true" id="222" symbol="dec"/>
-<entry id="206" symbol="RAD"/>
+<entry id="63" method="true" symbol="fillDisplay"/>
+<entry field="true" id="133" symbol="ColorLightGray"/>
+<entry field="true" id="223" symbol="dec"/>
+<entry id="207" symbol="RAD"/>
 <entry id="54" method="true" symbol="drawHashMarks"/>
 <entry field="true" id="36" symbol="isAwake"/>
-<entry field="true" id="116" symbol="BackgroundColorTitle"/>
+<entry field="true" id="117" symbol="BackgroundColorTitle"/>
 <entry field="true" id="40" symbol="ampmStr"/>
 <entry id="8389067" symbol="height"/>
 <entry field="true" id="47" symbol="altUnit"/>
-<entry field="true" id="182" symbol="DSTVal030"/>
-<entry field="true" id="63" symbol="dateStr"/>
-<entry field="true" id="64" symbol="dayWeekStr"/>
-<entry field="true" id="192" symbol="HandOutlinesEnableTitle"/>
-<entry id="209" symbol="J1970"/>
-<entry field="true" id="139" symbol="DSTVal000"/>
-<entry field="true" id="213" symbol="lastD"/>
-<entry field="true" id="164" symbol="LDSunsetRise"/>
-<entry field="true" id="126" symbol="DualTimeDST"/>
+<entry field="true" id="183" symbol="DSTVal030"/>
+<entry field="true" id="64" symbol="dateStr"/>
+<entry field="true" id="65" symbol="dayWeekStr"/>
+<entry field="true" id="193" symbol="HandOutlinesEnableTitle"/>
+<entry id="210" symbol="J1970"/>
+<entry field="true" id="140" symbol="DSTVal000"/>
+<entry field="true" id="214" symbol="lastD"/>
+<entry field="true" id="165" symbol="LDSunsetRise"/>
+<entry field="true" id="127" symbol="DualTimeDST"/>
 <entry field="true" id="19" symbol="SUNRISE_END"/>
 <entry id="57" method="true" symbol="drawAltitude"/>
-<entry field="true" id="122" symbol="TZVal100"/>
-<entry field="true" id="195" symbol="UDCalories"/>
+<entry field="true" id="123" symbol="TZVal100"/>
+<entry field="true" id="196" symbol="UDCalories"/>
 <entry id="8388911" module="true" symbol="distance"/>
-<entry id="71" module="true" symbol="Layouts"/>
-<entry field="true" id="80" symbol="id_font_label"/>
-<entry field="true" id="193" symbol="HandsDiver"/>
-<entry field="true" id="190" symbol="ColorDarkBlue"/>
-<entry id="65" method="true" symbol="buildDateString"/>
-<entry field="true" id="194" symbol="TZVal430"/>
+<entry id="72" module="true" symbol="Layouts"/>
+<entry field="true" id="81" symbol="id_font_label"/>
+<entry field="true" id="194" symbol="HandsDiver"/>
+<entry field="true" id="191" symbol="ColorDarkBlue"/>
+<entry id="66" method="true" symbol="buildDateString"/>
+<entry field="true" id="195" symbol="TZVal430"/>
 <entry field="true" id="46" symbol="altitudeStr"/>
 <entry field="true" id="21" symbol="NOON"/>
-<entry field="true" id="204" symbol="HandsColor1Title"/>
-<entry field="true" id="105" symbol="DSTValm100"/>
+<entry field="true" id="205" symbol="HandsColor1Title"/>
+<entry field="true" id="106" symbol="DSTValm100"/>
 <entry field="true" id="39" symbol="center_y"/>
 <entry field="true" id="38" symbol="center_x"/>
 <entry field="true" id="27" symbol="NAUTICAL_DUSK"/>
-<entry field="true" id="79" symbol="id_font_classicklein"/>
-<entry field="true" id="168" symbol="TZValm200"/>
-<entry field="true" id="94" symbol="TZVal1245"/>
-<entry field="true" id="144" symbol="TZVal400"/>
+<entry field="true" id="80" symbol="id_font_classicklein"/>
+<entry field="true" id="169" symbol="TZValm200"/>
+<entry field="true" id="95" symbol="TZVal1245"/>
+<entry field="true" id="145" symbol="TZVal400"/>
 <entry field="true" id="52" object="true" symbol="upperDisplay"/>
-<entry field="true" id="205" symbol="SecHandEnableTitle"/>
-<entry field="true" id="112" symbol="NbrSimple"/>
+<entry field="true" id="206" symbol="SecHandEnableTitle"/>
+<entry field="true" id="113" symbol="NbrSimple"/>
 <entry id="33" symbol="font1"/>
 <entry id="51" symbol="sunsetStr"/>
-<entry field="true" id="151" symbol="TZVal1200"/>
+<entry field="true" id="152" symbol="TZVal1200"/>
 <entry id="8389066" symbol="width"/>
-<entry field="true" id="149" symbol="UDSunsetRise"/>
+<entry field="true" id="150" symbol="UDSunsetRise"/>
 <entry id="8389063" symbol="identifier"/>
-<entry field="true" id="82" symbol="TZValm500"/>
-<entry field="true" id="160" symbol="NbrFat"/>
-<entry field="true" id="170" symbol="TZVal700"/>
+<entry field="true" id="83" symbol="TZValm500"/>
+<entry field="true" id="161" symbol="NbrFat"/>
+<entry field="true" id="171" symbol="TZVal700"/>
 <entry field="true" id="26" symbol="DUSK"/>
-<entry id="70" module="true" symbol="Menus"/>
-<entry field="true" id="142" symbol="NbrRoman"/>
-<entry id="210" symbol="J2000"/>
-<entry id="230" method="true" symbol="drawSecondHands"/>
-<entry field="true" id="128" symbol="LowerDispEnableTitle"/>
-<entry field="true" id="171" symbol="ColorDarkRed"/>
-<entry field="true" id="119" symbol="TZValm800"/>
+<entry id="71" module="true" symbol="Menus"/>
+<entry field="true" id="143" symbol="NbrRoman"/>
+<entry id="211" symbol="J2000"/>
+<entry id="231" method="true" symbol="drawSecondHands"/>
+<entry field="true" id="129" symbol="LowerDispEnableTitle"/>
+<entry field="true" id="172" symbol="ColorDarkRed"/>
+<entry field="true" id="120" symbol="TZValm800"/>
 <entry id="62" method="true" symbol="builSunsetStr"/>
-<entry field="true" id="216" symbol="ds"/>
+<entry field="true" id="217" symbol="ds"/>
 <entry field="true" id="25" symbol="BLUE_HOUR_PM"/>
 <entry id="8388772" module="true" symbol="Fonts"/>
-<entry field="true" id="157" symbol="LDSteps"/>
-<entry field="true" id="155" symbol="TZValm1200"/>
+<entry field="true" id="158" symbol="LDSteps"/>
+<entry field="true" id="156" symbol="TZValm1200"/>
 <entry id="50" symbol="lastLoc"/>
-<entry field="true" id="215" symbol="n"/>
-<entry field="true" id="214" symbol="lastLng"/>
-<entry field="true" id="154" symbol="UDAltitude"/>
+<entry field="true" id="216" symbol="n"/>
+<entry field="true" id="215" symbol="lastLng"/>
+<entry field="true" id="155" symbol="UDAltitude"/>
 <entry field="true" id="23" symbol="SUNSET_START"/>
-<entry field="true" id="217" symbol="M"/>
-<entry field="true" id="220" symbol="L"/>
-<entry field="true" id="219" symbol="C"/>
-<entry id="69" method="true" symbol="builddayWeekStr"/>
-<entry field="true" id="108" symbol="ColorPurple"/>
-<entry field="true" id="203" symbol="DF6"/>
-<entry field="true" id="200" symbol="DF5"/>
-<entry field="true" id="201" symbol="DF4"/>
-<entry field="true" id="198" symbol="DF3"/>
-<entry field="true" id="199" symbol="DF2"/>
-<entry field="true" id="196" symbol="DF1"/>
+<entry field="true" id="218" symbol="M"/>
+<entry field="true" id="221" symbol="L"/>
+<entry field="true" id="220" symbol="C"/>
+<entry id="70" method="true" symbol="builddayWeekStr"/>
+<entry field="true" id="109" symbol="ColorPurple"/>
+<entry field="true" id="204" symbol="DF6"/>
+<entry field="true" id="201" symbol="DF5"/>
+<entry field="true" id="202" symbol="DF4"/>
+<entry field="true" id="199" symbol="DF3"/>
+<entry field="true" id="200" symbol="DF2"/>
+<entry field="true" id="197" symbol="DF1"/>
 </symbolTable>
 <localVars>
 <entry endPc="268445480" name="thicknes" stackId="20" startPc="268442228"/>
@@ -1291,54 +1238,44 @@
 <entry endPc="268461352" name="info_date" stackId="3" startPc="268461051"/>
 <entry endPc="268461352" name="moment" stackId="2" startPc="268461051"/>
 <entry endPc="268461352" name="actInfo" stackId="4" startPc="268461051"/>
-<entry endPc="268462389" name="stepsStr" stackId="9" startPc="268462219"/>
-<entry endPc="268462389" name="stepGoal" stackId="8" startPc="268462219"/>
-<entry endPc="268462584" name="actsteps" stackId="10" startPc="268462403"/>
-<entry endPc="268462584" name="stepstogo" stackId="12" startPc="268462403"/>
-<entry endPc="268462584" name="stepGoal" stackId="11" startPc="268462403"/>
-<entry endPc="268462911" name="calStr" stackId="15" startPc="268462818"/>
-<entry endPc="268462911" name="actcals" stackId="14" startPc="268462818"/>
-<entry endPc="268462911" name="actInfo" stackId="13" startPc="268462818"/>
-<entry endPc="268463162" name="Battery" stackId="16" startPc="268463039"/>
-<entry endPc="268463299" name="UpperLabelobereZeile" stackId="7" startPc="268461765"/>
-<entry endPc="268463299" name="UDInfo" stackId="5" startPc="268461765"/>
-<entry endPc="268463299" name="UpperLabel" stackId="6" startPc="268461765"/>
-<entry endPc="268463931" name="stepsStr" stackId="21" startPc="268463761"/>
-<entry endPc="268463931" name="stepGoal" stackId="20" startPc="268463761"/>
-<entry endPc="268464126" name="actsteps" stackId="22" startPc="268463945"/>
-<entry endPc="268464126" name="stepstogo" stackId="24" startPc="268463945"/>
-<entry endPc="268464126" name="stepGoal" stackId="23" startPc="268463945"/>
-<entry endPc="268464453" name="calStr" stackId="27" startPc="268464360"/>
-<entry endPc="268464453" name="actcals" stackId="26" startPc="268464360"/>
-<entry endPc="268464453" name="actInfo" stackId="25" startPc="268464360"/>
-<entry endPc="268464704" name="Battery" stackId="28" startPc="268464581"/>
-<entry endPc="268464841" name="LowerLabelobereZeile" stackId="19" startPc="268463307"/>
-<entry endPc="268464841" name="LowerLabel" stackId="18" startPc="268463307"/>
-<entry endPc="268464841" name="LDInfo" stackId="17" startPc="268463307"/>
-<entry endPc="268469010" name="SecHandEnable" stackId="35" startPc="268468951"/>
-<entry endPc="268469013" name="alarm" stackId="34" startPc="268461357"/>
-<entry endPc="268469013" name="SunmarkersEnable" stackId="31" startPc="268461357"/>
-<entry endPc="268469013" name="UpperDispEnable" stackId="3" startPc="268461357"/>
-<entry endPc="268469013" name="StepProgressEnable" stackId="30" startPc="268461357"/>
-<entry endPc="268469013" name="BatProgressEnable" stackId="29" startPc="268461357"/>
-<entry endPc="268469013" name="messages" stackId="33" startPc="268461357"/>
-<entry endPc="268469013" name="LowerDispEnable" stackId="4" startPc="268461357"/>
-<entry endPc="268469013" name="digiFont" stackId="2" startPc="268461357"/>
-<entry endPc="268469013" name="NbrFont" stackId="32" startPc="268461357"/>
-<entry endPc="268469251" name="pWidth" stackId="4" startPc="268469189"/>
-<entry endPc="268469251" name="pY" stackId="3" startPc="268469189"/>
-<entry endPc="268469251" name="pX" stackId="2" startPc="268469189"/>
-<entry endPc="268469251" name="pHeight" stackId="5" startPc="268469189"/>
-<entry endPc="268469419" name="pWidth" stackId="4" startPc="268469357"/>
-<entry endPc="268469419" name="pY" stackId="3" startPc="268469357"/>
-<entry endPc="268469419" name="pX" stackId="2" startPc="268469357"/>
-<entry endPc="268469419" name="pHeight" stackId="5" startPc="268469357"/>
-<entry endPc="268470179" name="rez_cmp_local_bitmap_UpperLabel_fontHeight" stackId="3" startPc="268469496"/>
-<entry endPc="268470179" name="rez_cmp_local_bitmap_UpperLabelobereZeile" stackId="4" startPc="268469496"/>
-<entry endPc="268470179" name="rez_cmp_local_bitmap_LowerLabelobereZeile" stackId="7" startPc="268469496"/>
-<entry endPc="268470179" name="rez_cmp_local_bitmap_LowerLabel_fontHeight" stackId="6" startPc="268469496"/>
-<entry endPc="268470179" name="rez_cmp_local_bitmap_UpperLabel" stackId="2" startPc="268469496"/>
-<entry endPc="268470179" name="rez_cmp_local_bitmap_LowerLabel" stackId="5" startPc="268469496"/>
+<entry endPc="268461986" name="stepsStr" stackId="7" startPc="268461816"/>
+<entry endPc="268461986" name="stepGoal" stackId="6" startPc="268461816"/>
+<entry endPc="268462181" name="actsteps" stackId="8" startPc="268462000"/>
+<entry endPc="268462181" name="stepstogo" stackId="10" startPc="268462000"/>
+<entry endPc="268462181" name="stepGoal" stackId="9" startPc="268462000"/>
+<entry endPc="268462508" name="calStr" stackId="13" startPc="268462415"/>
+<entry endPc="268462508" name="actcals" stackId="12" startPc="268462415"/>
+<entry endPc="268462508" name="actInfo" stackId="11" startPc="268462415"/>
+<entry endPc="268462759" name="Battery" stackId="14" startPc="268462636"/>
+<entry endPc="268462896" name="LabelobereZeile" stackId="5" startPc="268461357"/>
+<entry endPc="268462896" name="displayInfo" stackId="3" startPc="268461357"/>
+<entry endPc="268462896" name="Label" stackId="4" startPc="268461357"/>
+<entry endPc="268463474" name="UDInfo" stackId="5" startPc="268463309"/>
+<entry endPc="268463647" name="LDInfo" stackId="6" startPc="268463482"/>
+<entry endPc="268467816" name="SecHandEnable" stackId="13" startPc="268467757"/>
+<entry endPc="268467954" name="alarm" stackId="12" startPc="268462901"/>
+<entry endPc="268467954" name="SunmarkersEnable" stackId="9" startPc="268462901"/>
+<entry endPc="268467954" name="UpperDispEnable" stackId="3" startPc="268462901"/>
+<entry endPc="268467954" name="StepProgressEnable" stackId="8" startPc="268462901"/>
+<entry endPc="268467954" name="BatProgressEnable" stackId="7" startPc="268462901"/>
+<entry endPc="268467954" name="messages" stackId="11" startPc="268462901"/>
+<entry endPc="268467954" name="LowerDispEnable" stackId="4" startPc="268462901"/>
+<entry endPc="268467954" name="digiFont" stackId="2" startPc="268462901"/>
+<entry endPc="268467954" name="NbrFont" stackId="10" startPc="268462901"/>
+<entry endPc="268468192" name="pWidth" stackId="4" startPc="268468130"/>
+<entry endPc="268468192" name="pY" stackId="3" startPc="268468130"/>
+<entry endPc="268468192" name="pX" stackId="2" startPc="268468130"/>
+<entry endPc="268468192" name="pHeight" stackId="5" startPc="268468130"/>
+<entry endPc="268468360" name="pWidth" stackId="4" startPc="268468298"/>
+<entry endPc="268468360" name="pY" stackId="3" startPc="268468298"/>
+<entry endPc="268468360" name="pX" stackId="2" startPc="268468298"/>
+<entry endPc="268468360" name="pHeight" stackId="5" startPc="268468298"/>
+<entry endPc="268469120" name="rez_cmp_local_bitmap_UpperLabel_fontHeight" stackId="3" startPc="268468437"/>
+<entry endPc="268469120" name="rez_cmp_local_bitmap_UpperLabelobereZeile" stackId="4" startPc="268468437"/>
+<entry endPc="268469120" name="rez_cmp_local_bitmap_LowerLabelobereZeile" stackId="7" startPc="268468437"/>
+<entry endPc="268469120" name="rez_cmp_local_bitmap_LowerLabel_fontHeight" stackId="6" startPc="268468437"/>
+<entry endPc="268469120" name="rez_cmp_local_bitmap_UpperLabel" stackId="2" startPc="268468437"/>
+<entry endPc="268469120" name="rez_cmp_local_bitmap_LowerLabel" stackId="5" startPc="268468437"/>
 </localVars>
 <annotations/>
 <functions>
@@ -1434,6 +1371,11 @@
 </functionEntry>
 <functionEntry name="builSunsetStr" parent="AviatorlikeView">
 <param id="dc"/>
+<documentation/>
+</functionEntry>
+<functionEntry name="fillDisplay" parent="AviatorlikeView">
+<param id="dc"/>
+<param id="UporLOW"/>
 <documentation/>
 </functionEntry>
 <functionEntry name="onUpdate" parent="AviatorlikeView">

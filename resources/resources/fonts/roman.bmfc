@@ -50,6 +50,6 @@ invB=0
 outlineThickness=0
 
 # selected chars
-chars=32,48-57,124-125
+chars=51,54,57,125
 
 # imported icon images

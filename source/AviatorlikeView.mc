@@ -456,9 +456,156 @@ function drawBattery(dc) {
 	    	}
 	    	
 	    	//sunsetStr =  sunrise + "/" + sunset;
-	    	//dc.drawText(width/2, height / 10 * 6, Gfx.FONT_SMALL, sunrise + " / " + sunset, Gfx.TEXT_JUSTIFY_CENTER);	
-	
+	    	//dc.drawText(width/2, height / 10 * 6, Gfx.FONT_SMALL, sunrise + " / " + sunset, Gfx.TEXT_JUSTIFY_CENTER);		
 	}	
+
+
+
+
+function fillDisplay(dc,UporLOW) {
+
+			var displayInfo = 0;
+			var Label = null;
+			var LabelobereZeile = null;
+	  //    var LabeluntereZeile);
+
+	
+	 //upper display 	
+		if (UporLOW == 1) { //upperDisplay
+			displayInfo = (App.getApp().getProperty("UDInfo"));
+			Label = View.findDrawableById("UpperLabel");
+			LabelobereZeile = View.findDrawableById("UpperLabelobereZeile");
+	  //    LabeluntereZeile = View.findDrawableById("UpperLabeluntereZeile");
+		}
+		if (UporLOW == 2) { //lowerDisplay
+			displayInfo = (App.getApp().getProperty("LDInfo"));
+			Label = View.findDrawableById("LowerLabel");
+			LabelobereZeile = View.findDrawableById("LowerLabelobereZeile");
+	  //    LabeluntereZeile = View.findDrawableById("LowerLabeluntereZeile");			
+		}
+		
+			
+	        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);	        
+	        Label.setFont(fontDigital);
+	        Label.setColor(App.getApp().getProperty("ForegroundColor"));
+	        	        
+	        LabelobereZeile.setFont(fontLabel);
+	        LabelobereZeile.setColor(App.getApp().getProperty("ForegroundColor"));
+	        	    
+	    //    LabeluntereZeile.setFont(fontLabel);
+	    //    LabeluntereZeile.setColor(App.getApp().getProperty("ForegroundColor"));
+        	    	
+	 		//Draw date---------------------------------
+		   	if (displayInfo == 1) {
+		   		date.buildDateString(dc);
+		   		Label.setText(date.dateStr); 
+		   		Label.draw( dc );		   		      
+			}	
+	
+	 	    //Draw Steps --------------------------------------
+	      	if (displayInfo == 2) {		
+				var stepGoal =  Lang.format("$1$", [ActMonitor.getInfo().stepGoal]);
+		        var stepsStr = Lang.format("$1$", [ActMonitor.getInfo().steps]); 		   		
+		        Label.setText(stepsStr);
+		        //Label.setJustification(Gfx.TEXT_JUSTIFY_RIGHT);
+		   		Label.draw( dc ); 
+		   		LabelobereZeile.setText(stepGoal); 
+		   		LabelobereZeile.draw( dc );
+		   		//LabeluntereZeile.setText("steps"); 
+		   		//LabeluntereZeile.draw( dc ); 			
+			}
+			
+			//Draw Steps to go --------------------------------------
+	      	if (displayInfo == 3) {
+	        var actsteps = 0;
+	        var stepGoal = 0;
+	        var stepstogo = 0;		
+			stepGoal = ActMonitor.getInfo().stepGoal;
+			actsteps = ActMonitor.getInfo().steps;
+			
+		        if (actsteps <= stepGoal) {
+			        stepstogo = "- " + (stepGoal - actsteps);
+			    }
+			    if (actsteps > stepGoal) {
+			        stepstogo = "+ " + (actsteps - stepGoal);
+			    }    			        
+			        stepstogo = Lang.format("$1$", [stepstogo]); 			        
+				    Label.setText(stepstogo);
+			   		Label.draw( dc ); 				        			              
+			}
+				 
+
+	 		//Draw DigitalTime---------------------------------
+		   	if (displayInfo == 4) {
+			 drawDigitalTime(dc);
+			 Label.setText(timeStr);
+			 Label.draw( dc );
+
+				 if (!Sys.getDeviceSettings().is24Hour) {
+				 	LabelobereZeile.setText(ampmStr); 
+				   	LabelobereZeile.draw( dc );
+				} 
+			}	         
+	        
+	    	// Draw Altitude------------------------------
+			if (displayInfo == 5) {
+				drawAltitude(dc);
+				Label.setText(altitudeStr);
+		   		Label.draw( dc ); 
+		   		LabelobereZeile.setText(altUnit); 
+		   		LabelobereZeile.draw( dc );
+		   		//UpperLabeluntereZeile.setText("Alt"); 
+		   		//UpperLabeluntereZeile.draw( dc );
+			 }	
+				
+			// Draw Calories------------------------------
+			if (displayInfo == 6) {	
+				var actInfo = ActMonitor.getInfo(); 
+		        var actcals = actInfo.calories;		       
+		        var calStr = Lang.format(" $1$ kCal ", [actcals]);
+		        Label.setText(calStr);
+			   	Label.draw( dc );	
+			}
+			
+			//Draw distance
+			if (displayInfo == 7) {
+				distance.drawDistance(dc);
+				Label.setText(distance.distStr);
+		   		Label.draw( dc ); 
+		   		LabelobereZeile.setText(distance.distUnit); 
+		   		LabelobereZeile.draw( dc );
+		   		//LabeluntereZeile.setText("Dist"); 
+		   		//LabeluntereZeile.draw( dc );
+			}			
+			
+			//Draw battery
+			if (displayInfo == 8) {
+				var Battery = Toybox.System.getSystemStats().battery;       
+        	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
+        	    Label.setText(BatteryStr);
+		   		Label.draw( dc );
+		   		//LabeluntereZeile.setText("Bat"); 
+		   		//LabeluntereZeile.draw( dc );
+			}
+			
+			//Draw Day an d week of year
+			if (displayInfo == 9) {
+				date.builddayWeekStr();	
+				Label.setText(date.dayWeekStr);
+		   		Label.draw( dc ); 
+
+			}
+			
+			//next / over next sun event
+			if (displayInfo == 10) {
+				builSunsetStr(dc);				
+				Label.setText(sunsetStr);
+		   		Label.draw( dc );		
+		    }			
+}
+
+
+
 
 	
 
@@ -509,10 +656,7 @@ function drawBattery(dc) {
         	}      	    
 	    }
 
-
-
-   		
-   	
+ 	
 	    var UpperDispEnable = (App.getApp().getProperty("UpperDispEnable"));
 	    var LowerDispEnable = (App.getApp().getProperty("LowerDispEnable"));
 	    
@@ -524,132 +668,10 @@ function drawBattery(dc) {
 			//background for upper display
 			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);
 			upperDisplay.draw(dc);		
-	      	      	 
-	        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-	        var UpperLabel = View.findDrawableById("UpperLabel");
-	        UpperLabel.setFont(fontDigital);
-	        UpperLabel.setColor(App.getApp().getProperty("ForegroundColor"));
+	      	
+	      	fillDisplay(dc,1);
+		}	      	      	 
 	        
-	        var UpperLabelobereZeile = View.findDrawableById("UpperLabelobereZeile");
-	        UpperLabelobereZeile.setFont(fontLabel);
-	        UpperLabelobereZeile.setColor(App.getApp().getProperty("ForegroundColor"));
-	        
-	    //    var UpperLabeluntereZeile = View.findDrawableById("UpperLabeluntereZeile");
-	    //    UpperLabeluntereZeile.setFont(fontLabel);
-	    //    UpperLabeluntereZeile.setColor(App.getApp().getProperty("ForegroundColor"));
-        	    	
-	 		//Draw date---------------------------------
-		   	if (UDInfo == 1) {
-		   		date.buildDateString(dc);
-		   		UpperLabel.setText(date.dateStr); 
-		   		UpperLabel.draw( dc );		   		      
-			}	
-	
-	 	    //Draw Steps --------------------------------------
-	      	if (UDInfo == 2) {		
-				var stepGoal =  Lang.format("$1$", [ActMonitor.getInfo().stepGoal]);
-		        var stepsStr = Lang.format("$1$", [ActMonitor.getInfo().steps]); 		   		
-		        UpperLabel.setText(stepsStr);
-		        //UpperLabel.setJustification(Gfx.TEXT_JUSTIFY_RIGHT);
-		   		UpperLabel.draw( dc ); 
-		   		UpperLabelobereZeile.setText(stepGoal); 
-		   		UpperLabelobereZeile.draw( dc );
-		   		//UpperLabeluntereZeile.setText("steps"); 
-		   		//UpperLabeluntereZeile.draw( dc ); 			
-			}
-			
-			//Draw Steps to go --------------------------------------
-	      	if (UDInfo == 3) {
-	        var actsteps = 0;
-	        var stepGoal = 0;
-	        var stepstogo = 0;		
-			stepGoal = ActMonitor.getInfo().stepGoal;
-			actsteps = ActMonitor.getInfo().steps;
-			
-		        if (actsteps <= stepGoal) {
-			        stepstogo = "- " + (stepGoal - actsteps);
-			    }
-			    if (actsteps > stepGoal) {
-			        stepstogo = "+ " + (actsteps - stepGoal);
-			    }    			        
-			        stepstogo = Lang.format("$1$", [stepstogo]); 			        
-				    UpperLabel.setText(stepstogo);
-			   		UpperLabel.draw( dc ); 				        			              
-			}
-				 
-
-	 		//Draw DigitalTime---------------------------------
-		   	if (UDInfo == 4) {
-			 drawDigitalTime(dc);
-			 UpperLabel.setText(timeStr);
-			 UpperLabel.draw( dc );
-
-				 if (!Sys.getDeviceSettings().is24Hour) {
-				 	UpperLabelobereZeile.setText(ampmStr); 
-				   	UpperLabelobereZeile.draw( dc );
-				} 
-			}	         
-	        
-	    	// Draw Altitude------------------------------
-			if (UDInfo == 5) {
-				drawAltitude(dc);
-				UpperLabel.setText(altitudeStr);
-		   		UpperLabel.draw( dc ); 
-		   		UpperLabelobereZeile.setText(altUnit); 
-		   		UpperLabelobereZeile.draw( dc );
-		   		//UpperLabeluntereZeile.setText("Alt"); 
-		   		//UpperLabeluntereZeile.draw( dc );
-			 }	
-				
-			// Draw Calories------------------------------
-			if (UDInfo == 6) {	
-			var actInfo = ActMonitor.getInfo(); 
-	        var actcals = actInfo.calories;		       
-	        var calStr = Lang.format(" $1$ kCal ", [actcals]);
-	        UpperLabel.setText(calStr);
-		   	UpperLabel.draw( dc );	
-			}
-			
-			//Draw distance
-			if (UDInfo == 7) {
-				distance.drawDistance(dc);
-				UpperLabel.setText(distance.distStr);
-		   		UpperLabel.draw( dc ); 
-		   		UpperLabelobereZeile.setText(distance.distUnit); 
-		   		UpperLabelobereZeile.draw( dc );
-		   		//UpperLabeluntereZeile.setText("Dist"); 
-		   		//UpperLabeluntereZeile.draw( dc );
-			}			
-			
-			//Draw battery
-			if (UDInfo == 8) {
-				var Battery = Toybox.System.getSystemStats().battery;       
-        	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
-        	    UpperLabel.setText(BatteryStr);
-		   		UpperLabel.draw( dc );
-		   		//UpperLabeluntereZeile.setText("Bat"); 
-		   		//UpperLabeluntereZeile.draw( dc );
-			}
-			
-			//Draw Day an d week of year
-			if (UDInfo == 9) {
-				date.builddayWeekStr();	
-				UpperLabel.setText(date.dayWeekStr);
-		   		UpperLabel.draw( dc ); 
-
-			}
-			
-			//next / over next sun event
-			if (UDInfo == 10) {
-				builSunsetStr(dc);				
-				UpperLabel.setText(sunsetStr);
-		   		UpperLabel.draw( dc );		
-		    }
-			
-			
-			
-		}	
-	
 	
 			
 	 //Anzeige unteres Display--------------------------  
@@ -659,129 +681,11 @@ function drawBattery(dc) {
 			
 			//background for lower display
 			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);
-			lowerDisplay.draw(dc);		
-	      	      	 
-	        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-	        var LowerLabel = View.findDrawableById("LowerLabel");
-	        LowerLabel.setFont(fontDigital);
-	        LowerLabel.setColor(App.getApp().getProperty("ForegroundColor"));
-	        
-	        var LowerLabelobereZeile = View.findDrawableById("LowerLabelobereZeile");
-	        LowerLabelobereZeile.setFont(fontLabel);
-	        LowerLabelobereZeile.setColor(App.getApp().getProperty("ForegroundColor"));
-	        
-	  //      var LowerLabeluntereZeile = View.findDrawableById("LowerLabeluntereZeile");
-	  //      LowerLabeluntereZeile.setFont(fontLabel);
-	  //      LowerLabeluntereZeile.setColor(App.getApp().getProperty("ForegroundColor"));
-	  
-	  
-	  	   if (LDInfo == 1) {
-				date.buildDateString(dc);        
-				LowerLabel.setText(date.dateStr); 
-		   		LowerLabel.draw( dc );	 
-			}	
-	
-	 	    //Draw Steps --------------------------------------
-	      	if (LDInfo == 2) {
-				var stepGoal =  Lang.format("$1$", [ActMonitor.getInfo().stepGoal]);
-		        var stepsStr = Lang.format("$1$", [ActMonitor.getInfo().steps]); 
-	        	LowerLabel.setText(stepsStr);
-	        	//UpperLabel.setJustification(Gfx.TEXT_JUSTIFY_RIGHT);
-	   			LowerLabel.draw( dc ); 
-	   			LowerLabelobereZeile.setText(stepGoal); 
-	   			LowerLabelobereZeile.draw( dc );
-	   			//UpperLabeluntereZeile.setText("steps"); 
-	   			//UpperLabeluntereZeile.draw( dc );
-			}
+			lowerDisplay.draw(dc);
 			
-			//Draw Steps to go --------------------------------------
-	      	if (LDInfo == 3) {
-	        var actsteps = 0;
-	        var stepGoal = 0;
-	        var stepstogo = 0;		
-			stepGoal = ActMonitor.getInfo().stepGoal;
-			actsteps = ActMonitor.getInfo().steps;
-			
-		        if (actsteps <= stepGoal) {
-			        stepstogo = "- " + (stepGoal - actsteps);
-			    }
-			    if (actsteps > stepGoal) {
-			        stepstogo = "+ " + (actsteps - stepGoal);
-			    }    			        
-			        stepstogo = Lang.format("$1$", [stepstogo]); 			        
-				    LowerLabel.setText(stepstogo);
-			   		LowerLabel.draw( dc ); 				        			              
-			}
-			
-	 		//Draw DigitalTime---------------------------------
-		   	if (LDInfo == 4) {
-			 	drawDigitalTime(dc);
-			 	LowerLabel.setText(timeStr);
-			 	LowerLabel.draw( dc );
+			fillDisplay(dc,2);
+		}		
 
-				 if (!Sys.getDeviceSettings().is24Hour) {
-				 	LowerLabelobereZeile.setText(ampmStr); 
-				   	LowerLabelobereZeile.draw( dc );
-				} 
-			}
-			
-						// Draw Altitude------------------------------
-			if (LDInfo == 5) {
-				drawAltitude(dc);
-				LowerLabel.setText(altitudeStr);
-		   		LowerLabel.draw( dc ); 
-		   		LowerLabelobereZeile.setText(altUnit); 
-		   		LowerLabelobereZeile.draw( dc );
-		   		//LowerLabeluntereZeile.setText("Alt"); 
-		   		//LowerLabeluntereZeile.draw( dc );
-			 }	
-				
-			// Draw Calories------------------------------
-			if (LDInfo == 6) {	
-				var actInfo = ActMonitor.getInfo(); 
-		        var actcals = actInfo.calories;		       
-		        var calStr = Lang.format(" $1$ kCal ", [actcals]);
-		        LowerLabel.setText(calStr);
-			   	LowerLabel.draw( dc );		
-			}
-			
-						//Draw distance
-			if (LDInfo == 7) {
-				distance.drawDistance(dc);
-				LowerLabel.setText(distance.distStr);
-		   		LowerLabel.draw( dc ); 
-		   		LowerLabelobereZeile.setText(distance.distUnit); 
-		   		LowerLabelobereZeile.draw( dc );
-		   		//LowerLabeluntereZeile.setText("Dist"); 
-		   		//LowerLabeluntereZeile.draw( dc );
-			}
-			
-			//Draw battery
-			if (LDInfo == 8) {
-				var Battery = Toybox.System.getSystemStats().battery;       
-        	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
-        	    LowerLabel.setText(BatteryStr);
-		   		LowerLabel.draw( dc );
-		   		//LowerLabeluntereZeile.setText("Bat"); 
-		   		//LowerLabeluntereZeile.draw( dc );
-			}
-
-		    //Draw Day an d week of year
-			if (LDInfo == 9) {
-				date.builddayWeekStr();	
-				LowerLabel.setText(date.dayWeekStr);
-		   		LowerLabel.draw( dc ); 
-		    }
-			
-			//Draw Day an d week of year
-			if (LDInfo == 10) {
-				builSunsetStr(dc);				
-				LowerLabel.setText(sunsetStr);
-		   		LowerLabel.draw( dc );
-		    }
-			
-	  
-	  }
 		
 			
 		//!progress battery------------
@@ -919,6 +823,10 @@ function drawBattery(dc) {
      		hands.drawSecondHands(dc);
      	}
       }
+ 
+Sys.println("used: " + System.getSystemStats().usedMemory);
+Sys.println("free: " + System.getSystemStats().freeMemory);
+Sys.println("total: " + System.getSystemStats().totalMemory);
           
 }
     
