@@ -1,5 +1,5 @@
 <properties>
-	<property id="appVersion" type="string">0.5.1</property>
+	<property id="appVersion" type="string">0.5.2b</property>
 	
 	<property id="BatProgressEnable" type="boolean">true</property>
 	<property id="StepProgressEnable" type="boolean">true</property>
@@ -7,7 +7,7 @@
 	
     <property id="BackgroundColor" type="number">0xFFFFFF</property>
     
-     <property id="DigitalBackgroundColor" type="number">0xAAAAAA</property>
+    <property id="DigitalBackgroundColor" type="number">0xAAAAAA</property>
     <property id="ForegroundColor" type="number">0x000000</property>
     
     <property id="Numbers" type="number">1</property>

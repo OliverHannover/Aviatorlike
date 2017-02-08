@@ -2,14 +2,14 @@
 fileVersion=1
 
 # font settings
-fontName=Suissnord
+fontName=DJB Get Digital
 fontFile=
 charSet=0
-fontSize=48
+fontSize=35
 aa=1
 scaleH=100
 useSmoothing=1
-isBold=1
+isBold=0
 isItalic=0
 useUnicode=1
 disableBoxChars=1
@@ -32,15 +32,15 @@ forceZero=0
 # output file
 outWidth=256
 outHeight=256
-outBitDepth=32
+outBitDepth=8
 fontDescFormat=0
 fourChnlPacked=0
 textureFormat=png
 textureCompression=0
 alphaChnl=2
-redChnl=2
-greenChnl=2
-blueChnl=2
+redChnl=4
+greenChnl=4
+blueChnl=4
 invA=0
 invR=0
 invG=0
@@ -50,6 +50,6 @@ invB=0
 outlineThickness=0
 
 # selected chars
-chars=32,46,48-59
+chars=32,37,40-41,43,45-93,97-125
 
 # imported icon images
