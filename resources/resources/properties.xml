@@ -1,9 +1,11 @@
 <properties>
-	<property id="appVersion" type="string">0.5.2b</property>
+	<property id="appVersion" type="string">0.5.2</property>
 	
 	<property id="BatProgressEnable" type="boolean">true</property>
 	<property id="StepProgressEnable" type="boolean">true</property>
-	<property id="SunMarkersEnable" type="boolean">true</property>
+	<property id="SunMarkersEnable" type="boolean">false</property>
+	<property id="MoonEnable" type="boolean">false</property>
+	<property id="AlmMsgEnable" type="boolean">true</property>
 	
     <property id="BackgroundColor" type="number">0xFFFFFF</property>
     

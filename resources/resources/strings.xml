@@ -28,6 +28,8 @@
     <string id="StepProgressEnableTitle">Enable step progress marker</string>
     <string id="HandOutlinesEnableTitle">Enable outline around some hands</string>
     <string id="SunMarkersEnableTitle">Enable sunrise/sunset markers</string>
+    <string id="MoonEnableTitle">Enable moon phase on pos. 3 o´clock</string>
+    <string id="AlmMsgEnableTitle">Enable Alm / Msg indicators</string>
     
 
     <string id="ColorBlack">Black</string>
@@ -58,10 +60,11 @@
     
     <string id="DF1">Weekday DD Month</string>
     <string id="DF2">Weekday Month DD</string>
-    <string id="DF3">DD.MM.YYYY</string>
-    <string id="DF4">YYYY-MM-DD</string>
-    <string id="DF5">DD/MM/YYYY</string>
-    <string id="DF6">MM/DD/YYYY</string>
+    <string id="DF3">Weekday DD</string>
+    <string id="DF4">DD.MM.YYYY</string>
+    <string id="DF5">YYYY-MM-DD</string>
+    <string id="DF6">DD/MM/YYYY</string>
+    <string id="DF7">MM/DD/YYYY</string>
     
    
     <string id="UDDate">Date</string>

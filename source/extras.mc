@@ -5,11 +5,12 @@ using Toybox.Time.Gregorian as Calendar;
 using Toybox.Activity as Act;
 using Toybox.Math as Math;
 using Toybox.Graphics as Gfx;
+//using Toybox.System as Sys;
 
 
 module extras{
 
-		hidden var lastLoc;
+	var lastLoc;
 		
      function getMoment(now,what) {
 		return SunCalc.calculate(now, lastLoc[0], lastLoc[1], what);
@@ -63,23 +64,7 @@ module extras{
 		}			
 	}
 	
-	function drawMoon(dc) {
-	// Draw moon ------------------------------------------------------------------------------
-		var moonx = 160;
-  		var moony = dc.getHeight() / 2 -20; 
-  		//Sys.println("Moon"); 
-		   
-//       	moon = new Moon(Ui.loadResource(Rez.Drawables.moon), 40, moonx, moony);
-//		var time_sec = Time.now();
-//		var dateinfo = Calendar.info(time_sec, Time.FORMAT_SHORT);
-//       var clockTime = Sys.getClockTime();
-//		moon.updateable_calcmoonphase(dc, dateinfo, clockTime.hour);
-//		
-//		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-		dc.setPenWidth(1);	   
- 		dc.drawCircle(moonx+20,moony+20,19);
 
-}
 
 
 

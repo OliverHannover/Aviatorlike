@@ -17,6 +17,16 @@ class AviatorlikeView extends Ui.WatchFace{
 	    hidden var fontDigital;
 	    hidden var fontLabel;
 	    
+	    var ULBGx, ULBGy, ULBGwidth;
+	    var ULTEXTx, ULTEXTy;
+	    var ULINFOx, ULINFOy;  
+	    
+	  	var LLBGx, LLBGy, LLBGwidth;
+	    var LLTEXTx, LLTEXTy;
+	    var LLINFOx, LLINFOy;
+	    var labelText;
+	  	var LabelobereZeileText;  
+	    
 	    var isAwake;
 	    var screenShape;
 	    
@@ -45,41 +55,59 @@ class AviatorlikeView extends Ui.WatchFace{
 		//Battery
 		var BatteryStr;
 	
-		//sunset sunrise	
 		hidden var sunset_sunrise;
 		//hidden var sunrise;
 		//hidden var sunset;
 		hidden var lastLoc;
 		hidden var sunsetStr;
 	
-	//var moon;
-
-	var upperDisplay, lowerDisplay;	
+		var moonx, moony, moonwidth;
 		
-
     function initialize() {
         WatchFace.initialize();
-        screenShape = Sys.getDeviceSettings().screenShape;
-                  
-        Sys.println("Screenshape = " + screenShape);
-             
         
-    }
-   
-    
-    function onLayout(dc) { 
-    	setLayout(Rez.Layouts.WatchFace(dc));
-    
-    	width = dc.getWidth();
-        height = dc.getHeight();
-        center_x = dc.getWidth() / 2;
-        center_y = dc.getHeight() / 2; 
+        //Positions upper Label Background
+        ULBGx = Ui.loadResource( Rez.Strings.ULBGx ).toNumber();
+        ULBGy = Ui.loadResource( Rez.Strings.ULBGy ).toNumber();
+        ULBGwidth = Ui.loadResource( Rez.Strings.ULBGwidth ).toNumber();
+        
+       	ULTEXTx = Ui.loadResource( Rez.Strings.ULTEXTx ).toNumber(); 
+       	ULTEXTy = Ui.loadResource( Rez.Strings.ULTEXTy ).toNumber();
+	    ULINFOx = Ui.loadResource( Rez.Strings.ULINFOx ).toNumber();
+	    ULINFOy = Ui.loadResource( Rez.Strings.ULINFOy ).toNumber();
+	    
+	     //Positions lower Label Background
+	    LLBGx = Ui.loadResource( Rez.Strings.LLBGx ).toNumber();
+        LLBGy = Ui.loadResource( Rez.Strings.LLBGy ).toNumber();
+        LLBGwidth = Ui.loadResource( Rez.Strings.LLBGwidth ).toNumber();
+        
+       	LLTEXTx = Ui.loadResource( Rez.Strings.LLTEXTx ).toNumber(); 
+       	LLTEXTy = Ui.loadResource( Rez.Strings.LLTEXTy ).toNumber();
+	    LLINFOx = Ui.loadResource( Rez.Strings.LLINFOx ).toNumber();
+	    LLINFOy = Ui.loadResource( Rez.Strings.LLINFOy ).toNumber();
+	    
+	   	//Positions and size of moon
+	    moonx = Ui.loadResource( Rez.Strings.moonx ).toNumber();
+        moony = Ui.loadResource( Rez.Strings.moony ).toNumber();
+        moonwidth = Ui.loadResource( Rez.Strings.moonwidth ).toNumber();
+	    
+        screenShape = Sys.getDeviceSettings().screenShape;
           
     	font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
         //font1 = Gfx.FONT_SYSTEM_NUMBER_SMALL;
         fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);
-        fontLabel = Ui.loadResource(Rez.Fonts.id_font_label);        
-        
+        fontLabel = Ui.loadResource(Rez.Fonts.id_font_label);
+                  
+        Sys.println("Screenshape = " + screenShape);        
+    }
+   
+    
+    function onLayout(dc) { 
+        width = dc.getWidth();
+        height = dc.getHeight();
+        center_x = dc.getWidth() / 2;
+        center_y = dc.getHeight() / 2;    
+                            
     }
 
    
@@ -167,7 +195,7 @@ class AviatorlikeView extends Ui.WatchFace{
 
          
   
-  function drawDigitalTime(dc) {
+  function drawDigitalTime() {
 
   		var now = Time.now();
   
@@ -214,13 +242,13 @@ class AviatorlikeView extends Ui.WatchFace{
 			use24hclock = Sys.getDeviceSettings().is24Hour;
 			if (!use24hclock) {
 				if (dthour >= 12) {
-					ampmStr = "pm ";
+					ampmStr = "pm";
 				}
 				if (dthour > 12) {
 					dthour = dthour - 12;				
 				} else if (dthour == 0) {
 					dthour = 12;
-					ampmStr = "am ";
+					ampmStr = "am";
 				}
 			}			
 			
@@ -241,13 +269,13 @@ class AviatorlikeView extends Ui.WatchFace{
   }//End of drawDigitalTime(dc)-------
 
 
-	function drawAltitude(dc) {
+	function drawAltitude() {
 			
 			var unknownaltitude = true;
 			var actaltitude = 0;
 			var actInfo;
 			var metric = Sys.getDeviceSettings().elevationUnits == Sys.UNIT_METRIC;
-			altUnit = "Alt m";
+			altUnit = "m";
 						
 			actInfo = Act.getActivityInfo();
 			if (actInfo != null) {
@@ -432,7 +460,7 @@ function drawBattery(dc) {
  
  
  
-	function builSunsetStr(dc) {
+	function builSunsetStr() {
 
 			var moment = Time.now();
 	        var info_date = Calendar.info(moment, Time.FORMAT_LONG);
@@ -460,59 +488,24 @@ function drawBattery(dc) {
 	}	
 
 
-
-
-function fillDisplay(dc,UporLOW) {
-
-			var displayInfo = 0;
-			var Label = null;
-			var LabelobereZeile = null;
-	  //    var LabeluntereZeile);
-
 	
-	 //upper display 	
-		if (UporLOW == 1) { //upperDisplay
-			displayInfo = (App.getApp().getProperty("UDInfo"));
-			Label = View.findDrawableById("UpperLabel");
-			LabelobereZeile = View.findDrawableById("UpperLabelobereZeile");
-	  //    LabeluntereZeile = View.findDrawableById("UpperLabeluntereZeile");
-		}
-		if (UporLOW == 2) { //lowerDisplay
-			displayInfo = (App.getApp().getProperty("LDInfo"));
-			Label = View.findDrawableById("LowerLabel");
-			LabelobereZeile = View.findDrawableById("LowerLabelobereZeile");
-	  //    LabeluntereZeile = View.findDrawableById("LowerLabeluntereZeile");			
-		}
-		
-			
-	        dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);	        
-	        Label.setFont(fontDigital);
-	        Label.setColor(App.getApp().getProperty("ForegroundColor"));
-	        	        
-	        LabelobereZeile.setFont(fontLabel);
-	        LabelobereZeile.setColor(App.getApp().getProperty("ForegroundColor"));
-	        	    
-	    //    LabeluntereZeile.setFont(fontLabel);
-	    //    LabeluntereZeile.setColor(App.getApp().getProperty("ForegroundColor"));
+	function setLabel(displayInfo) {
+				
+				labelText = "";
+	  			LabelobereZeileText = "";	        
+    		
         	    	
 	 		//Draw date---------------------------------
 		   	if (displayInfo == 1) {
-		   		date.buildDateString(dc);
-		   		Label.setText(date.dateStr); 
-		   		Label.draw( dc );		   		      
+		   		date.buildDateString();
+		   		labelText = date.dateStr;
+	  			LabelobereZeileText = "";		   		      
 			}	
 	
 	 	    //Draw Steps --------------------------------------
-	      	if (displayInfo == 2) {		
-				var stepGoal =  Lang.format("$1$", [ActMonitor.getInfo().stepGoal]);
-		        var stepsStr = Lang.format("$1$", [ActMonitor.getInfo().steps]); 		   		
-		        Label.setText(stepsStr);
-		        //Label.setJustification(Gfx.TEXT_JUSTIFY_RIGHT);
-		   		Label.draw( dc ); 
-		   		LabelobereZeile.setText(stepGoal); 
-		   		LabelobereZeile.draw( dc );
-		   		//LabeluntereZeile.setText("steps"); 
-		   		//LabeluntereZeile.draw( dc ); 			
+	      	if (displayInfo == 2) {				   		
+		   		labelText = Lang.format("$1$", [ActMonitor.getInfo().steps]);
+	  			LabelobereZeileText = Lang.format("$1$", [ActMonitor.getInfo().stepGoal]); 			
 			}
 			
 			//Draw Steps to go --------------------------------------
@@ -530,32 +523,28 @@ function fillDisplay(dc,UporLOW) {
 			        stepstogo = "+ " + (actsteps - stepGoal);
 			    }    			        
 			        stepstogo = Lang.format("$1$", [stepstogo]); 			        
-				    Label.setText(stepstogo);
-			   		Label.draw( dc ); 				        			              
+		   		labelText = stepstogo;
+	  			LabelobereZeileText = "";					        			              
 			}
 				 
 
 	 		//Draw DigitalTime---------------------------------
 		   	if (displayInfo == 4) {
-			 drawDigitalTime(dc);
-			 Label.setText(timeStr);
-			 Label.draw( dc );
+				 drawDigitalTime();
+				 labelText = timeStr;
+				 LabelobereZeileText = "";
+	  				
 
 				 if (!Sys.getDeviceSettings().is24Hour) {
-				 	LabelobereZeile.setText(ampmStr); 
-				   	LabelobereZeile.draw( dc );
+				 	LabelobereZeileText = ampmStr;
 				} 
 			}	         
 	        
 	    	// Draw Altitude------------------------------
 			if (displayInfo == 5) {
-				drawAltitude(dc);
-				Label.setText(altitudeStr);
-		   		Label.draw( dc ); 
-		   		LabelobereZeile.setText(altUnit); 
-		   		LabelobereZeile.draw( dc );
-		   		//UpperLabeluntereZeile.setText("Alt"); 
-		   		//UpperLabeluntereZeile.draw( dc );
+				drawAltitude();
+				labelText = altitudeStr;
+	  			LabelobereZeileText = altUnit;	
 			 }	
 				
 			// Draw Calories------------------------------
@@ -563,50 +552,43 @@ function fillDisplay(dc,UporLOW) {
 				var actInfo = ActMonitor.getInfo(); 
 		        var actcals = actInfo.calories;		       
 		        var calStr = Lang.format(" $1$ kCal ", [actcals]);
-		        Label.setText(calStr);
-			   	Label.draw( dc );	
+		        labelText = calStr;
+		        LabelobereZeileText = "";	
 			}
 			
 			//Draw distance
 			if (displayInfo == 7) {
-				distance.drawDistance(dc);
-				Label.setText(distance.distStr);
-		   		Label.draw( dc ); 
-		   		LabelobereZeile.setText(distance.distUnit); 
-		   		LabelobereZeile.draw( dc );
-		   		//LabeluntereZeile.setText("Dist"); 
-		   		//LabeluntereZeile.draw( dc );
+				distance.drawDistance();
+				labelText = distance.distStr;
+	  			LabelobereZeileText = distance.distUnit;
 			}			
 			
 			//Draw battery
 			if (displayInfo == 8) {
 				var Battery = Toybox.System.getSystemStats().battery;       
         	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
-        	    Label.setText(BatteryStr);
-		   		Label.draw( dc );
-		   		//LabeluntereZeile.setText("Bat"); 
-		   		//LabeluntereZeile.draw( dc );
+        	    labelText = BatteryStr;
+        	    LabelobereZeileText = "";
 			}
 			
 			//Draw Day an d week of year
 			if (displayInfo == 9) {
-				date.builddayWeekStr();	
-				Label.setText(date.dayWeekStr);
-		   		Label.draw( dc ); 
-
+				date.builddayWeekStr();
+				labelText = date.dayWeekStr;
+				LabelobereZeileText = "";
 			}
 			
 			//next / over next sun event
 			if (displayInfo == 10) {
-				builSunsetStr(dc);				
-				Label.setText(sunsetStr);
-		   		Label.draw( dc );		
-		    }			
-}
-
-
-
-
+				builSunsetStr();
+				labelText = sunsetStr;
+				LabelobereZeileText = "";	
+		    }		    
+		    
+		    
+	//Sys.println("Dispfilled");
+	//Sys.println("");
+	}		
 	
 
 // Handle the update event-----------------------------------------------------------------------
@@ -625,16 +607,12 @@ function fillDisplay(dc,UporLOW) {
    // Draw the hash marks ---------------------------------------------------------------------------
         drawHashMarks(dc);  
         drawQuarterHashmarks(dc);  
-    
-//    if (screenShape == 1) {           
-//   		extras.drawMoon(dc);
-//		}
 
 //Draw Digital Elements ------------------------------------------------------------------ 
 
          var digiFont = (App.getApp().getProperty("DigiFont")); 
          //Sys.println("digiFont="+ digiFont);
-         fontDigital = null;
+         //fontDigital = null;
          
     	//font for display
 	    if ( digiFont == 1) { //!digital
@@ -655,39 +633,39 @@ function fillDisplay(dc,UporLOW) {
         		fontDigital = Gfx.FONT_SYSTEM_MEDIUM ; 
         	}      	    
 	    }
-
- 	
+	    	
+    
 	    var UpperDispEnable = (App.getApp().getProperty("UpperDispEnable"));
 	    var LowerDispEnable = (App.getApp().getProperty("LowerDispEnable"));
-	    
-	   //upper display 	
+
 		if (UpperDispEnable) {
-			upperDisplay = new Rez.Drawables.upperDisplay();
-			var UDInfo = (App.getApp().getProperty("UDInfo"));
-			
+			var displayInfo = (App.getApp().getProperty("UDInfo"));
+			setLabel(displayInfo);
 			//background for upper display
-			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);
-			upperDisplay.draw(dc);		
-	      	
-	      	fillDisplay(dc,1);
-		}	      	      	 
-	        
-	
+			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
+	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 35, 5);
+      	      	 
+        	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+        	dc.drawText(ULTEXTx, ULTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
+			dc.drawText(ULINFOx, ULINFOy, fontLabel, LabelobereZeileText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
+		}	
+		
 			
 	 //Anzeige unteres Display--------------------------  
 		if (LowerDispEnable) {
-			lowerDisplay = new Rez.Drawables.lowerDisplay();
-			var LDInfo = (App.getApp().getProperty("LDInfo"));
-			
-			//background for lower display
-			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);
-			lowerDisplay.draw(dc);
-			
-			fillDisplay(dc,2);
-		}		
+			var displayInfo = (App.getApp().getProperty("LDInfo"));
+			setLabel(displayInfo);
+			//background for upper display
+			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
+	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 35, 5);
+      	      	 
+        	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+        	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
+			dc.drawText(LLINFOx, LLINFOy, fontLabel, LabelobereZeileText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
+		}
 
+	
 		
-			
 		//!progress battery------------
 		var BatProgressEnable = (App.getApp().getProperty("BatProgressEnable"));
        	if (BatProgressEnable) {
@@ -704,8 +682,39 @@ function fillDisplay(dc,UporLOW) {
        		//Sys.println("sunmarkers "+ SunmarkersEnable);
 			extras.drawSunMarkers(dc);
 		}
-		
-		
+		//! Moon phase
+		var MoonEnable = (App.getApp().getProperty("MoonEnable"));
+		if (MoonEnable) {           
+   			extrasMoon.drawMoon(dc, moonx, moony, moonwidth);
+		}
+		//! Alm / Msg indicators
+		var AlmMsgEnable = (App.getApp().getProperty("AlmMsgEnable"));
+		if (AlmMsgEnable) {
+			//Indicators-------------------------------------------------------------	
+		 	 //messages 	
+	     	var messages = Sys.getDeviceSettings().notificationCount;     	
+	     	if (messages > 0) {
+	     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+	        	dc.fillCircle(width / 2 + 30, height / 2 -7, 5);
+	     	}
+	     	dc.setPenWidth(2);
+	        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+	        dc.drawCircle(width / 2 + 30, height / 2 -7, 5);
+	        dc.drawText(width / 2 + 30, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
+	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER); 
+	      
+		  //Alarm is set 	
+	     	var alarm = Sys.getDeviceSettings().alarmCount;     	
+	     	if (alarm > 0) {
+	     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+	        	dc.fillCircle(width / 2 - 30, height / 2 -7, 5);
+	     	}
+	     	dc.setPenWidth(2);
+	        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+	        dc.drawCircle(width / 2 - 30, height / 2 -7, 5);
+	        dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
+	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);
+		}	        
 
       // Draw the numbers --------------------------------------------------------------------------------------
        var NbrFont = (App.getApp().getProperty("Numbers")); 
@@ -716,34 +725,44 @@ function fillDisplay(dc,UporLOW) {
 		    if ( NbrFont == 1) { //fat
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
 		    		dc.drawText((width / 2), 5, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {
+		    			dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 54, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 26, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		    if ( NbrFont == 2) { //race
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_race);
 		    		dc.drawText((width / 2), 5, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {	
+		    			dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 52, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 26, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		    if ( NbrFont == 3) { //classic
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_classic);
 		    		dc.drawText((width / 2), 15, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 18, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {	
+		    			dc.drawText(width - 16, (height / 2) - 18, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 48, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 18, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		   if ( NbrFont == 4) {  //roman
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_roman);
 		    		dc.drawText((width / 2), 7, font1, "}", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {	
+		    			dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 50, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 		   		}
 		   	if ( NbrFont == 5) {  //simple
 		    		dc.drawText((width / 2), 10, Gfx.FONT_SYSTEM_LARGE   , "12", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 22, Gfx.FONT_SYSTEM_LARGE  , "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {
+		    			dc.drawText(width - 16, (height / 2) - 22, Gfx.FONT_SYSTEM_LARGE  , "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 45, Gfx.FONT_SYSTEM_LARGE   , "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 22, Gfx.FONT_SYSTEM_LARGE   , "9", Gfx.TEXT_JUSTIFY_LEFT);
 		   		}
@@ -754,64 +773,48 @@ function fillDisplay(dc,UporLOW) {
 		    if ( NbrFont == 1) { //fat
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
 		    		dc.drawText((width / 2), -12, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {	
+		    			dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 41, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 26, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		    if ( NbrFont == 2) { //race
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_race);
 		    		dc.drawText((width / 2), -12, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {		
+		    			dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 39, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 26, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		    if ( NbrFont == 3) { //classic
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_classic);
 		    		dc.drawText((width / 2), 0, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 18, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {		
+		    			dc.drawText(width - 16, (height / 2) - 18, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 33, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 18, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		   if ( NbrFont == 4) {  //roman
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_roman);
 		    		dc.drawText((width / 2), -4, font1, "}", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {		
+		    			dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 40, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 		   		}
 		   	if ( NbrFont == 5) {  //simple
 		    		dc.drawText((width / 2), -3, Gfx.FONT_SYSTEM_LARGE   , "12", Gfx.TEXT_JUSTIFY_CENTER);
-		    		dc.drawText(width - 16, (height / 2) - 17, Gfx.FONT_SYSTEM_LARGE  , "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    		if (! MoonEnable) {		
+		    			dc.drawText(width - 16, (height / 2) - 17, Gfx.FONT_SYSTEM_LARGE  , "3", Gfx.TEXT_JUSTIFY_RIGHT);
+	        		}
 	        		dc.drawText(width / 2, height - 30, Gfx.FONT_SYSTEM_LARGE   , "6", Gfx.TEXT_JUSTIFY_CENTER);
 	        		dc.drawText(16, (height / 2) - 17, Gfx.FONT_SYSTEM_LARGE   , "9", Gfx.TEXT_JUSTIFY_LEFT);
 		   		}
-	   	}
-	   		
-	   	
-//Indicators-------------------------------------------------------------	
-	  //messages 	
-     	var messages = Sys.getDeviceSettings().notificationCount;     	
-     	if (messages > 0) {
-     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-        	dc.fillCircle(width / 2 + 30, height / 2 -7, 5);
-     	}
-     	dc.setPenWidth(2);
-        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-        dc.drawCircle(width / 2 + 30, height / 2 -7, 5);
-        dc.drawText(width / 2 + 30, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
-        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER); 
-      
-	  //Alarm is set 	
-     	var alarm = Sys.getDeviceSettings().alarmCount;     	
-     	if (alarm > 0) {
-     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-        	dc.fillCircle(width / 2 - 30, height / 2 -7, 5);
-     	}
-     	dc.setPenWidth(2);
-        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-        dc.drawCircle(width / 2 - 30, height / 2 -7, 5);
-        dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
-        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER); 
+	   	} 
        
 
   // Draw hands ------------------------------------------------------------------         
@@ -827,6 +830,7 @@ function fillDisplay(dc,UporLOW) {
 Sys.println("used: " + System.getSystemStats().usedMemory);
 Sys.println("free: " + System.getSystemStats().freeMemory);
 Sys.println("total: " + System.getSystemStats().totalMemory);
+Sys.println("");
           
 }
     

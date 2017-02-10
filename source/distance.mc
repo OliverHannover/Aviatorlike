@@ -9,7 +9,7 @@ module distance{
 		var distStr;
 		var distUnit;
 
-	function drawDistance(dc) {
+	function drawDistance() {
 	// Draw Distance------------------------------  
 			
 			distStr = 0;
@@ -18,7 +18,7 @@ module distance{
 			var actDistance = 0;
 			var actInfo;
 			var metric = Sys.getDeviceSettings().distanceUnits == Sys.UNIT_METRIC;
-			distUnit = "Dist km";
+			distUnit = "km";
 			
 			actInfo = ActMonitor.getInfo();
 			if (actInfo != null) {

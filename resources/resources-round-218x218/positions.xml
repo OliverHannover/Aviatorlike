@@ -1,0 +1,25 @@
+<resources>
+    <string id="ULBGx">37</string>
+    <string id="ULBGy">48</string>
+    <string id="ULBGwidth">144</string>
+    
+    <string id="ULTEXTx">109</string>
+    <string id="ULTEXTy">50</string>
+    
+    <string id="ULINFOx">175</string>
+    <string id="ULINFOy">50</string>   
+    
+    <string id="LLBGx">37</string>
+    <string id="LLBGy">135</string>
+    <string id="LLBGwidth">144</string>
+    
+    <string id="LLTEXTx">109</string>
+    <string id="LLTEXTy">137</string>
+    
+    <string id="LLINFOx">175</string>
+    <string id="LLINFOy">137</string> 
+    
+    <string id="moonx">165</string>
+    <string id="moony">89</string>
+    <string id="moonwidth">40</string>   
+</resources>

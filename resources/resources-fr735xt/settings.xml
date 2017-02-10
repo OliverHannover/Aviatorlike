@@ -12,17 +12,10 @@
         <settingConfig type="boolean" />
     </setting>
     
-    <setting propertyKey="@Properties.SunMarkersEnable" title="@Strings.SunMarkersEnableTitle">
-        <settingConfig type="boolean" />
-    </setting>
-    
-    <setting propertyKey="@Properties.MoonEnable" title="@Strings.MoonEnableTitle">
-        <settingConfig type="boolean" />
-    </setting>
-    
     <setting propertyKey="@Properties.AlmMsgEnable" title="@Strings.AlmMsgEnableTitle">
         <settingConfig type="boolean" />
     </setting>
+
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">

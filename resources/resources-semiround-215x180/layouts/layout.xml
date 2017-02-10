@@ -1,8 +1,0 @@
-<layout id="WatchFace">
-<label id="UpperLabel" x="center" y="40" font="Gfx.FONT_MEDIUM" justification="Gfx.TEXT_JUSTIFY_CENTER"  />
-<label id="UpperLabelobereZeile" x="169" y="40" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_RIGHT"  />
-
-<label id="LowerLabel" x="center" y="110" font="Gfx.FONT_MEDIUM" justification="Gfx.TEXT_JUSTIFY_CENTER"  />
-<label id="LowerLabelobereZeile" x="175" y="110" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_RIGHT"  />
-
-</layout>

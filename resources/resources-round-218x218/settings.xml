@@ -15,6 +15,14 @@
     <setting propertyKey="@Properties.SunMarkersEnable" title="@Strings.SunMarkersEnableTitle">
         <settingConfig type="boolean" />
     </setting>
+    
+    <setting propertyKey="@Properties.MoonEnable" title="@Strings.MoonEnableTitle">
+        <settingConfig type="boolean" />
+    </setting>
+    
+    <setting propertyKey="@Properties.AlmMsgEnable" title="@Strings.AlmMsgEnableTitle">
+        <settingConfig type="boolean" />
+    </setting>
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">
@@ -234,6 +242,7 @@
             <listEntry value="4">@Strings.DF4</listEntry>
             <listEntry value="5">@Strings.DF5</listEntry>
             <listEntry value="6">@Strings.DF6</listEntry>
+            <listEntry value="7">@Strings.DF7</listEntry>
         </settingConfig>
     </setting>
     

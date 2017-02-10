@@ -15,7 +15,7 @@ module date{
 		//Sys.println("dateFormat = " + dateFormat); 
 
  	//DateString -----------------------------------------------------------------------
-	function buildDateString(dc) {
+	function buildDateString() {
 		var now = Time.now();
 		var info = Calendar.info(now, Time.FORMAT_LONG);	
 		var dateFormat = (App.getApp().getProperty("DateFormat"));			
@@ -29,19 +29,23 @@ module date{
         info = Calendar.info(now, Time.FORMAT_MEDIUM);
         dateStr = Lang.format("$1$ $2$ $3$", [info.day_of_week, info.month, info.day]);  
  		}
- 		if (dateFormat == 3) {
+      	if (dateFormat == 3) {
+        info = Calendar.info(now, Time.FORMAT_MEDIUM);
+        dateStr = Lang.format("$1$ $2$", [info.day_of_week, info.day]);  
+ 		} 				
+ 		if (dateFormat == 4) {
  		info = Calendar.info(now, Time.FORMAT_SHORT);
         dateStr = Lang.format("$1$.$2$.$3$", [info.day, info.month, info.year]);  
  		}
- 		if (dateFormat == 4) {
+ 		if (dateFormat == 5) {
  		info = Calendar.info(now, Time.FORMAT_SHORT);
          dateStr = Lang.format("$1$-$2$-$3$", [info.year, info.month, info.day]);  
  		}
- 		if (dateFormat == 5) {
+ 		if (dateFormat == 6) {
  		info = Calendar.info(now, Time.FORMAT_SHORT);
         dateStr = Lang.format("$1$/$2$/$3$", [info.day, info.month, info.year]);  
  		}
- 		if (dateFormat == 6) {
+ 		if (dateFormat == 7) {
  		info = Calendar.info(now, Time.FORMAT_SHORT);
         dateStr = Lang.format("$1$/$2$/$3$", [info.month, info.day, info.year]); 
  		}
