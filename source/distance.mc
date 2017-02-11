@@ -41,7 +41,10 @@ module distance{
 				distStr = Lang.format("Dst ?");
 			} else {
 				distStr = Lang.format("$1$", [actDistance.format("%.2f")] );
-			}	
+			}
+			
+			//Sys.println("Distance-Function" + distStr + " " + distUnit);
+	
 	
 	}
 

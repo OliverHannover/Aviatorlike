@@ -1,5 +1,0 @@
-<build>
-  <exclude file="../../source/extras.mc"/> 
-  <exclude file="../../source/moon.mc"/>
-   <exclude file="../../source/extraMoon.mc"/>
-</build>

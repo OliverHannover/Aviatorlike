@@ -9,14 +9,10 @@ using Toybox.WatchUi as Ui;
 using Toybox.Activity as Act;
 using Toybox.ActivityMonitor as ActMonitor;
 
-//develop
+
 class AviatorlikeView extends Ui.WatchFace{
-
-
-		hidden var font1;
-	    hidden var fontDigital;
-	    hidden var fontLabel;
 	    
+	    //Positions for Displays + Text
 	    var ULBGx, ULBGy, ULBGwidth;
 	    var ULTEXTx, ULTEXTy;
 	    var ULINFOx, ULINFOy;  
@@ -25,46 +21,27 @@ class AviatorlikeView extends Ui.WatchFace{
 	    var LLTEXTx, LLTEXTy;
 	    var LLINFOx, LLINFOy;
 	    var labelText;
-	  	var LabelobereZeileText;  
+	  	var labelInfoText;  
 	    
 	    var isAwake;
 	    var screenShape;
 	    
-	    hidden var clockTime;
+	    var clockTime;
 	    
-	  	hidden var width;
-	    hidden var height;  
+	  	var width;
+	    var height;  
 	  	// the x coordinate for the center
-	    hidden var center_x;
+	    var center_x;
 	    // the y coordinate for the center
-	    hidden var center_y;     
-
-		//Variablen für die digitale Uhr
-		var ampmStr = "am";
-		var timeStr;		
-		var Use24hFormat;
-		var dualtime = false;
-		var dualtimeTZ = 0;
-		var dualtimeDST = 0;
-		
-		//variables for secondary displays	
-		//altitude
-		var altitudeStr;
-		var altUnit; 
-
-		//Battery
-		var BatteryStr;
-	
-		hidden var sunset_sunrise;
-		//hidden var sunrise;
-		//hidden var sunset;
-		hidden var lastLoc;
-		hidden var sunsetStr;
+	    var center_y;      
+	    
+		var lastLoc;
 	
 		var moonx, moony, moonwidth;
 		
     function initialize() {
         WatchFace.initialize();
+        
         
         //Positions upper Label Background
         ULBGx = Ui.loadResource( Rez.Strings.ULBGx ).toNumber();
@@ -90,15 +67,11 @@ class AviatorlikeView extends Ui.WatchFace{
 	    moonx = Ui.loadResource( Rez.Strings.moonx ).toNumber();
         moony = Ui.loadResource( Rez.Strings.moony ).toNumber();
         moonwidth = Ui.loadResource( Rez.Strings.moonwidth ).toNumber();
+        
+        
 	    
-        screenShape = Sys.getDeviceSettings().screenShape;
-          
-    	font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
-        //font1 = Gfx.FONT_SYSTEM_NUMBER_SMALL;
-        fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital);
-        fontLabel = Ui.loadResource(Rez.Fonts.id_font_label);
-                  
-        Sys.println("Screenshape = " + screenShape);        
+        screenShape = Sys.getDeviceSettings().screenShape;                  
+        //Sys.println("Screenshape = " + screenShape);        
     }
    
     
@@ -106,8 +79,7 @@ class AviatorlikeView extends Ui.WatchFace{
         width = dc.getWidth();
         height = dc.getHeight();
         center_x = dc.getWidth() / 2;
-        center_y = dc.getHeight() / 2;    
-                            
+        center_y = dc.getHeight() / 2;                               
     }
 
    
@@ -194,18 +166,15 @@ class AviatorlikeView extends Ui.WatchFace{
  
 
          
-  
-  function drawDigitalTime() {
+	function drawDigitalTime() {
 
-  		var now = Time.now();
-  
- 	  		
-			dualtimeTZ = (App.getApp().getProperty("DualTimeTZ"));
-			dualtimeDST = (App.getApp().getProperty("DualTimeDST"));
+  			var now = Time.now();
+			var dualtime = false;
+			var dualtimeTZ = (App.getApp().getProperty("DualTimeTZ"));
+			var dualtimeDST = (App.getApp().getProperty("DualTimeDST"));			
 			
 			clockTime = Sys.getClockTime();
-	 
-			
+	 			
 			var dthour;
 			var dtmin;
 			var dtnow = now;
@@ -214,8 +183,7 @@ class AviatorlikeView extends Ui.WatchFace{
 			// adjust to time zone
 			dtnow = dtnow.add(new Time.Duration(dualtimeTZ));
 			
-			
-			
+						
 			if (dualtimeDST != 0) {
 				// calculate Daylight Savings Time (DST)
 				var dtDST;
@@ -236,35 +204,32 @@ class AviatorlikeView extends Ui.WatchFace{
 			dthour = dtinfo.hour;
 			dtmin = dtinfo.min;
 			
-			var use24hclock;
+			//var use24hclock;
 			//var ampmStr = "am ";
 			
-			use24hclock = Sys.getDeviceSettings().is24Hour;
+			var use24hclock = Sys.getDeviceSettings().is24Hour;
 			if (!use24hclock) {
 				if (dthour >= 12) {
-					ampmStr = "pm";
+					labelInfoText = "pm";
 				}
 				if (dthour > 12) {
 					dthour = dthour - 12;				
 				} else if (dthour == 0) {
 					dthour = 12;
-					ampmStr = "am";
+					labelInfoText = "am";
 				}
 			}			
 			
 			if (dthour < 10) {
-				timeStr = Lang.format(" 0$1$:", [dthour]);
+				labelText = Lang.format(" 0$1$:", [dthour]);
 			} else {
-				timeStr = Lang.format(" $1$:", [dthour]);
+				labelText = Lang.format(" $1$:", [dthour]);
 			}
 			if (dtmin < 10) {
-				timeStr = timeStr + Lang.format("0$1$ ", [dtmin]);
+				labelText = labelText + Lang.format("0$1$ ", [dtmin]);
 			} else {
-				timeStr = timeStr + Lang.format("$1$ ", [dtmin]);
+				labelText = labelText + Lang.format("$1$ ", [dtmin]);
 			}
-  	
- 	    		 
-  
   
   }//End of drawDigitalTime(dc)-------
 
@@ -275,16 +240,16 @@ class AviatorlikeView extends Ui.WatchFace{
 			var actaltitude = 0;
 			var actInfo;
 			var metric = Sys.getDeviceSettings().elevationUnits == Sys.UNIT_METRIC;
-			altUnit = "m";
+			labelInfoText = "m";
 						
 			actInfo = Act.getActivityInfo();
 			if (actInfo != null) {
 			
 				if (metric) {				
-				altUnit = "m";
+				labelInfoText = "m";
 				actaltitude = actInfo.altitude;
 				} else {
-				altUnit = "ft";
+				labelInfoText = "ft";
 				actaltitude = actInfo.altitude  * 3.28084;
 				}
 			
@@ -295,9 +260,9 @@ class AviatorlikeView extends Ui.WatchFace{
 			}			
 							
 			if (unknownaltitude) {
-				altitudeStr = Lang.format("unknown");
+				labelText = Lang.format("unknown");
 			} else {
-				altitudeStr = Lang.format("$1$", [actaltitude.toLong()]);
+				labelText = Lang.format("$1$", [actaltitude.toLong()]);
 			}
 			
        		//dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
@@ -475,12 +440,12 @@ function drawBattery(dc) {
 				var sunset = momentToString(sunset_moment);
 				
 				if(moment.greaterThan(sunset_moment) || moment.lessThan(sunrise_moment)){
-    				sunsetStr =  sunrise + "/" + sunset;
+    				labelText =  sunrise + "/" + sunset;
     			}else{
-    				sunsetStr =  sunset + "/" + sunrise;
+    				labelText =  sunset + "/" + sunrise;
     			}				
 	    	}else{
-	    		sunsetStr = Ui.loadResource(Rez.Strings.none);
+	    		labelText = Ui.loadResource(Rez.Strings.none);
 	    	}
 	    	
 	    	//sunsetStr =  sunrise + "/" + sunset;
@@ -492,20 +457,20 @@ function drawBattery(dc) {
 	function setLabel(displayInfo) {
 				
 				labelText = "";
-	  			LabelobereZeileText = "";	        
+	  			labelInfoText = "";	        
     		
         	    	
 	 		//Draw date---------------------------------
 		   	if (displayInfo == 1) {
 		   		date.buildDateString();
 		   		labelText = date.dateStr;
-	  			LabelobereZeileText = "";		   		      
+	  			labelInfoText = "";		   		      
 			}	
 	
 	 	    //Draw Steps --------------------------------------
 	      	if (displayInfo == 2) {				   		
 		   		labelText = Lang.format("$1$", [ActMonitor.getInfo().steps]);
-	  			LabelobereZeileText = Lang.format("$1$", [ActMonitor.getInfo().stepGoal]); 			
+	  			labelInfoText = Lang.format("$1$", [ActMonitor.getInfo().stepGoal]); 			
 			}
 			
 			//Draw Steps to go --------------------------------------
@@ -524,65 +489,51 @@ function drawBattery(dc) {
 			    }    			        
 			        stepstogo = Lang.format("$1$", [stepstogo]); 			        
 		   		labelText = stepstogo;
-	  			LabelobereZeileText = "";					        			              
+	  			labelInfoText = "";					        			              
 			}
 				 
 
 	 		//Draw DigitalTime---------------------------------
 		   	if (displayInfo == 4) {
-				 drawDigitalTime();
-				 labelText = timeStr;
-				 LabelobereZeileText = "";
-	  				
-
-				 if (!Sys.getDeviceSettings().is24Hour) {
-				 	LabelobereZeileText = ampmStr;
-				} 
+				 drawDigitalTime(); 
 			}	         
 	        
 	    	// Draw Altitude------------------------------
 			if (displayInfo == 5) {
-				drawAltitude();
-				labelText = altitudeStr;
-	  			LabelobereZeileText = altUnit;	
+				drawAltitude();	
 			 }	
 				
 			// Draw Calories------------------------------
 			if (displayInfo == 6) {	
 				var actInfo = ActMonitor.getInfo(); 
 		        var actcals = actInfo.calories;		       
-		        var calStr = Lang.format(" $1$ kCal ", [actcals]);
-		        labelText = calStr;
-		        LabelobereZeileText = "";	
+		        labelText = Lang.format("$1$", [actcals]);
+		        labelInfoText = "kCal";
 			}
 			
 			//Draw distance
 			if (displayInfo == 7) {
 				distance.drawDistance();
 				labelText = distance.distStr;
-	  			LabelobereZeileText = distance.distUnit;
+	  			labelInfoText = distance.distUnit;
+	  			//Sys.println("Distance");
 			}			
 			
 			//Draw battery
 			if (displayInfo == 8) {
 				var Battery = Toybox.System.getSystemStats().battery;       
-        	    BatteryStr = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
-        	    labelText = BatteryStr;
-        	    LabelobereZeileText = "";
+        	    labelText = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
 			}
 			
 			//Draw Day an d week of year
 			if (displayInfo == 9) {
 				date.builddayWeekStr();
 				labelText = date.dayWeekStr;
-				LabelobereZeileText = "";
 			}
 			
 			//next / over next sun event
 			if (displayInfo == 10) {
 				builSunsetStr();
-				labelText = sunsetStr;
-				LabelobereZeileText = "";	
 		    }		    
 		    
 		    
@@ -595,77 +546,33 @@ function drawBattery(dc) {
     function onUpdate(dc) {
     
    	//Sys.println("width = " + width);
-	//Sys.println("height = " + height); 
+	//Sys.println("height = " + height);
+	 var fontLabel = Ui.loadResource(Rez.Fonts.id_font_label); 
           
         
   // Clear the screen--------------------------------------------
         //dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT));
         dc.setColor(Gfx.COLOR_TRANSPARENT, App.getApp().getProperty("BackgroundColor"));
         dc.clear();
-                
-        
+      
    // Draw the hash marks ---------------------------------------------------------------------------
         drawHashMarks(dc);  
         drawQuarterHashmarks(dc);  
-
-//Draw Digital Elements ------------------------------------------------------------------ 
-
-         var digiFont = (App.getApp().getProperty("DigiFont")); 
-         //Sys.println("digiFont="+ digiFont);
-         //fontDigital = null;
-         
-    	//font for display
-	    if ( digiFont == 1) { //!digital
-	    	fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital); 
-	    	//fontDigital = Gfx.FONT_SYSTEM_MEDIUM ;
-	    	//Sys.println("set digital");    
-	    	}
-	    if ( digiFont == 2) { //!classik
-        	fontDigital = Ui.loadResource(Rez.Fonts.id_font_classicklein); 
-        	//fontDigital = Gfx.FONT_SYSTEM_MEDIUM ;
-        	//Sys.println("set classic");     
-	    	}
-	    if ( digiFont == 3) { //!simple
-	    	if (screenShape == 1) {  // round 
-        		fontDigital = Gfx.FONT_SYSTEM_SMALL ; 
-        	}
-        	if (screenShape == 2) {  // semi round 
-        		fontDigital = Gfx.FONT_SYSTEM_MEDIUM ; 
-        	}      	    
-	    }
-	    	
-    
-	    var UpperDispEnable = (App.getApp().getProperty("UpperDispEnable"));
-	    var LowerDispEnable = (App.getApp().getProperty("LowerDispEnable"));
-
-		if (UpperDispEnable) {
-			var displayInfo = (App.getApp().getProperty("UDInfo"));
-			setLabel(displayInfo);
-			//background for upper display
-			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 35, 5);
-      	      	 
-        	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-        	dc.drawText(ULTEXTx, ULTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
-			dc.drawText(ULINFOx, ULINFOy, fontLabel, LabelobereZeileText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
-		}	
-		
-			
-	 //Anzeige unteres Display--------------------------  
-		if (LowerDispEnable) {
-			var displayInfo = (App.getApp().getProperty("LDInfo"));
-			setLabel(displayInfo);
-			//background for upper display
-			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 35, 5);
-      	      	 
-        	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-        	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
-			dc.drawText(LLINFOx, LLINFOy, fontLabel, LabelobereZeileText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
-		}
-
-	
-		
+        
+        
+    // Indicators, moon ---------------------------------------------------------------------------       
+        //! Moon phase
+		var MoonEnable = (App.getApp().getProperty("MoonEnable"));
+		if (MoonEnable) {             			
+	   		var time_sec = Time.now();
+			var dateinfo = Calendar.info(time_sec, Time.FORMAT_SHORT);
+	        var clockTime = Sys.getClockTime();
+	        var moon = new Moon(Ui.loadResource(Rez.Drawables.moon), moonwidth, moonx, moony);
+			moon.updateable_calcmoonphase(dc, dateinfo, clockTime.hour);
+			dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(1);	   
+	 		dc.drawCircle(moonx+moonwidth/2,moony+moonwidth/2,moonwidth/2-1);
+		} 	
 		//!progress battery------------
 		var BatProgressEnable = (App.getApp().getProperty("BatProgressEnable"));
        	if (BatProgressEnable) {
@@ -681,11 +588,6 @@ function drawBattery(dc) {
        	if (SunmarkersEnable && screenShape == 1) {
        		//Sys.println("sunmarkers "+ SunmarkersEnable);
 			extras.drawSunMarkers(dc);
-		}
-		//! Moon phase
-		var MoonEnable = (App.getApp().getProperty("MoonEnable"));
-		if (MoonEnable) {           
-   			extrasMoon.drawMoon(dc, moonx, moony, moonwidth);
 		}
 		//! Alm / Msg indicators
 		var AlmMsgEnable = (App.getApp().getProperty("AlmMsgEnable"));
@@ -714,12 +616,79 @@ function drawBattery(dc) {
 	        dc.drawCircle(width / 2 - 30, height / 2 -7, 5);
 	        dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
 	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);
-		}	        
+		}       
+ 
+        
+        
+
+//Draw Digital Elements ------------------------------------------------------------------ 
+
+	    var fontDigital = 0;
+	   
+
+         var digiFont = (App.getApp().getProperty("DigiFont")); 
+         //Sys.println("digiFont="+ digiFont);
+         //fontDigital = null;
+         
+    	//font for display
+	    if ( digiFont == 1) { //!digital
+	    	fontDigital = Ui.loadResource(Rez.Fonts.id_font_digital); 
+	    	//fontDigital = Gfx.FONT_SYSTEM_MEDIUM ;
+	    	//Sys.println("set digital");    
+	    	}
+	    if ( digiFont == 2) { //!classik
+        	fontDigital = Ui.loadResource(Rez.Fonts.id_font_classicklein); 
+        	//fontDigital = Gfx.FONT_SYSTEM_MEDIUM ;
+        	//Sys.println("set classic");     
+	    	}
+	    if ( digiFont == 3) { //!simple
+	    	if (screenShape == 1) {  // round 
+        		fontDigital = Gfx.FONT_SYSTEM_SMALL ; 
+        	}
+        	if (screenShape == 2) {  // semi round 
+        		fontDigital = Gfx.FONT_SYSTEM_MEDIUM ; 
+        	}      	    
+	    }
+	    	
+ 
+
+ 
+    
+	    var UpperDispEnable = (App.getApp().getProperty("UpperDispEnable"));
+	    var LowerDispEnable = (App.getApp().getProperty("LowerDispEnable"));
+
+		if (UpperDispEnable) {
+			var displayInfo = (App.getApp().getProperty("UDInfo"));
+			setLabel(displayInfo);
+			//background for upper display
+			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
+	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 35, 5);
+      	      	 
+        	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+        	dc.drawText(ULTEXTx, ULTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
+			dc.drawText(ULINFOx, ULINFOy, fontLabel, labelInfoText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
+		}	
+		
+			
+	 //Anzeige unteres Display--------------------------  
+		if (LowerDispEnable) {
+			var displayInfo = (App.getApp().getProperty("LDInfo"));
+			setLabel(displayInfo);
+			//background for upper display
+			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
+	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 35, 5);
+      	      	 
+        	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+        	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
+			dc.drawText(LLINFOx, LLINFOy, fontLabel, labelInfoText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
+		}
+
+	        
 
       // Draw the numbers --------------------------------------------------------------------------------------
        var NbrFont = (App.getApp().getProperty("Numbers")); 
        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-       font1 = null;  
+       var font1 = 0;  
        
        if (screenShape == 1) {  // round     
 		    if ( NbrFont == 1) { //fat

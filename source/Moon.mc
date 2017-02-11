@@ -44,7 +44,7 @@ class Moon {
     	if (t_phase != dateinfo.day) {
     		t_phase = dateinfo.day;
 
-    		c_phase = calcmoonphase(dateinfo.day, dateinfo.month, dateinfo.year);
+    		c_phase = calcmoonphase(dateinfo.day , dateinfo.month, dateinfo.year);
 			if (hour > 12) { // change it at noon
 				c_phase = (c_phase + 1) % 30;
 			}
@@ -61,7 +61,7 @@ class Moon {
 	function drawmoon(dc, moonx, moony) {
         dc.drawBitmap(moonx, moony, moon_bitmap);
 		var x, xby2;
-        dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT);
+		dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT);
         //dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_WHITE);
         dc.setPenWidth(1);
 		for (x=1; x<moon_width; x++) {
@@ -73,6 +73,7 @@ class Moon {
 				dc.drawLine(moonx+x, moony-c_moon_y[xby2+1], moonx+x, moony+moon_width);
 			}
 		}
+		//Sys.println(" Ende-------" + c_moon_y);
 	}
 
 	function calc_drawmoon(moonphase) {
@@ -88,7 +89,7 @@ class Moon {
 		var rSrest= 0; 
 		var edgelight = false;
 		if (moonphase <= 8) {
-      		c_moon_label = "wax";
+      		c_moon_label = "wax.";
 			r1edge = intc; rSedge = step;
 			r1rest = intc; rSrest = -step;
 			edgelight = true;
@@ -101,7 +102,7 @@ class Moon {
 			}
 		} else {
 			if (moonphase <=16) {
-	      		c_moon_label = "wax";
+	      		c_moon_label = "wax.";
 				r1rest = -1; rSrest = 0;
 				r1edge = intc; rSedge = -step;
 				edgelight = false;
@@ -110,7 +111,7 @@ class Moon {
 					r1edge = -1; rSedge = 0;
 				}
 			} else {
-	      		c_moon_label = "wan";
+	      		c_moon_label = "wan.";
 				if (moonphase <=23) {
 					r1rest = -1; rSrest = 0;
 					r1edge = intc; rSedge = step;
