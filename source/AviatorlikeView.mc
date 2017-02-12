@@ -25,6 +25,7 @@ class AviatorlikeView extends Ui.WatchFace{
 	    
 	    var isAwake;
 	    var screenShape;
+	    var fontLabel;
 	    
 	    var clockTime;
 	    
@@ -40,38 +41,12 @@ class AviatorlikeView extends Ui.WatchFace{
 		var moonx, moony, moonwidth;
 		
     function initialize() {
-        WatchFace.initialize();
-        
-        
-        //Positions upper Label Background
-        ULBGx = Ui.loadResource( Rez.Strings.ULBGx ).toNumber();
-        ULBGy = Ui.loadResource( Rez.Strings.ULBGy ).toNumber();
-        ULBGwidth = Ui.loadResource( Rez.Strings.ULBGwidth ).toNumber();
-        
-       	ULTEXTx = Ui.loadResource( Rez.Strings.ULTEXTx ).toNumber(); 
-       	ULTEXTy = Ui.loadResource( Rez.Strings.ULTEXTy ).toNumber();
-	    ULINFOx = Ui.loadResource( Rez.Strings.ULINFOx ).toNumber();
-	    ULINFOy = Ui.loadResource( Rez.Strings.ULINFOy ).toNumber();
-	    
-	     //Positions lower Label Background
-	    LLBGx = Ui.loadResource( Rez.Strings.LLBGx ).toNumber();
-        LLBGy = Ui.loadResource( Rez.Strings.LLBGy ).toNumber();
-        LLBGwidth = Ui.loadResource( Rez.Strings.LLBGwidth ).toNumber();
-        
-       	LLTEXTx = Ui.loadResource( Rez.Strings.LLTEXTx ).toNumber(); 
-       	LLTEXTy = Ui.loadResource( Rez.Strings.LLTEXTy ).toNumber();
-	    LLINFOx = Ui.loadResource( Rez.Strings.LLINFOx ).toNumber();
-	    LLINFOy = Ui.loadResource( Rez.Strings.LLINFOy ).toNumber();
-	    
-	   	//Positions and size of moon
-	    moonx = Ui.loadResource( Rez.Strings.moonx ).toNumber();
-        moony = Ui.loadResource( Rez.Strings.moony ).toNumber();
-        moonwidth = Ui.loadResource( Rez.Strings.moonwidth ).toNumber();
-        
-        
-	    
+        WatchFace.initialize();        
+	    fontLabel = Ui.loadResource(Rez.Fonts.id_font_label);
         screenShape = Sys.getDeviceSettings().screenShape;                  
-        //Sys.println("Screenshape = " + screenShape);        
+        Sys.println("Screenshape = " + screenShape);
+        
+        
     }
    
     
@@ -79,7 +54,86 @@ class AviatorlikeView extends Ui.WatchFace{
         width = dc.getWidth();
         height = dc.getHeight();
         center_x = dc.getWidth() / 2;
-        center_y = dc.getHeight() / 2;                               
+        center_y = dc.getHeight() / 2;
+        
+		if (width == 218 && height == 218) {
+			Sys.println("device:" + "Fenix3");
+			ULBGx = 38;
+		   	ULBGy = 55;
+		   	ULBGwidth = 142;
+		    
+		   	ULTEXTx = 109;
+		   	ULTEXTy = 54;
+		    
+		   	ULINFOx = 175;
+		   	ULINFOy = 55;   
+		    
+		   	LLBGx = 38;
+		   	LLBGy = 133;
+		   	LLBGwidth = 142;
+		    
+		   	LLTEXTx = 109;
+		   	LLTEXTy = 132;
+		    
+		   	LLINFOx = 175;
+		   	LLINFOy = 133; 
+		    
+		   	moonx = 165;
+		   	moony = 89;
+		   	moonwidth = 40; 		
+		}
+		if (width == 240 && height == 240) {
+			Sys.println("device:" + "Fenix 5");
+			ULBGx = 45;
+		   	ULBGy = 60;
+		   	ULBGwidth = 150;
+		    
+		   	ULTEXTx = 120;
+		   	ULTEXTy = 59;
+		    
+		   	ULINFOx = 185;
+		   	ULINFOy = 59;   
+		    
+		   	LLBGx = 45;
+		   	LLBGy = 150;
+		   	LLBGwidth = 150;
+		    
+		   	LLTEXTx = 120;
+		   	LLTEXTy = 149;
+		    
+		   	LLINFOx = 185;
+		   	LLINFOy = 149; 
+		    
+		   	moonx = 185;
+		   	moony = 100;
+		   	moonwidth = 40; 		
+		}
+		if (width == 215 && height == 180) {
+			Sys.println("device:" + "Semiround");
+			ULBGx = 35;
+		   	ULBGy = 37;
+		   	ULBGwidth = 145;
+		    
+		   	ULTEXTx = 107.5;
+		   	ULTEXTy = 36;
+		    
+		   	ULINFOx = 173;
+		   	ULINFOy = 37;   
+		    
+		   	LLBGx = 35;
+		   	LLBGy = 114;
+		   	LLBGwidth = 145;
+		    
+		   	LLTEXTx = 107.5;
+		   	LLTEXTy = 113;
+		    
+		   	LLINFOx = 173;
+		   	LLINFOy = 114; 
+		    
+		   	moonx = 165;
+		   	moony = 72;
+		   	moonwidth = 36; 		
+		}                            
     }
 
    
@@ -134,7 +188,15 @@ class AviatorlikeView extends Ui.WatchFace{
         	
         	var thick = 5;
         	thicknes = thick * 0.02;
-           	for (var alpha = Math.PI / 2; alpha <= 13 * Math.PI / 2; alpha += (Math.PI / 2)) { //jede 15. Minute    
+        	
+        	//when moon then only three marks
+        	var nurdrei = 0;
+        	var MoonEnable = (App.getApp().getProperty("MoonEnable"));
+				if (MoonEnable) {
+        			nurdrei = (Math.PI / 2);
+        		}
+        		      	
+           	for (var alpha = (Math.PI / 2) + nurdrei ; alpha <= 4 * Math.PI / 2; alpha += (Math.PI / 2)) { //jede 15. Minute    
 			r1 = (width/2 + 3) - outerRad; //outside
 			r2 = r1 -lenth; //inside			
 							
@@ -149,7 +211,8 @@ class AviatorlikeView extends Ui.WatchFace{
 			dc.setPenWidth(1);
 			dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT); 
 			dc.drawLine(center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha), center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha));
-			    		
+			
+			//Sys.println(alpha + " - " + (2 * Math.PI / 2));   		
 			}
 		}	
 		else {	
@@ -456,15 +519,13 @@ function drawBattery(dc) {
 	
 	function setLabel(displayInfo) {
 				
-				labelText = "";
-	  			labelInfoText = "";	        
-    		
-        	    	
+			labelText = "";
+  			labelInfoText = "";	        
+    		     	    	
 	 		//Draw date---------------------------------
 		   	if (displayInfo == 1) {
 		   		date.buildDateString();
-		   		labelText = date.dateStr;
-	  			labelInfoText = "";		   		      
+		   		labelText = date.dateStr;	  		      
 			}	
 	
 	 	    //Draw Steps --------------------------------------
@@ -488,8 +549,7 @@ function drawBattery(dc) {
 			        stepstogo = "+ " + (actsteps - stepGoal);
 			    }    			        
 			        stepstogo = Lang.format("$1$", [stepstogo]); 			        
-		   		labelText = stepstogo;
-	  			labelInfoText = "";					        			              
+		   		labelText = stepstogo;				        			              
 			}
 				 
 
@@ -547,7 +607,7 @@ function drawBattery(dc) {
     
    	//Sys.println("width = " + width);
 	//Sys.println("height = " + height);
-	 var fontLabel = Ui.loadResource(Rez.Fonts.id_font_label); 
+
           
         
   // Clear the screen--------------------------------------------
@@ -564,8 +624,8 @@ function drawBattery(dc) {
         //! Moon phase
 		var MoonEnable = (App.getApp().getProperty("MoonEnable"));
 		if (MoonEnable) {             			
-	   		var time_sec = Time.now();
-			var dateinfo = Calendar.info(time_sec, Time.FORMAT_SHORT);
+	   		var now = Time.now();
+			var dateinfo = Calendar.info(now, Time.FORMAT_SHORT);
 	        var clockTime = Sys.getClockTime();
 	        var moon = new Moon(Ui.loadResource(Rez.Drawables.moon), moonwidth, moonx, moony);
 			moon.updateable_calcmoonphase(dc, dateinfo, clockTime.hour);
@@ -643,29 +703,29 @@ function drawBattery(dc) {
 	    	}
 	    if ( digiFont == 3) { //!simple
 	    	if (screenShape == 1) {  // round 
-        		fontDigital = Gfx.FONT_SYSTEM_SMALL ; 
+        		fontDigital = Gfx.FONT_SYSTEM_MEDIUM ; 
         	}
         	if (screenShape == 2) {  // semi round 
-        		fontDigital = Gfx.FONT_SYSTEM_MEDIUM ; 
+        		fontDigital = Gfx.FONT_SYSTEM_LARGE ; 
         	}      	    
 	    }
 	    	
- 
-
- 
-    
+	    	   
 	    var UpperDispEnable = (App.getApp().getProperty("UpperDispEnable"));
 	    var LowerDispEnable = (App.getApp().getProperty("LowerDispEnable"));
+
+	  	
 
 		if (UpperDispEnable) {
 			var displayInfo = (App.getApp().getProperty("UDInfo"));
 			setLabel(displayInfo);
 			//background for upper display
 			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 35, 5);
+	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 30, 5);
       	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(ULTEXTx, ULTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
+        	//dc.drawText(ULTEXTx, ULTEXTy, fontDigital, "88:88/88:88", Gfx.TEXT_JUSTIFY_CENTER);	
 			dc.drawText(ULINFOx, ULINFOy, fontLabel, labelInfoText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
 		}	
 		
@@ -676,10 +736,11 @@ function drawBattery(dc) {
 			setLabel(displayInfo);
 			//background for upper display
 			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 35, 5);
+	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 30, 5);
       	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
-        	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
+        	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);
+        	//dc.drawText(LLTEXTx, LLTEXTy, fontDigital, "88:88/88:88", Gfx.TEXT_JUSTIFY_CENTER);		
 			dc.drawText(LLINFOx, LLINFOy, fontLabel, labelInfoText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
 		}
 
@@ -796,10 +857,10 @@ function drawBattery(dc) {
      	}
       }
  
-Sys.println("used: " + System.getSystemStats().usedMemory);
-Sys.println("free: " + System.getSystemStats().freeMemory);
-Sys.println("total: " + System.getSystemStats().totalMemory);
-Sys.println("");
+//Sys.println("used: " + System.getSystemStats().usedMemory);
+//Sys.println("free: " + System.getSystemStats().freeMemory);
+//Sys.println("total: " + System.getSystemStats().totalMemory);
+//Sys.println("");
           
 }
     
