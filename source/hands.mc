@@ -50,6 +50,8 @@ module hands{
 		clockTime = Sys.getClockTime();
 		//Sys.println("clockTime hour = " + clockTime.hour);
 		//Sys.println("clockTime min = " + clockTime.min);
+		clockTime.hour = 20;
+		clockTime.min = 05;
        
         
         var alpha, alpha2, r0, r1, r2, r3, hand, hand1;	
@@ -649,7 +651,7 @@ module hands{
 		var n;
 	
 		clockTime = Sys.getClockTime();
-        var seconds = clockTime.sec;        
+       	clockTime.sec = 10;
         
         var r1, r2, r0, hand;
 		var alpha = Math.PI/30.0*clockTime.sec;
