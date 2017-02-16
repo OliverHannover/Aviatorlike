@@ -145,6 +145,7 @@
             <listEntry value="3">@Strings.HandsDiver</listEntry>
         	<listEntry value="4">@Strings.HandsClassic</listEntry>
         	<listEntry value="5">@Strings.HandsSimple</listEntry>
+        	<listEntry value="6">@Strings.HandsFenix5like</listEntry>
         </settingConfig>
     </setting> 
     

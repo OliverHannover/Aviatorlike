@@ -34,8 +34,6 @@ module hands{
         if (screenShape == 2) {  // semi round 
         	minute_radius = 7/8.0 * center_x -5;
         }
-
-        
         
         // the hour hand to be 2/3 the length of the minute hand
         hour_radius = 3/4.0 * minute_radius;
@@ -50,8 +48,10 @@ module hands{
 		clockTime = Sys.getClockTime();
 		//Sys.println("clockTime hour = " + clockTime.hour);
 		//Sys.println("clockTime min = " + clockTime.min);
-		clockTime.hour = 20;
-		clockTime.min = 05;
+		
+		//! only for screenshots!
+		//!clockTime.hour = 9;
+		//!clockTime.min = 00;
        
         
         var alpha, alpha2, r0, r1, r2, r3, hand, hand1;	
@@ -152,9 +152,11 @@ module hands{
 		alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 		r0 = -30;
 		r1 = 9; //Entfernung zum rechten winkel
-		r2 = 25;
-		r3 = 50;	
-						
+		r2 = hour_radius * 3.5/10;  //Höhe Mittelbalken
+		r3 = hour_radius * 5/7;	
+		
+		
+		//hour Tip			
 		hand =         [[center_x+r2*Math.sin(alpha-0.32),center_y-r2*Math.cos(alpha-0.32)],
 						[center_x+r3*Math.sin(alpha-0.2),center_y-r3*Math.cos(alpha-0.2)],
 						[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
@@ -179,7 +181,8 @@ module hands{
 		}
 		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);    
 		
-	
+			
+		//base
 		hand =        			[[center_x+r2*Math.sin(alpha-0.4),center_y-r2*Math.cos(alpha-0.4)],
 								[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
 								[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
@@ -203,17 +206,11 @@ module hands{
 		alpha2 = Math.PI/30.0*(clockTime.min-15);
 		r0 = -30;
 		r1 = 9; //Entfernung zum rechten winkel
-		r2 = 25;
-		r3 = 70;
+		r2 = minute_radius * 2.5/10;
+		r3 = minute_radius * 7.5/10;
 		
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(1);
-		for (n=0; n<4; n++) {
-			//dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		//dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-
 		
+		//minutes Tip
 		hand =         [[center_x+r2*Math.sin(alpha-0.35),center_y-r2*Math.cos(alpha-0.35)],
 						[center_x+r3*Math.sin(alpha-0.15),center_y-r3*Math.cos(alpha-0.15)],
 						[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],
@@ -238,6 +235,8 @@ module hands{
 		}
 		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 		
+		
+		//base
 		hand =        			[[center_x+r2*Math.sin(alpha-0.45),center_y-r2*Math.cos(alpha-0.45)], 
 								[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
 								[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
@@ -277,15 +276,16 @@ module hands{
 			alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 		
-			r1 = width/2 - 70; //inside
+			
+			r1 = hour_radius * 6/10; // höhe des Querbalkens
 			var thicknes = 0.25;
 			r2 = 5;
 			
 			//rectangle on bottom 
-				hand1 =        	[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
-								[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
-								[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)],
-								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
+			hand1 =        	[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
+							[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
+							[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)],
+							[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
 		
 			//triangle at tip	 									
 			hand =    		[[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
@@ -318,11 +318,7 @@ module hands{
 		}
 		dc.drawLine(hand1[n][0], hand1[n][1], hand1[0][0], hand1[0][1]);
 		
-		
-
 			
-
-				
 			//tip polygon
 			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
 			dc.fillPolygon(hand);
@@ -334,12 +330,6 @@ module hands{
 				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 			}
 			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-		
-			
-			//Sys.println("%%.2f='" + alpha.format("%.2f") + "'");
-		
-		
-		 		
 			        
 		//! minutes-------------------------------------------------------
 			alpha = Math.PI/30.0*clockTime.min;
@@ -349,7 +339,8 @@ module hands{
 			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
 			dc.setPenWidth(2);
 		
-			r1 = width/2 - 50; //inside
+
+			r1 = minute_radius * 6.5/10; // höhe des Querbalkens
 			thicknes = 0.16;					
 			r2 = 5;
 			
@@ -392,10 +383,7 @@ module hands{
 			}
 			dc.drawLine(hand1[n][0], hand1[n][1], hand1[0][0], hand1[0][1]);
 		
-			
-																	
-
-				
+						
 			//tip polygon
 			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
 			dc.fillPolygon(hand);
@@ -410,11 +398,7 @@ module hands{
 			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 			
 			//Sys.println("%%.2f='" + alpha.format("%.2f") + "'");
-			
-			
-			
-		
-		
+					
 		//Centerpoint
 		dc.setPenWidth(1);
 		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
@@ -430,10 +414,6 @@ module hands{
 		// houres
 		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 		
-//!nur zum Test----------------
-//alpha = Math.PI/6*(1.0*20);
-//alpha2 = Math.PI/6*(1.0*20-3);
-//!-----------------------------
 		
 		r0 = 20;
 		r1 = 40; //Entfernung zum rechten winkel
@@ -482,10 +462,6 @@ module hands{
 		// minutes
 		alpha = Math.PI/30.0*clockTime.min;
 		
-//!nur zum Test MINUTEN--------
-//alpha = Math.PI/30.0*05;
-//alpha2 = Math.PI/30.0*(05-15);
-//!-----------------------------
 		
 		r0 = 35;
 		r1 = 55; //Entfernung zum rechten winkel
@@ -604,6 +580,121 @@ module hands{
 		
 	}// End of if (HandsForm == 4)	
 		
+//Fenix 5-Hands----------------------------------------------------------
+	if (HandsForm == 6) {
+	//! hours---------
+		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
+		alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
+		r1 = 6; //Entfernung zum rechten winkel
+		r2 = hour_radius * 1/3;
+		r3 = hour_radius * 11/12;	
+		
+		
+		//hour Tip			
+		hand =         [[center_x+r2*Math.sin(alpha-0.18),center_y-r2*Math.cos(alpha-0.18)],
+						[center_x+r3*Math.sin(alpha-0.065),center_y-r3*Math.cos(alpha-0.065)],
+						[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
+						[center_x+r3*Math.sin(alpha+0.065),center_y-r3*Math.cos(alpha+0.065)],
+						[center_x+r2*Math.sin(alpha+0.18),center_y-r2*Math.cos(alpha+0.18)]  ];
+						
+		if (outlineEnable) {
+		//outline hour tip
+			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(5);
+			for (n=0; n<4; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
+		}
+		
+		//hour tip
+        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(3);
+		for (n=0; n<4; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+									  
+		//hour base
+		hand =        			[[center_x+r2*Math.sin(alpha-0.22),center_y-r2*Math.cos(alpha-0.22)],
+								[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
+								[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
+								[center_x+r2*Math.sin(alpha+0.22),center_y-r2*Math.cos(alpha+0.22)]  ];	
+								
+		if (outlineEnable) {
+		//outline hour tip
+			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(3);
+			for (n=0; n<3; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+		}
+			
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+		dc.fillPolygon(hand); 
+
+
+		 //! minutes -------------------------------------------
+		alpha = Math.PI/30.0*clockTime.min;
+		alpha2 = Math.PI/30.0*(clockTime.min-15);
+		r1 = 6; //Entfernung zum rechten winkel
+		r2 = minute_radius * 1/3;
+		r3 = minute_radius * 11/12;
+		
+		//minutes Tip
+		hand =         [[center_x+r2*Math.sin(alpha-0.15),center_y-r2*Math.cos(alpha-0.15)],
+						[center_x+r3*Math.sin(alpha-0.05),center_y-r3*Math.cos(alpha-0.05)],
+						[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],
+						[center_x+r3*Math.sin(alpha+0.05),center_y-r3*Math.cos(alpha+0.05)],
+						[center_x+r2*Math.sin(alpha+0.15),center_y-r2*Math.cos(alpha+0.15)]  ];
+						
+		if (outlineEnable) {
+		//outline hour tip
+			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(5);
+			for (n=0; n<4; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
+		}
+		
+		//minute tip
+        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(3);
+		for (n=0; n<4; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+		}
+		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+									  
+		//minutes base
+		
+		hand =        			[[center_x+r2*Math.sin(alpha-0.2),center_y-r2*Math.cos(alpha-0.2)],
+								[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
+								[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
+								[center_x+r2*Math.sin(alpha+0.2),center_y-r2*Math.cos(alpha+0.2)]  ];
+		if (outlineEnable) {
+		//outline hour tip
+			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+			dc.setPenWidth(3);
+			for (n=0; n<3; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+		}
+										
+		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+		dc.fillPolygon(hand);
+
+
+		
+		// Draw the CenterPoint
+        dc.setPenWidth(2);
+        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+        dc.fillCircle(width / 2, height / 2, 5);
+        
+        dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+        dc.drawCircle(width / 2, height / 2, 6);
+		}
+		
 		
 			
          
@@ -651,7 +742,8 @@ module hands{
 		var n;
 	
 		clockTime = Sys.getClockTime();
-       	clockTime.sec = 10;
+       	//! only for screenshots!
+       	//!clockTime.sec = 10;
         
         var r1, r2, r0, hand;
 		var alpha = Math.PI/30.0*clockTime.sec;

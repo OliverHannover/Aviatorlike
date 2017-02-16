@@ -54,6 +54,7 @@
     <string id="NbrRoman">Roman</string>    
     <string id="NbrSimple">Simple</string>
    
+   
     <string id="DFDigital">Digital</string>
     <string id="DFClassic">Classic</string> 
     <string id="DFSimple">Simple</string> 
@@ -95,6 +96,7 @@
 	<string id="HandsDiver">Diver</string>
  	<string id="HandsClassic">Classic</string>
  	<string id="HandsSimple">Simple</string>
+ 	<string id="HandsFenix5like">Fenix5like</string>
     
   	<string id="DualTimeTZ">Time zone for dual time</string>
   	<string id="DualTimeDST">Dual time daylight savings time</string>
