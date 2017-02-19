@@ -82,12 +82,13 @@
     
     <setting propertyKey="@Properties.Numbers" title="@Strings.NumbersTitle">
         <settingConfig type="list"> 
-            <listEntry value="0">@Strings.NbrNo</listEntry>  
-            <listEntry value="1">@Strings.NbrFat</listEntry>
-            <listEntry value="2">@Strings.NbrRace</listEntry>
-            <listEntry value="3">@Strings.NbrClassic</listEntry>
-            <listEntry value="4">@Strings.NbrRoman</listEntry>  
-            <listEntry value="5">@Strings.NbrSimple</listEntry>          
+            <listEntry value="0">@Strings.NbrNo</listEntry>
+            <listEntry value="1">@Strings.NbrNo12</listEntry>              
+            <listEntry value="2">@Strings.NbrFat</listEntry>
+            <listEntry value="3">@Strings.NbrRace</listEntry>
+            <listEntry value="4">@Strings.NbrClassic</listEntry>
+            <listEntry value="5">@Strings.NbrRoman</listEntry>  
+            <listEntry value="6">@Strings.NbrSimple</listEntry>          
         </settingConfig>
     </setting>
     
@@ -111,7 +112,9 @@
         </settingConfig>
     </setting>
     
-    
+    <setting propertyKey="@Properties.markslenth" title="@Strings.markslenthTitle">
+        <settingConfig type="numeric" min="0" max="5" required="true"/>
+    </setting>
     
     
     

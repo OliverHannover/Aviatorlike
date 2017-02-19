@@ -5,27 +5,24 @@ using Toybox.Math as Math;
 using Toybox.System as Sys;
 
 module hands{
-  //Variablen für die analoge Uhr   
-  // the x coordinate for the center
-    var center_x;
-    // the y coordinate for the center
-    var center_y;    
-    
-    var clockTime;
-    var screenShape = 1;
 
  // Draw hands ------------------------------------------------------------------
-  function drawHands(dc) {        
+  function drawHands(dc) { 
+      	var center_x;
+   		var center_y;
+   		var width = dc.getWidth();
+        var height  = dc.getHeight();
+        center_x = dc.getWidth() / 2;
+        center_y = dc.getHeight() / 2;
+   		        
+    	var clockTime;
+    	var screenShape = 1;
+           
           // the length of the minute hand
    		var minute_radius = 0;
     	// the length of the hour hand
     	var hour_radius; 
-    	
-    	var width = dc.getWidth();
-        var height  = dc.getHeight();
-        center_x = dc.getWidth() / 2;
-        center_y = dc.getHeight() / 2;
-        
+    	       
         // the minute hand to be 7/8 the length of the radius
 	 	screenShape = Sys.getDeviceSettings().screenShape; 
         if (screenShape == 1) {  // round 
@@ -33,8 +30,7 @@ module hands{
         }
         if (screenShape == 2) {  // semi round 
         	minute_radius = 7/8.0 * center_x -5;
-        }
-        
+        }        
         // the hour hand to be 2/3 the length of the minute hand
         hour_radius = 3/4.0 * minute_radius;
   				
@@ -43,479 +39,314 @@ module hands{
 		var color2 = (App.getApp().getProperty("HandsColor2"));
 		var outlineColor = (App.getApp().getProperty("HandsOutlineColor"));
 		var outlineEnable = (App.getApp().getProperty("HandOutlinesEnable"));
-		var n;
+		var x, n;
+		var maxRad;
+		var alpha, alpha2; 
+		var r0, r1, r2, r3, r4, r5, r6, r7, hand, hand1;
+		var deflec1, deflec2, deflec3;
 		
 		clockTime = Sys.getClockTime();
 		//Sys.println("clockTime hour = " + clockTime.hour);
 		//Sys.println("clockTime min = " + clockTime.min);
 		
 		//! only for screenshots!
-		//!clockTime.hour = 9;
-		//!clockTime.min = 00;
-       
-        
-        var alpha, alpha2, r0, r1, r2, r3, hand, hand1;	
-			
+		//clockTime.hour = 9;
+		//clockTime.min = 00;
 			
          //Race-Hands-----------------	
 		if (HandsForm == 1) { 	
 				// hours
 				alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 				alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
-				
+				maxRad = hour_radius;				
 				r1 = -20;
 				r2 = 12;
-				
-								
-				hand =        	[[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
-								[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
-								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
-								
-				hand1 =        	[[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
-								[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
-								[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)]   ];
+							
+			//first round houre, next round minute	
+			for (x=0; x<2; x++) {	
 												
-		        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-				dc.fillPolygon(hand);				
-				dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-				dc.fillPolygon(hand1);
+					hand =        	[[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
+									[center_x+maxRad*Math.sin(alpha),center_y-maxRad*Math.cos(alpha)],
+									[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
+									
+					hand1 =        	[[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
+									[center_x+maxRad*Math.sin(alpha),center_y-maxRad*Math.cos(alpha)],
+									[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)]   ];
+													
+			        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+					dc.fillPolygon(hand);				
+					dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+					dc.fillPolygon(hand1);
 				
 				
-				if (outlineEnable) {
-					hand =     [[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
-								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)],
-								[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],							
-								[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)]   ];
+					if (outlineEnable) {
+						hand =     [[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
+									[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)],
+									[center_x+maxRad*Math.sin(alpha),center_y-maxRad*Math.cos(alpha)],							
+									[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)]   ];
+				
+						dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+						dc.setPenWidth(1);
+						for (n=0; n<3; n++) {
+							dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+						}
+						dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
+					}			
 			
-					dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-					dc.setPenWidth(1);
-					for (n=0; n<3; n++) {
-						dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-					}
-					dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
+					 // minutes----------------------------------------------
+					alpha = Math.PI/30.0*clockTime.min;
+					alpha2 = Math.PI/30.0*(clockTime.min-15);
+					maxRad = minute_radius;
 				}
-		            		
-				 // minutes----------------------------------------------
-				alpha = Math.PI/30.0*clockTime.min;
-				alpha2 = Math.PI/30.0*(clockTime.min-15);
-				
-
-				
-				
-				r1 = -25;
-				r2 = 12;
-				hand =        	[[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
-								[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],
-								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
-								
-				hand1 =        	[[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
-								[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],
-								[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)]   ];
-								
-								
-		        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-				dc.fillPolygon(hand);
-				dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-				dc.fillPolygon(hand1);				
-				
-								
-				if (outlineEnable) {
-					hand =      [[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
-								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)],
-								[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],							
-								[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)]   ];
-			
-					dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-					dc.setPenWidth(1);
-					for (n=0; n<3; n++) {
-						dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-					}
-					dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
-				}
-				
-				
-				
-				
-				
-				
-				//Draw Center Point
-				dc.setPenWidth(1);   
-        		dc.setColor(Gfx.COLOR_BLACK,Gfx.COLOR_BLACK);
-        		dc.drawCircle(width / 2, height / 2, 2);
-		        
 			}// End of if (HandsForm == 1)		
 
 	//Pilot-Hands----------------------------------------------------------
-	if (HandsForm == 2) {
-	//! hours---------
+	if (HandsForm == 2 || HandsForm == 6) {
 		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 		alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
+		maxRad = hour_radius;
+		var penWide1;
+		var penWide2;
+		
+		//Pilot settings
 		r0 = -30;
 		r1 = 9; //Entfernung zum rechten winkel
-		r2 = hour_radius * 3.5/10;  //Höhe Mittelbalken
-		r3 = hour_radius * 5/7;	
-		
-		
-		//hour Tip			
-		hand =         [[center_x+r2*Math.sin(alpha-0.32),center_y-r2*Math.cos(alpha-0.32)],
-						[center_x+r3*Math.sin(alpha-0.2),center_y-r3*Math.cos(alpha-0.2)],
-						[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
-						[center_x+r3*Math.sin(alpha+0.2),center_y-r3*Math.cos(alpha+0.2)],
-						[center_x+r2*Math.sin(alpha+0.32),center_y-r2*Math.cos(alpha+0.32)]  ];
+		r2 = minute_radius * 2.5/10;  //Höhe Mittelbalken
+		r3 = hour_radius * 5/7;
+		deflec1 = 0.32; 
+		deflec2 = 0.2;
+		deflec3 = 0.47; //width of base
+		penWide1 = 6;
+		penWide2 = 4;
 
-		if (outlineEnable) {
-		//outline hour tip
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(6);
-			for (n=0; n<4; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
-		}
-		
-		//hour tip
-        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(4);
-		for (n=0; n<4; n++) {
-			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);    
-		
+		if (HandsForm == 6) { //for Fenix5like
+			r0 = 0;
+			r1 = 6.5; //Entfernung zum rechten winkel
+			r2 = minute_radius * 1/3;
+			r3 = hour_radius * 11/12;
+			deflec1 = 0.15; 
+			deflec2 = 0.07;
+			deflec3 = 0.2; //width of base
+			penWide1 = 5;
+			penWide2 = 3;
+		}	
+					
 			
-		//base
-		hand =        			[[center_x+r2*Math.sin(alpha-0.4),center_y-r2*Math.cos(alpha-0.4)],
+			//first round houre, next round minute	
+			for (x=0; x<2; x++) {
+				
+				//Tip -------------------			
+				hand =         [[center_x+r2*Math.sin(alpha-deflec1),center_y-r2*Math.cos(alpha-deflec1)],
+								[center_x+r3*Math.sin(alpha-deflec2),center_y-r3*Math.cos(alpha-deflec2)],
+								[center_x+maxRad*Math.sin(alpha),center_y-maxRad*Math.cos(alpha)],
+								[center_x+r3*Math.sin(alpha+deflec2),center_y-r3*Math.cos(alpha+deflec2)],
+								[center_x+r2*Math.sin(alpha+deflec1),center_y-r2*Math.cos(alpha+deflec1)]  ];
+		
+				//base -------------------
+				hand1 =        	[[center_x+r2*Math.sin(alpha-deflec3),center_y-r2*Math.cos(alpha-deflec3)],
 								[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
 								[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
 								[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
-								[center_x+r2*Math.sin(alpha+0.4),center_y-r2*Math.cos(alpha+0.4)]  ];
-											
-        dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.fillPolygon(hand);
-		if (outlineEnable) {
-			//outline base
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-        	dc.setPenWidth(1);
-			for (n=0; n<4; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-       	} 
+								[center_x+r2*Math.sin(alpha+deflec3),center_y-r2*Math.cos(alpha+deflec3)]  ];
+				
 
-
-		 //! minutes -------------------------------------------
-		alpha = Math.PI/30.0*clockTime.min;
-		alpha2 = Math.PI/30.0*(clockTime.min-15);
-		r0 = -30;
-		r1 = 9; //Entfernung zum rechten winkel
-		r2 = minute_radius * 2.5/10;
-		r3 = minute_radius * 7.5/10;
+				
+				if (outlineEnable) {
+				//outline tip
+					dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+					dc.setPenWidth(penWide1);
+					for (n=0; n<4; n++) {
+						dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+					}
+					dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
+				}
+								
+				// polygon base									
+		        dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+				dc.fillPolygon(hand1);
 		
-		
-		//minutes Tip
-		hand =         [[center_x+r2*Math.sin(alpha-0.35),center_y-r2*Math.cos(alpha-0.35)],
-						[center_x+r3*Math.sin(alpha-0.15),center_y-r3*Math.cos(alpha-0.15)],
-						[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],
-						[center_x+r3*Math.sin(alpha+0.15),center_y-r3*Math.cos(alpha+0.15)],
-						[center_x+r2*Math.sin(alpha+0.35),center_y-r2*Math.cos(alpha+0.35)]  ];
-
-		if (outlineEnable) {
-		//outline minute tip
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(6);
-			for (n=0; n<4; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
+				//tip
+		        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+		        dc.setPenWidth(penWide2);
+				for (n=0; n<4; n++) {
+					dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+				}
+				dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);    
+				
+				if (outlineEnable) {
+					//outline base
+					dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+		        	dc.setPenWidth(1);
+					for (n=0; n<4; n++) {
+						dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
+					}
+		       	}
+				//! minutes settings -------------------------------------------
+				//Stand. for Pilot 
+				alpha = Math.PI/30.0*clockTime.min;
+				alpha2 = Math.PI/30.0*(clockTime.min-15);
+				maxRad = minute_radius;
+		//		r2 = minute_radius * 2.5/10;
+				r3 = minute_radius * 7.5/10;
+				deflec1 = 0.35; //tip
+				deflec2 = 0.15;	//Tip
+		//		deflec3 = 0.47; //base
+				
+				if (HandsForm == 6) {  //for Fenix5like
+		//			r2 = minute_radius * 1/3;
+					r3 = minute_radius * 11/12;
+					deflec1 = 0.15; 
+					deflec2 = 0.055;
+		//			deflec3 = 0.2; //width of base
+				}		       	
+			} //end for x 
 		}
 		
-		//minute tip
-        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(4);
-		for (n=0; n<4; n++) {
-			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-		
-		
-		//base
-		hand =        			[[center_x+r2*Math.sin(alpha-0.45),center_y-r2*Math.cos(alpha-0.45)], 
-								[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
-								[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
-								[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
-								[center_x+r2*Math.sin(alpha+0.45),center_y-r2*Math.cos(alpha+0.45)] ];
-							  
-											
-        dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.fillPolygon(hand);
-		
-		if (outlineEnable) {
-			//outline base
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-	        dc.setPenWidth(1);
-			for (n=0; n<4; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-		}
-
-
-
-		
-		// Draw the CenterPoint
-        dc.setPenWidth(1);
-        dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_BLACK);
-        dc.fillCircle(width / 2, height / 2, 3);
-        
-        dc.setColor(Gfx.COLOR_BLACK,Gfx.COLOR_BLACK);
-        dc.drawCircle(width / 2, height / 2, 3);
-		}
-		
-		
-		
+	
 		//Diver-Hands----------------------------------------	
 		if (HandsForm == 3) { 	
 			//! houres------------------------------------------
 			alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
-		
-			
+			maxRad = hour_radius;			
 			r1 = hour_radius * 6/10; // höhe des Querbalkens
-			var thicknes = 0.25;
-			r2 = 5;
+			deflec1 = 0.25; //wide of middle part
+			r2 = 3;
+	
 			
-			//rectangle on bottom 
-			hand1 =        	[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
-							[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
-							[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)],
-							[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
+			//first round houre, next round minute	
+			for (x=0; x<2; x++) {			
+					//rectangle on bottom 
+					hand1 =        	[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
+									[center_x+r1*Math.sin(alpha-deflec1),center_y-r1*Math.cos(alpha-deflec1)],
+									[center_x+r1*Math.sin(alpha+deflec1),center_y-r1*Math.cos(alpha+deflec1)],
+									[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
+				
+					//triangle at tip	 									
+					hand =    		[[center_x+r1*Math.sin(alpha-deflec1),center_y-r1*Math.cos(alpha-deflec1)],
+									[center_x+maxRad*Math.sin(alpha),center_y-maxRad*Math.cos(alpha)],
+									[center_x+r1*Math.sin(alpha+deflec1),center_y-r1*Math.cos(alpha+deflec1)]   ];	
+				
+				
+					//outline around at tip
+					if (outlineEnable) {
+						dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+						dc.setPenWidth(6);
+						for (n=0; n<2; n++) {
+							dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+						}
+					}
 		
-			//triangle at tip	 									
-			hand =    		[[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
-							[center_x+(hour_radius)*Math.sin(alpha),center_y-(hour_radius)*Math.cos(alpha)],
-							[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)]   ];	
-		
-		
-			//outline around at tip
-			if (outlineEnable) {
-				dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-				dc.setPenWidth(6);
-				for (n=0; n<2; n++) {
-					dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-				}
-			}
-		
-		//rectangle on bottom 						
-		if (outlineEnable) {
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(6);
-			for (n=0; n<3; n++) {
-				dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
-			}
-		}						
-		
-		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);						
-		dc.setPenWidth(4);
-		for (n=0; n<3; n++) {
-			dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
-		}
-		dc.drawLine(hand1[n][0], hand1[n][1], hand1[0][0], hand1[0][1]);
+					// outline for rectangle on bottom 						
+					if (outlineEnable) {
+						dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+						dc.setPenWidth(6);
+						for (n=0; n<3; n++) {
+							dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
+						}
+					}						
+					//rectangle on bottom 
+					dc.setColor(color2, Gfx.COLOR_TRANSPARENT);						
+					dc.setPenWidth(4);
+					for (n=0; n<3; n++) {
+						dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
+					}
+					dc.drawLine(hand1[n][0], hand1[n][1], hand1[0][0], hand1[0][1]);
 		
 			
-			//tip polygon
-			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-			dc.fillPolygon(hand);
-
-			//outline for tip
-			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(4);	
-			for (n=0; n<2; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+					//tip polygon
+					dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+					dc.fillPolygon(hand);
+		
+					//outline for tip
+					dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+					dc.setPenWidth(4);	
+					for (n=0; n<2; n++) {
+						dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+					}
+					dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 			        
-		//! minutes-------------------------------------------------------
-			alpha = Math.PI/30.0*clockTime.min;
-			alpha2 = Math.PI/30.0*(clockTime.min-15);
-			
-			//dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
-			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(2);
-		
-
-			r1 = minute_radius * 6.5/10; // höhe des Querbalkens
-			thicknes = 0.16;					
-			r2 = 5;
-			
-			//rectangle bottom
-			hand1 =        		[[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
-								[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
-								[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)],
-								[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
-								
-								
-			//triangle at top of minutes
-			hand =    			[[center_x+r1*Math.sin(alpha-thicknes),center_y-r1*Math.cos(alpha-thicknes)],
-								[center_x+(minute_radius)*Math.sin(alpha),center_y-(minute_radius)*Math.cos(alpha)],
-								[center_x+r1*Math.sin(alpha+thicknes),center_y-r1*Math.cos(alpha+thicknes)]   ];	
-								
-			//outline around at tip
-			if (outlineEnable) {
-				dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-				dc.setPenWidth(6);
-				for (n=0; n<2; n++) {
-					dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-				}
-			}					
-								
-											
-			
-			//outline around bottom rectangle					
-			if (outlineEnable) {
-				dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-				dc.setPenWidth(6);
-				for (n=0; n<3; n++) {
-					dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
-				}
-			}
-			//bottom rectangle
-			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);						
-			dc.setPenWidth(4);
-			for (n=0; n<3; n++) {
-				dc.drawLine(hand1[n][0], hand1[n][1], hand1[n+1][0], hand1[n+1][1]);
-			}
-			dc.drawLine(hand1[n][0], hand1[n][1], hand1[0][0], hand1[0][1]);
-		
-						
-			//tip polygon
-			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-			dc.fillPolygon(hand);
-
-			//outline for tip
-			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-			//dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(4);		
-			for (n=0; n<2; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-			
-			//Sys.println("%%.2f='" + alpha.format("%.2f") + "'");
-					
-		//Centerpoint
-		dc.setPenWidth(1);
-		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.fillCircle(center_x,center_y,10);
-		
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-		dc.drawCircle(center_x,center_y,9);
-		
+				//! minutes-------------------------------------------------------
+				alpha = Math.PI/30.0*clockTime.min;
+				alpha2 = Math.PI/30.0*(clockTime.min-15);
+				maxRad = minute_radius;
+				r1 = minute_radius * 6.5/10; // höhe des Querbalkens
+				deflec1 = 0.16;					
+				r2 = 4;				
+			}		
 	}// End of if (HandsForm Diver)		
 		
 	//Classic-Hands----------------------------------
 		if (HandsForm == 4) {
-		// houres
-		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
-		
-		
-		r0 = 20;
-		r1 = 40; //Entfernung zum rechten winkel
-		r2 = 55;
-		
-		hand =        	[
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha+0.2),center_y-r1*Math.cos(alpha+0.2)],						
-						[center_x+r2*Math.sin(alpha+0.03),center_y-r2*Math.cos(alpha+0.03)],
-						[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
-						[center_x+r2*Math.sin(alpha-0.03),center_y-r2*Math.cos(alpha-0.03)],						
-						[center_x+r1*Math.sin(alpha-0.2),center_y-r1*Math.cos(alpha-0.2)],
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];
-											
-        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(3);
-		for (n=0; n<6; n++) {
-		dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		
-		r0 = -30;
-		r1 = 20;
-		r2 = 45;
-		
-		dc.drawLine(center_x+22*Math.sin(alpha-0.3),center_y-22*Math.cos(alpha-0.3),center_x+22*Math.sin(alpha+0.3),center_y-22*Math.cos(alpha+0.3));
-				
-		hand =        	[
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
-						[center_x+r1*Math.sin(alpha+0.15),center_y-r1*Math.cos(alpha+0.15)],
-						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha-0.15),center_y-r1*Math.cos(alpha-0.15)],						
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];	
-						
-		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.fillPolygon(hand);	
-		
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(1);
-		for (n=0; n<4; n++) {
-			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-		
-		
-		
-		// minutes
-		alpha = Math.PI/30.0*clockTime.min;
-		
-		
-		r0 = 35;
-		r1 = 55; //Entfernung zum rechten winkel
-		r2 = 70;
-		
-		//outer raute
-		hand =        	[
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha+0.13),center_y-r1*Math.cos(alpha+0.13)],						
-						[center_x+r2*Math.sin(alpha+0.04),center_y-r2*Math.cos(alpha+0.04)],
-						[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],
-						[center_x+r2*Math.sin(alpha-0.04),center_y-r2*Math.cos(alpha-0.04)],						
-						[center_x+r1*Math.sin(alpha-0.13),center_y-r1*Math.cos(alpha-0.13)],
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];
-											
-        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(3);
-		for (n=0; n<6; n++) {
-		dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		
-		r0 = -30;
-		r1 = 25;
-		r2 = 60;
-		
-		dc.drawLine(center_x+35*Math.sin(alpha-0.2),center_y-35*Math.cos(alpha-0.2),center_x+35*Math.sin(alpha+0.2),center_y-35*Math.cos(alpha+0.2));
-		
-		
-		//inner Raute		
-		hand =        	[
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
-						[center_x+r1*Math.sin(alpha+0.14),center_y-r1*Math.cos(alpha+0.14)],
-						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha-0.14),center_y-r1*Math.cos(alpha-0.14)],						
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];	
-						
-		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.fillPolygon(hand);
+			alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);	
+			//Tip raute	
+			r0 = 20;
+			r1 = 40; //Entfernung zum rechten winkel
+			r2 = 55;
+			deflec1 = 0.2;
+			deflec2 = 0.03;
+			deflec3 = 0.15; //base
+					
+			r4 = 22; //crossbar
+			//hand base
+			r5 = -30;
+			r6 = 20;
+			r7 = 45;
+			maxRad = hour_radius;
 			
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(1);
-		for (n=0; n<4; n++) {
-			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);		
-	
-		// Draw the CenterPoint
-        dc.setPenWidth(1);
-        dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-        dc.fillCircle(width / 2, height / 2, 7);
-        
-       	dc.setColor(color1, Gfx.COLOR_BLACK);
-        dc.drawCircle(width / 2, height / 2, 7);		
+			//first round houre, next round minute	
+			for (x=0; x<2; x++) {		
+				//tip
+				hand =        	[[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],
+								[center_x+r1*Math.sin(alpha+deflec1),center_y-r1*Math.cos(alpha+deflec1)],						
+								[center_x+r2*Math.sin(alpha+deflec2),center_y-r2*Math.cos(alpha+deflec2)],
+								[center_x+maxRad*Math.sin(alpha),center_y-maxRad*Math.cos(alpha)],
+								[center_x+r2*Math.sin(alpha-deflec2),center_y-r2*Math.cos(alpha-deflec2)],						
+								[center_x+r1*Math.sin(alpha-deflec1),center_y-r1*Math.cos(alpha-deflec1)],
+								[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];
+													
+		        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+		        dc.setPenWidth(3);
+				for (n=0; n<6; n++) {
+				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+				}
+
+				dc.drawLine(center_x+r4*Math.sin(alpha-0.3),center_y-r4*Math.cos(alpha-0.3),center_x+r4*Math.sin(alpha+0.3),center_y-r4*Math.cos(alpha+0.3));
 		
+				hand =        	[
+								[center_x+r5*Math.sin(alpha),center_y-r5*Math.cos(alpha)],						
+								[center_x+r6*Math.sin(alpha+deflec3),center_y-r6*Math.cos(alpha+deflec3)],
+								[center_x+r7*Math.sin(alpha),center_y-r7*Math.cos(alpha)],
+								[center_x+r6*Math.sin(alpha-deflec3),center_y-r6*Math.cos(alpha-deflec3)],						
+								[center_x+r5*Math.sin(alpha),center_y-r5*Math.cos(alpha)]	];	
+								
+				dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+				dc.fillPolygon(hand);	
+				
+				dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+		        dc.setPenWidth(1);
+				for (n=0; n<4; n++) {
+					dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+				}
+				dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);		
+		
+				//! minutes
+				alpha = Math.PI/30.0*clockTime.min;
+				maxRad = minute_radius;		
+				r0 = 35;
+				r1 = 55; //Entfernung zum rechten winkel
+				r2 = 70;
+				deflec1 = 0.13;
+				deflec2 = 0.04;
+				deflec3 = 0.14; //base
+						
+				r4 = 35; //crossbar
+				//hand base
+				r5 = -30;
+				r6 = 25;
+				r7 = 60;
+				
+			}		
 		}	
 		
 	//Simple-Hands----------------------------------------	
@@ -523,182 +354,42 @@ module hands{
 			// houres
 			alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
-	 													
-			//rectangle 
-			r2 = 3; //Breite im Zentrum
-			var thicknes = 0.04; //Breite oben
-
-			hand =        	[[center_x-20*Math.sin(alpha-0.2),center_y+20*Math.cos(alpha-0.2)],
-							[center_x-20*Math.sin(alpha+0.2),center_y+20*Math.cos(alpha+0.2)],
-							[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
-							[center_x+hour_radius*Math.sin(alpha-thicknes),center_y-hour_radius*Math.cos(alpha-thicknes)],
-							[center_x+hour_radius*Math.sin(alpha+thicknes),center_y-hour_radius*Math.cos(alpha+thicknes)],
-							[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
-							
-			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);	
-			dc.fillPolygon(hand);						
-			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(2);
-			for (n=0; n<5; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);		
+			maxRad = hour_radius;	 													
+			deflec1 = 0.2;
+			deflec2 = 0.05;	//Tip			
+			
+			
+				for (x=0; x<2; x++) {
+					hand =        	[[center_x-20*Math.sin(alpha-deflec1),center_y+20*Math.cos(alpha-deflec1)],
+									[center_x-20*Math.sin(alpha+deflec1),center_y+20*Math.cos(alpha+deflec1)],
+									[center_x+maxRad*Math.sin(alpha-deflec2),center_y-maxRad*Math.cos(alpha-deflec2)],
+									[center_x+maxRad*Math.sin(alpha+deflec2),center_y-maxRad*Math.cos(alpha+deflec2)] ];
+									
+					dc.setColor(color1, Gfx.COLOR_TRANSPARENT);	
+					dc.fillPolygon(hand);
+											
+					dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
+					dc.setPenWidth(2);
+					for (n=0; n<3; n++) {
+						dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+					}
+					dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);		
 			        
-		// minutes--------------
-			alpha = Math.PI/30.0*clockTime.min;
-			alpha2 = Math.PI/30.0*(clockTime.min-15);
-			//Sys.println("%%.2f='" + alpha.format("%.2f") + "'");
-		
-			//rectangle 
-			r2 = 3; //Breite im Zentrum
-			thicknes = 0.029; //Breite oben
-
-			hand =        	[[center_x-20*Math.sin(alpha-0.15),center_y+20*Math.cos(alpha-0.15)],
-							[center_x-20*Math.sin(alpha+0.15),center_y+20*Math.cos(alpha+0.15)],
-							[center_x+r2*Math.sin(alpha2),center_y-r2*Math.cos(alpha2)],
-							[center_x+minute_radius*Math.sin(alpha-thicknes),center_y-minute_radius*Math.cos(alpha-thicknes)],
-							[center_x+minute_radius*Math.sin(alpha+thicknes),center_y-minute_radius*Math.cos(alpha+thicknes)],
-							[center_x-r2*Math.sin(alpha2),center_y+r2*Math.cos(alpha2)]   ];
-							
-			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);	
-			dc.fillPolygon(hand);						
-			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(2);
-			for (n=0; n<5; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-		
-		
-		//Centerpoint
-		dc.setPenWidth(2);
-		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.fillCircle(center_x,center_y,7);
-		
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-		dc.drawCircle(center_x,center_y,7);
-		
-	}// End of if (HandsForm == 4)	
-		
-//Fenix 5-Hands----------------------------------------------------------
-	if (HandsForm == 6) {
-	//! hours---------
-		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
-		alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
-		r1 = 6; //Entfernung zum rechten winkel
-		r2 = hour_radius * 1/3;
-		r3 = hour_radius * 11/12;	
-		
-		
-		//hour Tip			
-		hand =         [[center_x+r2*Math.sin(alpha-0.18),center_y-r2*Math.cos(alpha-0.18)],
-						[center_x+r3*Math.sin(alpha-0.065),center_y-r3*Math.cos(alpha-0.065)],
-						[center_x+hour_radius*Math.sin(alpha),center_y-hour_radius*Math.cos(alpha)],
-						[center_x+r3*Math.sin(alpha+0.065),center_y-r3*Math.cos(alpha+0.065)],
-						[center_x+r2*Math.sin(alpha+0.18),center_y-r2*Math.cos(alpha+0.18)]  ];
-						
-		if (outlineEnable) {
-		//outline hour tip
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(5);
-			for (n=0; n<4; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
-		}
-		
-		//hour tip
-        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(3);
-		for (n=0; n<4; n++) {
-			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-									  
-		//hour base
-		hand =        			[[center_x+r2*Math.sin(alpha-0.22),center_y-r2*Math.cos(alpha-0.22)],
-								[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
-								[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
-								[center_x+r2*Math.sin(alpha+0.22),center_y-r2*Math.cos(alpha+0.22)]  ];	
-								
-		if (outlineEnable) {
-		//outline hour tip
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(3);
-			for (n=0; n<3; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-		}
-			
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-		dc.fillPolygon(hand); 
-
-
-		 //! minutes -------------------------------------------
-		alpha = Math.PI/30.0*clockTime.min;
-		alpha2 = Math.PI/30.0*(clockTime.min-15);
-		r1 = 6; //Entfernung zum rechten winkel
-		r2 = minute_radius * 1/3;
-		r3 = minute_radius * 11/12;
-		
-		//minutes Tip
-		hand =         [[center_x+r2*Math.sin(alpha-0.15),center_y-r2*Math.cos(alpha-0.15)],
-						[center_x+r3*Math.sin(alpha-0.05),center_y-r3*Math.cos(alpha-0.05)],
-						[center_x+minute_radius*Math.sin(alpha),center_y-minute_radius*Math.cos(alpha)],
-						[center_x+r3*Math.sin(alpha+0.05),center_y-r3*Math.cos(alpha+0.05)],
-						[center_x+r2*Math.sin(alpha+0.15),center_y-r2*Math.cos(alpha+0.15)]  ];
-						
-		if (outlineEnable) {
-		//outline hour tip
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(5);
-			for (n=0; n<4; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-			dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]); 
-		}
-		
-		//minute tip
-        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(3);
-		for (n=0; n<4; n++) {
-			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-		}
-		dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
-									  
-		//minutes base
-		
-		hand =        			[[center_x+r2*Math.sin(alpha-0.2),center_y-r2*Math.cos(alpha-0.2)],
-								[center_x+r1*Math.sin(alpha2),center_y-r1*Math.cos(alpha2)],
-								[center_x-r1*Math.sin(alpha2),center_y+r1*Math.cos(alpha2)],
-								[center_x+r2*Math.sin(alpha+0.2),center_y-r2*Math.cos(alpha+0.2)]  ];
-		if (outlineEnable) {
-		//outline hour tip
-			dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
-			dc.setPenWidth(3);
-			for (n=0; n<3; n++) {
-				dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
-			}
-		}
-										
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-		dc.fillPolygon(hand);
-
-
-		
-		// Draw the CenterPoint
-        dc.setPenWidth(2);
-        dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-        dc.fillCircle(width / 2, height / 2, 5);
-        
-        dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-        dc.drawCircle(width / 2, height / 2, 6);
-		}
-		
-		
-			
-         
+					//! minutes--------------
+					alpha = Math.PI/30.0*clockTime.min;
+					alpha2 = Math.PI/30.0*(clockTime.min-15);
+					maxRad = minute_radius;			
+					deflec1 = 0.2;
+					deflec2 = 0.04;	//Tip
+					
+				}		
+		}// End of if (HandsForm == 5)	
+				         
   }//End of drawHands(dc)
+  
+	
+
+
 
 	function drawSecondHands(dc) {        
           // the length of the minute hand
@@ -730,18 +421,18 @@ module hands{
 		if (color1 == 0xFF5500) {
 			color2 = 0xFFAA00;
 			}	
-   		var seconds_radius;
+
  	  	var width = dc.getWidth();
         var height  = dc.getHeight();
-        center_x = dc.getWidth() / 2;
-        center_y = dc.getHeight() / 2;
+        var center_x = dc.getWidth() / 2;
+        var center_y = dc.getHeight() / 2;
         
         //seconds_radius = 7/8.0 * center_x;
-		seconds_radius = height / 2 ; // wegen semiround halbe höhe
+		var seconds_radius = height / 2 ; // wegen semiround halbe höhe
 		
 		var n;
 	
-		clockTime = Sys.getClockTime();
+		var clockTime = Sys.getClockTime();
        	//! only for screenshots!
        	//!clockTime.sec = 10;
         

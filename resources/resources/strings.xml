@@ -9,7 +9,8 @@
     <string id="ForegroundColorTitle">Display foreground color</string>
     <string id="NumbersTitle">Number font</string>
     <string id="QuarterNumbersColorTitle">Color of numbers and 5 minutes marks</string>
-    <string id="MinutesColorTitle">Color of minutes marks</string>  
+    <string id="MinutesColorTitle">Color of minutes marks</string>
+    <string id="markslenthTitle">lenth of minutes marks (0-5) </string> 
     <string id="HandsFormTitle">Kind of hands</string>
     <string id="HandsColor1Title">First color of hands</string>
     <string id="HandsColor2Title">Second color of hands</string>
@@ -48,6 +49,7 @@
     <string id="ColorPink">Pink</string>
    
     <string id="NbrNo">No numbers</string>
+    <string id="NbrNo12">No numbers but fat 12</string>    
     <string id="NbrRace">Race</string>
     <string id="NbrFat">Fat</string>
     <string id="NbrClassic">Classic</string>
@@ -95,8 +97,8 @@
 	<string id="HandsPilot">Pilot</string>
 	<string id="HandsDiver">Diver</string>
  	<string id="HandsClassic">Classic</string>
- 	<string id="HandsSimple">Simple</string>
- 	<string id="HandsFenix5like">Fenix5like</string>
+ 	<string id="HandsSimple">Simple solid</string>
+ 	<string id="HandsFenix5like">Simple with hole</string>
     
   	<string id="DualTimeTZ">Time zone for dual time</string>
   	<string id="DualTimeDST">Dual time daylight savings time</string>

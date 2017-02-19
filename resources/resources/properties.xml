@@ -1,5 +1,5 @@
 <properties>
-	<property id="appVersion" type="string">0.6.1b</property>
+	<property id="appVersion" type="string">0.7.0</property>
 	
 	<property id="BatProgressEnable" type="boolean">true</property>
 	<property id="StepProgressEnable" type="boolean">true</property>
@@ -12,8 +12,9 @@
     <property id="DigitalBackgroundColor" type="number">0xAAAAAA</property>
     <property id="ForegroundColor" type="number">0x000000</property>
     
-    <property id="Numbers" type="number">1</property>
+    <property id="Numbers" type="number">2</property>
     <property id="QuarterNumbersColor" type="number">0x000000</property>
+    <property id="markslenth" type="number">4</property>
     <property id="MinutesColor" type="number">0x00AAFF</property>
    
     <property id="HandsForm" type="number">1</property>

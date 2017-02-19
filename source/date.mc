@@ -8,7 +8,7 @@ using Toybox.Time.Gregorian as Calendar;
 
 module date{
 		//date
-		var dateStr;
+		var dateStr;	
 		var dayWeekStr;
 		
 		
@@ -18,8 +18,8 @@ module date{
 	function buildDateString() {
 		var now = Time.now();
 		var info = Calendar.info(now, Time.FORMAT_LONG);	
-		var dateFormat = (App.getApp().getProperty("DateFormat"));			
-    
+		var dateFormat = (App.getApp().getProperty("DateFormat"));
+				    
 		
 		if (dateFormat == 1) {
 		info = Calendar.info(now, Time.FORMAT_MEDIUM);
@@ -49,7 +49,7 @@ module date{
  		info = Calendar.info(now, Time.FORMAT_SHORT);
         dateStr = Lang.format("$1$/$2$/$3$", [info.month, info.day, info.year]); 
  		}
- 
+ 		//return dateStr;
   	}
   	
   	
