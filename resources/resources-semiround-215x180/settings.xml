@@ -20,6 +20,10 @@
         <settingConfig type="boolean" />
     </setting>
 
+    <setting propertyKey="@Properties.ShowAlmMsgCount" title="@Strings.AlmMsgCountTitle">
+        <settingConfig type="boolean" />
+    </setting>
+
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">
@@ -149,7 +153,11 @@
         </settingConfig>
     </setting> 
     
-
+   
+   <setting propertyKey="@Properties.Reverse" title="@Strings.ReverseTitle">
+   		<settingConfig type="boolean" />
+   </setting>
+    
     
     <setting propertyKey="@Properties.HandsColor1" title="@Strings.HandsColor1Title">
         <settingConfig type="list">

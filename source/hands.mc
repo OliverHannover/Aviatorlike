@@ -44,6 +44,9 @@ module hands{
 		var alpha, alpha2; 
 		var r0, r1, r2, r3, r4, r5, r6, r7, hand, hand1;
 		var deflec1, deflec2, deflec3;
+		var reverseMultiplier=1;
+		
+		if (App.getApp().getProperty("Reverse")) { reverseMultiplier=-1;}
 		
 		clockTime = Sys.getClockTime();
 		//Sys.println("clockTime hour = " + clockTime.hour);
@@ -56,7 +59,7 @@ module hands{
          //Race-Hands-----------------	
 		if (HandsForm == 1) { 	
 				// hours
-				alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
+				alpha = reverseMultiplier*Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 				alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 				maxRad = hour_radius;				
 				r1 = -20;
@@ -94,7 +97,7 @@ module hands{
 					}			
 			
 					 // minutes----------------------------------------------
-					alpha = Math.PI/30.0*clockTime.min;
+					alpha = reverseMultiplier*Math.PI/30.0*clockTime.min;
 					alpha2 = Math.PI/30.0*(clockTime.min-15);
 					maxRad = minute_radius;
 				}
@@ -102,7 +105,7 @@ module hands{
 
 	//Pilot-Hands----------------------------------------------------------
 	if (HandsForm == 2 || HandsForm == 6) {
-		alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
+		alpha = reverseMultiplier*Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 		alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 		maxRad = hour_radius;
 		var penWide1;
@@ -183,7 +186,7 @@ module hands{
 		       	}
 				//! minutes settings -------------------------------------------
 				//Stand. for Pilot 
-				alpha = Math.PI/30.0*clockTime.min;
+				alpha = reverseMultiplier*Math.PI/30.0*clockTime.min;
 				alpha2 = Math.PI/30.0*(clockTime.min-15);
 				maxRad = minute_radius;
 		//		r2 = minute_radius * 2.5/10;
@@ -206,7 +209,7 @@ module hands{
 		//Diver-Hands----------------------------------------	
 		if (HandsForm == 3) { 	
 			//! houres------------------------------------------
-			alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
+			alpha = reverseMultiplier*Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 			maxRad = hour_radius;			
 			r1 = hour_radius * 6/10; // höhe des Querbalkens
@@ -267,7 +270,7 @@ module hands{
 					dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
 			        
 				//! minutes-------------------------------------------------------
-				alpha = Math.PI/30.0*clockTime.min;
+				alpha = reverseMultiplier*Math.PI/30.0*clockTime.min;
 				alpha2 = Math.PI/30.0*(clockTime.min-15);
 				maxRad = minute_radius;
 				r1 = minute_radius * 6.5/10; // höhe des Querbalkens
@@ -278,7 +281,7 @@ module hands{
 		
 	//Classic-Hands----------------------------------
 		if (HandsForm == 4) {
-			alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);	
+			alpha = reverseMultiplier*Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);	
 			//Tip raute	
 			r0 = 20;
 			r1 = 40; //Entfernung zum rechten winkel
@@ -331,7 +334,7 @@ module hands{
 				dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);		
 		
 				//! minutes
-				alpha = Math.PI/30.0*clockTime.min;
+				alpha = reverseMultiplier*Math.PI/30.0*clockTime.min;
 				maxRad = minute_radius;		
 				r0 = 35;
 				r1 = 55; //Entfernung zum rechten winkel
@@ -352,11 +355,11 @@ module hands{
 	//Simple-Hands----------------------------------------	
 		if (HandsForm == 5) { 	
 			// houres
-			alpha = Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
+			alpha = reverseMultiplier*Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 			maxRad = hour_radius;	 													
-			deflec1 = 0.2;
-			deflec2 = 0.05;	//Tip			
+			deflec1 = 0.16; //0.2;
+			deflec2 = 0.04; //0.05;	//Tip			
 			
 			
 				for (x=0; x<2; x++) {
@@ -368,19 +371,21 @@ module hands{
 					dc.setColor(color1, Gfx.COLOR_TRANSPARENT);	
 					dc.fillPolygon(hand);
 											
+					if (outlineEnable) {
 					dc.setColor(outlineColor, Gfx.COLOR_TRANSPARENT);
 					dc.setPenWidth(2);
 					for (n=0; n<3; n++) {
 						dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
 					}
-					dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);		
+					dc.drawLine(hand[n][0], hand[n][1], hand[0][0], hand[0][1]);
+					}		
 			        
 					//! minutes--------------
-					alpha = Math.PI/30.0*clockTime.min;
+					alpha = reverseMultiplier*Math.PI/30.0*clockTime.min;
 					alpha2 = Math.PI/30.0*(clockTime.min-15);
 					maxRad = minute_radius;			
-					deflec1 = 0.2;
-					deflec2 = 0.04;	//Tip
+					deflec1 = 0.15; //0.2;
+					deflec2 = 0.03; //0.04;	//Tip
 					
 				}		
 		}// End of if (HandsForm == 5)	

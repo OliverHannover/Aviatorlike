@@ -31,6 +31,7 @@
     <string id="SunMarkersEnableTitle">Enable sunrise/sunset markers</string>
     <string id="MoonEnableTitle">Enable moon phase on pos. 3 o´clock</string>
     <string id="AlmMsgEnableTitle">Enable Alm / Msg indicators</string>
+    <string id="AlmMsgCountTitle">Show quantity of Alms / Msgs</string>
     
 
     <string id="ColorBlack">Black</string>
@@ -148,5 +149,6 @@
 	<string id="TZVal1245">12:45 Chatham Islands</string>
 	<string id="TZVal1300">13:00 Phoenix Islands, Samoa, Tonga</string>
 	<string id="TZVal1400">14:00 Line Islands</string>
+	<string id="ReverseTitle">Reverse hand rotation</string>
 
 </strings>

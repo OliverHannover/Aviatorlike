@@ -6,6 +6,7 @@
 	<property id="SunMarkersEnable" type="boolean">false</property>
 	<property id="MoonEnable" type="boolean">false</property>
 	<property id="AlmMsgEnable" type="boolean">true</property>
+	<property id="ShowAlmMsgCount" type="boolean">true</property>
 	
     <property id="BackgroundColor" type="number">0xFFFFFF</property>
     
@@ -36,5 +37,6 @@
     
     <property id="DualTimeTZ" type="number">0</property>
     <property id="DualTimeDST" type="number">0</property>
+    <property id="Reverse" type="boolean">false</property>
 
 </properties>
