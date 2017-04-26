@@ -32,7 +32,7 @@ module hands{
         	minute_radius = 7/8.0 * center_x -5;
         }        
         // the hour hand to be 2/3 the length of the minute hand
-        hour_radius = 3/4.0 * minute_radius;
+        hour_radius = 2/3.0 * minute_radius; //3/4.0 * minute_radius;
   				
 		var HandsForm = (App.getApp().getProperty("HandsForm"));
 		var color1 = (App.getApp().getProperty("HandsColor1"));
@@ -44,9 +44,7 @@ module hands{
 		var alpha, alpha2; 
 		var r0, r1, r2, r3, r4, r5, r6, r7, hand, hand1;
 		var deflec1, deflec2, deflec3;
-		var reverseMultiplier=1;
-		
-		if (App.getApp().getProperty("Reverse")) { reverseMultiplier=-1;}
+		var reverseMultiplier= App.getApp().getProperty("Reverse") ? -1 : 1 ;// { reverseMultiplier=-1;}
 		
 		clockTime = Sys.getClockTime();
 		//Sys.println("clockTime hour = " + clockTime.hour);
@@ -358,8 +356,8 @@ module hands{
 			alpha = reverseMultiplier*Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 			maxRad = hour_radius;	 													
-			deflec1 = 0.16; //0.2;
-			deflec2 = 0.04; //0.05;	//Tip			
+			deflec1 = 0.2;  //0.16;
+			deflec2 = 0.05; //0.04; 	//Tip			
 			
 			
 				for (x=0; x<2; x++) {
@@ -401,7 +399,11 @@ module hands{
         
         var color1 = (App.getApp().getProperty("SecHandsColor"));
 		var color2 = 0x555555;  
-          
+        var reverseMultiplier=App.getApp().getProperty("Reverse") ? -1: 1;
+		
+		//if (App.getApp().getProperty("Reverse")) { reverseMultiplier=-1;}  
+		
+		
           //!Schwarz + DK-Grau
 		if (color1 == 0x000000) {
 			color2 = 0x555555;
@@ -442,7 +444,7 @@ module hands{
        	//!clockTime.sec = 10;
         
         var r1, r2, r0, hand;
-		var alpha = Math.PI/30.0*clockTime.sec;
+		var alpha = reverseMultiplier*Math.PI/30.0*clockTime.sec;
 		
 		dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);		
 		dc.setPenWidth(2);

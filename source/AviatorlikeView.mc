@@ -226,8 +226,15 @@ class AviatorlikeView extends Ui.WatchFace{
 			dc.fillPolygon(marks);
 			
 			dc.setPenWidth(1);
-			dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT); 
-			dc.drawLine(center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha), center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha));
+			//dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT); 
+			//dc.setColor(0xff0000, Gfx.COLOR_TRANSPARENT);
+			var BGColor=0xff0000;
+        	BGColor=App.getApp().getProperty("BackgroundColor");
+        	if (BGColor==0x000001) {
+        		BGColor=App.getApp().getProperty("BackgroundColorR")+App.getApp().getProperty("BackgroundColorG")+App.getApp().getProperty("BackgroundColorB");
+        	}
+        	dc.setColor(BGColor, Gfx.COLOR_TRANSPARENT);
+        	dc.drawLine(center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha), center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha));
 			
 			//Sys.println(alpha + " - " + (2 * Math.PI / 2));   		
 			}
@@ -629,7 +636,12 @@ function drawBattery(dc) {
         
   // Clear the screen--------------------------------------------
         //dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT));
-        dc.setColor(Gfx.COLOR_TRANSPARENT, App.getApp().getProperty("BackgroundColor"));
+        var BGColor=0x000000;
+        BGColor=App.getApp().getProperty("BackgroundColor");
+        if (BGColor==0x000001) {
+        	BGColor=App.getApp().getProperty("BackgroundColorR")+App.getApp().getProperty("BackgroundColorG")+App.getApp().getProperty("BackgroundColorB");
+        	}
+        dc.setColor(Gfx.COLOR_TRANSPARENT, BGColor);
         dc.clear();
       
    // Draw the hash marks ---------------------------------------------------------------------------
@@ -742,11 +754,15 @@ function drawBattery(dc) {
 
 		if (UpperDispEnable) {
 			var displayInfo = (App.getApp().getProperty("UDInfo"));
+			var DigitalBGColor = 0x000000;
 			setLabel(displayInfo);
 			//background for upper display
-			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 30, 5);
-      	      	 
+			DigitalBGColor=App.getApp().getProperty("DigitalBackgroundColor");
+			if (DigitalBGColor!=0x000001) {
+				dc.setColor(DigitalBGColor, Gfx.COLOR_TRANSPARENT);  
+	       		dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 30, 5);
+			}
+			      	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(ULTEXTx, ULTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
         	//dc.drawText(ULTEXTx, ULTEXTy, fontDigital, "88:88/88:88", Gfx.TEXT_JUSTIFY_CENTER);	
@@ -757,10 +773,14 @@ function drawBattery(dc) {
 	 //Anzeige unteres Display--------------------------  
 		if (LowerDispEnable) {
 			var displayInfo = (App.getApp().getProperty("LDInfo"));
+			var DigitalBGColor = 0x000000;
 			setLabel(displayInfo);
 			//background for upper display
-			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 30, 5);
+			DigitalBGColor=App.getApp().getProperty("DigitalBackgroundColor");
+			if (DigitalBGColor!=0x000001) {
+				dc.setColor(DigitalBGColor, Gfx.COLOR_TRANSPARENT);  
+	       		dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 30, 5);
+			}
       	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);
@@ -893,12 +913,13 @@ function drawBattery(dc) {
   		if (Sys.getDeviceSettings().phoneConnected) {
   			dc.setColor((App.getApp().getProperty("HandsColor1")), Gfx.COLOR_TRANSPARENT);
 	   } else {
-  			dc.setColor((App.getApp().getProperty("BackgroundColor")), Gfx.COLOR_TRANSPARENT);
+  			//dc.setColor((App.getApp().getProperty("BackgroundColor")), Gfx.COLOR_TRANSPARENT);
+  			dc.setColor(BGColor, Gfx.COLOR_TRANSPARENT);
 	   } 
 	    
 	    dc.fillCircle(width / 2, height / 2, 5);
 	    dc.setPenWidth(2);
-     	dc.setColor((App.getApp().getProperty("HandsColor2")), Gfx.COLOR_TRANSPARENT);
+	    dc.setColor((App.getApp().getProperty("HandsColor2")), Gfx.COLOR_TRANSPARENT);
 	    dc.drawCircle(width / 2, height / 2 , 5);
       
        if (isAwake) {
