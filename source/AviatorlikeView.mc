@@ -365,7 +365,7 @@ function drawBattery(dc) {
         alpha = 0; 
         
         if (screenShape == 1) {  //round 
-        alpha = 2*Math.PI/100*(Battery); 
+        alpha = App.getApp().getProperty("Reverse") ? -1 * 2*Math.PI/100*(Battery) : 2*Math.PI/100*(Battery); 
 		}		
 		if (screenShape == 2) {  //semi round
         alpha = (Math.PI-1)/100*(Battery)+Math.PI+0.5;
@@ -445,7 +445,7 @@ function drawBattery(dc) {
         alpha = 0; 
         
         if (screenShape == 1) {  //1=round 
-        alpha = 2*Math.PI/100*(stepPercent);
+        alpha = App.getApp().getProperty("Reverse") ? -1 * 2*Math.PI/100*(stepPercent) : 2*Math.PI/100*(stepPercent);
 		}		
 		if (screenShape == 2) {  //2=semi round
         //alpha = (Math.PI-1)/100*(Battery)+Math.PI+0.5;
@@ -689,7 +689,8 @@ function drawBattery(dc) {
 	     	
 	     	dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);     		     	
 	     	if (ShowAlmMsgCount) {
-	     		dc.drawText(width / 2 + offcenter, height / 2 -15, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);}
+	     		//dc.drawText(width / 2 + offcenter, height / 2 -15, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);}
+	     		dc.drawText(width / 2 + offcenter, height / 2 +4 -dc.getFontHeight(Gfx.FONT_TINY), Gfx.FONT_TINY, messages, Gfx.TEXT_JUSTIFY_CENTER);}
 	     	else {
 	     		if (messages > 0) {
 	     		    dc.fillCircle(width / 2 + offcenter, height / 2 -7, 5);}
@@ -702,7 +703,7 @@ function drawBattery(dc) {
 		  //Alarm is set 	
 	     	var alarm = Sys.getDeviceSettings().alarmCount;     	
 	     	if (ShowAlmMsgCount) {
-	     		dc.drawText(width / 2 - offcenter, height / 2 -15, fontLabel, alarm, Gfx.TEXT_JUSTIFY_CENTER);}
+	     		dc.drawText(width / 2 - offcenter, height / 2 +4 -dc.getFontHeight(Gfx.FONT_TINY), Gfx.FONT_TINY, alarm, Gfx.TEXT_JUSTIFY_CENTER);}
 	     	else {
 	     		if (alarm > 0) {
 	     			dc.fillCircle(width / 2 - offcenter, height / 2 -7, 5);

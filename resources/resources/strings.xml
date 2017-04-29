@@ -53,7 +53,7 @@
     <string id="ColorPurple">Purple</string>
     <string id="ColorPink">Pink</string>
 
-    <string id="ColorTransparent">Transparent</string>
+    <string id="ColorTransparent">Same As Background</string>
 
     <string id="Color00">00</string>
     <string id="Color55">55</string>

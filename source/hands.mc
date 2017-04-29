@@ -32,7 +32,7 @@ module hands{
         	minute_radius = 7/8.0 * center_x -5;
         }        
         // the hour hand to be 2/3 the length of the minute hand
-        hour_radius = 2/3.0 * minute_radius; //3/4.0 * minute_radius;
+        hour_radius = 0.6 * minute_radius; //3/4.0 * minute_radius;
   				
 		var HandsForm = (App.getApp().getProperty("HandsForm"));
 		var color1 = (App.getApp().getProperty("HandsColor1"));
@@ -58,7 +58,7 @@ module hands{
 		if (HandsForm == 1) { 	
 				// hours
 				alpha = reverseMultiplier*Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
-				alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
+				alpha2 = alpha-.5*Math.PI;//reverseMultiplier*Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 				maxRad = hour_radius;				
 				r1 = -20;
 				r2 = 12;
@@ -96,7 +96,7 @@ module hands{
 			
 					 // minutes----------------------------------------------
 					alpha = reverseMultiplier*Math.PI/30.0*clockTime.min;
-					alpha2 = Math.PI/30.0*(clockTime.min-15);
+					alpha2 = alpha-Math.PI/2;//Math.PI/30.0*(clockTime.min-15);
 					maxRad = minute_radius;
 				}
 			}// End of if (HandsForm == 1)		
@@ -356,17 +356,22 @@ module hands{
 			alpha = reverseMultiplier*Math.PI/6*(1.0*clockTime.hour+clockTime.min/60.0);
 			alpha2 = Math.PI/6*(1.0*clockTime.hour-3+clockTime.min/60.0);
 			maxRad = hour_radius;	 													
-			deflec1 = 0.2;  //0.16;
-			deflec2 = 0.05; //0.04; 	//Tip			
+			deflec1 = 4.5; // hour hand half width in pixels
+			deflec2 = 20; //short side of hand length
+			var sin=Math.sin(alpha);
+			var cos=Math.cos(alpha);	
 			
 			
 				for (x=0; x<2; x++) {
-					hand =        	[[center_x-20*Math.sin(alpha-deflec1),center_y+20*Math.cos(alpha-deflec1)],
-									[center_x-20*Math.sin(alpha+deflec1),center_y+20*Math.cos(alpha+deflec1)],
-									[center_x+maxRad*Math.sin(alpha-deflec2),center_y-maxRad*Math.cos(alpha-deflec2)],
-									[center_x+maxRad*Math.sin(alpha+deflec2),center_y-maxRad*Math.cos(alpha+deflec2)] ];
+					hand =        	[[center_x+(-deflec1*cos-deflec2*sin),center_y+(-deflec1*sin+deflec2*cos)],
+									[center_x+(deflec1*cos-deflec2*sin),center_y+(deflec1*sin+deflec2*cos)],
+									[center_x+(deflec1*cos+maxRad*sin),center_y+(deflec1*sin-maxRad*cos)],
+									[center_x+(-deflec1*cos+maxRad*sin),center_y+(-deflec1*sin-maxRad*cos)] ];
 									
-					dc.setColor(color1, Gfx.COLOR_TRANSPARENT);	
+					if (x==0) {
+						dc.setColor(color1, Gfx.COLOR_TRANSPARENT);} //minute hand color
+					else {
+						dc.setColor(color2, Gfx.COLOR_TRANSPARENT);} //not-minute hand (hour hand) color
 					dc.fillPolygon(hand);
 											
 					if (outlineEnable) {
@@ -380,10 +385,10 @@ module hands{
 			        
 					//! minutes--------------
 					alpha = reverseMultiplier*Math.PI/30.0*clockTime.min;
-					alpha2 = Math.PI/30.0*(clockTime.min-15);
+					sin=Math.sin(alpha);
+					cos=Math.cos(alpha);
 					maxRad = minute_radius;			
-					deflec1 = 0.15; //0.2;
-					deflec2 = 0.03; //0.04;	//Tip
+					deflec1 = 2.5; //minute hand half width 0.15; //0.2;
 					
 				}		
 		}// End of if (HandsForm == 5)	
@@ -400,8 +405,6 @@ module hands{
         var color1 = (App.getApp().getProperty("SecHandsColor"));
 		var color2 = 0x555555;  
         var reverseMultiplier=App.getApp().getProperty("Reverse") ? -1: 1;
-		
-		//if (App.getApp().getProperty("Reverse")) { reverseMultiplier=-1;}  
 		
 		
           //!Schwarz + DK-Grau
