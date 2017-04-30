@@ -32,7 +32,7 @@ module hands{
         	minute_radius = 7/8.0 * center_x -5;
         }        
         // the hour hand to be 2/3 the length of the minute hand
-        hour_radius = 0.6 * minute_radius; //3/4.0 * minute_radius;
+        hour_radius = 3/4.0 * minute_radius;
   				
 		var HandsForm = (App.getApp().getProperty("HandsForm"));
 		var color1 = (App.getApp().getProperty("HandsColor1"));
@@ -388,7 +388,7 @@ module hands{
 					sin=Math.sin(alpha);
 					cos=Math.cos(alpha);
 					maxRad = minute_radius;			
-					deflec1 = 2.5; //minute hand half width 0.15; //0.2;
+					deflec1 = 3.5; //minute hand half width 0.15; //0.2;
 					
 				}		
 		}// End of if (HandsForm == 5)	
