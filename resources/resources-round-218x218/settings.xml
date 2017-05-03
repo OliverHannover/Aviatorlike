@@ -219,6 +219,13 @@
         <settingConfig type="boolean" />
     </setting>
     
+        <setting propertyKey="@Properties.SecHandsForm" title="@Strings.SecHandsFormTitle">
+        <settingConfig type="list">
+            <listEntry value="1">@Strings.SecHandsClassic</listEntry>        
+            <listEntry value="2">@Strings.SecHandsSimple</listEntry>
+        </settingConfig>
+    </setting>
+    
     <setting propertyKey="@Properties.SecHandsColor" title="@Strings.SecHandsColorTitle">
         <settingConfig type="list">
             <listEntry value="0x000000">@Strings.ColorBlack</listEntry>        

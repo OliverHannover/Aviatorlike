@@ -14,7 +14,8 @@
     <string id="HandsFormTitle">Kind of hands</string>
     <string id="HandsColor1Title">First color of hands</string>
     <string id="HandsColor2Title">Second color of hands</string>
-    <string id="HandsOutlineColorTitle">Hands outline color</string>  
+    <string id="HandsOutlineColorTitle">Hands outline color</string>
+    <string id="SecHandsFormTitle">Kind of second hand</string>   
     <string id="SecHandsColorTitle">Color of second hand</string>
     
     <string id="DigiFontTitle">Font of displays</string>
@@ -99,6 +100,9 @@
  	<string id="HandsClassic">Classic</string>
  	<string id="HandsSimple">Simple solid</string>
  	<string id="HandsFenix5like">Simple with hole</string>
+ 	
+ 	<string id="SecHandsClassic">Classic</string>
+	<string id="SecHandsSimple">Simple</string>
     
   	<string id="DualTimeTZ">Time zone for dual time</string>
   	<string id="DualTimeDST">Dual time daylight savings time</string>

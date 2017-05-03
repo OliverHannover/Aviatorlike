@@ -427,6 +427,8 @@ module hands{
         var center_x = dc.getWidth() / 2;
         var center_y = dc.getHeight() / 2;
         
+        
+        var SecHandsForm = (App.getApp().getProperty("SecHandsForm"));
         //seconds_radius = 7/8.0 * center_x;
 		var seconds_radius = height / 2 ; // wegen semiround halbe höhe
 		
@@ -446,30 +448,49 @@ module hands{
 		r1 = 35;
 		r2 = seconds_radius;
 		
-		//untere Raute		
-		hand =        	[
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
-						[center_x+r1*Math.sin(alpha+0.08),center_y-r1*Math.cos(alpha+0.08)],
-						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
-						[center_x+r1*Math.sin(alpha-0.08),center_y-r1*Math.cos(alpha-0.08)],						
-						[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];	
-						
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-		dc.fillPolygon(hand);		
-
-		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(1);
-		for (n=0; n<4; n++) {
-		dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+if (SecHandsForm == 1) { //classic		
+			//untere Raute		
+			hand =        	[
+							[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
+							[center_x+r1*Math.sin(alpha+0.08),center_y-r1*Math.cos(alpha+0.08)],
+							[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
+							[center_x+r1*Math.sin(alpha-0.08),center_y-r1*Math.cos(alpha-0.08)],						
+							[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)]	];	
+							
+			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+			dc.fillPolygon(hand);		
+	
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+	        dc.setPenWidth(1);
+			for (n=0; n<4; n++) {
+			dc.drawLine(hand[n][0], hand[n][1], hand[n+1][0], hand[n+1][1]);
+			}
+			
+			
+			//little circle
+			dc.setPenWidth(2);
+			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+			dc.fillCircle(center_x+(seconds_radius-30)*Math.sin(alpha),center_y-(seconds_radius-30)*Math.cos(alpha),6);		
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+			dc.drawCircle(center_x+(seconds_radius-30)*Math.sin(alpha),center_y-(seconds_radius-30)*Math.cos(alpha),6);
 		}
 		
+		if (SecHandsForm == 2) { //simple
+			
+			dc.setPenWidth(3);
+			dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
+			dc.drawLine(center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha),
+			center_x+(r2-30)*Math.sin(alpha),center_y-(r2-30)*Math.cos(alpha));
+			
+			//Top
+			dc.setPenWidth(3);
+			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
+			dc.drawLine(center_x+(r2-25)*Math.sin(alpha),center_y-(r2-25)*Math.cos(alpha),
+			center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha));
 		
-		//little circle
-		dc.setPenWidth(2);
-		dc.setColor(color1, Gfx.COLOR_TRANSPARENT);
-		dc.fillCircle(center_x+(seconds_radius-30)*Math.sin(alpha),center_y-(seconds_radius-30)*Math.cos(alpha),6);		
-		dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-		dc.drawCircle(center_x+(seconds_radius-30)*Math.sin(alpha),center_y-(seconds_radius-30)*Math.cos(alpha),6);
+		
+		}
+		
 	
 		//Centerpoint
 		dc.setPenWidth(2);

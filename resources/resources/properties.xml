@@ -24,7 +24,8 @@
     <property id="HandOutlinesEnable" type="boolean">true</property>
     <property id="HandsOutlineColor" type="number">0xFFFFFF</property>
     
-    <property id="SecHandEnable" type="boolean">true</property>
+ 	<property id="SecHandEnable" type="boolean">true</property>
+    <property id="SecHandsForm" type="number">1</property>    
     <property id="SecHandsColor" type="number">0x00AAFF</property>
     
     <property id="DigiFont" type="number">1</property>
