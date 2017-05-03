@@ -489,7 +489,7 @@ if (SecHandsForm == 1) { //classic
 			center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha));
 		
 		
-		}
+		} //end simple
 		
 	
 		//Centerpoint
