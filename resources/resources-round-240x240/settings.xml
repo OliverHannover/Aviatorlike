@@ -23,9 +23,14 @@
     <setting propertyKey="@Properties.AlmMsgEnable" title="@Strings.AlmMsgEnableTitle">
         <settingConfig type="boolean" />
     </setting>
+    
+    <setting propertyKey="@Properties.ShowAlmMsgCount" title="@Strings.AlmMsgCountTitle">
+        <settingConfig type="boolean" />
+    </setting>
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">
+            <listEntry value="0x000001">@Strings.ColorRGB</listEntry>
             <listEntry value="0x000000">@Strings.ColorBlack</listEntry>        
             <listEntry value="0x555555">@Strings.ColorDarkGray</listEntry>
             <listEntry value="0xAAAAAA">@Strings.ColorLightGray</listEntry>
@@ -43,8 +48,36 @@
         </settingConfig>
     </setting>
 
+    <setting propertyKey="@Properties.BackgroundColorR" title="@Strings.BackgroundColorRTitle">
+        <settingConfig type="list">
+            <listEntry value="0x000000">@Strings.Color00</listEntry>
+            <listEntry value="0x550000">@Strings.Color55</listEntry>        
+            <listEntry value="0xAA0000">@Strings.ColorAA</listEntry>
+            <listEntry value="0xFF0000">@Strings.ColorFF</listEntry>
+        </settingConfig>
+    </setting>
+    
+    <setting propertyKey="@Properties.BackgroundColorG" title="@Strings.BackgroundColorGTitle">
+        <settingConfig type="list">
+            <listEntry value="0x000000">@Strings.Color00</listEntry>
+            <listEntry value="0x005500">@Strings.Color55</listEntry>        
+            <listEntry value="0x00AA00">@Strings.ColorAA</listEntry>
+            <listEntry value="0x00FF00">@Strings.ColorFF</listEntry>
+        </settingConfig>
+    </setting>
+    
+    <setting propertyKey="@Properties.BackgroundColorB" title="@Strings.BackgroundColorBTitle">
+        <settingConfig type="list">
+            <listEntry value="0x000000">@Strings.Color00</listEntry>
+            <listEntry value="0x000055">@Strings.Color55</listEntry>        
+            <listEntry value="0x0000AA">@Strings.ColorAA</listEntry>
+            <listEntry value="0x0000FF">@Strings.ColorFF</listEntry>
+        </settingConfig>
+    </setting>
+
         <setting propertyKey="@Properties.DigitalBackgroundColor" title="@Strings.DigitalBackgroundColorTitle">
         <settingConfig type="list">
+            <listEntry value="0x000001">@Strings.ColorTransparent</listEntry> 
             <listEntry value="0x000000">@Strings.ColorBlack</listEntry>        
             <listEntry value="0x555555">@Strings.ColorDarkGray</listEntry>
             <listEntry value="0xAAAAAA">@Strings.ColorLightGray</listEntry>
@@ -152,7 +185,11 @@
         </settingConfig>
     </setting> 
     
-
+    
+   <setting propertyKey="@Properties.Reverse" title="@Strings.ReverseTitle">
+   		<settingConfig type="boolean" />
+   </setting>
+    
     
     <setting propertyKey="@Properties.HandsColor1" title="@Strings.HandsColor1Title">
         <settingConfig type="list">
@@ -342,7 +379,7 @@
 			<listEntry value="-1">@Strings.DSTValCurrent</listEntry>
         </settingConfig>
     </setting>
-    
-    
 
+
+   
 </settings>

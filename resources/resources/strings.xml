@@ -5,6 +5,9 @@
 	<string id="none">None</string>
 
     <string id="BackgroundColorTitle">Background color</string>
+    <string id="BackgroundColorRTitle">RGB Background Red</string>
+    <string id="BackgroundColorGTitle">RGB Background Green</string>
+    <string id="BackgroundColorBTitle">RGB Background Blue</string>
     <string id="DigitalBackgroundColorTitle">Display background color</string>
     <string id="ForegroundColorTitle">Display foreground color</string>
     <string id="NumbersTitle">Number font</string>
@@ -31,8 +34,10 @@
     <string id="SunMarkersEnableTitle">Enable sunrise/sunset markers</string>
     <string id="MoonEnableTitle">Enable moon phase on pos. 3 o´clock</string>
     <string id="AlmMsgEnableTitle">Enable Alm / Msg indicators</string>
+    <string id="AlmMsgCountTitle">Show quantity of Alms / Msgs</string>
     
 
+    <string id="ColorRGB">Use RGB</string>
     <string id="ColorBlack">Black</string>
     <string id="ColorDarkGray">Dark Gray</string>
     <string id="ColorLightGray">Light Gray</string>
@@ -47,6 +52,14 @@
     <string id="ColorDarkBlue">Dark Blue</string>    
     <string id="ColorPurple">Purple</string>
     <string id="ColorPink">Pink</string>
+
+    <string id="ColorTransparent">Same As Background</string>
+
+    <string id="Color00">00</string>
+    <string id="Color55">55</string>
+    <string id="ColorAA">AA</string>
+    <string id="ColorFF">FF</string>
+    
    
     <string id="NbrNo">No numbers</string>
     <string id="NbrNo12">No numbers but fat 12</string>    
@@ -148,5 +161,6 @@
 	<string id="TZVal1245">12:45 Chatham Islands</string>
 	<string id="TZVal1300">13:00 Phoenix Islands, Samoa, Tonga</string>
 	<string id="TZVal1400">14:00 Line Islands</string>
+	<string id="ReverseTitle">Reverse hand rotation</string>
 
 </strings>

@@ -26,7 +26,8 @@ module extras{
 		var moment = Time.now();
 	    var info_date = Calendar.info(moment, Time.FORMAT_LONG);
      	var actInfo = Act.getActivityInfo(); 
-     	//var alms = new AviatorlikeView();      
+     	//var alms = new AviatorlikeView();   
+     	var reverseMultiplier= App.getApp().getProperty("Reverse") ? -1 : 1 ;   
 	        
       
 		if(actInfo.currentLocation!=null){
@@ -37,8 +38,8 @@ module extras{
 			var sunriseTinfo = Time.Gregorian.info(new Time.Moment(sunrise_moment.value() + 30), Time.FORMAT_SHORT);
 			var sunsetTinfo = Time.Gregorian.info(new Time.Moment(sunset_moment.value() + 30), Time.FORMAT_SHORT);
    	       
-    		alphaSunrise = Math.PI/6*(1.0*sunriseTinfo.hour+sunriseTinfo.min/60.0);
-    		alphaSunset = Math.PI/6*(1.0*sunsetTinfo.hour+sunsetTinfo.min/60.0);
+    		alphaSunrise = Math.PI/6*(1.0*sunriseTinfo.hour+sunriseTinfo.min/60.0)*reverseMultiplier;
+    		alphaSunset = Math.PI/6*(1.0*sunsetTinfo.hour+sunsetTinfo.min/60.0)*reverseMultiplier;
       
         	var r1, r2;      	
         	var outerRad = 0;

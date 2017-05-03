@@ -226,8 +226,15 @@ class AviatorlikeView extends Ui.WatchFace{
 			dc.fillPolygon(marks);
 			
 			dc.setPenWidth(1);
-			dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT); 
-			dc.drawLine(center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha), center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha));
+			//dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT); 
+			//dc.setColor(0xff0000, Gfx.COLOR_TRANSPARENT);
+			var BGColor=0xff0000;
+        	BGColor=App.getApp().getProperty("BackgroundColor");
+        	if (BGColor==0x000001) {
+        		BGColor=App.getApp().getProperty("BackgroundColorR")+App.getApp().getProperty("BackgroundColorG")+App.getApp().getProperty("BackgroundColorB");
+        	}
+        	dc.setColor(BGColor, Gfx.COLOR_TRANSPARENT);
+        	dc.drawLine(center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha), center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha));
 			
 			//Sys.println(alpha + " - " + (2 * Math.PI / 2));   		
 			}
@@ -358,7 +365,7 @@ function drawBattery(dc) {
         alpha = 0; 
         
         if (screenShape == 1) {  //round 
-        alpha = 2*Math.PI/100*(Battery); 
+        alpha = App.getApp().getProperty("Reverse") ? -1 * 2*Math.PI/100*(Battery) : 2*Math.PI/100*(Battery); 
 		}		
 		if (screenShape == 2) {  //semi round
         alpha = (Math.PI-1)/100*(Battery)+Math.PI+0.5;
@@ -438,7 +445,7 @@ function drawBattery(dc) {
         alpha = 0; 
         
         if (screenShape == 1) {  //1=round 
-        alpha = 2*Math.PI/100*(stepPercent);
+        alpha = App.getApp().getProperty("Reverse") ? -1 * 2*Math.PI/100*(stepPercent) : 2*Math.PI/100*(stepPercent);
 		}		
 		if (screenShape == 2) {  //2=semi round
         //alpha = (Math.PI-1)/100*(Battery)+Math.PI+0.5;
@@ -629,7 +636,12 @@ function drawBattery(dc) {
         
   // Clear the screen--------------------------------------------
         //dc.setColor(App.getApp().getProperty("BackgroundColor"), Gfx.COLOR_TRANSPARENT));
-        dc.setColor(Gfx.COLOR_TRANSPARENT, App.getApp().getProperty("BackgroundColor"));
+        var BGColor=0x000000;
+        BGColor=App.getApp().getProperty("BackgroundColor");
+        if (BGColor==0x000001) {
+        	BGColor=App.getApp().getProperty("BackgroundColorR")+App.getApp().getProperty("BackgroundColorG")+App.getApp().getProperty("BackgroundColorB");
+        	}
+        dc.setColor(Gfx.COLOR_TRANSPARENT, BGColor);
         dc.clear();
       
    // Draw the hash marks ---------------------------------------------------------------------------
@@ -668,30 +680,38 @@ function drawBattery(dc) {
 		}
 		//! Alm / Msg indicators
 		var AlmMsgEnable = (App.getApp().getProperty("AlmMsgEnable"));
+		var ShowAlmMsgCount = (App.getApp().getProperty("ShowAlmMsgCount"));
 		if (AlmMsgEnable) {
 			//Indicators-------------------------------------------------------------	
 		 	 //messages 	
-	     	var messages = Sys.getDeviceSettings().notificationCount;     	
-	     	if (messages > 0) {
-	     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	        	dc.fillCircle(width / 2 + 30, height / 2 -7, 5);
-	     	}
-	     	dc.setPenWidth(2);
-	        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	        dc.drawCircle(width / 2 + 30, height / 2 -7, 5);
-	        dc.drawText(width / 2 + 30, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
+	     	var messages = Sys.getDeviceSettings().notificationCount;
+	     	var offcenter=45;
+	     	
+	     	dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);     		     	
+	     	if (ShowAlmMsgCount) {
+	     		//dc.drawText(width / 2 + offcenter, height / 2 -15, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);}
+	     		dc.drawText(width / 2 + offcenter, height / 2 +4 -dc.getFontHeight(Gfx.FONT_TINY), Gfx.FONT_TINY, messages, Gfx.TEXT_JUSTIFY_CENTER);}
+	     	else {
+	     		if (messages > 0) {
+	     		    dc.fillCircle(width / 2 + offcenter, height / 2 -7, 5);}
+	     		dc.setPenWidth(2);
+	        	dc.drawCircle(width / 2 + offcenter, height / 2 -7, 5);
+	        	}
+	        dc.drawText(width / 2 + offcenter, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
 	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER); 
-	      
+	      	
 		  //Alarm is set 	
 	     	var alarm = Sys.getDeviceSettings().alarmCount;     	
-	     	if (alarm > 0) {
-	     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	        	dc.fillCircle(width / 2 - 30, height / 2 -7, 5);
-	     	}
-	     	dc.setPenWidth(2);
-	        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	        dc.drawCircle(width / 2 - 30, height / 2 -7, 5);
-	        dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
+	     	if (ShowAlmMsgCount) {
+	     		dc.drawText(width / 2 - offcenter, height / 2 +4 -dc.getFontHeight(Gfx.FONT_TINY), Gfx.FONT_TINY, alarm, Gfx.TEXT_JUSTIFY_CENTER);}
+	     	else {
+	     		if (alarm > 0) {
+	     			dc.fillCircle(width / 2 - offcenter, height / 2 -7, 5);
+	     		}
+	     		dc.setPenWidth(2);
+	        	dc.drawCircle(width / 2 - offcenter, height / 2 -7, 5);
+	        	}
+	        dc.drawText(width / 2 - offcenter, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
 	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);
 		}       
  
@@ -735,11 +755,15 @@ function drawBattery(dc) {
 
 		if (UpperDispEnable) {
 			var displayInfo = (App.getApp().getProperty("UDInfo"));
+			var DigitalBGColor = 0x000000;
 			setLabel(displayInfo);
 			//background for upper display
-			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 30, 5);
-      	      	 
+			DigitalBGColor=App.getApp().getProperty("DigitalBackgroundColor");
+			if (DigitalBGColor!=0x000001) {
+				dc.setColor(DigitalBGColor, Gfx.COLOR_TRANSPARENT);  
+	       		dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 30, 5);
+			}
+			      	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(ULTEXTx, ULTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
         	//dc.drawText(ULTEXTx, ULTEXTy, fontDigital, "88:88/88:88", Gfx.TEXT_JUSTIFY_CENTER);	
@@ -750,10 +774,14 @@ function drawBattery(dc) {
 	 //Anzeige unteres Display--------------------------  
 		if (LowerDispEnable) {
 			var displayInfo = (App.getApp().getProperty("LDInfo"));
+			var DigitalBGColor = 0x000000;
 			setLabel(displayInfo);
 			//background for upper display
-			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 30, 5);
+			DigitalBGColor=App.getApp().getProperty("DigitalBackgroundColor");
+			if (DigitalBGColor!=0x000001) {
+				dc.setColor(DigitalBGColor, Gfx.COLOR_TRANSPARENT);  
+	       		dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 30, 5);
+			}
       	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);
@@ -767,6 +795,13 @@ function drawBattery(dc) {
        var NbrFont = (App.getApp().getProperty("Numbers")); 
        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
        var font1 = 0;  
+       var rightNum="3";
+       var leftNum="9";
+       
+       if (App.getApp().getProperty("Reverse")) {
+       	rightNum="9";
+       	leftNum="3";
+       	}
        
        if (screenShape == 1) {  // round
    		    if ( NbrFont == 1) { //fat
@@ -777,45 +812,45 @@ function drawBattery(dc) {
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
 		    		dc.drawText((width / 2), 5, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {
-		    			dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 26, font1, rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 54, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 26, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 26, font1, leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		    if ( NbrFont == 3) { //race
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_race);
 		    		dc.drawText((width / 2), 5, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {	
-		    			dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 26, font1, rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 52, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 26, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 26, font1, leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		    if ( NbrFont == 4) { //classic
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_classic);
 		    		dc.drawText((width / 2), 15, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {	
-		    			dc.drawText(width - 16, (height / 2) - 18, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 18, font1, rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 48, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 18, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 18, font1, leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		   if ( NbrFont == 5) {  //roman
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_roman);
 		    		dc.drawText((width / 2), 7, font1, "}", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {	
-		    			dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 22, font1, rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 50, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 22, font1, leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		   		}
 		   	if ( NbrFont == 6) {  //simple
 		    		dc.drawText((width / 2), 10, Gfx.FONT_SYSTEM_LARGE   , "12", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {
-		    			dc.drawText(width - 16, (height / 2) - 22, Gfx.FONT_SYSTEM_LARGE  , "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 22, Gfx.FONT_SYSTEM_LARGE  , rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 45, Gfx.FONT_SYSTEM_LARGE   , "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 22, Gfx.FONT_SYSTEM_LARGE   , "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 22, Gfx.FONT_SYSTEM_LARGE   , leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		   		}
 	   	}
        
@@ -830,45 +865,45 @@ function drawBattery(dc) {
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_fat);
 		    		dc.drawText((width / 2), -12, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {	
-		    			dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 26, font1, rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 41, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 26, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 26, font1, leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		    }
 		    if ( NbrFont == 3) { //race
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_race);
 		    		dc.drawText((width / 2), -12, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {		
-		    			dc.drawText(width - 16, (height / 2) - 26, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 26, font1, rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 39, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 26, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 26, font1, leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		    if ( NbrFont == 4) { //classic
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_classic);
 		    		dc.drawText((width / 2), 0, font1, "12", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {		
-		    			dc.drawText(width - 16, (height / 2) - 18, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 18, font1, rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 33, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 18, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 18, font1, leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		    	}
 		   if ( NbrFont == 5) {  //roman
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_roman);
 		    		dc.drawText((width / 2), -4, font1, "}", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {		
-		    			dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 22, font1, rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 40, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 22, font1, leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		   		}
 		   	if ( NbrFont == 6) {  //simple
 		    		dc.drawText((width / 2), -3, Gfx.FONT_SYSTEM_LARGE   , "12", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {		
-		    			dc.drawText(width - 16, (height / 2) - 17, Gfx.FONT_SYSTEM_LARGE  , "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 17, Gfx.FONT_SYSTEM_LARGE  , rightNum, Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
 	        		dc.drawText(width / 2, height - 30, Gfx.FONT_SYSTEM_LARGE   , "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 17, Gfx.FONT_SYSTEM_LARGE   , "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(16, (height / 2) - 17, Gfx.FONT_SYSTEM_LARGE   , leftNum, Gfx.TEXT_JUSTIFY_LEFT);
 		   		}
 	   	} 
        
@@ -879,12 +914,13 @@ function drawBattery(dc) {
   		if (Sys.getDeviceSettings().phoneConnected) {
   			dc.setColor((App.getApp().getProperty("HandsColor1")), Gfx.COLOR_TRANSPARENT);
 	   } else {
-  			dc.setColor((App.getApp().getProperty("BackgroundColor")), Gfx.COLOR_TRANSPARENT);
+  			//dc.setColor((App.getApp().getProperty("BackgroundColor")), Gfx.COLOR_TRANSPARENT);
+  			dc.setColor(BGColor, Gfx.COLOR_TRANSPARENT);
 	   } 
 	    
 	    dc.fillCircle(width / 2, height / 2, 5);
 	    dc.setPenWidth(2);
-     	dc.setColor((App.getApp().getProperty("HandsColor2")), Gfx.COLOR_TRANSPARENT);
+	    dc.setColor((App.getApp().getProperty("HandsColor2")), Gfx.COLOR_TRANSPARENT);
 	    dc.drawCircle(width / 2, height / 2 , 5);
       
        if (isAwake) {
