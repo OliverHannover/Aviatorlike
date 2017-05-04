@@ -668,30 +668,60 @@ function drawBattery(dc) {
 		}
 		//! Alm / Msg indicators
 		var AlmMsgEnable = (App.getApp().getProperty("AlmMsgEnable"));
+		var ShowAlmMsgCount = (App.getApp().getProperty("ShowAlmMsgCount"));
+		
 		if (AlmMsgEnable) {
 			//Indicators-------------------------------------------------------------	
-		 	 //messages 	
-	     	var messages = Sys.getDeviceSettings().notificationCount;     	
-	     	if (messages > 0) {
-	     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	        	dc.fillCircle(width / 2 + 30, height / 2 -7, 5);
-	     	}
-	     	dc.setPenWidth(2);
-	        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	        dc.drawCircle(width / 2 + 30, height / 2 -7, 5);
-	        dc.drawText(width / 2 + 30, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
+		 	 //messages 
+			var messages = Sys.getDeviceSettings().notificationCount;
+ 	     	var offcenter=35;
+ 	     	
+ 	     	dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);     		     	
+ 	     	if (ShowAlmMsgCount) {
+ 	     		dc.drawText(width / 2 + offcenter, height / 2 -15, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);}
+ 	     	else {
+ 	     		if (messages > 0) {
+ 	     		    dc.fillCircle(width / 2 + offcenter, height / 2 -7, 5);}
+ 	     		dc.setPenWidth(2);
+ 	        	dc.drawCircle(width / 2 + offcenter, height / 2 -7, 5);
+ 	        	}
+ 	        dc.drawText(width / 2 + offcenter, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER); 	 	
+	     	
+	     	
+	    //	var messages = Sys.getDeviceSettings().notificationCount;     	
+	   	//  if (messages > 0) {
+	    // 		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+	    //    	dc.fillCircle(width / 2 + 30, height / 2 -7, 5);
+	    // 	}
+	    // 	dc.setPenWidth(2);
+	    //    dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+	    //    dc.drawCircle(width / 2 + 30, height / 2 -7, 5);
+	    //    dc.drawText(width / 2 + 30, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
 	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER); 
 	      
 		  //Alarm is set 	
-	     	var alarm = Sys.getDeviceSettings().alarmCount;     	
-	     	if (alarm > 0) {
-	     		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	        	dc.fillCircle(width / 2 - 30, height / 2 -7, 5);
-	     	}
-	     	dc.setPenWidth(2);
-	        dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	        dc.drawCircle(width / 2 - 30, height / 2 -7, 5);
-	        dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
+	     	var alarm = Sys.getDeviceSettings().alarmCount; 
+	     	if (ShowAlmMsgCount) {
+ 	     		dc.drawText(width / 2 - offcenter, height / 2 -15, fontLabel, alarm, Gfx.TEXT_JUSTIFY_CENTER);}
+ 	     	else {
+ 	     		if (alarm > 0) {
+ 	     			dc.fillCircle(width / 2 - offcenter, height / 2 -7, 5);
+ 	     		}
+ 	     		dc.setPenWidth(2);
+ 	        	dc.drawCircle(width / 2 - offcenter, height / 2 -7, 5);
+ 	        	}
+ 	        dc.drawText(width / 2 - offcenter, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
+	     	
+	     	
+	     	    	
+	   //  	if (alarm > 0) {
+	   //  		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+	   //     	dc.fillCircle(width / 2 - 30, height / 2 -7, 5);
+	   //  	}
+	   //  	dc.setPenWidth(2);
+	   //   dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+	   //   dc.drawCircle(width / 2 - 30, height / 2 -7, 5);
+	   //   dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
 	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);
 		}       
  
@@ -765,7 +795,7 @@ function drawBattery(dc) {
 
       // Draw the numbers --------------------------------------------------------------------------------------
        var NbrFont = (App.getApp().getProperty("Numbers")); 
-       dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
+       dc.setColor((App.getApp().getProperty("NumbersColor")), Gfx.COLOR_TRANSPARENT);
        var font1 = 0;  
        
        if (screenShape == 1) {  // round
@@ -875,18 +905,32 @@ function drawBattery(dc) {
 
   // Draw hands ------------------------------------------------------------------         
      	hands.drawHands(dc); 
-  // Center Point witrh Bluetooth connection
+  // Center Point with Bluetooth connection
+  	var CenterDotEnable = (App.getApp().getProperty("CenterDotEnable"));
+  	if (CenterDotEnable) {
+  	
   		if (Sys.getDeviceSettings().phoneConnected) {
   			dc.setColor((App.getApp().getProperty("HandsColor1")), Gfx.COLOR_TRANSPARENT);
-	   } else {
+	   	} else {
   			dc.setColor((App.getApp().getProperty("BackgroundColor")), Gfx.COLOR_TRANSPARENT);
-	   } 
+	   	} 
+	
+	} else {
+  			dc.setColor((App.getApp().getProperty("HandsColor1")), Gfx.COLOR_TRANSPARENT);
+	   	} 
+
 	    
 	    dc.fillCircle(width / 2, height / 2, 5);
 	    dc.setPenWidth(2);
      	dc.setColor((App.getApp().getProperty("HandsColor2")), Gfx.COLOR_TRANSPARENT);
 	    dc.drawCircle(width / 2, height / 2 , 5);
-      
+ 	
+ 	
+ 
+ 
+ 	
+ 	
+    //draw second hand  
        if (isAwake) {
        var SecHandEnable = (App.getApp().getProperty("SecHandEnable"));
        if (SecHandEnable) {

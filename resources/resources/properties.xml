@@ -1,11 +1,13 @@
 <properties>
-	<property id="appVersion" type="string">0.7.0</property>
+	<property id="appVersion" type="string">0.7.1</property>
 	
 	<property id="BatProgressEnable" type="boolean">true</property>
 	<property id="StepProgressEnable" type="boolean">true</property>
 	<property id="SunMarkersEnable" type="boolean">false</property>
 	<property id="MoonEnable" type="boolean">false</property>
 	<property id="AlmMsgEnable" type="boolean">true</property>
+	<property id="ShowAlmMsgCount" type="boolean">true</property>
+	<property id="CenterDotEnable" type="boolean">true</property>
 	
     <property id="BackgroundColor" type="number">0xFFFFFF</property>
     
@@ -14,6 +16,7 @@
     
     <property id="Numbers" type="number">2</property>
     <property id="QuarterNumbersColor" type="number">0x000000</property>
+    <property id="NumbersColor" type="number">0x000000</property>
     <property id="markslenth" type="number">4</property>
     <property id="MinutesColor" type="number">0x00AAFF</property>
    
@@ -26,7 +29,8 @@
     
  	<property id="SecHandEnable" type="boolean">true</property>
     <property id="SecHandsForm" type="number">1</property>    
-    <property id="SecHandsColor" type="number">0x00AAFF</property>
+    <property id="SecHands1Color" type="number">0x000000</property>
+    <property id="SecHands2Color" type="number">0xFF0000</property>
     
     <property id="DigiFont" type="number">1</property>
     <property id="DateFormat" type="number">1</property>

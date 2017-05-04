@@ -394,33 +394,9 @@ module hands{
 	function drawSecondHands(dc) {        
           // the length of the minute hand
         
-        var color1 = (App.getApp().getProperty("SecHandsColor"));
-		var color2 = 0x555555;  
-          
-          //!Schwarz + DK-Grau
-		if (color1 == 0x000000) {
-			color2 = 0x555555;
-			}
-		//!weiß + LT-Grau
-		if (color1 == 0xFFFFFF) {
-			color2 = 0xAAAAAA;
-			}
-		//!Rot + DK-Rot
-		if (color1 == 0xFF0000) {
-			color2 = 0xAA0000;
-			}
-		//!Grün + DK-Grün
-		if (color1 == 0x00FF00) {
-			color2 = 0x00AA00;
-			}			
-		//!Blau + DK-Blau
-		if (color1 == 0x00AAFF) {
-			color2 = 0x0000FF;
-			}		
-		//!Orange + Gelb
-		if (color1 == 0xFF5500) {
-			color2 = 0xFFAA00;
-			}	
+        var color1 = (App.getApp().getProperty("SecHands1Color"));
+		var color2 = (App.getApp().getProperty("SecHands2Color"));
+          	
 
  	  	var width = dc.getWidth();
         var height  = dc.getHeight();
@@ -485,7 +461,7 @@ if (SecHandsForm == 1) { //classic
 			//Top
 			dc.setPenWidth(3);
 			dc.setColor(color2, Gfx.COLOR_TRANSPARENT);
-			dc.drawLine(center_x+(r2-25)*Math.sin(alpha),center_y-(r2-25)*Math.cos(alpha),
+			dc.drawLine(center_x+(r2-30)*Math.sin(alpha),center_y-(r2-30)*Math.cos(alpha),
 			center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha));
 		
 		
