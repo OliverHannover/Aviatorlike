@@ -17,8 +17,13 @@ Many thanks, when you consider the PayPal donation to my Connect IQ development 
 - indicator/count for alarm and messages
 - moon phase
 - bluetooth indicator as centerpoint for hands. If you see the background - no connection. Otherwise filled with hands color
+
 Five different fonts for numbers (Fat, Race, Classic, Roman numbers, Simple) and no numbers 
+
 Six different hands ( Race, Pilot, Diver, Classic, Simple solid and Simple with hole)
+
 Two different second hands (classic and simple)
+
 each color can be changed
+
 Each display can enabled/disabled
