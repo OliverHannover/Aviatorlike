@@ -13,7 +13,7 @@ using Toybox.Sensor as Snsr;
 
 class AviatorlikeView extends Ui.WatchFace{
 	    
-	    //Positions for Displays + Text
+	    //Positions for Displays + Text 
 	    var ULBGx, ULBGy, ULBGwidth;
 	    var ULTEXTx, ULTEXTy;
 	    var ULINFOx, ULINFOy;  
