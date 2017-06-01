@@ -75,28 +75,17 @@
     <string id="DF7">MM/DD/YYYY</string>
     
    
-    <string id="UDDate">Date</string>
-    <string id="UDSteps">Steps</string>
-    <string id="UDStepstogo">Steps to go</string>
-	<string id="UDDigitalClock">Dual time</string>
-	<string id="UDAltitude">Elevation</string>
-	<string id="UDCalories">Calories</string>
-	<string id="UDDistance">Distance</string>
-	<string id="UDBattery">Battery</string>
-	<string id="UDDayWeek">Day and week of year</string>
-	<string id="UDSunsetRise">next/over next sun event</string>
-	
-    
-    <string id="LDDate">Date</string>
-    <string id="LDSteps">Steps</string>
-    <string id="LDStepstogo">Steps to go</string>
-	<string id="LDDigitalClock">Dual time</string>
-	<string id="LDAltitude">Elevation</string>
-	<string id="LDCalories">Calories</string>
-	<string id="LDDistance">Distance</string>
-	<string id="LDBattery">Battery</string>
-	<string id="LDDayWeek">Day and week of year</string>
-	<string id="LDSunsetRise">next/over next sun event</string>
+    <string id="DDate">Date</string>
+    <string id="DSteps">Steps</string>
+    <string id="DStepstogo">Steps to go</string>
+	<string id="DDigitalClock">Dual time</string>
+	<string id="DAltitude">Elevation</string>
+	<string id="DCalories">Calories</string>
+	<string id="DDistance">Distance</string>
+	<string id="DBattery">Battery</string>
+	<string id="DDayWeek">Day and week of year</string>
+	<string id="DSunsetRise">next/over next sun event</string>
+	<string id="DHR">Heart rate</string>
 
 	<string id="HandsRace">Race</string>
 	<string id="HandsPilot">Pilot</string>

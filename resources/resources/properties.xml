@@ -1,5 +1,5 @@
 <properties>
-	<property id="appVersion" type="string">0.7.1</property>
+	<property id="appVersion" type="string">0.8.0</property>
 	
 	<property id="BatProgressEnable" type="boolean">true</property>
 	<property id="StepProgressEnable" type="boolean">true</property>
@@ -28,7 +28,7 @@
     <property id="HandsOutlineColor" type="number">0xFFFFFF</property>
     
  	<property id="SecHandEnable" type="boolean">true</property>
-    <property id="SecHandsForm" type="number">1</property>    
+    <property id="SecHandsForm" type="number">2</property>    
     <property id="SecHands1Color" type="number">0x000000</property>
     <property id="SecHands2Color" type="number">0xFF0000</property>
     
@@ -37,7 +37,7 @@
     <property id="UpperDispEnable" type="boolean">true</property>
     <property id="UDInfo" type="number">1</property>
      <property id="LowerDispEnable" type="boolean">true</property>
-    <property id="LDInfo" type="number">2</property>
+    <property id="LDInfo" type="number">11</property>
     
     <property id="DualTimeTZ" type="number">0</property>
     <property id="DualTimeDST" type="number">0</property>

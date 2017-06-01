@@ -8,6 +8,7 @@ using Toybox.Time.Gregorian as Calendar;
 using Toybox.WatchUi as Ui;
 using Toybox.Activity as Act;
 using Toybox.ActivityMonitor as ActMonitor;
+using Toybox.Sensor as Snsr;
 
 
 class AviatorlikeView extends Ui.WatchFace{
@@ -40,11 +41,13 @@ class AviatorlikeView extends Ui.WatchFace{
 	
 		var moonx, moony, moonwidth;
 		
+		
     function initialize() {
         WatchFace.initialize();        
 	    fontLabel = Ui.loadResource(Rez.Fonts.id_font_label);
         screenShape = Sys.getDeviceSettings().screenShape;                  
         Sys.println("Screenshape = " + screenShape);
+     
         
         
     }
@@ -57,33 +60,33 @@ class AviatorlikeView extends Ui.WatchFace{
         center_y = dc.getHeight() / 2;
         
 		if (width == 218 && height == 218) {
-			Sys.println("device:" + "Fenix3");
+			Sys.println("device:" + "Fenix3 218");
 			ULBGx = 38;
 		   	ULBGy = 55;
 		   	ULBGwidth = 142;
 		    
 		   	ULTEXTx = 109;
-		   	ULTEXTy = 54;
+		   	ULTEXTy = 53;
 		    
 		   	ULINFOx = 175;
 		   	ULINFOy = 55;   
 		    
 		   	LLBGx = 38;
-		   	LLBGy = 133;
+		   	LLBGy = 128;
 		   	LLBGwidth = 142;
 		    
 		   	LLTEXTx = 109;
-		   	LLTEXTy = 132;
+		   	LLTEXTy = 126;
 		    
 		   	LLINFOx = 175;
-		   	LLINFOy = 133; 
+		   	LLINFOy = 128; 
 		    
 		   	moonx = 165;
 		   	moony = 89;
 		   	moonwidth = 40; 		
 		}
 		if (width == 240 && height == 240) {
-			Sys.println("device:" + "Fenix 5");
+			Sys.println("device:" + "Fenix 5 240");
 			ULBGx = 45;
 		   	ULBGy = 60;
 		   	ULBGwidth = 150;
@@ -340,7 +343,7 @@ class AviatorlikeView extends Ui.WatchFace{
 			}			
 							
 			if (unknownaltitude) {
-				labelText = Lang.format("unknown");
+				labelText = "unknown";
 			} else {
 				labelText = Lang.format("$1$", [actaltitude.toLong()]);
 			}
@@ -505,7 +508,7 @@ function drawBattery(dc) {
  
  
  
-	function builSunsetStr() {
+	function buildSunsetStr() {
 
 			var moment = Time.now();
 	        var info_date = Calendar.info(moment, Time.FORMAT_LONG);
@@ -610,8 +613,31 @@ function drawBattery(dc) {
 			
 			//next / over next sun event
 			if (displayInfo == 10) {
-				builSunsetStr();
-		    }		    
+				buildSunsetStr();
+		    }
+		    
+		   	//heart rate
+			if (displayInfo == 11) {
+			var hasHR = (ActivityMonitor has :HeartRateIterator) ? true : false;			
+				if (hasHR) {
+					var HRH = ActMonitor.getHeartRateHistory(null, true);
+					var hr="--";
+					
+					if(HRH != null) {
+						var HRS=HRH.next();
+						if(HRS!=null && HRS.heartRate!=null && HRS.heartRate!=ActMonitor.INVALID_HR_SAMPLE) {
+							hr = HRS.heartRate.toString();
+							labelText = hr;
+							labelInfoText = "bpm";
+							//labelText = HRH.getMax()+"/"+HRH.getMin()+" "+HRS.heartRate+" bpm";			
+						}
+					}	
+				}
+				else {
+				labelText = "no sensor";
+				}				
+		    }
+		   		    	    
 		    
 		    
 	//Sys.println("Dispfilled");
@@ -724,9 +750,7 @@ function drawBattery(dc) {
 	   //   dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
 	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);
 		}       
- 
-        
-        
+
 
 //Draw Digital Elements ------------------------------------------------------------------ 
 
@@ -765,10 +789,11 @@ function drawBattery(dc) {
 
 		if (UpperDispEnable) {
 			var displayInfo = (App.getApp().getProperty("UDInfo"));
+			Sys.println("UDInfo: " + displayInfo);
 			setLabel(displayInfo);
 			//background for upper display
 			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 30, 5);
+	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 35, 5);
       	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(ULTEXTx, ULTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
@@ -780,10 +805,11 @@ function drawBattery(dc) {
 	 //Anzeige unteres Display--------------------------  
 		if (LowerDispEnable) {
 			var displayInfo = (App.getApp().getProperty("LDInfo"));
+			Sys.println("LDInfo: " + displayInfo);
 			setLabel(displayInfo);
 			//background for upper display
 			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 30, 5);
+	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 35, 5);
       	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);
@@ -905,6 +931,8 @@ function drawBattery(dc) {
 
   // Draw hands ------------------------------------------------------------------         
      	hands.drawHands(dc); 
+     	
+     	
   // Center Point with Bluetooth connection
   	var CenterDotEnable = (App.getApp().getProperty("CenterDotEnable"));
   	if (CenterDotEnable) {
