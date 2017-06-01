@@ -12,6 +12,7 @@ Many thanks, when you consider the PayPal donation to my Connect IQ development 
 - distance
 - next and over next sun event (sunrise / sunset)
 - indicators for sunrise/sunset (only for round watches)
+- Heart rate
 - battery progress 
 (Triangle pointed inside. On round watch turn counterclockwise, on semi round watch it goes In the left arch from top to bottom. Top is 100% )
 - indicator/count for alarm and messages
