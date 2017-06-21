@@ -24,9 +24,13 @@
         <settingConfig type="boolean" />
     </setting>
     
-     <setting propertyKey="@Properties.ShowAlmMsgCount" title="@Strings.AlmMsgCountTitle">
-         <settingConfig type="boolean" />
-     </setting>
+    <setting propertyKey="@Properties.AlmMsg" title="@Strings.AlmMsgTitle">
+        <settingConfig type="list">
+            <listEntry value="1">@Strings.IF1</listEntry>       
+            <listEntry value="2">@Strings.IF2</listEntry>  
+            <listEntry value="3">@Strings.IF3</listEntry>  
+        </settingConfig>
+    </setting>
     
     <setting propertyKey="@Properties.CenterDotEnable" title="@Strings.CenterDotEnableTitle">
         <settingConfig type="boolean" />

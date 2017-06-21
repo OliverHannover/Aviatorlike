@@ -605,10 +605,11 @@ function drawBattery(dc) {
         	    labelText = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
 			}
 			
-			//Draw Day an d week of year
+			//Draw Day and week of year
 			if (displayInfo == 9) {
 				date.builddayWeekStr();
-				labelText = date.dayWeekStr;
+				//labelText = date.dayWeekStr;
+				labelText = date.aktDay + " / " + date.week;
 			}
 			
 			//next / over next sun event
@@ -698,61 +699,61 @@ function drawBattery(dc) {
 		}
 		//! Alm / Msg indicators
 		var AlmMsgEnable = (App.getApp().getProperty("AlmMsgEnable"));
-		var ShowAlmMsgCount = (App.getApp().getProperty("ShowAlmMsgCount"));
+		var AlmMsg = (App.getApp().getProperty("AlmMsg"));
+
 		
 		if (AlmMsgEnable) {
-			//Indicators-------------------------------------------------------------	
-		 	 //messages 
+			var offcenter=35;
+			var labelLeft = "";
+			var labelRight = "";
+			var infoLeft = "";
+			var infoRight = "";
+			
+			dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
 			var messages = Sys.getDeviceSettings().notificationCount;
- 	     	var offcenter=35;
- 	     	
- 	     	dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);     		     	
- 	     	if (ShowAlmMsgCount) {
- 	     		dc.drawText(width / 2 + offcenter, height / 2 -15, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);}
- 	     	else {
+			var alarm = Sys.getDeviceSettings().alarmCount; 
+			
+			if (AlmMsg == 1) { // setting Alm/Msg count		     	
+		     	labelLeft = "Alm";
+		     	infoLeft = alarm;
+		     	
+	     		labelRight = "Msg";
+				infoRight = messages; 
+			} 	     	
+	 	    
+	 	    if (AlmMsg == 2) { // setting Alm/Msg only indicators 
+	 	    	labelLeft = "Alm";		     	
+	     		labelRight = "Msg";	
+				//messages
  	     		if (messages > 0) {
- 	     		    dc.fillCircle(width / 2 + offcenter, height / 2 -7, 5);}
+ 	     		    dc.fillCircle(width / 2 + offcenter, height / 2 -7, 5);
+ 	     		}
  	     		dc.setPenWidth(2);
- 	        	dc.drawCircle(width / 2 + offcenter, height / 2 -7, 5);
- 	        	}
- 	        dc.drawText(width / 2 + offcenter, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER); 	 	
-	     	
-	     	
-	    //	var messages = Sys.getDeviceSettings().notificationCount;     	
-	   	//  if (messages > 0) {
-	    // 		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	    //    	dc.fillCircle(width / 2 + 30, height / 2 -7, 5);
-	    // 	}
-	    // 	dc.setPenWidth(2);
-	    //    dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	    //    dc.drawCircle(width / 2 + 30, height / 2 -7, 5);
-	    //    dc.drawText(width / 2 + 30, height / 2 -2, fontLabel, "Msg", Gfx.TEXT_JUSTIFY_CENTER);
-	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER); 
-	      
-		  //Alarm is set 	
-	     	var alarm = Sys.getDeviceSettings().alarmCount; 
-	     	if (ShowAlmMsgCount) {
- 	     		dc.drawText(width / 2 - offcenter, height / 2 -15, fontLabel, alarm, Gfx.TEXT_JUSTIFY_CENTER);}
- 	     	else {
+ 	        	dc.drawCircle(width / 2 + offcenter, height / 2 -7, 5);	
+ 	        		     		     	
+				//Alarm		     	
  	     		if (alarm > 0) {
  	     			dc.fillCircle(width / 2 - offcenter, height / 2 -7, 5);
  	     		}
  	     		dc.setPenWidth(2);
  	        	dc.drawCircle(width / 2 - offcenter, height / 2 -7, 5);
- 	        	}
- 	        dc.drawText(width / 2 - offcenter, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
+	     	} 
 	     	
-	     	
-	     	    	
-	   //  	if (alarm > 0) {
-	   //  		dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	   //     	dc.fillCircle(width / 2 - 30, height / 2 -7, 5);
-	   //  	}
-	   //  	dc.setPenWidth(2);
-	   //   dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
-	   //   dc.drawCircle(width / 2 - 30, height / 2 -7, 5);
-	   //   dc.drawText(width / 2 - 30, height / 2 -2, fontLabel, "Alm", Gfx.TEXT_JUSTIFY_CENTER);
-	        //dc.drawText(width / 3 + 7, height / 2, fontLabel, messages, Gfx.TEXT_JUSTIFY_CENTER);
+	     	if (AlmMsg == 3) { 
+	     		date.builddayWeekStr();    	
+	     		labelLeft = "day";
+	     		infoLeft = date.aktDay;
+	     		labelRight = "week";				
+				infoRight = date.week;     	
+	     	}
+
+
+	     		
+			dc.drawText(width / 2 + offcenter, height / 2 -15, fontLabel, infoRight, Gfx.TEXT_JUSTIFY_CENTER);	     		
+	 		dc.drawText(width / 2 + offcenter, height / 2 -2, fontLabel, labelRight, Gfx.TEXT_JUSTIFY_CENTER);
+	 		
+	 		dc.drawText(width / 2 - offcenter, height / 2 -15, fontLabel, infoLeft, Gfx.TEXT_JUSTIFY_CENTER);
+	 		dc.drawText(width / 2 - offcenter, height / 2 -2, fontLabel, labelLeft, Gfx.TEXT_JUSTIFY_CENTER); 
 		}       
 
 

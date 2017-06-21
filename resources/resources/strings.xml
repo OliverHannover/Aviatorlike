@@ -33,8 +33,16 @@
     <string id="HandOutlinesEnableTitle">Enable outline around some hands</string>
     <string id="SunMarkersEnableTitle">Enable sunrise/sunset markers</string>
     <string id="MoonEnableTitle">Enable moon phase on pos. 3 o´clock</string>
-    <string id="AlmMsgEnableTitle">Enable Alm / Msg indicators</string>
-    <string id="AlmMsgCountTitle">Show quantity of Alms / Msgs</string>
+    
+    <string id="AlmMsgEnableTitle">Enable center indicators</string>
+	<string id="AlmMsgTitle">indicator info</string>
+    <string id="IF1">Alm/Msg count</string>
+    <string id="IF2">Alm/Msg only indicator</string>
+    <string id="IF3">Day and week of year</string>
+    <string id="IF4">distance / elevation</string>
+    
+    
+    
     <string id="CenterDotEnableTitle">Enable center dot as BT indicator</string>
     
 

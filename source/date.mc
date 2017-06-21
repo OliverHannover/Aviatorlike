@@ -10,6 +10,8 @@ module date{
 		//date
 		var dateStr;	
 		var dayWeekStr;
+		var week;
+		var aktDay;
 		
 		
 		//Sys.println("dateFormat = " + dateFormat); 
@@ -119,9 +121,9 @@ module date{
 		var infoShort = Calendar.info(now, Time.FORMAT_SHORT);
 		var dayNow = julian_day(infoShort.year, infoShort.month, infoShort.day);
 		var firstDay = julian_day(infoShort.year, 1, 1);
-		var aktDay = dayNow - firstDay + 1;	//day of year (julianisch)
-		var week = date.iso_week_number(infoShort.year, infoShort.month, infoShort.day);	//week of year	
-		dayWeekStr = aktDay + " / " + week;
+		aktDay = dayNow - firstDay + 1;	//day of year (julianisch)
+		week = date.iso_week_number(infoShort.year, infoShort.month, infoShort.day);	//week of year	
+		//dayWeekStr = aktDay + " / " + week;
 		
 	
 	}
