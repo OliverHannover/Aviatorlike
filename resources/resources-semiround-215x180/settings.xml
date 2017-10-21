@@ -24,7 +24,9 @@
         <settingConfig type="list">
             <listEntry value="1">@Strings.IF1</listEntry>       
             <listEntry value="2">@Strings.IF2</listEntry>  
-            <listEntry value="3">@Strings.IF3</listEntry>  
+            <listEntry value="3">@Strings.IF3</listEntry>
+            <listEntry value="4">@Strings.IF4</listEntry> 
+            <listEntry value="5">@Strings.IF5</listEntry> 
         </settingConfig>
     </setting>    
     

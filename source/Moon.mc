@@ -24,7 +24,7 @@ class Moon {
 		
 	
     function calcmoonphase(day, month, year) {
-    	Sys.println(day + "." + month + "." + year);  // berechnet am "4.6.2017"
+    //	Sys.println(day + "." + month + "." + year);  // berechnet am "4.6.2017"
     
 	    var r = (year % 100); 		// 2017 modulo 100 = 17 --> 2017 / 100 = 2000 Rest 17
 		r = (r % 19);  				// 17 modulo 19 = 19 --> 17 / 19 = 0 Rest 17

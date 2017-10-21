@@ -31,7 +31,7 @@
     <string id="BatProgressEnableTitle">Enable battery progress marker</string>
     <string id="StepProgressEnableTitle">Enable step progress marker</string>
     <string id="HandOutlinesEnableTitle">Enable outline around some hands</string>
-    <string id="SunMarkersEnableTitle">Enable sunrise/sunset markers</string>
+    <string id="SunMarkersEnableTitle">Enable sunrise/sunset markers (only round watches)</string>
     <string id="MoonEnableTitle">Enable moon phase on pos. 3 o´clock</string>
     
     <string id="AlmMsgEnableTitle">Enable center indicators</string>
@@ -39,7 +39,8 @@
     <string id="IF1">Alm/Msg count</string>
     <string id="IF2">Alm/Msg only indicator</string>
     <string id="IF3">Day and week of year</string>
-    <string id="IF4">distance / elevation</string>
+    <string id="IF4">sunrise / sunset</string>
+    <string id="IF5">elevation / distance</string>
     
     
     

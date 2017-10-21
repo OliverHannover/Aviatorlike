@@ -23,6 +23,9 @@ class AviatorlikeView extends Ui.WatchFace{
 	    var LLINFOx, LLINFOy;
 	    var labelText;
 	  	var labelInfoText;  
+	  	
+	  	var infoLeft;
+		var infoRight;
 	    
 	    var isAwake;
 	    var screenShape;
@@ -62,24 +65,24 @@ class AviatorlikeView extends Ui.WatchFace{
 		if (width == 218 && height == 218) {
 			Sys.println("device:" + "Fenix3 218");
 			ULBGx = 38;
-		   	ULBGy = 55;
+		   	ULBGy = 50;
 		   	ULBGwidth = 142;
 		    
 		   	ULTEXTx = 109;
-		   	ULTEXTy = 53;
+		   	ULTEXTy = 52;
 		    
 		   	ULINFOx = 175;
-		   	ULINFOy = 55;   
+		   	ULINFOy = 50;   
 		    
 		   	LLBGx = 38;
-		   	LLBGy = 128;
+		   	LLBGy = 130;
 		   	LLBGwidth = 142;
 		    
 		   	LLTEXTx = 109;
-		   	LLTEXTy = 126;
+		   	LLTEXTy = 132;
 		    
 		   	LLINFOx = 175;
-		   	LLINFOy = 128; 
+		   	LLINFOy = 130; 
 		    
 		   	moonx = 165;
 		   	moony = 89;
@@ -88,7 +91,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		if (width == 240 && height == 240) {
 			Sys.println("device:" + "Fenix 5 240");
 			ULBGx = 45;
-		   	ULBGy = 60;
+		   	ULBGy = 57;
 		   	ULBGwidth = 150;
 		    
 		   	ULTEXTx = 120;
@@ -98,7 +101,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		   	ULINFOy = 59;   
 		    
 		   	LLBGx = 45;
-		   	LLBGy = 150;
+		   	LLBGy = 147;
 		   	LLBGwidth = 150;
 		    
 		   	LLTEXTx = 120;
@@ -114,17 +117,17 @@ class AviatorlikeView extends Ui.WatchFace{
 		if (width == 215 && height == 180) {
 			Sys.println("device:" + "Semiround");
 			ULBGx = 35;
-		   	ULBGy = 37;
+		   	ULBGy = 33;
 		   	ULBGwidth = 145;
 		    
 		   	ULTEXTx = 107.5;
-		   	ULTEXTy = 36;
+		   	ULTEXTy = 35;
 		    
 		   	ULINFOx = 173;
-		   	ULINFOy = 37;   
+		   	ULINFOy = 36;   
 		    
 		   	LLBGx = 35;
-		   	LLBGy = 114;
+		   	LLBGy = 111;
 		   	LLBGwidth = 145;
 		    
 		   	LLTEXTx = 107.5;
@@ -345,9 +348,10 @@ class AviatorlikeView extends Ui.WatchFace{
 			if (unknownaltitude) {
 				labelText = "unknown";
 			} else {
-				labelText = Lang.format("$1$", [actaltitude.toLong()]);
+				labelText = Lang.format("$1$", [actaltitude.toLong()]);				
 			}
 			
+			infoLeft = labelText;
        		//dc.drawText(width / 2, (height / 10 * 6.9), fontDigital, altitudeStr, Gfx.TEXT_JUSTIFY_CENTER);
         }
 	
@@ -526,10 +530,14 @@ function drawBattery(dc) {
     				labelText =  sunrise + "/" + sunset;
     			}else{
     				labelText =  sunset + "/" + sunrise;
-    			}				
+    			}
+    		infoLeft = sunrise;
+			infoRight = sunset;				
 	    	}else{
 	    		labelText = Ui.loadResource(Rez.Strings.none);
 	    	}
+	    	
+
 	    	
 	    	//sunsetStr =  sunrise + "/" + sunset;
 	    	//dc.drawText(width/2, height / 10 * 6, Gfx.FONT_SMALL, sunrise + " / " + sunset, Gfx.TEXT_JUSTIFY_CENTER);		
@@ -706,8 +714,10 @@ function drawBattery(dc) {
 			var offcenter=35;
 			var labelLeft = "";
 			var labelRight = "";
-			var infoLeft = "";
-			var infoRight = "";
+			//var infoLeft = "";
+			//var infoRight = "";
+			infoLeft = "";
+			infoRight = "";
 			
 			dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
 			var messages = Sys.getDeviceSettings().notificationCount;
@@ -745,6 +755,20 @@ function drawBattery(dc) {
 	     		infoLeft = date.aktDay;
 	     		labelRight = "week";				
 				infoRight = date.week;     	
+	     	}
+	     	
+	     	if (AlmMsg == 4) { 
+	     		buildSunsetStr();    	
+	     		labelLeft = "s.rise";
+	     		labelRight = "s.set";				   	
+	     	}
+	     	
+	     	if (AlmMsg == 5) { 
+	     		drawAltitude();    	
+	     		labelLeft = "elev";	     		
+	     		distance.drawDistance();
+	     		labelRight = "dist";				
+				infoRight = distance.distStr;    	
 	     	}
 
 
@@ -794,11 +818,11 @@ function drawBattery(dc) {
 
 		if (UpperDispEnable) {
 			var displayInfo = (App.getApp().getProperty("UDInfo"));
-			Sys.println("UDInfo: " + displayInfo);
+		//	Sys.println("UDInfo: " + displayInfo);
 			setLabel(displayInfo);
 			//background for upper display
 			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 35, 5);
+	       	dc.fillRoundedRectangle(ULBGx, ULBGy , ULBGwidth, 38, 5);
       	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(ULTEXTx, ULTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
@@ -810,11 +834,11 @@ function drawBattery(dc) {
 	 //Anzeige unteres Display--------------------------  
 		if (LowerDispEnable) {
 			var displayInfo = (App.getApp().getProperty("LDInfo"));
-			Sys.println("LDInfo: " + displayInfo);
+		//	Sys.println("LDInfo: " + displayInfo);
 			setLabel(displayInfo);
 			//background for upper display
 			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
-	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 35, 5);
+	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 38, 5);
       	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);
