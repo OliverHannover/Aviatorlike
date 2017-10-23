@@ -93,7 +93,7 @@
 	<string id="DDistance">Distance</string>
 	<string id="DBattery">Battery</string>
 	<string id="DDayWeek">Day and week of year</string>
-	<string id="DSunsetRise">next/over next sun event</string>
+	<string id="DSunsetRise">sunrise / sunset</string>
 	<string id="DHR">Heart rate</string>
 
 	<string id="HandsRace">Race</string>

@@ -8,13 +8,7 @@ using Toybox.Graphics as Gfx;
 //using Toybox.System as Sys;
 
 
-module extras{
-
-	var lastLoc;
-		
-     function getMoment(now,what) {
-		return SunCalc.calculate(now, lastLoc[0], lastLoc[1], what);
-	}		
+module extras{		
 
  function drawSunMarkers(dc) {
 	// Draw Sunset / sunrise markers -------------------------------------------------------------------------
@@ -22,17 +16,33 @@ module extras{
         var alphaSunrise = 0;
         var alphaSunset = 0;
         var hand; 
-        
-		var moment = Time.now();
-	    var info_date = Calendar.info(moment, Time.FORMAT_LONG);
-     	var actInfo = Act.getActivityInfo(); 
-     	//var alms = new AviatorlikeView();      
-	        
-      
-		if(actInfo.currentLocation!=null){
-    		lastLoc = actInfo.currentLocation.toRadians();
-    		var sunrise_moment = getMoment(moment,SUNRISE);
-    		var sunset_moment = getMoment(moment,SUNSET);
+	   
+	   	var sc = new SunCalc();
+		var lat;
+		var lon;		
+		var loc = Act.getActivityInfo().currentLocation;
+
+		if (loc == null)
+		{
+			lat = App.getApp().getProperty(LAT);
+			lon = App.getApp().getProperty(LON);
+		} 
+		else
+		{
+			lat = loc.toDegrees()[0] * Math.PI / 180.0;
+			App.getApp().setProperty(LAT, lat);
+			lon = loc.toDegrees()[1] * Math.PI / 180.0;
+			App.getApp().setProperty(LON, lon);
+		}
+
+//		lat = 52.375892 * Math.PI / 180.0;
+//		lon = 9.732010 * Math.PI / 180.0;
+
+		if(lat != null && lon != null)
+		{
+			var now = new Time.Moment(Time.now().value());			
+			var sunrise_moment = sc.calculate(now, lat.toDouble(), lon.toDouble(), SUNRISE);
+			var sunset_moment = sc.calculate(now, lat.toDouble(), lon.toDouble(), SUNSET);
 			
 			var sunriseTinfo = Time.Gregorian.info(new Time.Moment(sunrise_moment.value() + 30), Time.FORMAT_SHORT);
 			var sunsetTinfo = Time.Gregorian.info(new Time.Moment(sunset_moment.value() + 30), Time.FORMAT_SHORT);
@@ -47,7 +57,7 @@ module extras{
         	var center_y = dc.getHeight() / 2;
      
 			r1 = dc.getWidth()/2 - outerRad; //outside
-			r2 = r1 -lenth; ////Länge des Bat-Zeigers
+			r2 = r1 -lenth; ////Länge des Zeigers
      
 			dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
 			dc.setPenWidth(2);		

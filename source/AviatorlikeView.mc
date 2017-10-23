@@ -10,6 +10,12 @@ using Toybox.Activity as Act;
 using Toybox.ActivityMonitor as ActMonitor;
 using Toybox.Sensor as Snsr;
 
+enum
+{
+    LAT,
+    LON
+}
+
 
 class AviatorlikeView extends Ui.WatchFace{
 	    
@@ -40,7 +46,9 @@ class AviatorlikeView extends Ui.WatchFace{
 	    // the y coordinate for the center
 	    var center_y;      
 	    
+	   
 		var lastLoc;
+		
 	
 		var moonx, moony, moonwidth;
 		
@@ -89,7 +97,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		   	moonwidth = 40; 		
 		}
 		if (width == 240 && height == 240) {
-			Sys.println("device:" + "Fenix 5 240");
+			Sys.println("device:" + "Fenix5 240");
 			ULBGx = 45;
 		   	ULBGy = 57;
 		   	ULBGwidth = 150;
@@ -479,12 +487,7 @@ function drawBattery(dc) {
  	}
 
 
-     function getMoment(now,what) {
-		return SunCalc.calculate(now, lastLoc[0], lastLoc[1], what);
-	}
-
 	function momentToString(moment) {
-
 		if (moment == null) {
 			return "--:--";
 		}
@@ -498,53 +501,57 @@ function drawBattery(dc) {
 			if (hour == 0) {
 				hour = 12;
 			}
-			text = hour.format("%02d") + ":" + tinfo.min.format("%02d");
-			
-		//	if (tinfo.hour < 12 || tinfo.hour == 24) {
-		//		text = text + " AM";
-		//	} else {
-		//		text = text + " PM";
-		//	}
+			text = hour.format("%02d") + ":" + tinfo.min.format("%02d");			
 		}
-
 		return text;
 	}
- 
- 
- 
-	function buildSunsetStr() {
+ 	
 
-			var moment = Time.now();
-	        var info_date = Calendar.info(moment, Time.FORMAT_LONG);
-	        var actInfo = Act.getActivityInfo();       
-	        
-	        //sunset or sunrise       
-	        if(actInfo.currentLocation!=null){
-	    		lastLoc = actInfo.currentLocation.toRadians();
-	    		var sunrise_moment = getMoment(moment,SUNRISE);
-	    		var sunset_moment = getMoment(moment,SUNSET);
-				var sunrise = momentToString(sunrise_moment);
-				var sunset = momentToString(sunset_moment);
-				
-				if(moment.greaterThan(sunset_moment) || moment.lessThan(sunrise_moment)){
-    				labelText =  sunrise + "/" + sunset;
-    			}else{
-    				labelText =  sunset + "/" + sunrise;
-    			}
+    function buildSunsetStr()
+    {
+		var sc = new SunCalc();
+		var lat;
+		var lon;		
+		var loc = Act.getActivityInfo().currentLocation;
+
+		if (loc == null)
+		{
+			lat = App.getApp().getProperty(LAT);
+			lon = App.getApp().getProperty(LON);
+		} 
+		else
+		{
+			lat = loc.toDegrees()[0] * Math.PI / 180.0;
+			App.getApp().setProperty(LAT, lat);
+			lon = loc.toDegrees()[1] * Math.PI / 180.0;
+			App.getApp().setProperty(LON, lon);
+		}
+
+//		lat = 52.375892 * Math.PI / 180.0;
+//		lon = 9.732010 * Math.PI / 180.0;
+
+		if(lat != null && lon != null)
+		{
+			
+			var now = new Time.Moment(Time.now().value());			
+			var sunrise_moment = sc.calculate(now, lat.toDouble(), lon.toDouble(), SUNRISE);
+			var sunset_moment = sc.calculate(now, lat.toDouble(), lon.toDouble(), SUNSET);
+			var sunrise = momentToString(sunrise_moment);
+			var sunset = momentToString(sunset_moment);		
+
+    		labelText =  sunrise + "  " + sunset;
+    		   		
     		infoLeft = sunrise;
-			infoRight = sunset;				
-	    	}else{
-	    		labelText = Ui.loadResource(Rez.Strings.none);
+			infoRight = sunset;	
+				
+		}else{
+	    	labelText = Ui.loadResource(Rez.Strings.none);
 	    	}
-	    	
-
-	    	
-	    	//sunsetStr =  sunrise + "/" + sunset;
-	    	//dc.drawText(width/2, height / 10 * 6, Gfx.FONT_SMALL, sunrise + " / " + sunset, Gfx.TEXT_JUSTIFY_CENTER);		
-	}	
-
-
+		
+	}
 	
+
+	//builkd string for display in labels 
 	function setLabel(displayInfo) {
 				
 			labelText = "";
