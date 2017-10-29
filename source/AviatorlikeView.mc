@@ -105,8 +105,8 @@ class AviatorlikeView extends Ui.WatchFace{
 		   	ULTEXTx = 120;
 		   	ULTEXTy = 59;
 		    
-		   	ULINFOx = 185;
-		   	ULINFOy = 59;   
+		   	ULINFOx = 188;
+		   	ULINFOy = 57;   
 		    
 		   	LLBGx = 45;
 		   	LLBGy = 147;
@@ -115,8 +115,8 @@ class AviatorlikeView extends Ui.WatchFace{
 		   	LLTEXTx = 120;
 		   	LLTEXTy = 149;
 		    
-		   	LLINFOx = 185;
-		   	LLINFOy = 149; 
+		   	LLINFOx = 188;
+		   	LLINFOy = 148; 
 		    
 		   	moonx = 185;
 		   	moony = 100;
@@ -131,8 +131,8 @@ class AviatorlikeView extends Ui.WatchFace{
 		   	ULTEXTx = 107.5;
 		   	ULTEXTy = 35;
 		    
-		   	ULINFOx = 173;
-		   	ULINFOy = 36;   
+		   	ULINFOx = 174;
+		   	ULINFOy = 34;   
 		    
 		   	LLBGx = 35;
 		   	LLBGy = 111;
@@ -141,8 +141,8 @@ class AviatorlikeView extends Ui.WatchFace{
 		   	LLTEXTx = 107.5;
 		   	LLTEXTy = 113;
 		    
-		   	LLINFOx = 173;
-		   	LLINFOy = 114; 
+		   	LLINFOx = 174;
+		   	LLINFOy = 112; 
 		    
 		   	moonx = 165;
 		   	moony = 72;
@@ -271,6 +271,7 @@ class AviatorlikeView extends Ui.WatchFace{
 	 			
 			var dthour;
 			var dtmin;
+			var dtsec;
 			var dtnow = now;
 			// adjust to UTC/GMT
 			dtnow = dtnow.add(new Time.Duration(-clockTime.timeZoneOffset));
@@ -297,6 +298,7 @@ class AviatorlikeView extends Ui.WatchFace{
 			
 			dthour = dtinfo.hour;
 			dtmin = dtinfo.min;
+			dtsec = dtinfo.sec;
 			
 			//var use24hclock;
 			//var ampmStr = "am ";
@@ -315,15 +317,25 @@ class AviatorlikeView extends Ui.WatchFace{
 			}			
 			
 			if (dthour < 10) {
-				labelText = Lang.format(" 0$1$:", [dthour]);
+				labelText = Lang.format("0$1$:", [dthour]);
 			} else {
-				labelText = Lang.format(" $1$:", [dthour]);
+				labelText = Lang.format("$1$:", [dthour]);
 			}
 			if (dtmin < 10) {
-				labelText = labelText + Lang.format("0$1$ ", [dtmin]);
+				labelText = labelText + Lang.format("0$1$", [dtmin]);
 			} else {
-				labelText = labelText + Lang.format("$1$ ", [dtmin]);
+				labelText = labelText + Lang.format("$1$", [dtmin]);
 			}
+			
+			if (isAwake) {
+				if (dtsec < 10) {
+					labelText = labelText + Lang.format(":0$1$", [dtsec]);
+				} else {
+					labelText = labelText + Lang.format(":$1$", [dtsec]);
+				}
+			}
+			
+			
   
   }//End of drawDigitalTime(dc)-------
 
@@ -549,9 +561,71 @@ function drawBattery(dc) {
 	    	}
 		
 	}
-	
 
-	//builkd string for display in labels 
+	//draw stepHistory-Graph-----------------------------------------------------------------------------------	
+	function drawStepGraph(dc,stepGraphposX, stepGraphposY, stepInfoX, stepInfoY) {
+		var activityHistory = ActMonitor.getHistory();
+	  	var histDays=activityHistory.size();
+	  	//Sys.println("histDays: " + histDays);
+	  		  	
+	  	var maxheight = 26.0;	  	
+	  	var stepHistory=0;
+	  	var maxValue; 
+	  	var graphheight; 
+	  	//Sys.println("graphheight : " + graphheight);
+	  	
+	  	var graphposX = stepGraphposX;
+	  	var graphposY = stepGraphposY + 4;
+	  	
+	  	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+	  	dc.setPenWidth(1);
+	  	//draw empty graph---------------------------------------------------------
+	  	for(var i=0;i<7;i++) {	 
+	  		//Sys.println("i : " + i); 	
+	  		//dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+	  		dc.drawRectangle(graphposX, graphposY, 9, maxheight);
+	        graphposX = graphposX - 11;	        
+	  	}//--------------------------------------------------------------------------
+	  		  	
+	  if (histDays > 0) {	  	
+	  		graphposX = stepGraphposX;
+		  	for(var i=0;i<histDays;i++) {
+		  		maxValue=stepHistory+activityHistory[i].stepGoal;
+		  		graphheight = maxheight / maxValue;		  		
+		  		stepHistory=stepHistory+activityHistory[i].steps;		  		
+		  		graphheight = graphheight * stepHistory;
+		  		
+		  		if (graphheight > maxheight) {
+		  			graphheight = maxheight;
+		  		}
+		  		
+		  		//Sys.println("graphheight " + i + ": " + graphheight);	
+		  		dc.fillRectangle(graphposX, graphposY+maxheight-graphheight, 8, graphheight);		  	
+		  		dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
+		  		dc.drawRectangle(graphposX, graphposY, 9, maxheight);
+	
+		        graphposX = graphposX - 11;
+		        stepHistory=0;
+		        graphheight = maxheight / maxValue;
+		  	}
+		  	
+		  	//aktual step graph--------------------------------------
+		  	maxValue=ActMonitor.getInfo().stepGoal;
+	  		graphheight = maxheight / maxValue;
+	  		
+		  	dc.drawText(stepInfoX, stepInfoY + 17, fontLabel, ActMonitor.getInfo().steps, Gfx.TEXT_JUSTIFY_RIGHT);
+	  		graphheight = graphheight * ActMonitor.getInfo().steps;
+	  		if (graphheight > maxheight) {
+	  			graphheight = maxheight;
+	  		}
+	  		dc.setColor((App.getApp().getProperty("HandsColor1")), Gfx.COLOR_TRANSPARENT);
+	  		dc.fillRectangle(stepGraphposX+11, graphposY+maxheight-graphheight, 9, graphheight);	 
+	  		dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT); 	
+		  	dc.drawRectangle(stepGraphposX+11, graphposY, 9, maxheight);
+	  	}
+	  }// end od draw stepHistory-Graph----------------------
+
+	//builkd string for display in labels-------------------- 
 	function setLabel(displayInfo) {
 				
 			labelText = "";
@@ -566,7 +640,7 @@ function drawBattery(dc) {
 	 	    //Draw Steps --------------------------------------
 	      	if (displayInfo == 2) {				   		
 		   		labelText = Lang.format("$1$", [ActMonitor.getInfo().steps]);
-	  			labelInfoText = Lang.format("$1$", [ActMonitor.getInfo().stepGoal]); 			
+	  			labelInfoText = Lang.format("$1$", [ActMonitor.getInfo().stepGoal]);   						
 			}
 			
 			//Draw Steps to go --------------------------------------
@@ -586,20 +660,26 @@ function drawBattery(dc) {
 			        stepstogo = Lang.format("$1$", [stepstogo]); 			        
 		   		labelText = stepstogo;				        			              
 			}
-				 
+
+	 	    //Draw StepGraph --------------------------------------
+	      	if (displayInfo == 4) {				   		
+		   		labelText = "";
+	  			labelInfoText = Lang.format("$1$", [ActMonitor.getInfo().stepGoal]); 	  						
+			}
+
 
 	 		//Draw DigitalTime---------------------------------
-		   	if (displayInfo == 4) {
+		   	if (displayInfo == 5) {
 				 drawDigitalTime(); 
 			}	         
 	        
 	    	// Draw Altitude------------------------------
-			if (displayInfo == 5) {
+			if (displayInfo == 6) {
 				drawAltitude();	
 			 }	
 				
 			// Draw Calories------------------------------
-			if (displayInfo == 6) {	
+			if (displayInfo == 7) {	
 				var actInfo = ActMonitor.getInfo(); 
 		        var actcals = actInfo.calories;		       
 		        labelText = Lang.format("$1$", [actcals]);
@@ -607,7 +687,7 @@ function drawBattery(dc) {
 			}
 			
 			//Draw distance
-			if (displayInfo == 7) {
+			if (displayInfo == 8) {
 				distance.drawDistance();
 				labelText = distance.distStr;
 	  			labelInfoText = distance.distUnit;
@@ -615,25 +695,25 @@ function drawBattery(dc) {
 			}			
 			
 			//Draw battery
-			if (displayInfo == 8) {
+			if (displayInfo == 9) {
 				var Battery = Toybox.System.getSystemStats().battery;       
         	    labelText = Lang.format("$1$ % ", [ Battery.format ( "%2d" ) ] );
 			}
 			
 			//Draw Day and week of year
-			if (displayInfo == 9) {
+			if (displayInfo == 10) {
 				date.builddayWeekStr();
 				//labelText = date.dayWeekStr;
 				labelText = date.aktDay + " / " + date.week;
 			}
 			
 			//next / over next sun event
-			if (displayInfo == 10) {
+			if (displayInfo == 11) {
 				buildSunsetStr();
 		    }
 		    
 		   	//heart rate
-			if (displayInfo == 11) {
+			if (displayInfo == 12) {
 			var hasHR = (ActivityMonitor has :HeartRateIterator) ? true : false;			
 				if (hasHR) {
 					var HRH = ActMonitor.getHeartRateHistory(null, true);
@@ -777,6 +857,13 @@ function drawBattery(dc) {
 	     		labelRight = "dist";				
 				infoRight = distance.distStr;    	
 	     	}
+	     	
+	     	if (AlmMsg == 6) {    	
+	     		labelLeft = "goal";	     		
+	     		infoLeft = ActMonitor.getInfo().stepGoal;
+	     		labelRight = "steps";				
+				infoRight = ActMonitor.getInfo().steps;    	
+	     	}
 
 
 	     		
@@ -822,7 +909,7 @@ function drawBattery(dc) {
 	    var LowerDispEnable = (App.getApp().getProperty("LowerDispEnable"));
 
 	  	
-
+		//Anzeige oberes Display--------------------------  
 		if (UpperDispEnable) {
 			var displayInfo = (App.getApp().getProperty("UDInfo"));
 		//	Sys.println("UDInfo: " + displayInfo);
@@ -834,7 +921,11 @@ function drawBattery(dc) {
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(ULTEXTx, ULTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);	
         	//dc.drawText(ULTEXTx, ULTEXTy, fontDigital, "88:88/88:88", Gfx.TEXT_JUSTIFY_CENTER);	
-			dc.drawText(ULINFOx, ULINFOy, fontLabel, labelInfoText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
+			dc.drawText(ULINFOx, ULINFOy, fontLabel, labelInfoText, Gfx.TEXT_JUSTIFY_RIGHT);
+			
+			if (displayInfo == 4) {
+			drawStepGraph(dc, ULTEXTx, ULTEXTy, ULINFOx, ULINFOy);
+			}	    				
 		}	
 		
 			
@@ -846,12 +937,30 @@ function drawBattery(dc) {
 			//background for upper display
 			dc.setColor(App.getApp().getProperty("DigitalBackgroundColor"), Gfx.COLOR_TRANSPARENT);  
 	       	dc.fillRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 38, 5);
-      	      	 
+	       	
+	      // 	dc.setColor((App.getApp().getProperty("NumbersColor")), Gfx.COLOR_TRANSPARENT);
+	      // 	dc.drawRoundedRectangle(LLBGx, LLBGy , LLBGwidth, 38, 5);
+	       	      	      	 
         	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
         	dc.drawText(LLTEXTx, LLTEXTy, fontDigital, labelText, Gfx.TEXT_JUSTIFY_CENTER);
-        	//dc.drawText(LLTEXTx, LLTEXTy, fontDigital, "88:88/88:88", Gfx.TEXT_JUSTIFY_CENTER);		
-			dc.drawText(LLINFOx, LLINFOy, fontLabel, labelInfoText, Gfx.TEXT_JUSTIFY_RIGHT);	    				
+       // 	dc.drawText(LLTEXTx-25, LLTEXTy, fontDigital, "88888", Gfx.TEXT_JUSTIFY_CENTER);		
+			dc.drawText(LLINFOx, LLINFOy, fontLabel, labelInfoText, Gfx.TEXT_JUSTIFY_RIGHT);
+			
+			if (displayInfo == 4) {
+			drawStepGraph(dc, LLTEXTx, LLTEXTy, LLINFOx, LLINFOy);
+			}	    				
 		}
+
+
+	
+	  	
+	 
+	  	
+	  	
+
+
+
+
 
 	        
 
@@ -966,7 +1075,7 @@ function drawBattery(dc) {
        
 
   // Draw hands ------------------------------------------------------------------         
-     	hands.drawHands(dc); 
+    	hands.drawHands(dc); 
      	
      	
   // Center Point with Bluetooth connection

@@ -30,7 +30,8 @@
             <listEntry value="2">@Strings.IF2</listEntry>  
             <listEntry value="3">@Strings.IF3</listEntry>
             <listEntry value="4">@Strings.IF4</listEntry> 
-            <listEntry value="5">@Strings.IF5</listEntry>  
+            <listEntry value="5">@Strings.IF5</listEntry>
+            <listEntry value="6">@Strings.IF6</listEntry>   
         </settingConfig>
     </setting>
     
@@ -326,14 +327,15 @@
         	<listEntry value="1">@Strings.DDate</listEntry>
             <listEntry value="2">@Strings.DSteps</listEntry> 
             <listEntry value="3">@Strings.DStepstogo</listEntry>       
-            <listEntry value="4">@Strings.DDigitalClock</listEntry>
-            <listEntry value="5">@Strings.DAltitude</listEntry>
-            <listEntry value="6">@Strings.DCalories</listEntry>
-            <listEntry value="7">@Strings.DDistance</listEntry>
-            <listEntry value="8">@Strings.DBattery</listEntry>
-            <listEntry value="9">@Strings.DDayWeek</listEntry>
-            <listEntry value="10">@Strings.DSunsetRise</listEntry>
-            <listEntry value="11">@Strings.DHR</listEntry>
+            <listEntry value="4">@Strings.DStepGraph</listEntry>                  
+            <listEntry value="5">@Strings.DDigitalClock</listEntry>
+            <listEntry value="6">@Strings.DAltitude</listEntry>
+            <listEntry value="7">@Strings.DCalories</listEntry>
+            <listEntry value="8">@Strings.DDistance</listEntry>
+            <listEntry value="9">@Strings.DBattery</listEntry>
+            <listEntry value="10">@Strings.DDayWeek</listEntry>
+            <listEntry value="11">@Strings.DSunsetRise</listEntry>
+            <listEntry value="12">@Strings.DHR</listEntry>
         </settingConfig>
     </setting>
    
@@ -346,14 +348,15 @@
         	<listEntry value="1">@Strings.DDate</listEntry>
             <listEntry value="2">@Strings.DSteps</listEntry> 
             <listEntry value="3">@Strings.DStepstogo</listEntry>       
-            <listEntry value="4">@Strings.DDigitalClock</listEntry>
-            <listEntry value="5">@Strings.DAltitude</listEntry>
-            <listEntry value="6">@Strings.DCalories</listEntry>
-            <listEntry value="7">@Strings.DDistance</listEntry>
-            <listEntry value="8">@Strings.DBattery</listEntry>
-            <listEntry value="9">@Strings.DDayWeek</listEntry>
-            <listEntry value="10">@Strings.DSunsetRise</listEntry>
-            <listEntry value="11">@Strings.DHR</listEntry>
+            <listEntry value="4">@Strings.DStepGraph</listEntry>                  
+            <listEntry value="5">@Strings.DDigitalClock</listEntry>
+            <listEntry value="6">@Strings.DAltitude</listEntry>
+            <listEntry value="7">@Strings.DCalories</listEntry>
+            <listEntry value="8">@Strings.DDistance</listEntry>
+            <listEntry value="9">@Strings.DBattery</listEntry>
+            <listEntry value="10">@Strings.DDayWeek</listEntry>
+            <listEntry value="11">@Strings.DSunsetRise</listEntry>
+            <listEntry value="12">@Strings.DHR</listEntry>
         </settingConfig>
     </setting>
 

@@ -41,6 +41,7 @@
     <string id="IF3">Day and week of year</string>
     <string id="IF4">sunrise / sunset</string>
     <string id="IF5">elevation / distance</string>
+    <string id="IF6">stepgoal / steps</string>
     
     
     
@@ -87,6 +88,7 @@
     <string id="DDate">Date</string>
     <string id="DSteps">Steps</string>
     <string id="DStepstogo">Steps to go</string>
+    <string id="DStepGraph">Step histories graphic</string>
 	<string id="DDigitalClock">Dual time</string>
 	<string id="DAltitude">Elevation</string>
 	<string id="DCalories">Calories</string>
