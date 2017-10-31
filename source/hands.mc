@@ -424,7 +424,7 @@ module hands{
 		r1 = 35;
 		r2 = seconds_radius;
 		
-if (SecHandsForm == 1) { //classic		
+		if (SecHandsForm == 1) { //classic		
 			//untere Raute		
 			hand =        	[
 							[center_x+r0*Math.sin(alpha),center_y-r0*Math.cos(alpha)],						
