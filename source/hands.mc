@@ -50,8 +50,8 @@ module hands{
 		//Sys.println("clockTime min = " + clockTime.min);
 		
 		//! only for screenshots!
-		//clockTime.hour = 9;
-		//clockTime.min = 00;
+		//clockTime.hour = 8;
+		//clockTime.min = 05;
 			
          //Race-Hands-----------------	
 		if (HandsForm == 1) { 	

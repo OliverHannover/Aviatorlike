@@ -135,14 +135,14 @@ class AviatorlikeView extends Ui.WatchFace{
 		   	ULINFOy = 34;   
 		    
 		   	LLBGx = 35;
-		   	LLBGy = 111;
+		   	LLBGy = 110;
 		   	LLBGwidth = 145;
 		    
 		   	LLTEXTx = 107.5;
-		   	LLTEXTy = 113;
+		   	LLTEXTy = 112;
 		    
 		   	LLINFOx = 174;
-		   	LLINFOy = 112; 
+		   	LLINFOy = 111; 
 		    
 		   	moonx = 165;
 		   	moony = 72;
@@ -539,6 +539,7 @@ function drawBattery(dc) {
 			App.getApp().setProperty(LON, lon);
 		}
 
+
 //		lat = 52.375892 * Math.PI / 180.0;
 //		lon = 9.732010 * Math.PI / 180.0;
 
@@ -579,7 +580,7 @@ function drawBattery(dc) {
 	  	
 	  	dc.setColor((App.getApp().getProperty("ForegroundColor")), Gfx.COLOR_TRANSPARENT);
 	  	dc.setPenWidth(1);
-	  	//draw empty graph---------------------------------------------------------
+	  	//first draw empty graph---------------------------------------------------------
 	  	for(var i=0;i<7;i++) {	 
 	  		//Sys.println("i : " + i); 	
 	  		//dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
@@ -625,7 +626,9 @@ function drawBattery(dc) {
 	  	}
 	  }// end od draw stepHistory-Graph----------------------
 
-	//builkd string for display in labels-------------------- 
+
+
+	//build string for display in labels-------------------- 
 	function setLabel(displayInfo) {
 				
 			labelText = "";
@@ -875,6 +878,8 @@ function drawBattery(dc) {
 		}       
 
 
+
+
 //Draw Digital Elements ------------------------------------------------------------------ 
 
 	    var fontDigital = 0;
@@ -951,9 +956,52 @@ function drawBattery(dc) {
 			}	    				
 		}
 
+//Fadenkreuz-------------------------------------
+	  	dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
+//	  	dc.setPenWidth(1);  	
+//		dc.drawLine(ULBGx, 0, ULBGx , height);
+//		dc.drawLine(ULBGx + ULBGwidth, 0, ULBGx + ULBGwidth , height);	
+//		dc.drawLine(width/2, 0, width/2 , height);		
+//		dc.drawLine(0, height/2, width , height/2);
 
 	
-	  	
+//draw move bar (inactivity alarm)----------------------
+Sys.println("moveBarLevel "+ ActMonitor.getInfo().moveBarLevel);
+var showMoveBar = (App.getApp().getProperty("MoveBarEnable"));
+
+var setY = ULBGy + 40 ;
+var setX = center_x;
+
+	if (showMoveBar) {
+	dc.setPenWidth(3);
+	
+		dc.setColor(App.getApp().getProperty("QuarterNumbersColor"), Gfx.COLOR_TRANSPARENT);
+		if (ActMonitor.getInfo().moveBarLevel >= 1) {
+			dc.drawLine(setX - 7 , setY, setX  - 58, setY);		
+		//	dc.fillRoundedRectangle(ULBGx , setY, ULBGwidth/2 - 2 , 3, 3);
+		}
+		
+		
+		if (ActMonitor.getInfo().moveBarLevel >= 2) {
+			dc.drawLine(setX , setY, setX + 10, setY);
+			setX = setX +  16;
+		//	dc.fillRoundedRectangle(ULBGx + ULBGwidth/2, setY, ULBGwidth/8 - 2 , 3, 3);
+		}
+		if (ActMonitor.getInfo().moveBarLevel >= 3) {
+			dc.drawLine(setX , setY, setX + 10, setY);
+			setX = setX +  16;
+		//	dc.fillRoundedRectangle(ULBGx  + ULBGwidth/2 + ULBGwidth/8, setY, ULBGwidth/8 - 2 , 3, 3);
+		}
+		if (ActMonitor.getInfo().moveBarLevel >= 4) {
+			dc.drawLine(setX , setY, setX + 10, setY);
+			setX = setX +  16;
+		//	dc.fillRoundedRectangle(ULBGx  + ULBGwidth/2 + ULBGwidth/8 * 2, setY, ULBGwidth/8 - 2 , 3, 3);
+		}
+		if (ActMonitor.getInfo().moveBarLevel == 5) {
+			dc.drawLine(setX , setY, setX + 10, setY);
+		//	dc.fillRoundedRectangle(ULBGx  + ULBGwidth/2 + ULBGwidth/8 * 3, setY, ULBGwidth/8 + 2 , 3, 3);
+		}
+	}	  	
 	 
 	  	
 	  	
@@ -1003,7 +1051,7 @@ function drawBattery(dc) {
 		    	}
 		   if ( NbrFont == 5) {  //roman
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_roman);
-		    		dc.drawText((width / 2), 7, font1, "}", Gfx.TEXT_JUSTIFY_CENTER);
+		    		dc.drawText((width / 2), 11, font1, "}", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {	
 		    			dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
@@ -1058,10 +1106,10 @@ function drawBattery(dc) {
 		    		font1 = Ui.loadResource(Rez.Fonts.id_font_roman);
 		    		dc.drawText((width / 2), -4, font1, "}", Gfx.TEXT_JUSTIFY_CENTER);
 		    		if (! MoonEnable) {		
-		    			dc.drawText(width - 16, (height / 2) - 22, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
+		    			dc.drawText(width - 16, (height / 2) - 20, font1, "3", Gfx.TEXT_JUSTIFY_RIGHT);
 	        		}
-	        		dc.drawText(width / 2, height - 40, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
-	        		dc.drawText(16, (height / 2) - 22, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
+	        		dc.drawText(width / 2, height - 35, font1, "6", Gfx.TEXT_JUSTIFY_CENTER);
+	        		dc.drawText(16, (height / 2) - 20, font1, "9", Gfx.TEXT_JUSTIFY_LEFT);
 		   		}
 		   	if ( NbrFont == 6) {  //simple
 		    		dc.drawText((width / 2), -3, Gfx.FONT_SYSTEM_LARGE   , "12", Gfx.TEXT_JUSTIFY_CENTER);

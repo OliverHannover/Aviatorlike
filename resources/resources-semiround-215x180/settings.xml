@@ -16,6 +16,11 @@
         <settingConfig type="boolean" />
     </setting>
     
+        
+    <setting propertyKey="@Properties.MoveBarEnable" title="@Strings.MoveBarEnableTitle">
+        <settingConfig type="boolean" />
+    </setting>
+    
     <setting propertyKey="@Properties.AlmMsgEnable" title="@Strings.AlmMsgEnableTitle">
         <settingConfig type="boolean" />
     </setting>

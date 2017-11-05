@@ -33,6 +33,7 @@
     <string id="HandOutlinesEnableTitle">Enable outline around some hands</string>
     <string id="SunMarkersEnableTitle">Enable sunrise/sunset markers (only round watches)</string>
     <string id="MoonEnableTitle">Enable moon phase on pos. 3 o´clock</string>
+    <string id="MoveBarEnableTitle">Enable inaktivity move bar </string>
     
     <string id="AlmMsgEnableTitle">Enable center indicators</string>
 	<string id="AlmMsgTitle">indicator info</string>
