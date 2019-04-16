@@ -1,10 +1,10 @@
 <properties>
-	<property id="appVersion" type="string">1.0.0</property>
+	<property id="appVersion" type="string">1.0.3</property>
 	
 	<property id="BatProgressEnable" type="boolean">true</property>
 	<property id="StepProgressEnable" type="boolean">true</property>
-	<property id="SunMarkersEnable" type="boolean">false</property>
-	<property id="MoonEnable" type="boolean">false</property>
+	<property id="SunMarkersEnable" type="boolean">true</property>
+	<property id="MoonEnable" type="boolean">true</property>
 	<property id="MoveBarEnable" type="boolean">true</property>
 	
 	<property id="AlmMsgEnable" type="boolean">true</property>
@@ -17,13 +17,13 @@
     <property id="DigitalBackgroundColor" type="number">0xAAAAAA</property>
     <property id="ForegroundColor" type="number">0x000000</property>
     
-    <property id="Numbers" type="number">2</property>
+    <property id="Numbers" type="number">3</property>
     <property id="QuarterNumbersColor" type="number">0x000000</property>
     <property id="NumbersColor" type="number">0x000000</property>
     <property id="markslenth" type="number">4</property>
     <property id="MinutesColor" type="number">0x00AAFF</property>
    
-    <property id="HandsForm" type="number">1</property>
+    <property id="HandsForm" type="number">6</property>
     <property id="HandsColor1" type="number">0xFF0000</property>
     <property id="HandsColor2" type="number">0xAA0000</property>
     
@@ -40,7 +40,7 @@
     <property id="UpperDispEnable" type="boolean">true</property>
     <property id="UDInfo" type="number">1</property>
      <property id="LowerDispEnable" type="boolean">true</property>
-    <property id="LDInfo" type="number">2</property>
+    <property id="LDInfo" type="number">11</property>
     
     <property id="DualTimeTZ" type="number">0</property>
     <property id="DualTimeDST" type="number">0</property>

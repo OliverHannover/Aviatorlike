@@ -1,14 +1,12 @@
 using Toybox.Time as Time;
 using Toybox.Application as App;
 using Toybox.Time.Gregorian as Calendar;
-//using Toybox.WatchUi as Ui;
 using Toybox.Activity as Act;
 using Toybox.Math as Math;
 using Toybox.Graphics as Gfx;
-//using Toybox.System as Sys;
 
 
-module extras{		
+module marker{		
 
  function drawSunMarkers(dc) {
 	// Draw Sunset / sunrise markers -------------------------------------------------------------------------

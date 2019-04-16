@@ -96,6 +96,7 @@ class AviatorlikeView extends Ui.WatchFace{
 		   	moony = 89;
 		   	moonwidth = 40; 		
 		}
+		
 		if (width == 240 && height == 240) {
 			Sys.println("device:" + "Fenix5 240");
 			ULBGx = 45;
@@ -769,8 +770,15 @@ function drawBattery(dc) {
 	   		var now = Time.now();
 			var dateinfo = Calendar.info(now, Time.FORMAT_SHORT);
 	        var clockTime = Sys.getClockTime();
-	        var moon = new Moon(Ui.loadResource(Rez.Drawables.moon), moonwidth, moonx, moony);
-			moon.updateable_calcmoonphase(dc, dateinfo, clockTime.hour);
+	        if (screenShape == 1) {
+	        	var moon = new Moon(Ui.loadResource(Rez.Drawables.moon1), moonwidth, moonx, moony);
+	        	moon.updateable_calcmoonphase(dc, dateinfo, clockTime.hour);
+	        }
+	        if (screenShape == 2) {
+	        	var moon = new Moon(Ui.loadResource(Rez.Drawables.moon2), moonwidth, moonx, moony);
+	        	moon.updateable_calcmoonphase(dc, dateinfo, clockTime.hour);
+	        }
+		
 			dc.setColor((App.getApp().getProperty("QuarterNumbersColor")), Gfx.COLOR_TRANSPARENT);
 			dc.setPenWidth(1);	   
 	 		dc.drawCircle(moonx+moonwidth/2,moony+moonwidth/2,moonwidth/2-1);
@@ -793,7 +801,7 @@ function drawBattery(dc) {
 		var SunmarkersEnable = (App.getApp().getProperty("SunMarkersEnable"));		
        	if (SunmarkersEnable && screenShape == 1) {
        		//Sys.println("sunmarkers "+ SunmarkersEnable);
-			extras.drawSunMarkers(dc);
+			marker.drawSunMarkers(dc);
 		}
 		//! Alm / Msg indicators
 		var AlmMsgEnable = (App.getApp().getProperty("AlmMsgEnable"));
