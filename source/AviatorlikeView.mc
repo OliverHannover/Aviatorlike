@@ -57,73 +57,57 @@ class AviatorlikeView extends Ui.WatchFace{
         WatchFace.initialize();        
 	    fontLabel = Ui.loadResource(Rez.Fonts.id_font_label);
         screenShape = Sys.getDeviceSettings().screenShape;                  
-        Sys.println("Screenshape = " + screenShape);
-     
-        
-        
+        //Sys.println("Screenshape = " + screenShape);        
     }
    
     
-    function onLayout(dc) { 
-        width = dc.getWidth();
-        height = dc.getHeight();
+    function onLayout(dc) {
+    	screenShape = Sys.getDeviceSettings().screenShape; 
+        width = dc.getWidth()*1.0;
+        height = dc.getHeight()*1.0;
         center_x = dc.getWidth() / 2;
         center_y = dc.getHeight() / 2;
+        Sys.println("width = " + width + ", height = " + height);
+        Sys.println("Screenshape = " + screenShape);
         
-		if (width == 218 && height == 218) {
-			Sys.println("device:" + "Fenix3 218");
-			ULBGx = 38;
-		   	ULBGy = 50;
-		   	ULBGwidth = 142;
+        
+		if (screenShape == 1) {			
+			//oberer Displayhintergrund
+			ULBGwidth = height/100 * 63.5;
+			ULBGx = width/2 - ULBGwidth/2;
+		   	ULBGy = height/100 * 23.7; // 29% der H√∂he von oben
+		   	Sys.println("oberes Dips. Hoehe = " + ULBGy + " - Test: " + height/100 + ", " + dc.getWidth()/100 );
+		   	
+		    //oberer Displaytext
+		   	ULTEXTx = width/2;
+		   	ULTEXTy = height/100 * 24;
+		   	
+		    //zus√§tzlicher oberer Info-Text
+		   	ULINFOx = width/2 + ULBGwidth/2 - 7;
+		   	ULINFOy = height/100 * 24;  
+		   	
+		    //unterer Displayhintergrund
+		   	LLBGx = ULBGx;
+		   	LLBGy = height/100 * 62;
+		   	LLBGwidth = ULBGwidth;
+		   	Sys.println("unteres Dips. Hoehe = " + LLBGy);
 		    
-		   	ULTEXTx = 109;
-		   	ULTEXTy = 52;
+		    //unterer Display-Text
+		   	LLTEXTx = width/2;
+		   	LLTEXTy = height/100 * 62;
 		    
-		   	ULINFOx = 175;
-		   	ULINFOy = 50;   
+		    //unterer Info-Text
+		   	LLINFOx = ULINFOx;
+		   	LLINFOy = height/100 * 62; 
 		    
-		   	LLBGx = 38;
-		   	LLBGy = 130;
-		   	LLBGwidth = 142;
-		    
-		   	LLTEXTx = 109;
-		   	LLTEXTy = 132;
-		    
-		   	LLINFOx = 175;
-		   	LLINFOy = 130; 
-		    
-		   	moonx = 165;
-		   	moony = 89;
-		   	moonwidth = 40; 		
+		    moonwidth = 40;
+		   	moonx = width - moonwidth - 15;
+		   	moony = height/2 - moonwidth/2; 		
 		}
 		
-		if (width == 240 && height == 240) {
-			Sys.println("device:" + "Fenix5 240");
-			ULBGx = 45;
-		   	ULBGy = 57;
-		   	ULBGwidth = 150;
-		    
-		   	ULTEXTx = 120;
-		   	ULTEXTy = 59;
-		    
-		   	ULINFOx = 188;
-		   	ULINFOy = 57;   
-		    
-		   	LLBGx = 45;
-		   	LLBGy = 147;
-		   	LLBGwidth = 150;
-		    
-		   	LLTEXTx = 120;
-		   	LLTEXTy = 149;
-		    
-		   	LLINFOx = 188;
-		   	LLINFOy = 148; 
-		    
-		   	moonx = 185;
-		   	moony = 100;
-		   	moonwidth = 40; 		
-		}
-		if (width == 215 && height == 180) {
+		
+		
+		if (screenShape == 2) {
 			Sys.println("device:" + "Semiround");
 			ULBGx = 35;
 		   	ULBGy = 33;
@@ -164,7 +148,7 @@ class AviatorlikeView extends Ui.WatchFace{
             dc.setColor(App.getApp().getProperty("MinutesColor"), Gfx.COLOR_TRANSPARENT);
            	r1 = width/2 -5; //inside
 			r2 = width/2 ; //outside
-           	for (var alpha = Math.PI / 6; alpha <= 13 * Math.PI / 6; alpha += (Math.PI / 30)) { //jede Minute 			
+           	for (alpha = Math.PI / 6; alpha <= 13 * Math.PI / 6; alpha += (Math.PI / 30)) { //jede Minute 			
 				dc.drawLine(center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha), center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)); 
 
      		}
@@ -176,7 +160,7 @@ class AviatorlikeView extends Ui.WatchFace{
            	r1 = width/2 - (5 * App.getApp().getProperty("markslenth"));
 			r2 = width/2 ; //outside
            	//for (var alpha = Math.PI / 6; alpha <= 13 * Math.PI / 6; alpha += (Math.PI / 30)) { //jede Minute
-         	for (var alpha = Math.PI / 6; alpha <= 11 * Math.PI / 6; alpha += (Math.PI / 3)) { //jede 5. Minute  			
+         	for (alpha = Math.PI / 6; alpha <= 11 * Math.PI / 6; alpha += (Math.PI / 3)) { //jede 5. Minute  			
 				dc.drawLine(center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha), center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)); 
 				alpha += Math.PI / 6;  
 				dc.drawLine(center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha), center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha));    	
@@ -397,7 +381,7 @@ function drawBattery(dc) {
         	var lenth = 15;
      
 			r1 = width/2 - outerRad; //outside
-			r2 = r1 -lenth; ////L‰nge des Bat-Zeigers
+			r2 = r1 -lenth; ////LÔøΩnge des Bat-Zeigers
 										
 			hand =     [[center_x+r1*Math.sin(alpha+0.1),center_y-r1*Math.cos(alpha+0.1)],
 						[center_x+r2*Math.sin(alpha),center_y-r2*Math.cos(alpha)],
@@ -479,7 +463,7 @@ function drawBattery(dc) {
         	var lenth = 15;
      
 			r1 = width/2 - outerRad; //outside
-			r2 = r1 -lenth; ////L‰nge des Step-Zeigers
+			r2 = r1 -lenth; ////LÔøΩnge des Step-Zeigers
 										
 			hand =     [[center_x+r2*Math.sin(alpha+0.1),center_y-r2*Math.cos(alpha+0.1)],
 						[center_x+r1*Math.sin(alpha),center_y-r1*Math.cos(alpha)],
@@ -772,6 +756,7 @@ function drawBattery(dc) {
 	        var clockTime = Sys.getClockTime();
 	        if (screenShape == 1) {
 	        	var moon = new Moon(Ui.loadResource(Rez.Drawables.moon1), moonwidth, moonx, moony);
+	        	
 	        	moon.updateable_calcmoonphase(dc, dateinfo, clockTime.hour);
 	        }
 	        if (screenShape == 2) {
@@ -974,7 +959,7 @@ function drawBattery(dc) {
 
 	
 //draw move bar (inactivity alarm)----------------------
-Sys.println("moveBarLevel "+ ActMonitor.getInfo().moveBarLevel);
+// Sys.println("moveBarLevel "+ ActMonitor.getInfo().moveBarLevel);
 var showMoveBar = (App.getApp().getProperty("MoveBarEnable"));
 
 var setY = ULBGy + 40 ;
